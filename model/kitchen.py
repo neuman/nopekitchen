@@ -90,8 +90,10 @@ class Config:
     contractor's plan suggests leaves 11 in and lost; see PARAMS."""
 
     island_aisle: float = 48.0
-    """in, the long run's counter edge to the island: the work aisle. 48 is the NKBA
-    width for more than one cook; 42 is its width for one."""
+    """in, the range's door face to the island: the work aisle at its narrowest,
+    as the NKBA measures it (between counter fronts and appliances). 48 is its
+    width for more than one cook; 42 for one. Measured from the counter edge the
+    range's half inch of projection was lost; see PARAMS."""
 
     island_north_aisle: float = 48.0
     """in, the sink run's counter edge to the island's north end. Leaves 22.5 in to
@@ -164,12 +166,15 @@ PARAMS = [
                                   "a seat at a 36 in counter needs"}]},
     {"name": "island_aisle", "units": "in", "rejected": [
         {"value": "42 in", "why": "right for one cook, 6 in short of the width "
-                                  "for two to pass on a holiday"}]},
+                                  "for two to pass on a holiday"},
+        {"value": "48 in from the counter edge", "why": "the range stands half an inch "
+                                  "proud of the counter, so the aisle at the range was 47.5 in"}]},
 ]
 
 # Fixed sizes of the things that are kept (the range, dishwasher and refrigerator
 # stay; requirement of the budget) and of the contractor's boxes.
 RANGE_W, DW_W, FRIDGE_W = 30.0, 24.0, 36.0
+RANGE_D = 26.0           # in, wall to the range's door face: ASSUMED for the kept slide-in range (A3)
 CORNER = 36.0            # DCB36: the corner base takes 36 in of each wall
 UPPER_TALL_TOP = 94.0    # tops of the 40 in uppers and of the cabinet over the fridge
 CAB_TOP = 84.0           # tops of the 30 in uppers toward the corner
@@ -198,9 +203,9 @@ def wall1(c: Config) -> list[dict]:
         out.append(_box(id, "base", "lower", 0, y, bz, c.base_d, w, bh, "E", fronts, label))
         y += w
 
-    base("w1_corner", CORNER, "blind", "corner base 36")
+    base("w1_corner", CORNER, "corner", "corner base 36")
     base("w1_b24", 24, "door2+drawer", "base 24")
-    out.append(_box("range", "appliance", "range", 0, y, 0, 26, RANGE_W, 36, "E", "", "range 30 (kept)"))
+    out.append(_box("range", "appliance", "range", 0, y, 0, RANGE_D, RANGE_W, 36, "E", "", "range 30 (kept)"))
     range_y = y
     y += RANGE_W
     base("w1_b3d30", 30, "drawer3", "3-drawer base 30")
@@ -219,7 +224,7 @@ def wall1(c: Config) -> list[dict]:
 
     # uppers, from the corner south
     uz30, uz40 = CAB_TOP - 30, UPPER_TALL_TOP - 40
-    out.append(_box("w1_u_corner", "upper", "upper", 0, 0, uz30, c.upper_d, 24, 30, "E", "door1", "corner wall 24"))
+    out.append(_box("w1_u_corner", "upper", "upper", 0, 0, uz30, c.upper_d, 24, 30, "E", "corner", "corner wall 24"))
     out.append(_box("w1_u30", "upper", "upper", 0, 24, uz30, c.upper_d, 30, 30, "E", "door2", "wall 30x30"))
     out.append(_box("w1_u_fill", "filler", "upper", 0, 54, uz30, c.upper_d, range_y - 54, UPPER_TALL_TOP - uz30, "E", "", "filler"))
     out.append(_box("w1_u_hood", "upper", "upper", 0, range_y, UPPER_TALL_TOP - 24, c.upper_d, 30, 24, "E", "door2", "wall 30x24 over hood"))
@@ -237,7 +242,7 @@ def wall2(c: Config) -> list[dict]:
     """The sink wall's boxes, from the corner east."""
     out = []
     x = CORNER
-    out.append(_box("w2_corner_return", "base", "lower", c.base_d, 0, 0, CORNER - c.base_d, c.base_d, c.base_h, "S", "blind", "corner base return"))
+    out.append(_box("w2_corner_return", "base", "lower", c.base_d, 0, 0, CORNER - c.base_d, c.base_d, c.base_h, "S", "corner", "corner base return"))
     out.append(_box("w2_fill_l", "filler", "lower", x, 0, 0, 2, c.base_d, c.base_h, "S", "", "filler 2"))
     x += 2
     out.append(_box("w2_b24", "base", "lower", x, 0, 0, 24, c.base_d, c.base_h, "S", "door2+drawer", "base 24"))
@@ -263,7 +268,7 @@ def island(c: Config) -> list[dict]:
     if c.island_len <= 0:
         return []
     out = []
-    x0 = c.counter_d + c.island_aisle
+    x0 = RANGE_D + c.island_aisle
     y0 = c.counter_d + c.island_north_aisle
     over = 2.0
     run = c.island_len - 2 * over
@@ -352,6 +357,9 @@ def room(c: Config) -> list[dict]:
     add("floor_main", "floor", -T, -T, -1, E + 2 * T, S + 2 * T, 1, "floor")
     add("floor_hall", "floor", -70, hall0, -1, 70 - T, hall1 - hall0, 1, "hallway floor")
     add("wall_w_kitchen", "wall", -T, -T, 0, T, hall0 + T, H, "wall 1 (long wall)")
+    add("wall_hall_n", "wall", -70, hall0 - T, 0, 70 - T, T, H, "hallway wall")
+    add("wall_hall_s", "wall", -70, hall1, 0, 70 - T, T, H, "hallway wall")
+    add("wall_hall_end", "wall", -70 - T, hall0 - T, 0, T, hall1 - hall0 + 2 * T, H, "hallway end")
     add("wall_w_south", "wall", -T, hall1, 0, T, S - hall1 + T, H, "west wall")
     add("wall_n", "wall", 0, -T, 0, E + T, T, H, "wall 2 (sink wall)")
     add("wall_stub3", "wall", c.wall2_len, 0, 0, T, 30, H, "return wall 3")
@@ -379,6 +387,153 @@ def room(c: Config) -> list[dict]:
     add("f_sofa_back", "furniture", 150, 262, 17, 84, 8, 15, "sofa back")
     add("f_rug", "rug", 140, 290, 0, 100, 70, 0.4, "rug")
     return out
+
+
+# ----------------------------------------------------------------------------
+# Fronts, open doors, collisions and walkways. The site draws the fronts from the
+# same rectangles the door check swings, so the picture and the check cannot part.
+# ----------------------------------------------------------------------------
+DRAWER_TRAVEL = 20.0     # in, a full-extension drawer pulled out
+DW_DOOR, OVEN_DOOR, FREEZER_TRAVEL, MW_TRAVEL = 26.0, 21.0, 24.0, 16.0
+PANTRY_DOOR_W = 36.0
+SOLID = ("base", "upper", "tall", "appliance", "panel", "filler", "counter", "shelf", "door")
+ROOM_SOLID = ("wall", "post", "brick")
+TOL = 0.1                # in; boxes that only touch do not collide
+
+
+def _face_w(b):
+    return b["dy"] if b["face"] in ("E", "W") else b["dx"]
+
+
+def front_rects(b: dict) -> list:
+    """[u0, u1, z0, z1, kind] for each door and drawer front of a box. u runs
+    along the face from the box's low corner; kind is door, drawer, corner or mw."""
+    w = _face_w(b)
+    z0 = b["z"] + TOE if b["kind"] == "base" else b["z"]
+    z1 = b["z"] + b["dz"]
+    half = w / 2
+    f = b["fronts"]
+
+    def doors(a, c):
+        return [[0, half, a, c, "door"], [half, w, a, c, "door"]] if w >= 21 else [[0, w, a, c, "door"]]
+
+    if f == "drawer3":
+        return [[0, w, z0, z0 + 15, "drawer"], [0, w, z0 + 15, z0 + 25, "drawer"], [0, w, z0 + 25, z1, "drawer"]]
+    if f in ("door2+drawer", "door2+false"):
+        return doors(z0, z1 - 5) + [[0, w, z1 - 5, z1, "drawer" if f == "door2+drawer" else "false"]]
+    if f == "corner":
+        # a bifold corner door: only the 12 in beside the next cabinet is a leaf
+        return [[w - 12, w, z0, z1, "corner"]]
+    if f == "door2":
+        return doors(z0, z1)
+    if f == "door1":
+        return [[0, w, z0, z1, "door"]]
+    if f == "door1tall":
+        return [[0, w, z0 + TOE, z0 + 60, "door"], [0, w, z0 + 60, z1, "door"]]
+    if f == "microwave":
+        return [[0, w, z0, z0 + 10, "drawer"], [0, w, z0 + 10, z1, "mw"]]
+    return []
+
+
+def _out(b, u0, u1, z0, z1, reach):
+    """The box a front sweeps when it opens `reach` inches out of its face."""
+    if b["face"] == "E":
+        return b["x"] + b["dx"], b["y"] + u0, z0, reach, u1 - u0, z1 - z0
+    if b["face"] == "W":
+        return b["x"] - reach, b["y"] + u0, z0, reach, u1 - u0, z1 - z0
+    if b["face"] == "S":
+        return b["x"] + u0, b["y"] + b["dy"], z0, u1 - u0, reach, z1 - z0
+    return b["x"] + u0, b["y"] - reach, z0, u1 - u0, reach, z1 - z0
+
+
+def open_volumes(c: Config, boxes: list[dict]) -> list[dict]:
+    """What each door, drawer and appliance door sweeps as it opens.
+
+    A hinged leaf sweeps a quarter circle; its bounding box is taken, as wide as
+    the leaf and as far out as the leaf is wide. A corner bifold folds inside its
+    own 12 in and is not swept. Wall-cabinet doors are swept too: they hit a
+    hood or a neighbour, never a person, and this check is about things."""
+    out = []
+
+    def add(b, name, u0, u1, z0, z1, reach, kind):
+        x, y, z, dx, dy, dz = _out(b, u0, u1, z0, z1, reach)
+        out.append({"id": f"{b['id']}:{name}", "of": b["id"], "kind": kind, "x": x, "y": y, "z": z, "dx": dx, "dy": dy, "dz": dz})
+
+    for b in boxes:
+        if not b["face"]:
+            continue
+        w = _face_w(b)
+        if b["kind"] in ("base", "upper", "tall"):
+            for i, (u0, u1, z0, z1, kind) in enumerate(front_rects(b)):
+                if kind == "door":
+                    add(b, f"door{i}", u0, u1, z0, z1, u1 - u0, "door")
+                elif kind == "drawer":
+                    add(b, f"drawer{i}", u0, u1, z0, z1, DRAWER_TRAVEL, "drawer")
+                elif kind == "mw":
+                    add(b, f"mw{i}", u0, u1, z0, z1, MW_TRAVEL, "drawer")
+        elif b["role"] == "dishwasher":
+            add(b, "door", 0, w, 0, b["dz"], DW_DOOR, "door")
+        elif b["role"] == "range":
+            add(b, "oven", 0, w, 0, 30, OVEN_DOOR, "door")
+        elif b["role"] == "fridge":
+            add(b, "door_a", 0, w / 2, 30, 70, w / 2, "door")
+            add(b, "door_b", w / 2, w, 30, 70, w / 2, "door")
+            add(b, "freezer", 0, w, 3, 30, FREEZER_TRAVEL, "drawer")
+        elif b["kind"] == "door":      # the pantry door, swinging out into the kitchen
+            out.append({"id": f"{b['id']}:swing", "of": b["id"], "kind": "door", "x": b["x"], "y": b["y"] + b["dy"],
+                        "z": 0, "dx": b["dx"], "dy": b["dx"], "dz": b["dz"]})
+    return out
+
+
+def _hit(a, b):
+    return all(min(a[k] + a["d" + k], b[k] + b["d" + k]) - max(a[k], b[k]) > TOL for k in "xyz")
+
+
+def collisions(boxes: list[dict], shell: list[dict]) -> list[list[str]]:
+    """Pairs of solid things that occupy the same space. The microwave is left
+    out (it sits inside a shelf bay or a cabinet niche by design), as are sinks,
+    which are set into their counter. Shell against shell is not checked: the
+    room outside the kitchen is approximate."""
+    solid = [b for b in boxes if b["kind"] in SOLID and b["id"] != "microwave"]
+    walls = [b for b in shell if b["kind"] in ROOM_SOLID]
+    pairs = []
+    for i, a in enumerate(solid):
+        for b in solid[i + 1:]:
+            if _hit(a, b):
+                pairs.append([a["id"], b["id"]])
+        for b in walls:
+            if _hit(a, b):
+                pairs.append([a["id"], b["id"]])
+    return pairs
+
+
+def blocked_doors(opens: list[dict], boxes: list[dict], shell: list[dict]) -> list[list[str]]:
+    """[what opens, what it hits] for each door or drawer that cannot open."""
+    solid = [b for b in boxes if b["kind"] in SOLID and b["id"] != "microwave"] + [b for b in shell if b["kind"] in ROOM_SOLID]
+    out = []
+    for o in opens:
+        for b in solid:
+            if b["id"] != o["of"] and _hit(o, b):
+                out.append([o["id"], b["id"]])
+                break
+    return out
+
+
+def walkways(c: Config, boxes: list[dict], shell: list[dict]) -> dict:
+    """Clear passage on each side of the island, to the nearest fixed thing."""
+    if c.island_len <= 0:
+        w = c.kitchen_w - c.counter_d
+        return {"west": w, "north": w, "south": w, "east": w}
+    x0, y0 = RANGE_D + c.island_aisle, c.counter_d + c.island_north_aisle
+    x1, y1 = x0 + c.island_top_d, y0 + c.island_len
+    fixed = [b for b in boxes if b["kind"] in SOLID and not b["id"].startswith("isl_") and b["z"] < 36] + \
+            [b for b in shell if b["kind"] in ROOM_SOLID + ("rail",)]
+    far = 999.0
+    west = min([x0 - (b["x"] + b["dx"]) for b in fixed if b["x"] + b["dx"] <= x0 + TOL and b["y"] < y1 and b["y"] + b["dy"] > y0], default=far)
+    east = min([b["x"] - x1 for b in fixed if b["x"] >= x1 - TOL and b["y"] < y1 and b["y"] + b["dy"] > y0], default=far)
+    north = min([y0 - (b["y"] + b["dy"]) for b in fixed if b["y"] + b["dy"] <= y0 + TOL and b["x"] < x1 and b["x"] + b["dx"] > x0], default=far)
+    south = min([b["y"] - y1 for b in fixed if b["y"] >= y1 - TOL and b["x"] < x1 and b["x"] + b["dx"] > x0], default=far)
+    return {"west": west, "north": north, "south": south, "east": east}
 
 
 def _dist(a, b):
@@ -415,7 +570,7 @@ def flow(c: Config) -> dict:
     else:
         fridge = (c.wall2_len + 5 + c.alcove_w / 2, c.fridge_d)
     has_island = c.island_len > 0
-    ix0 = c.counter_d + c.island_aisle
+    ix0 = RANGE_D + c.island_aisle
     iy0 = c.counter_d + c.island_north_aisle
     rect = (ix0, iy0, ix0 + c.island_top_d, iy0 + c.island_len)
     prep = None
@@ -739,7 +894,7 @@ def quantities(c: Config, boxes: list[dict]) -> dict:
     for b in boxes:
         f = b["fronts"]
         fronts += {"drawer3": 3, "door2+drawer": 3, "door2+false": 3, "door2": 2, "door1": 1,
-                   "door1tall": 2, "blind": 1, "microwave": 1}.get(f, 0)
+                   "door1tall": 2, "corner": 1, "microwave": 1}.get(f, 0)
     run_lf = (c.wall1_len + c.wall2_len + c.island_len) / 12.0
     if c.fridge_at == "hall" and c.pantry == "cabinets":
         run_lf += PANTRY_CAB_LF
@@ -812,6 +967,14 @@ def build(config: Config | None = None) -> dict:
     if c.microwave_at == "island" and c.island_len <= 0:
         raise ValueError("microwave_at='island' needs an island")
     boxes = wall1(c) + wall2(c) + island(c) + alcove(c) + counters(c)
+    for b in boxes:
+        if b["face"] and b["kind"] in ("base", "upper", "tall"):
+            b["rects"] = front_rects(b)
+    shell = room(c)
+    opens = open_volumes(c, boxes)
+    hits = collisions(boxes, shell)
+    blocked = blocked_doors(opens, boxes, shell)
+    ways = walkways(c, boxes, shell)
     f = flow(c)
     q = quantities(c, boxes)
     lines = bom_lines(c, q)
@@ -830,7 +993,7 @@ def build(config: Config | None = None) -> dict:
 
     seats = int(c.island_len // STOOL_W) if c.island_len > 0 else 0
     knee = c.island_top_d - c.base_d - 1.0 if c.island_len > 0 else 0.0
-    east_of_island = c.kitchen_w - (c.counter_d + c.island_aisle + c.island_top_d) if c.island_len > 0 else c.kitchen_w - c.counter_d
+    east_of_island = c.kitchen_w - (RANGE_D + c.island_aisle + c.island_top_d) if c.island_len > 0 else c.kitchen_w - c.counter_d
     dw_stand = c.island_north_aisle - c.base_d - 1.5 if c.island_len > 0 else 99.0
     mw = next((b for b in boxes if b["id"] == "microwave"), None)
     mw_bottom = mw["z"] if mw else DRAWER_MW_BOTTOM
@@ -842,13 +1005,20 @@ def build(config: Config | None = None) -> dict:
 
     out = {
         "boxes": boxes,
-        "room": room(c),
+        "room": shell,
+        "opens": opens,
+        "collision_pairs": hits,
+        "collision_count": len(hits),
+        "blocked_doors": blocked,
+        "blocked_door_count": len(blocked),
+        "walkway_min_in": min(ways.values()),
+        "walkways": ways,
         **f, **q, **m,
         "wall1_fill_error_in": abs(w1 - c.wall1_len),
         "wall2_fill_error_in": abs(w2 - c.wall2_len),
         "run_fill_error_in": max(abs(w1 - c.wall1_len), abs(w2 - c.wall2_len)),
         "window_gap_in": window_gap,
-        "work_aisle_in": c.island_aisle if c.island_len > 0 else c.kitchen_w - c.counter_d,
+        "work_aisle_in": ways["west"],
         "dishwasher_standing_in": dw_stand,
         "island_seats": seats,
         "island_knee_in": knee,
@@ -889,5 +1059,5 @@ CONFIG = Config(
 if __name__ == "__main__":
     import json
     d = build()
-    d.pop("boxes"); d.pop("bom"); d.pop("room")
+    d.pop("boxes"); d.pop("bom"); d.pop("room"); d.pop("opens")
     print(json.dumps(d, indent=2, sort_keys=True))

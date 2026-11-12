@@ -74,3 +74,20 @@ def thin_wear_layer(ctx):
     params = dict(base.params)
     params["floor_wear_mil"] = 12
     return dataclasses.replace(base, params=params)
+
+
+def island_into_sink_run(ctx):
+    """collisions: the island 10 in into the sink run; it stands in the sink base
+    and the dishwasher."""
+    return _with(ctx, island_north_aisle=-10.0)
+
+
+def island_at_18_in(ctx):
+    """doors_open: the island 18 in from the range. Nothing overlaps, and the oven
+    door and the facing drawers cannot open."""
+    return _with(ctx, island_aisle=18.0)
+
+
+def island_30_from_sink_run(ctx):
+    """walkways: 30 in between the sink run and the island."""
+    return _with(ctx, island_north_aisle=30.0)

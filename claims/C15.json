@@ -1,0 +1,24 @@
+{
+  "statement": "No cabinet, appliance, counter or shelf occupies the same space as another, or as a wall or post",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "interfering pairs",
+    "comparator": "<=",
+    "limit": 0.0,
+    "units": "pairs"
+  },
+  "rationale": "two boxes drawn in one place is a cabinet that cannot be installed; found on a drawing it costs nothing",
+  "tags": [
+    "collisions"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Every solid in the model as a box, each against each other and against the walls and posts; boxes that only touch pass",
+    "evaluators": [
+      "kitchen.collisions"
+    ]
+  },
+  "requirements": [
+    "R6"
+  ]
+}

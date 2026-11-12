@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "gate": "kitchen.aisle_two_cooks",
+  "rho": "7d34e8bfcf909cef736ff39c769e290ba9e0ed4f188fc2bd86c45c44e0bdd4ed",
+  "code": {
+    "digest": "37f5dc15e8e1ef73c0e3977edcca7e9c7ed3819232cd06b1fe56a3ff70668e93",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "work_aisle_in"
+        ],
+        "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+        48.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C6": "144c7ecbe6b3875acf4861516e371cedc1fb6fef5de649a05069135fa51a3a7d",
+      "acceptance:C6": "001f0eb7b1ab634c8776c1d10acbde239d58a29328a6704b86c67db7c21d1082"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 48.0,
+    "limit": 48.0,
+    "units": "in",
+    "comparator": ">=",
+    "settles": "work aisle width",
+    "detail": "long run to island: 48 in (limit >= 48 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "aisle-two"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "97144ab6a90e52307433335eba4e1f6abb59387d01d5f056af689e8bac650d67"
+}

@@ -1,5 +1,5 @@
 ---
-as_of: bbed7e23bb017c29
+as_of: 493761d3f67b79db
 ---
 
 Measure first: the old refrigerator alcove, the kitchen from the long wall to the posts, and the refrigerator with its doors open.

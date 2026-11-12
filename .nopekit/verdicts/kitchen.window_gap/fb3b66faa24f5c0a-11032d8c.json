@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "gate": "kitchen.window_gap",
+  "rho": "fb3b66faa24f5c0a771ac4c8996e9ac72927c3d3312956bedaf5dd8529a38fa9",
+  "code": {
+    "digest": "6ac6de6570c0523c21763135b0feda82a67f050d812ab5e6d75fb15742df1cb1",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "window_gap_in"
+        ],
+        "c596bc7c65879c16313fb54e64847c05c5d7f0d5db5291b99b7f555c120e10e2",
+        2.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C13": "656aaa04845c8b9d6a0afb7d647904786c331e57eb5448431fa5931ca2a55a2f",
+      "acceptance:C13": "365311d0602b8cd42fbc2d4a5b28912864170aba2a54c0479b40d02a1ca81199"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 2.0,
+    "limit": 1.0,
+    "units": "in",
+    "comparator": ">=",
+    "settles": "window to upper gap",
+    "detail": "nearest upper to the window: 2 in (limit >= 1 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "window-gap"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "ef51fbb8a7827b42b93b9810c55eb3ad11a974861e9d5cba33d49c5e0235d924"
+}

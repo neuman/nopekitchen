@@ -14,7 +14,7 @@ design with one thing changed.
 from __future__ import annotations
 
 from nopekit.gates import gate, GateContext
-from nopekit.models import NegativeControl, Tier, Verdict
+from nopekit.models import Locator, NegativeControl, Tier, Verdict
 
 NKBA = "NKBA Kitchen Planning Guidelines"
 
@@ -141,3 +141,41 @@ def window_gap(ctx: GateContext) -> Verdict:
 def floor_wear(ctx: GateContext) -> Verdict:
     """The wear layer the maker states for the chosen plank, in mil."""
     return _judge(ctx, "kitchen.floor_wear", "C14", "floor_wear_mil", "mil", 0, "stated wear layer")
+
+
+@gate(id="kitchen.collisions", basis="model-only", title="No two things occupy the same space",
+      claims=["collisions"], tier=Tier.INSTANT, settles="interfering pairs",
+      negative_control=_nc("island_into_sink_run", "the island moved 10 in into the sink run"))
+def collisions(ctx: GateContext) -> Verdict:
+    """Every cabinet, appliance, panel, counter and shelf as a box, each against
+    each other and against the walls and posts. Boxes that only touch pass."""
+    pairs = list(ctx.params["collision_pairs"])
+    v = _judge(ctx, "kitchen.collisions", "C15", "collision_count", "pairs", 0,
+               ("interfering: " + "; ".join(f"{a} / {b}" for a, b in pairs[:4])) if pairs else "no box overlaps another; interfering")
+    v.locators = [Locator(view="twin", target=t, label=f"overlaps {o}") for a, b in pairs[:8] for t, o in ((a, b), (b, a))]
+    return v
+
+
+@gate(id="kitchen.doors_open", basis="model-only", title="Every door and drawer opens",
+      claims=["doors-open"], tier=Tier.INSTANT, settles="doors that cannot open",
+      negative_control=_nc("island_at_18_in", "the island 18 in from the range: the oven door and the drawers hit it"))
+def doors_open(ctx: GateContext) -> Verdict:
+    """Each door swung through a quarter turn, each drawer pulled 20 in, the
+    dishwasher, oven, refrigerator and pantry doors opened, against everything solid."""
+    blocked = list(ctx.params["blocked_doors"])
+    v = _judge(ctx, "kitchen.doors_open", "C16", "blocked_door_count", "doors", 0,
+               ("blocked: " + "; ".join(f"{a} by {b}" for a, b in blocked[:4])) if blocked
+               else f"{len(ctx.params['opens'])} doors and drawers swept; blocked")
+    v.locators = [Locator(view="twin", target=a.split(":")[0], label=f"cannot open: hits {b}") for a, b in blocked[:8]]
+    return v
+
+
+@gate(id="kitchen.walkways", basis="sourced", title="Passage round the island",
+      claims=["walkways"], tier=Tier.INSTANT, settles="narrowest passage",
+      negative_control=_nc("island_30_from_sink_run", "the island 30 in from the sink run"))
+def walkways(ctx: GateContext) -> Verdict:
+    """NKBA: a walkway is at least 36 in. The narrowest side of the island, to the
+    nearest fixed thing; furniture is not counted."""
+    w = ctx.params["walkways"]
+    return _judge(ctx, "kitchen.walkways", "C17", "walkway_min_in", "in", 1,
+                  "west %g, north %g, south %g, east %g; narrowest" % (w["west"], w["north"], w["south"], w["east"]))

@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "gate": "kitchen.triangle_leg",
+  "rho": "27c54a6f2d55cbb01f8c5af550a745824003ffc794aa0830aba52be3532b30ac",
+  "code": {
+    "digest": "4eec973b69e24e46a063327a5f0ed5f08e50d2ef19ce1354d2df37bc28455379",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "leg_fridge_wet_ft"
+        ],
+        "25835dc5d4a25e81752bb0c39aded4ee08fb091e00fc51c5765c021b8bddf03b",
+        5.4505749569298745
+      ],
+      [
+        [
+          "leg_range_fridge_ft"
+        ],
+        "c8d567356e7b20ec69859e31aab01c29ef150901aa88cfaa65e4cb8afd894fc2",
+        8.13506321255233
+      ],
+      [
+        [
+          "leg_wet_range_ft"
+        ],
+        "c32dd34b3843480bea5fc5de26f88e3552b5186d809f9a13bd29a6f02725d9e5",
+        5.541823306056911
+      ],
+      [
+        [
+          "triangle_longest_ft"
+        ],
+        "c8d567356e7b20ec69859e31aab01c29ef150901aa88cfaa65e4cb8afd894fc2",
+        8.13506321255233
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C3": "08ca6a4ea44b84cf914c288ce6b5028b87522322d08889062cbee49af7b5ebad",
+      "acceptance:C3": "5c83aca455340c095431d8634b14ffbe643222f1cf42347cadc47a675ab3c2cf"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 8.14,
+    "limit": 9.0,
+    "units": "ft",
+    "comparator": "<=",
+    "settles": "longest triangle leg",
+    "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.5; longest: 8.14 ft (limit <= 9 ft)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "triangle-leg"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "293818906bd94cbcd6c2ede6e290781b74cb75980c2ca7aa3ac665c807e4d58f"
+}

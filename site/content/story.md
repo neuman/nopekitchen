@@ -1,5 +1,5 @@
 ---
-as_of: eebf3429195643d9
+as_of: 78a2f55e3e604edd
 ---
 
 This is the kitchen, the living room and the upstairs floors of a house in Edmonds, drawn from the contractor's cabinet plan and five photographs. It is for a family of four: two adults who cook, and two children of 5 and 8 who will grow up in it.

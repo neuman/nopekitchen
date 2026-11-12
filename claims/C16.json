@@ -1,0 +1,25 @@
+{
+  "statement": "Every door, drawer and appliance door opens fully without hitting anything",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "doors that cannot open",
+    "comparator": "<=",
+    "limit": 0.0,
+    "units": "doors"
+  },
+  "rationale": "a drawer that stops against the island, or a dishwasher door that meets a cabinet, is found on the day the kitchen is used",
+  "tags": [
+    "doors-open"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Each hinged door swept through a quarter turn, each drawer pulled 20 in, the dishwasher, oven, refrigerator and pantry doors opened, against every solid",
+    "evaluators": [
+      "kitchen.doors_open"
+    ]
+  },
+  "requirements": [
+    "R2",
+    "R6"
+  ]
+}

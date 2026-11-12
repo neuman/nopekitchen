@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "gate": "kitchen.walkways",
+  "rho": "22265f23181b8e9f26a81c8c16768152eb07a5710839db62cfca57d7a184ef0c",
+  "code": {
+    "digest": "4a45bc5b7703fee38ea8c3fb39de541c5364ab675155b71892781dd9eca40a1e",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "walkway_min_in"
+        ],
+        "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+        48.0
+      ],
+      [
+        [
+          "walkways",
+          "east"
+        ],
+        "6a61d3191558f949180a19c64ba0aa0cadfe74fb6d8c4578371fee203e4e1701",
+        158.0
+      ],
+      [
+        [
+          "walkways",
+          "north"
+        ],
+        "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+        48.0
+      ],
+      [
+        [
+          "walkways",
+          "south"
+        ],
+        "b6b2523f3400207fdd55068161c8c4df3626be7736ec120a6555ad2b4391f501",
+        160.5
+      ],
+      [
+        [
+          "walkways",
+          "west"
+        ],
+        "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+        48.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C17": "2f5f5ff77a158c6117b27ec18e6c81ea59ea6878ab6c8299c737590ff9a00107",
+      "acceptance:C17": "7618f370456c6f7406b90a8423a4441ac4d578261da190303c251ab04fb500ff"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 48.0,
+    "limit": 36.0,
+    "units": "in",
+    "comparator": ">=",
+    "settles": "narrowest passage",
+    "detail": "west 48, north 48, south 160.5, east 158; narrowest: 48 in (limit >= 36 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "walkways"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "7f29d0004ff235c1bdbc0c7dc374244dc50ca834009fdd9ca6ba86e0048b5762"
+}

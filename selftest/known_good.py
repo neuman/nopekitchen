@@ -3,7 +3,7 @@
 Every Config field is stated, so an edit to the model's defaults does not move
 it. It is the design recorded on 2026-11-12: refrigerator at the hall end, a
 64 x 40 in island 48 in off both runs with a prep sink, microwave on the pantry
-shelf, gloss lacquer fronts. All twelve kitchen gates pass on it.
+shelf, gloss lacquer fronts. All fifteen kitchen gates pass on it.
 
 CLAIMS holds the acceptance conditions it was calibrated against; a control
 reads these, never the live claims/.
@@ -56,6 +56,9 @@ CLAIMS: list = [
     _acc("C12", "The cabinets fill the walls", "run fill error", "<=", 0.25, "in", "run-fill"),
     _acc("C13", "Uppers clear the window", "window to upper gap", ">=", 1.0, "in", "window-gap"),
     _acc("C14", "The plank's wear layer is at least 20 mil", "floor wear layer", ">=", 20.0, "mil", "floor-wear"),
+    _acc("C15", "No two things occupy the same space", "interfering pairs", "<=", 0.0, "pairs", "collisions"),
+    _acc("C16", "Every door and drawer opens", "doors that cannot open", "<=", 0.0, "doors", "doors-open"),
+    _acc("C17", "36 in of passage round the island", "narrowest passage", ">=", 36.0, "in", "walkways"),
 ]
 
 

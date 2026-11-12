@@ -154,10 +154,10 @@
       "mechanism": {
         "by": "",
         "evaluators": [],
-        "how": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator wall to door face"
+        "how": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator and the range from the wall to the door face"
       },
       "not_compared": [],
-      "note": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator wall to door face",
+      "note": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator and the range from the wall to the door face",
       "owner": "Eric",
       "physical_result": null,
       "rationale": "the 141 in and the floor area are scaled from a consumer floor-plan app; the refrigerator's depth is a standard, not its datasheet",
@@ -169,7 +169,7 @@
       "resolves": [],
       "source": "",
       "standing": "",
-      "statement": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep",
+      "statement": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep, range 26 in deep",
       "status": "unclaimed",
       "superseded": [],
       "tags": [],
@@ -1565,6 +1565,215 @@
         "kitchen.floor_wear"
       ],
       "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "interfering pairs",
+        "units": "pairs"
+      },
+      "acceptance_render": "interfering pairs <= 0.0 pairs",
+      "article": "",
+      "authority": "",
+      "board": "fits",
+      "cause": "checked",
+      "compared": [
+        "kitchen.collisions"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.collisions"
+      ],
+      "grounded_by": [],
+      "id": "C15",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 pairs",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.collisions"
+        ],
+        "how": "Every solid in the model as a box, each against each other and against the walls and posts; boxes that only touch pass"
+      },
+      "not_compared": [],
+      "note": "Every solid in the model as a box, each against each other and against the walls and posts; boxes that only touch pass",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "two boxes drawn in one place is a cabinet that cannot be installed; found on a drawing it costs nothing",
+      "reason": "—",
+      "requirements": [
+        "R6"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "No cabinet, appliance, counter or shelf occupies the same space as another, or as a wall or post",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "collisions"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.collisions"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "doors that cannot open",
+        "units": "doors"
+      },
+      "acceptance_render": "doors that cannot open <= 0.0 doors",
+      "article": "",
+      "authority": "",
+      "board": "fits",
+      "cause": "checked",
+      "compared": [
+        "kitchen.doors_open"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.doors_open"
+      ],
+      "grounded_by": [],
+      "id": "C16",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 doors",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.doors_open"
+        ],
+        "how": "Each hinged door swept through a quarter turn, each drawer pulled 20 in, the dishwasher, oven, refrigerator and pantry doors opened, against every solid"
+      },
+      "not_compared": [],
+      "note": "Each hinged door swept through a quarter turn, each drawer pulled 20 in, the dishwasher, oven, refrigerator and pantry doors opened, against every solid",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a drawer that stops against the island, or a dishwasher door that meets a cabinet, is found on the day the kitchen is used",
+      "reason": "—",
+      "requirements": [
+        "R2",
+        "R6"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Every door, drawer and appliance door opens fully without hitting anything",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "doors-open"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.doors_open"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 36.0,
+        "limit_hi": null,
+        "quantity": "narrowest passage",
+        "units": "in"
+      },
+      "acceptance_render": "narrowest passage >= 36.0 in",
+      "article": "",
+      "authority": "",
+      "board": "holiday",
+      "cause": "checked",
+      "compared": [
+        "kitchen.walkways"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.walkways"
+      ],
+      "grounded_by": [],
+      "id": "C17",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "36 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.walkways"
+        ],
+        "how": "Each side of the island to the nearest fixed thing in the model; furniture is not counted"
+      },
+      "not_compared": [],
+      "note": "Each side of the island to the nearest fixed thing in the model; furniture is not counted",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA Kitchen Planning Guidelines: a walkway is at least 36 in. The island stands between the hallway and the dining table, so people walk round it all day",
+      "reason": "—",
+      "requirements": [
+        "R2",
+        "R3"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "There is at least 36 in of passage on each side of the island",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "walkways"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.walkways"
+      ],
+      "word": "checked"
     }
   ],
   "decisions": [
@@ -2298,8 +2507,8 @@
     "packs": [
       "sourcing"
     ],
-    "records_digest": "35fed3f20792cb194483d78d1ec5c5c27f28237b1c6107bcd7b0e18c61aac07f",
-    "resolution_digest": "5e2f4d4287afcf58651919bb7132d439fcfb253ee57ee3af604421813b476ecb",
+    "records_digest": "0f865054f7fffbc7d3610b356965b37b00c3edf528da909bbacf11ac61393a78",
+    "resolution_digest": "cfbdf8638c76d93ea9bdfe4644a72dfb067d2822a234c601f613f6c0c86a53c8",
     "revision": "v0.1",
     "spine_version": "0.1.0",
     "stale": false,
@@ -2703,7 +2912,7 @@
       "home": "model/kitchen.py Config.island_aisle",
       "model_error": "",
       "name": "island_aisle",
-      "rationale": "in, the long run's counter edge to the island: the work aisle. 48 is the NKBA width for more than one cook; 42 is its width for one.",
+      "rationale": "in, the range's door face to the island: the work aisle at its narrowest, as the NKBA measures it (between counter fronts and appliances). 48 is its width for more than one cook; 42 for one. Measured from the counter edge the range's half inch of projection was lost; see PARAMS.",
       "read_by": [],
       "record": "",
       "rejected": [
@@ -2712,6 +2921,12 @@
           "origin": "model/kitchen.py PARAMS",
           "value": "42 in",
           "why": "right for one cook, 6 in short of the width for two to pass on a holiday"
+        },
+        {
+          "evidence": "",
+          "origin": "model/kitchen.py PARAMS",
+          "value": "48 in from the counter edge",
+          "why": "the range stands half an inch proud of the counter, so the aisle at the range was 47.5 in"
         }
       ],
       "source": "",
@@ -3187,7 +3402,7 @@
     ],
     "by_key": {
       "assumed": 0,
-      "checked": 14,
+      "checked": 17,
       "failing": 0,
       "gap": 6,
       "open": 0,
@@ -3199,7 +3414,7 @@
       "asserted": 0,
       "blocked": 0,
       "fail": 0,
-      "pass": 14,
+      "pass": 17,
       "pending": 0,
       "refuted": 0,
       "stale": 0,
@@ -3210,21 +3425,21 @@
     "errored": 0,
     "kinds": {
       "assumption": 6,
-      "measurable": 14,
+      "measurable": 17,
       "physical": 4
     },
     "milestones": {},
-    "n_claims": 24,
-    "n_critical": 24,
+    "n_claims": 27,
+    "n_critical": 27,
     "n_gaps": 0,
-    "n_gates": 19,
+    "n_gates": 22,
     "ready": false,
     "tally": [
       {
         "errored": 0,
         "key": "checked",
-        "label": "14 checked",
-        "n": 14,
+        "label": "17 checked",
+        "n": 17,
         "status": "pass"
       },
       {
@@ -3254,7 +3469,7 @@
       "P3",
       "P4"
     ],
-    "verdict": "v0.1 is NOT ready: 10 of 24 required claims are unresolved — 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 14 of 24 claims are checked against the current inputs. Pending build: 4 claims need an article (P1, P2, P3, P4). No claim is checked on any article."
+    "verdict": "v0.1 is NOT ready: 10 of 27 required claims are unresolved — 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 17 of 27 claims are checked against the current inputs. Pending build: 4 claims need an article (P1, P2, P3, P4). No claim is checked on any article."
   },
   "rebuild": [],
   "rejections": [
@@ -3664,7 +3879,9 @@
         "C3",
         "C4",
         "C5",
-        "C7"
+        "C7",
+        "C16",
+        "C17"
       ],
       "disagree": [],
       "errored": false,
@@ -3682,6 +3899,7 @@
       "claims": [
         "C6",
         "C7",
+        "C17",
         "P3"
       ],
       "disagree": [],
@@ -3739,6 +3957,8 @@
         "A3",
         "C12",
         "C13",
+        "C15",
+        "C16",
         "P4"
       ],
       "disagree": [],
@@ -3808,8 +4028,8 @@
     }
   ],
   "trace": {
-    "key": "7d6a206be214",
-    "round": null,
+    "key": "1dfbd3e19159",
+    "round": 1,
     "state": "traced"
   },
   "verdicts": [
@@ -4120,7 +4340,7 @@
       "comparator": "",
       "cpu_s": 0.0,
       "detail": "",
-      "duration_s": 0.001817,
+      "duration_s": 0.002457,
       "error": "",
       "evidence": [],
       "evidence_assets": [],
@@ -4359,7 +4579,7 @@
       ],
       "comparator": "<=",
       "cpu_s": 0.0,
-      "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.4; longest: 8.14 ft (limit <= 9 ft)",
+      "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.5; longest: 8.14 ft (limit <= 9 ft)",
       "duration_s": 0.0,
       "error": "",
       "evidence": [],
@@ -4372,10 +4592,10 @@
       "margin_why": "",
       "measured": 8.14,
       "ok": true,
-      "order": 16,
+      "order": 18,
       "pack": "",
       "passed": true,
-      "rho": "658cd57afcb7b6b8bb985b93849250c6ea8013db56ed5d594dc34de52ea56c3e",
+      "rho": "27c54a6f2d55cbb01f8c5af550a745824003ffc794aa0830aba52be3532b30ac",
       "settles": "longest triangle leg",
       "skip_reason": "",
       "skipped": false,
@@ -4397,7 +4617,7 @@
       ],
       "comparator": "<=",
       "cpu_s": 0.0,
-      "detail": "the three legs sum to: 19.07 ft (limit <= 26 ft)",
+      "detail": "the three legs sum to: 19.13 ft (limit <= 26 ft)",
       "duration_s": 0.0,
       "error": "",
       "evidence": [],
@@ -4406,14 +4626,14 @@
       "gate": "kitchen.triangle_total",
       "limit": 26.0,
       "locators": [],
-      "margin": 0.266538,
+      "margin": 0.264231,
       "margin_why": "",
-      "measured": 19.07,
+      "measured": 19.13,
       "ok": true,
-      "order": 17,
+      "order": 19,
       "pack": "",
       "passed": true,
-      "rho": "ad003e5617684387c183aa85b44041b38c33b7d72f54e28295e0293507c098ff",
+      "rho": "c3604d554ed8a38b60205e8fbecd87c6066cfcc7c7e433571d043dc0181d3c22",
       "settles": "triangle perimeter",
       "skip_reason": "",
       "skipped": false,
@@ -4451,7 +4671,7 @@
       "order": 7,
       "pack": "",
       "passed": true,
-      "rho": "733cf58926a648db1d88301faf7ab78ece8fe6fd6eb2d074751459c60418c943",
+      "rho": "0bcba119b2105b2bb893ea9d2dc083960db69b4ff0a83f327acd4f7afce17d19",
       "settles": "work aisle width",
       "skip_reason": "",
       "skipped": false,
@@ -4489,7 +4709,7 @@
       "order": 8,
       "pack": "",
       "passed": true,
-      "rho": "9eed31e0ec7a052dc20379f1ea5da60b65c7d03e7859cceec1ccd48f56e6738e",
+      "rho": "7d34e8bfcf909cef736ff39c769e290ba9e0ed4f188fc2bd86c45c44e0bdd4ed",
       "settles": "work aisle width",
       "skip_reason": "",
       "skipped": false,
@@ -4524,10 +4744,10 @@
       "margin_why": "",
       "measured": 22.5,
       "ok": true,
-      "order": 9,
+      "order": 10,
       "pack": "",
       "passed": true,
-      "rho": "923b757c83eb7da59336efe834791c293844006aadeb1773ad11509a0161649f",
+      "rho": "c581b23596bdfbe55b8a960c2f23cb8f41436a2a5eb745c175062cd79463cac9",
       "settles": "dishwasher standing room",
       "skip_reason": "",
       "skipped": false,
@@ -4562,10 +4782,10 @@
       "margin_why": "",
       "measured": 2.0,
       "ok": true,
-      "order": 13,
+      "order": 15,
       "pack": "",
       "passed": true,
-      "rho": "f90f65237edcd8d335541778301a5a8c3ee2e833071045fbbe7b2fce56caa0b0",
+      "rho": "3cb692d3645b35d594efecec189ae96ae5d6313184480c07fee4e0357bdc9173",
       "settles": "island seats",
       "skip_reason": "",
       "skipped": false,
@@ -4600,10 +4820,10 @@
       "margin_why": "",
       "measured": 15.0,
       "ok": true,
-      "order": 12,
+      "order": 14,
       "pack": "",
       "passed": true,
-      "rho": "9fc80175a50f296690d1f5de8889cb5e7168acb7b4c76f98ab9287f1fd84e55f",
+      "rho": "e1a62efbd952b55fb0bb795128780cfc955bb40f81844e3ec2286f0075b650b1",
       "settles": "island knee room",
       "skip_reason": "",
       "skipped": false,
@@ -4638,10 +4858,10 @@
       "margin_why": "zero-limit",
       "measured": -0.4,
       "ok": true,
-      "order": 14,
+      "order": 16,
       "pack": "",
       "passed": true,
-      "rho": "e7292cada2255befc2fb3696dd8d2c3c154a62e7db74558a1bb13297f7372129",
+      "rho": "6940125b21009833a61d44b8780d95b0eaf4273c5c07e981342af0a890a973f0",
       "settles": "microwave height over the small child's reach",
       "skip_reason": "",
       "skipped": false,
@@ -4676,10 +4896,10 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 10,
+      "order": 12,
       "pack": "",
       "passed": true,
-      "rho": "9a20299b16d631e12bc6938fdd38b5b783547cd1b9960b8e387fd819b5677ccf",
+      "rho": "b2cb003e3a0e68c34397798ff41cd4d690c46e3839190befd67e38970b20259f",
       "settles": "finish requirements not offered",
       "skip_reason": "",
       "skipped": false,
@@ -4714,10 +4934,10 @@
       "margin_why": "",
       "measured": 0.0,
       "ok": true,
-      "order": 15,
+      "order": 17,
       "pack": "",
       "passed": true,
-      "rho": "28cc75d9d4060fbd2854545f49af48ff71896c5d61056cdc89cd8764b18250d3",
+      "rho": "de63c98a5f6128a84e5dea6c6a77b6a52db8a6e346f85be49f8e1002d663f76c",
       "settles": "run fill error",
       "skip_reason": "",
       "skipped": false,
@@ -4752,10 +4972,10 @@
       "margin_why": "",
       "measured": 2.0,
       "ok": true,
-      "order": 18,
+      "order": 21,
       "pack": "",
       "passed": true,
-      "rho": "bd10dd1f5f80d52bf356499ba068063faf77860264be88a4f01a7f9aae7abbcc",
+      "rho": "fb3b66faa24f5c0a771ac4c8996e9ac72927c3d3312956bedaf5dd8529a38fa9",
       "settles": "window to upper gap",
       "skip_reason": "",
       "skipped": false,
@@ -4790,10 +5010,10 @@
       "margin_why": "",
       "measured": 22.0,
       "ok": true,
-      "order": 11,
+      "order": 13,
       "pack": "",
       "passed": true,
-      "rho": "2bfb3521a0a7e26d144335ddc2e5a7b656fae517b8b5603c71e7c84eda281088",
+      "rho": "4ea1b64d60ac4ab1d229b33db80923381358cde917c1c6faab9f3862ac9c3eda",
       "settles": "floor wear layer",
       "skip_reason": "",
       "skipped": false,
@@ -4801,6 +5021,120 @@
       "status": "pass",
       "tier": 0,
       "units": "mil",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "collisions"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "no box overlaps another; interfering: 0 pairs (limit <= 0 pairs)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.collisions",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 0.0,
+      "ok": true,
+      "order": 9,
+      "pack": "",
+      "passed": true,
+      "rho": "c6a85fe62d9dc5547f2f1f3e0bd0135990ccfd53c17e529f54ea49bd0370ea25",
+      "settles": "interfering pairs",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "pairs",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "doors-open"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "41 doors and drawers swept; blocked: 0 doors (limit <= 0 doors)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.doors_open",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 0.0,
+      "ok": true,
+      "order": 11,
+      "pack": "",
+      "passed": true,
+      "rho": "d5a4b0f070111edece508e074790cb13518b2abd1374343177e46740743270f1",
+      "settles": "doors that cannot open",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "doors",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "walkways"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "west 48, north 48, south 160.5, east 158; narrowest: 48 in (limit >= 36 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.walkways",
+      "limit": 36.0,
+      "locators": [],
+      "margin": 0.333333,
+      "margin_why": "",
+      "measured": 48.0,
+      "ok": true,
+      "order": 20,
+      "pack": "",
+      "passed": true,
+      "rho": "22265f23181b8e9f26a81c8c16768152eb07a5710839db62cfca57d7a184ef0c",
+      "settles": "narrowest passage",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
       "unqualified": "",
       "unseen": false,
       "views": []
@@ -4864,6 +5198,9 @@
           ],
           "Walls": [
             "wall_w_kitchen",
+            "wall_hall_n",
+            "wall_hall_s",
+            "wall_hall_end",
             "wall_w_south",
             "wall_n",
             "wall_stub3",

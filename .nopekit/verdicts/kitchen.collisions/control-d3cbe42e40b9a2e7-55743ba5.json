@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.collisions",
+  "rho": "d3cbe42e40b9a2e712a6035f3e49407483540dbdf850b9960a66a25d46eb54c8",
+  "static": "c42a07aee364a1addf91401a8301b1a195ed3ad6e33636ac5bf497ffa3ae358d",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "8054cdbd568e53bb0039f22393548d204b8dc1efd7c24d46b636ecbf915988ba",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "b9ec374401642211e7d797c16b45b16b1ace3779cc1206ceeb71a109300d2686",
+      "files": {
+        "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+        "selftest/known_good.py": "43af1a95ef9e1ae3df4d19f5e6993fe58edb29c6ce3b3110d9780276b4732f6e"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:island_into_sink_run",
+      "expect": "fail",
+      "note": "the island moved 10 in into the sink run",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "108292a86c381b79955664b68a5889fc7d690410bbaff8d3f434f0506cd5ba29",
+    "files": {
+      "model/kitchen.py": "c7c157da64c8ed5a0624f4aab438a987f17c84f018d06f3d8eab4eb0328feba1",
+      "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+      "selftest/known_good.py": "43af1a95ef9e1ae3df4d19f5e6993fe58edb29c6ce3b3110d9780276b4732f6e"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "collision_count"
+        ],
+        "0c8af53f03a602f4527855fceeacacb71355f284d121d5615dc7df5f933a1b13",
+        4
+      ],
+      [
+        [
+          "collision_pairs"
+        ],
+        "0d6f138832fc4c27f37d202e073b48302bfb10907b7422bc0f8d05ee1aef6436"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C15": "61392caaa6b5e32eba4588600e2331e2baf9774e2025f63b656c238cae32cb32",
+      "acceptance:C15": "51de0c19c1164f023e0f0e5a9e526e92f177d5cbaea86a62d9956c922b8ed888"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "collision_count"
+          ],
+          "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+          0
+        ],
+        [
+          [
+            "collision_pairs"
+          ],
+          "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C15": "61392caaa6b5e32eba4588600e2331e2baf9774e2025f63b656c238cae32cb32",
+        "acceptance:C15": "51de0c19c1164f023e0f0e5a9e526e92f177d5cbaea86a62d9956c922b8ed888"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "pairs",
+    "detail": "no box overlaps another; interfering: 0 pairs (limit <= 0 pairs)",
+    "goalpost": [
+      {
+        "key": "C15",
+        "measured": 0.0,
+        "units": "pairs",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": -0.9,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "pairs"
+          },
+          {
+            "end": "limit",
+            "limit": -0.5,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "pairs"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "pairs"
+          },
+          {
+            "end": "limit",
+            "limit": 9.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "pairs"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:island_into_sink_run (the island moved 10 in into the sink run): interfering: w2_sink / isl_b0; dishwasher / isl_b0; dishwasher / isl_back; isl_top / top_w2: 4 pairs (limit <= 0 pairs)",
+  "measured": 4.0,
+  "limit": 0.0,
+  "units": "pairs",
+  "digest": "097f90684e2c93e4da43b34063299c49f6627c753d7bb2184a4af3977ea3ed90"
+}

@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.run_fill",
+  "rho": "eece5958c41842725d033e27fda61d1fe73ccf933287d71dbe021d99dc2e2ca4",
+  "static": "a9af9b65e9eb1c879f307a1661803febd21332c1f766f43f04e48bff65c5daf8",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "edf48b196e72841ed0b926441bb6235e84f1086db5ec5cfbdb0262c9055f6c0e",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "b9ec374401642211e7d797c16b45b16b1ace3779cc1206ceeb71a109300d2686",
+      "files": {
+        "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+        "selftest/known_good.py": "43af1a95ef9e1ae3df4d19f5e6993fe58edb29c6ce3b3110d9780276b4732f6e"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:wall_two_inches_longer",
+      "expect": "fail",
+      "note": "the long wall 2 in longer than the cabinets were drawn for",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "108292a86c381b79955664b68a5889fc7d690410bbaff8d3f434f0506cd5ba29",
+    "files": {
+      "model/kitchen.py": "c7c157da64c8ed5a0624f4aab438a987f17c84f018d06f3d8eab4eb0328feba1",
+      "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+      "selftest/known_good.py": "43af1a95ef9e1ae3df4d19f5e6993fe58edb29c6ce3b3110d9780276b4732f6e"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "run_fill_error_in"
+        ],
+        "c596bc7c65879c16313fb54e64847c05c5d7f0d5db5291b99b7f555c120e10e2",
+        2.0
+      ],
+      [
+        [
+          "wall1_fill_error_in"
+        ],
+        "c596bc7c65879c16313fb54e64847c05c5d7f0d5db5291b99b7f555c120e10e2",
+        2.0
+      ],
+      [
+        [
+          "wall2_fill_error_in"
+        ],
+        "a4107358283f49baaa6b4c6cf6f83c37775f68878d615d257bd6950391fbfea4",
+        0.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C12": "e1c34ad4b1daae30b9bf6cc93510fd7b0e08e0f4ea1989c8a11e6858ae5c0a78",
+      "acceptance:C12": "da6bcd326adbc878fa744e64bd1d0d0dba5a60fa82dee92cacf273448585ae31"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "run_fill_error_in"
+          ],
+          "a4107358283f49baaa6b4c6cf6f83c37775f68878d615d257bd6950391fbfea4",
+          0.0
+        ],
+        [
+          [
+            "wall1_fill_error_in"
+          ],
+          "a4107358283f49baaa6b4c6cf6f83c37775f68878d615d257bd6950391fbfea4",
+          0.0
+        ],
+        [
+          [
+            "wall2_fill_error_in"
+          ],
+          "a4107358283f49baaa6b4c6cf6f83c37775f68878d615d257bd6950391fbfea4",
+          0.0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C12": "e1c34ad4b1daae30b9bf6cc93510fd7b0e08e0f4ea1989c8a11e6858ae5c0a78",
+        "acceptance:C12": "da6bcd326adbc878fa744e64bd1d0d0dba5a60fa82dee92cacf273448585ae31"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 0.0,
+    "limit": 0.25,
+    "units": "in",
+    "detail": "wall 1 off by 0, wall 2 by 0; worst: 0 in (limit <= 0.25 in)",
+    "goalpost": [
+      {
+        "key": "C12",
+        "measured": 0.0,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 0.025,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 0.125,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 0.5,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 2.5,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": [
+      {
+        "key": [
+          "run_fill_error_in"
+        ],
+        "why": "zero"
+      },
+      {
+        "key": [
+          "wall1_fill_error_in"
+        ],
+        "why": "zero"
+      },
+      {
+        "key": [
+          "wall2_fill_error_in"
+        ],
+        "why": "zero"
+      }
+    ]
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:wall_two_inches_longer (the long wall 2 in longer than the cabinets were drawn for): wall 1 off by 2, wall 2 by 0; worst: 2 in (limit <= 0.25 in)",
+  "measured": 2.0,
+  "limit": 0.25,
+  "units": "in",
+  "digest": "ac6084d51dc0c9d477449f307d8e8688662d3583b6b0ab49e0edb7f09ad712fa"
+}

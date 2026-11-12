@@ -151,7 +151,7 @@ LAYOUT_CLAIMS = {
     "C3": "triangle_longest_ft", "C4": "triangle_total_ft", "C5": "work_aisle_in",
     "C6": "work_aisle_in", "C7": "dishwasher_standing_in", "C8": "island_seats",
     "C9": "island_knee_in", "C10": "microwave_over_reach_in", "C12": "run_fill_error_in",
-    "C13": "window_gap_in",
+    "C13": "window_gap_in", "C15": "collision_count", "C16": "blocked_door_count", "C17": "walkway_min_in",
 }
 QTY = {"cab_line": "cab_run_lf", "cab_install": "cab_run_lf", "handles": "fronts",
        "counter": "counter_sqft", "backsplash": "backsplash_sqft"}
@@ -218,6 +218,8 @@ def configurator(ctx, k) -> dict:
             "legs": [round(d["leg_wet_range_ft"], 1), round(d["leg_range_fridge_ft"], 1), round(d["leg_fridge_wet_ft"], 1)],
             "cleanup_ft": round(d["fridge_to_cleanup_sink_ft"], 1),
             "east_in": round(d["east_of_island_in"], 1),
+            "opens": [ref(o) for o in d["opens"]],
+            "blocked": d["blocked_doors"], "hits": d["collision_pairs"], "ways": d["walkways"],
         }
     rec = k.build(k.CONFIG)
     cfg = dataclasses.asdict(k.CONFIG)

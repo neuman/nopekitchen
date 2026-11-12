@@ -6,6 +6,7 @@
     "work_aisle_in",
     "dishwasher_standing_in",
     "island_knee_in",
-    "island_seats"
+    "island_seats",
+    "walkway_min_in"
   ]
 }

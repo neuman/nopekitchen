@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "gate": "kitchen.microwave_reach",
+  "rho": "6940125b21009833a61d44b8780d95b0eaf4273c5c07e981342af0a890a973f0",
+  "code": {
+    "digest": "1e6c37e1960377ab8a3fa69f16b390ec711877f0674905ed19054986e35592ce",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "kid_small_shoulder_in"
+        ],
+        "79f81904284648ba1b427e828852e5fc5652e8f5819aebc4ecb777adf4009f0d",
+        34.4
+      ],
+      [
+        [
+          "microwave_bottom_in"
+        ],
+        "e51de7ee83bc6a42a56a26c8a2c37ee771ea112eba456de79d853f6e93944057",
+        31
+      ],
+      [
+        [
+          "microwave_over_reach_in"
+        ],
+        "0077927acee0df9e8d5e268637b6b4f5cc2001ec0a770dfedb6096b55aad9477",
+        -0.3999999999999986
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C10": "7bc45a9d08b9618f717f6890197de60d4425e9242932b7fed413bc975b3c2e9f",
+      "acceptance:C10": "ef051523b8991d603995106d8de800aa921bf9a75a1a5f0c5fff47b7a0a69341"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": -0.4,
+    "limit": 0.0,
+    "units": "in",
+    "comparator": "<=",
+    "settles": "microwave height over the small child's reach",
+    "detail": "microwave bottom at 31 in, child's shoulder at 34.4 in; bottom above shoulder less 3 in by: -0.4 in (limit <= 0 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "microwave-reach"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "2547b8b322946add8c6abe6d492a5c28479b04e1cbe6086376fe73f9c8471181"
+}

@@ -105,7 +105,7 @@
         "by": "none",
         "by_word": "Nothing settles it. It is accepted for now.",
         "evaluators": [],
-        "how": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator wall to door face"
+        "how": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator and the range from the wall to the door face"
       },
       "physical": null,
       "reason": "",
@@ -122,7 +122,7 @@
         ],
         "text": "A3 is an assumption. Its owner records it in their own shell."
       },
-      "statement": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep",
+      "statement": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep, range 26 in deep",
       "token": "gap",
       "values": [],
       "word": "gap"
@@ -348,7 +348,7 @@
           "detail": "microwave bottom at 31 in, child's shoulder at 34.4 in; bottom above shoulder less 3 in by: -0.4 in (limit <= 0 in)",
           "evidence": [],
           "id": "kitchen.microwave_reach",
-          "order": 14,
+          "order": 16,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -417,7 +417,7 @@
           "detail": "gloss, both colours and two tones are offered; unmet: 0 requirements (limit <= 0 requirements)",
           "evidence": [],
           "id": "kitchen.finish_offered",
-          "order": 10,
+          "order": 12,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -487,7 +487,7 @@
           "detail": "wall 1 off by 0, wall 2 by 0; worst: 0 in (limit <= 0.25 in)",
           "evidence": [],
           "id": "kitchen.run_fill",
-          "order": 15,
+          "order": 17,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -556,7 +556,7 @@
           "detail": "nearest upper to the window: 2 in (limit >= 1 in)",
           "evidence": [],
           "id": "kitchen.window_gap",
-          "order": 18,
+          "order": 21,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -625,7 +625,7 @@
           "detail": "stated wear layer: 22 mil (limit >= 20 mil)",
           "evidence": [],
           "id": "kitchen.floor_wear",
-          "order": 11,
+          "order": 13,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -672,6 +672,215 @@
           "measured": 22.0,
           "units": "mil",
           "value_text": "22 mil against a limit of 20 mil, 10% inside the limit"
+        }
+      ],
+      "word": "checked"
+    },
+    "C15": {
+      "acceptance": "interfering pairs <= 0.0 pairs",
+      "amber": null,
+      "binding_text": "",
+      "board": "fits",
+      "cause": "checked",
+      "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "evaluators": [
+        {
+          "basis": "model-only",
+          "basis_word": "A model wrote the logic. It has no outside source.",
+          "current": true,
+          "detail": "no box overlaps another; interfering: 0 pairs (limit <= 0 pairs)",
+          "evidence": [],
+          "id": "kitchen.collisions",
+          "order": 9,
+          "outcome": "pass",
+          "outcome_word": "pass",
+          "stale_reason": ""
+        }
+      ],
+      "figures": [],
+      "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "id": "C15",
+      "kind_word": "Automated",
+      "limit_text": "0 pairs",
+      "marks": [],
+      "mechanism": {
+        "by": "closed_form",
+        "by_word": "A formula settles it.",
+        "evaluators": [
+          "kitchen.collisions"
+        ],
+        "how": "Every solid in the model as a box, each against each other and against the walls and posts; boxes that only touch pass"
+      },
+      "physical": null,
+      "reason": "",
+      "requirements": [
+        "R6"
+      ],
+      "resolved_by": [],
+      "resolves": [],
+      "rests_on": [],
+      "settle": {
+        "commands": [],
+        "text": ""
+      },
+      "statement": "No cabinet, appliance, counter or shelf occupies the same space as another, or as a wall or post",
+      "token": "checked",
+      "values": [
+        {
+          "binding": true,
+          "comparator": "<=",
+          "compared": true,
+          "gate": "kitchen.collisions",
+          "limit": 0.0,
+          "limit_hi": null,
+          "margin": null,
+          "margin_text": "",
+          "measured": 0.0,
+          "units": "pairs",
+          "value_text": "0 pairs against a limit of 0 pairs"
+        }
+      ],
+      "word": "checked"
+    },
+    "C16": {
+      "acceptance": "doors that cannot open <= 0.0 doors",
+      "amber": null,
+      "binding_text": "",
+      "board": "fits",
+      "cause": "checked",
+      "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "evaluators": [
+        {
+          "basis": "model-only",
+          "basis_word": "A model wrote the logic. It has no outside source.",
+          "current": true,
+          "detail": "41 doors and drawers swept; blocked: 0 doors (limit <= 0 doors)",
+          "evidence": [],
+          "id": "kitchen.doors_open",
+          "order": 11,
+          "outcome": "pass",
+          "outcome_word": "pass",
+          "stale_reason": ""
+        }
+      ],
+      "figures": [],
+      "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "id": "C16",
+      "kind_word": "Automated",
+      "limit_text": "0 doors",
+      "marks": [],
+      "mechanism": {
+        "by": "closed_form",
+        "by_word": "A formula settles it.",
+        "evaluators": [
+          "kitchen.doors_open"
+        ],
+        "how": "Each hinged door swept through a quarter turn, each drawer pulled 20 in, the dishwasher, oven, refrigerator and pantry doors opened, against every solid"
+      },
+      "physical": null,
+      "reason": "",
+      "requirements": [
+        "R2",
+        "R6"
+      ],
+      "resolved_by": [],
+      "resolves": [],
+      "rests_on": [],
+      "settle": {
+        "commands": [],
+        "text": ""
+      },
+      "statement": "Every door, drawer and appliance door opens fully without hitting anything",
+      "token": "checked",
+      "values": [
+        {
+          "binding": true,
+          "comparator": "<=",
+          "compared": true,
+          "gate": "kitchen.doors_open",
+          "limit": 0.0,
+          "limit_hi": null,
+          "margin": null,
+          "margin_text": "",
+          "measured": 0.0,
+          "units": "doors",
+          "value_text": "0 doors against a limit of 0 doors"
+        }
+      ],
+      "word": "checked"
+    },
+    "C17": {
+      "acceptance": "narrowest passage >= 36.0 in",
+      "amber": null,
+      "binding_text": "",
+      "board": "holiday",
+      "cause": "checked",
+      "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "evaluators": [
+        {
+          "basis": "sourced",
+          "basis_word": "The logic follows a cited outside source.",
+          "current": true,
+          "detail": "west 48, north 48, south 160.5, east 158; narrowest: 48 in (limit >= 36 in)",
+          "evidence": [],
+          "id": "kitchen.walkways",
+          "order": 20,
+          "outcome": "pass",
+          "outcome_word": "pass",
+          "stale_reason": ""
+        }
+      ],
+      "figures": [],
+      "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "id": "C17",
+      "kind_word": "Automated",
+      "limit_text": "36 in",
+      "marks": [],
+      "mechanism": {
+        "by": "closed_form",
+        "by_word": "A formula settles it.",
+        "evaluators": [
+          "kitchen.walkways"
+        ],
+        "how": "Each side of the island to the nearest fixed thing in the model; furniture is not counted"
+      },
+      "physical": null,
+      "reason": "",
+      "requirements": [
+        "R2",
+        "R3"
+      ],
+      "resolved_by": [],
+      "resolves": [],
+      "rests_on": [],
+      "settle": {
+        "commands": [],
+        "text": ""
+      },
+      "statement": "There is at least 36 in of passage on each side of the island",
+      "token": "checked",
+      "values": [
+        {
+          "binding": true,
+          "comparator": ">=",
+          "compared": true,
+          "gate": "kitchen.walkways",
+          "limit": 36.0,
+          "limit_hi": null,
+          "margin": 0.333333,
+          "margin_text": "33% inside the limit",
+          "measured": 48.0,
+          "units": "in",
+          "value_text": "48 in against a limit of 36 in, 33% inside the limit"
         }
       ],
       "word": "checked"
@@ -768,10 +977,10 @@
           "basis": "sourced",
           "basis_word": "The logic follows a cited outside source.",
           "current": true,
-          "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.4; longest: 8.14 ft (limit <= 9 ft)",
+          "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.5; longest: 8.14 ft (limit <= 9 ft)",
           "evidence": [],
           "id": "kitchen.triangle_leg",
-          "order": 16,
+          "order": 18,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -837,10 +1046,10 @@
           "basis": "sourced",
           "basis_word": "The logic follows a cited outside source.",
           "current": true,
-          "detail": "the three legs sum to: 19.07 ft (limit <= 26 ft)",
+          "detail": "the three legs sum to: 19.13 ft (limit <= 26 ft)",
           "evidence": [],
           "id": "kitchen.triangle_total",
-          "order": 17,
+          "order": 19,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -882,11 +1091,11 @@
           "gate": "kitchen.triangle_total",
           "limit": 26.0,
           "limit_hi": null,
-          "margin": 0.266538,
-          "margin_text": "27% inside the limit",
-          "measured": 19.07,
+          "margin": 0.264231,
+          "margin_text": "26% inside the limit",
+          "measured": 19.13,
           "units": "ft",
-          "value_text": "19.07 ft against a limit of 26 ft, 27% inside the limit"
+          "value_text": "19.13 ft against a limit of 26 ft, 26% inside the limit"
         }
       ],
       "word": "checked"
@@ -1047,7 +1256,7 @@
           "detail": "open dishwasher door to the island: 22.5 in (limit >= 21 in)",
           "evidence": [],
           "id": "kitchen.dishwasher_room",
-          "order": 9,
+          "order": 10,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1117,7 +1326,7 @@
           "detail": "24 in seats along the island: 2 seats (limit >= 2 seats)",
           "evidence": [],
           "id": "kitchen.island_seats",
-          "order": 13,
+          "order": 15,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1186,7 +1395,7 @@
           "detail": "overhang past the island bases: 15 in (limit >= 15 in)",
           "evidence": [],
           "id": "kitchen.island_knee",
-          "order": 12,
+          "order": 14,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1809,10 +2018,14 @@
             {
               "reason": "right for one cook, 6 in short of the width for two to pass on a holiday",
               "value_text": "42 in"
+            },
+            {
+              "reason": "the range stands half an inch proud of the counter, so the aisle at the range was 47.5 in",
+              "value_text": "48 in from the counter edge"
             }
           ],
           "name": "island_aisle",
-          "rationale": "in, the long run's counter edge to the island: the work aisle. 48 is the NKBA width for more than one cook; 42 is its width for one.",
+          "rationale": "in, the range's door face to the island: the work aisle at its narrowest, as the NKBA measures it (between counter fronts and appliances). 48 is its width for more than one cook; 42 for one. Measured from the counter edge the range's half inch of projection was lost; see PARAMS.",
           "value_text": "48 in"
         },
         {
@@ -1914,7 +2127,7 @@
   },
   "generated": "nopekit site build wrote this file from the records, the results in .nopekit/verdicts/ and site/content/. It is not a source. Change those, then build again.",
   "intro": {
-    "as_of": "77929d63541ee099",
+    "as_of": "06e5545f52d7adcc",
     "blocks": [
       {
         "runs": [
@@ -1933,7 +2146,7 @@
         "type": "p"
       }
     ],
-    "current_as_of": "77929d63541ee099",
+    "current_as_of": "06e5545f52d7adcc",
     "file": "content/intro.md",
     "notice": "",
     "problems": [],
@@ -1944,15 +2157,15 @@
   },
   "losers": [],
   "meta": {
-    "content_digest": "4e03ea187d20b637bea3d8475ca519ee75c25f202ef508d2809afd85f69a3b48",
+    "content_digest": "f1fdc6a3ea200510350b47fecd6ee4af611e5ddf438fa2c1705adfcafe8d38f4",
     "name": "Edmonds kitchen",
-    "records_digest": "35fed3f20792cb194483d78d1ec5c5c27f28237b1c6107bcd7b0e18c61aac07f",
-    "resolution_digest": "5e2f4d4287afcf58651919bb7132d439fcfb253ee57ee3af604421813b476ecb",
+    "records_digest": "0f865054f7fffbc7d3610b356965b37b00c3edf528da909bbacf11ac61393a78",
+    "resolution_digest": "cfbdf8638c76d93ea9bdfe4644a72dfb067d2822a234c601f613f6c0c86a53c8",
     "revision": "v0.1",
     "summary": "Kitchen, living room and upstairs floors: gloss two-tone cabinets, refrigerator to the hall end, island with a prep sink, inside $60k",
     "views": {
       "bom": "d700766d0461140f274ac864cacf3b06fc6ac7aa355487683853aff552144d83",
-      "twin": "371ed322937ec2fe56762e589a5759b6074aa4bfde036d8633bd28d3925adb64"
+      "twin": "9b6d35f994af2113003a0139bdb506347f1ad0633990e96e9cdf7fca834500fb"
     }
   },
   "next": {
@@ -1964,7 +2177,7 @@
       "missing": [],
       "next": true,
       "ready": false,
-      "sentence": "v0.1 is NOT ready. 10 of 24 required claims are unresolved: 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 14 of 24 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
+      "sentence": "v0.1 is NOT ready. 10 of 27 required claims are unresolved: 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 17 of 27 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
       "steps": [
         {
           "claim": "A1",
@@ -1998,9 +2211,9 @@
             "nopekit claim physical A3 assume"
           ],
           "errored": false,
-          "how": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator wall to door face",
+          "how": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator and the range from the wall to the door face",
           "marks": [],
-          "statement": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep",
+          "statement": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep, range 26 in deep",
           "text": "A3 is an assumption. Its owner records it in their own shell.",
           "token": "gap",
           "word": "gap"
@@ -2101,7 +2314,7 @@
       "word": "not ready"
     },
     "prose": {
-      "as_of": "bbed7e23bb017c29",
+      "as_of": "493761d3f67b79db",
       "blocks": [
         {
           "runs": [
@@ -2135,7 +2348,7 @@
           "type": "p"
         }
       ],
-      "current_as_of": "bbed7e23bb017c29",
+      "current_as_of": "493761d3f67b79db",
       "file": "content/next.md",
       "notice": "",
       "problems": [],
@@ -2151,7 +2364,7 @@
   "representation": {
     "alternates": [
       {
-        "bytes": 13928,
+        "bytes": 14224,
         "title": "The kitchen in its room",
         "view": "twin"
       }
@@ -2183,7 +2396,9 @@
         "C4",
         "C5",
         "C7",
-        "A5"
+        "A5",
+        "C17",
+        "C16"
       ],
       "errored": false,
       "id": "R2",
@@ -2196,6 +2411,7 @@
       "claims": [
         "C7",
         "C6",
+        "C17",
         "P3"
       ],
       "errored": false,
@@ -2237,6 +2453,8 @@
       "claims": [
         "C12",
         "C13",
+        "C15",
+        "C16",
         "A3",
         "P4"
       ],
@@ -2412,6 +2630,7 @@
       "board": "holiday",
       "claims": [
         "C6",
+        "C17",
         "P3"
       ],
       "errored": false,
@@ -2419,12 +2638,12 @@
       "line": "Two people pass in the aisle and people walk behind the island seats.",
       "marks": [],
       "prose": {
-        "as_of": "8f2492943f81664b",
+        "as_of": "f1ed56f4349be80d",
         "blocks": [
           {
             "runs": [
               {
-                "t": "On a holiday one person stands at the range while another carries a dish past. The aisle between the long run and the island is at the width for that."
+                "t": "On a holiday one person stands at the range while another carries a dish past. The aisle between the range and the island is at the width for that. Each side of the island has more than the minimum passage."
               }
             ],
             "type": "p"
@@ -2438,7 +2657,7 @@
             "type": "p"
           }
         ],
-        "current_as_of": "8f2492943f81664b",
+        "current_as_of": "f1ed56f4349be80d",
         "file": "content/holiday.md",
         "notice": "",
         "problems": [],
@@ -2451,8 +2670,8 @@
         {
           "errored": 0,
           "key": "checked",
-          "label": "1 checked",
-          "n": 1,
+          "label": "2 checked",
+          "n": 2,
           "status": "pass"
         },
         {
@@ -2608,6 +2827,8 @@
       "claims": [
         "C12",
         "C13",
+        "C15",
+        "C16",
         "A1",
         "A3",
         "P4"
@@ -2617,12 +2838,12 @@
       "line": "The cabinets fill the walls as measured and the refrigerator moves to the hall end.",
       "marks": [],
       "prose": {
-        "as_of": "b870d6acd5874a73",
+        "as_of": "8477f0c874642ab7",
         "blocks": [
           {
             "runs": [
               {
-                "t": "The cabinet widths on each wall sum to the wall length on the contractor's drawing, and the uppers clear the sink window."
+                "t": "The cabinet widths on each wall sum to the wall length on the contractor's drawing, and the uppers clear the sink window. No box in the model stands in the same space as another box, a wall or a post. Each door, drawer and appliance door opens fully and hits nothing."
               }
             ],
             "type": "p"
@@ -2630,13 +2851,13 @@
           {
             "runs": [
               {
-                "t": "The room outside the two kitchen walls is not measured. The alcove size, the distance to the posts, the floor area and the refrigerator depth are assumed."
+                "t": "The room outside the two kitchen walls is not measured. The alcove size, the distance to the posts, the floor area and the depths of the refrigerator and the range are assumed."
               }
             ],
             "type": "p"
           }
         ],
-        "current_as_of": "b870d6acd5874a73",
+        "current_as_of": "8477f0c874642ab7",
         "file": "content/fits.md",
         "notice": "",
         "problems": [],
@@ -2649,8 +2870,8 @@
         {
           "errored": 0,
           "key": "checked",
-          "label": "2 checked",
-          "n": 2,
+          "label": "4 checked",
+          "n": 4,
           "status": "pass"
         },
         {
@@ -2716,9 +2937,9 @@
       "word": "checked"
     }
   ],
-  "self": "0200404e6ac2e84865a7b1227fda2128fdce387f84ef57552e616c0ac11f73f5",
+  "self": "0da5ffdd94b998baa32ce387f6b1d5734b790a5adbde51a02ab6d6f1fa840143",
   "story": {
-    "as_of": "eebf3429195643d9",
+    "as_of": "78a2f55e3e604edd",
     "blocks": [
       {
         "runs": [
@@ -2779,7 +3000,7 @@
         "type": "p"
       }
     ],
-    "current_as_of": "eebf3429195643d9",
+    "current_as_of": "78a2f55e3e604edd",
     "file": "content/story.md",
     "notice": "",
     "problems": [],
@@ -2790,18 +3011,18 @@
   },
   "verdict": {
     "headline": "v0.1 is NOT ready.",
-    "limits": "Checked does not mean true. Its evaluators have shown that they can fail. They have not shown that they are correct or sufficient. Nothing outside the 24 claims on this page is evaluated.",
+    "limits": "Checked does not mean true. Its evaluators have shown that they can fail. They have not shown that they are correct or sufficient. Nothing outside the 27 claims on this page is evaluated.",
     "notice": "",
     "notice_public": "",
     "ready": false,
-    "sentence": "v0.1 is NOT ready. 10 of 24 required claims are unresolved: 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 14 of 24 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
+    "sentence": "v0.1 is NOT ready. 10 of 27 required claims are unresolved: 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 17 of 27 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
     "stale": false,
     "tally": [
       {
         "errored": 0,
         "key": "checked",
-        "label": "14 checked",
-        "n": 14,
+        "label": "17 checked",
+        "n": 17,
         "status": "pass"
       },
       {

@@ -1,0 +1,25 @@
+{
+  "statement": "There is at least 36 in of passage on each side of the island",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "narrowest passage",
+    "comparator": ">=",
+    "limit": 36.0,
+    "units": "in"
+  },
+  "rationale": "NKBA Kitchen Planning Guidelines: a walkway is at least 36 in. The island stands between the hallway and the dining table, so people walk round it all day",
+  "tags": [
+    "walkways"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Each side of the island to the nearest fixed thing in the model; furniture is not counted",
+    "evaluators": [
+      "kitchen.walkways"
+    ]
+  },
+  "requirements": [
+    "R2",
+    "R3"
+  ]
+}

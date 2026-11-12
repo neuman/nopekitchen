@@ -76,8 +76,17 @@
       "evaluator:kitchen.aisle_two_cooks": [
         "value:work_aisle_in"
       ],
+      "evaluator:kitchen.collisions": [
+        "value:collision_count",
+        "value:collision_pairs"
+      ],
       "evaluator:kitchen.dishwasher_room": [
         "value:dishwasher_standing_in"
+      ],
+      "evaluator:kitchen.doors_open": [
+        "value:blocked_door_count",
+        "value:blocked_doors",
+        "value:opens"
       ],
       "evaluator:kitchen.finish_offered": [
         "value:finish_unmet",
@@ -110,6 +119,10 @@
       ],
       "evaluator:kitchen.triangle_total": [
         "value:triangle_total_ft"
+      ],
+      "evaluator:kitchen.walkways": [
+        "value:walkway_min_in",
+        "value:walkways"
       ],
       "evaluator:kitchen.window_gap": [
         "value:window_gap_in"
@@ -156,6 +169,17 @@
       ],
       "claim:C14": [
         "requirement:R8"
+      ],
+      "claim:C15": [
+        "requirement:R6"
+      ],
+      "claim:C16": [
+        "requirement:R2",
+        "requirement:R6"
+      ],
+      "claim:C17": [
+        "requirement:R2",
+        "requirement:R3"
       ],
       "claim:C2": [
         "requirement:R1",
@@ -209,8 +233,14 @@
       "evaluator:kitchen.aisle_two_cooks": [
         "claim:C6"
       ],
+      "evaluator:kitchen.collisions": [
+        "claim:C15"
+      ],
       "evaluator:kitchen.dishwasher_room": [
         "claim:C7"
+      ],
+      "evaluator:kitchen.doors_open": [
+        "claim:C16"
       ],
       "evaluator:kitchen.finish_offered": [
         "claim:C11"
@@ -235,6 +265,9 @@
       ],
       "evaluator:kitchen.triangle_total": [
         "claim:C4"
+      ],
+      "evaluator:kitchen.walkways": [
+        "claim:C17"
       ],
       "evaluator:kitchen.window_gap": [
         "claim:C13"
@@ -406,10 +439,34 @@
       "registered": true,
       "tier": 0
     },
+    "kitchen.collisions": {
+      "basis": "model-only",
+      "claims": [
+        "C15"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
     "kitchen.dishwasher_room": {
       "basis": "sourced",
       "claims": [
         "C7"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.doors_open": {
+      "basis": "model-only",
+      "claims": [
+        "C16"
       ],
       "current": true,
       "outcome": "pass",
@@ -514,6 +571,18 @@
       "registered": true,
       "tier": 0
     },
+    "kitchen.walkways": {
+      "basis": "sourced",
+      "claims": [
+        "C17"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
     "kitchen.window_gap": {
       "basis": "model-only",
       "claims": [
@@ -583,7 +652,8 @@
     },
     {
       "choices": [
-        "base_d"
+        "base_d",
+        "counter_d"
       ],
       "estimate": [],
       "to": "station:s_island",
@@ -606,7 +676,7 @@
     "boards"
   ],
   "layers": [
-    1,
+    2,
     1,
     1
   ],
@@ -620,7 +690,7 @@
       "token": "pending_build"
     },
     {
-      "n": 14,
+      "n": 17,
       "token": "checked"
     }
   ],
@@ -955,11 +1025,61 @@
     {
       "amber": null,
       "board": "holiday",
+      "claim": "C17",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_room",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 9,
+      "reads_all": null,
+      "serves": [
+        "R2",
+        "R3"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_island": "read",
+        "station:s_triangle": "upstream"
+      },
+      "stops": [
+        "station:s_triangle",
+        "station:s_island",
+        "claim:C17"
+      ],
+      "taps": [
+        {
+          "choices": [
+            "base_h"
+          ],
+          "zone": "zone:z_std"
+        }
+      ],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "walkway_min_in",
+        "walkways"
+      ],
+      "via": {
+        "station:s_island": [
+          "walkway_min_in"
+        ],
+        "station:s_triangle": [
+          "leg_wet_range_ft"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "holiday",
       "claim": "P3",
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 9,
+      "order": 10,
       "reads_all": null,
       "serves": [
         "R3"
@@ -985,7 +1105,7 @@
         "zone:z_std"
       ],
       "marks": [],
-      "order": 10,
+      "order": 11,
       "reads_all": null,
       "serves": [
         "R4"
@@ -1020,7 +1140,7 @@
         "zone:z_std"
       ],
       "marks": [],
-      "order": 11,
+      "order": 12,
       "reads_all": null,
       "serves": [
         "R4"
@@ -1054,7 +1174,7 @@
         "zone:z_people"
       ],
       "marks": [],
-      "order": 12,
+      "order": 13,
       "reads_all": null,
       "serves": [
         "R4"
@@ -1088,7 +1208,7 @@
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 13,
+      "order": 14,
       "reads_all": null,
       "serves": [
         "R4"
@@ -1111,7 +1231,7 @@
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 14,
+      "order": 15,
       "reads_all": null,
       "serves": [
         "R4"
@@ -1134,7 +1254,7 @@
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 15,
+      "order": 16,
       "reads_all": null,
       "serves": [
         "R5",
@@ -1161,7 +1281,7 @@
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 16,
+      "order": 17,
       "reads_all": null,
       "serves": [
         "R5"
@@ -1184,7 +1304,7 @@
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 17,
+      "order": 18,
       "reads_all": null,
       "serves": [
         "R5"
@@ -1209,7 +1329,7 @@
         "zone:z_room"
       ],
       "marks": [],
-      "order": 18,
+      "order": 19,
       "reads_all": null,
       "serves": [
         "R6"
@@ -1246,7 +1366,7 @@
         "zone:z_room"
       ],
       "marks": [],
-      "order": 19,
+      "order": 20,
       "reads_all": null,
       "serves": [
         "R6"
@@ -1274,11 +1394,112 @@
     {
       "amber": null,
       "board": "fits",
+      "claim": "C15",
+      "errored": false,
+      "fed_by": [
+        "zone:z_room"
+      ],
+      "marks": [],
+      "order": 21,
+      "reads_all": null,
+      "serves": [
+        "R6"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:C15"
+      ],
+      "taps": [
+        {
+          "choices": [
+            "wall1_len",
+            "wall2_len"
+          ],
+          "zone": "zone:z_room"
+        }
+      ],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "collision_count",
+        "collision_pairs"
+      ],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim": "C16",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_room",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 22,
+      "reads_all": null,
+      "serves": [
+        "R2",
+        "R6"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_island": "upstream",
+        "station:s_triangle": "upstream"
+      },
+      "stops": [
+        "station:s_triangle",
+        "station:s_island",
+        "claim:C16"
+      ],
+      "taps": [
+        {
+          "choices": [
+            "wall1_len",
+            "wall2_len"
+          ],
+          "zone": "zone:z_room"
+        },
+        {
+          "choices": [
+            "base_h",
+            "upper_d"
+          ],
+          "zone": "zone:z_std"
+        }
+      ],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "blocked_door_count",
+        "blocked_doors",
+        "opens"
+      ],
+      "via": {
+        "station:s_island": [
+          "walkway_min_in",
+          "dishwasher_standing_in",
+          "work_aisle_in"
+        ],
+        "station:s_triangle": [
+          "leg_fridge_wet_ft",
+          "triangle_total_ft",
+          "leg_range_fridge_ft",
+          "leg_wet_range_ft",
+          "triangle_longest_ft"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "fits",
       "claim": "A1",
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 20,
+      "order": 23,
       "reads_all": null,
       "serves": [
         "R7"
@@ -1301,7 +1522,7 @@
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 21,
+      "order": 24,
       "reads_all": null,
       "serves": [
         "R6",
@@ -1325,7 +1546,7 @@
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 22,
+      "order": 25,
       "reads_all": null,
       "serves": [
         "R6"
@@ -1348,7 +1569,7 @@
       "errored": false,
       "fed_by": [],
       "marks": [],
-      "order": 23,
+      "order": 26,
       "reads_all": null,
       "serves": [
         "R8"
@@ -1369,8 +1590,8 @@
   ],
   "meta": {
     "name": "Edmonds kitchen",
-    "records_digest": "35fed3f20792cb194483d78d1ec5c5c27f28237b1c6107bcd7b0e18c61aac07f",
-    "resolution_digest": "5e2f4d4287afcf58651919bb7132d439fcfb253ee57ee3af604421813b476ecb"
+    "records_digest": "0f865054f7fffbc7d3610b356965b37b00c3edf528da909bbacf11ac61393a78",
+    "resolution_digest": "cfbdf8638c76d93ea9bdfe4644a72dfb067d2822a234c601f613f6c0c86a53c8"
   },
   "nodes": [
     {
@@ -1397,7 +1618,9 @@
         "C4",
         "C5",
         "C7",
-        "A5"
+        "A5",
+        "C17",
+        "C16"
       ],
       "errored": false,
       "id": "requirement:R2",
@@ -1406,7 +1629,7 @@
       "lane": "requirements",
       "marks": [],
       "order": 1,
-      "rank": 1,
+      "rank": 2,
       "title": "Movement through the space works for one person cooking on a typical day",
       "token": "gap",
       "word": "gap"
@@ -1415,6 +1638,7 @@
       "claims": [
         "C7",
         "C6",
+        "C17",
         "P3"
       ],
       "errored": false,
@@ -1471,6 +1695,8 @@
       "claims": [
         "C12",
         "C13",
+        "C15",
+        "C16",
         "A3",
         "P4"
       ],
@@ -1532,7 +1758,7 @@
       "lane": "requirements",
       "marks": [],
       "order": 8,
-      "rank": 2,
+      "rank": 1,
       "title": "Cabinets and floors I can actually buy, from Seattle-area providers where that makes sense, custom or national where it does not",
       "token": "checked",
       "word": "checked"
@@ -1629,8 +1855,10 @@
         "C5",
         "C7",
         "C6",
+        "C17",
         "C8",
-        "C9"
+        "C9",
+        "C16"
       ],
       "count": 8,
       "estimate": [],
@@ -1756,7 +1984,7 @@
         "kid_big_h"
       ],
       "order": 4,
-      "rank": 4,
+      "rank": 3,
       "sources": {
         "assumption": 0,
         "chosen": 0,
@@ -1777,8 +2005,11 @@
         "C2",
         "C3",
         "C4",
+        "C17",
         "C12",
-        "C13"
+        "C13",
+        "C15",
+        "C16"
       ],
       "count": 8,
       "estimate": [],
@@ -1819,7 +2050,7 @@
         "fridge_d"
       ],
       "order": 5,
-      "rank": 3,
+      "rank": 4,
       "sources": {
         "assumption": 0,
         "chosen": 0,
@@ -1829,7 +2060,9 @@
       },
       "taps": [
         "C12",
-        "C13"
+        "C13",
+        "C15",
+        "C16"
       ],
       "title": "The room as measured",
       "unmeasured": []
@@ -1842,8 +2075,10 @@
         "C5",
         "C7",
         "C6",
+        "C17",
         "C8",
-        "C9"
+        "C9",
+        "C16"
       ],
       "count": 6,
       "estimate": [],
@@ -1888,7 +2123,10 @@
         "estimate": 2,
         "unrecorded": 4
       },
-      "taps": [],
+      "taps": [
+        "C17",
+        "C16"
+      ],
       "title": "Cabinet standards",
       "unmeasured": []
     },
@@ -1940,10 +2178,12 @@
         "C5",
         "C7",
         "C6",
+        "C17",
         "C8",
-        "C9"
+        "C9",
+        "C16"
       ],
-      "column": 0,
+      "column": 1,
       "depth": 0,
       "fed_by": [
         "zone:z_layout",
@@ -1961,11 +2201,14 @@
         "work_aisle_in",
         "dishwasher_standing_in",
         "island_knee_in",
-        "island_seats"
+        "island_seats",
+        "walkway_min_in"
       ],
       "order": 0,
       "rank": 1,
       "stop_kinds": {
+        "C16": "upstream",
+        "C17": "read",
         "C5": "read",
         "C6": "read",
         "C7": "read",
@@ -2012,7 +2255,9 @@
     {
       "claims": [
         "C3",
-        "C4"
+        "C4",
+        "C17",
+        "C16"
       ],
       "column": 0,
       "depth": 0,
@@ -2039,6 +2284,8 @@
       "order": 2,
       "rank": 0,
       "stop_kinds": {
+        "C16": "upstream",
+        "C17": "upstream",
         "C3": "read",
         "C4": "read"
       },
@@ -2150,6 +2397,7 @@
     {
       "claims": [
         "C6",
+        "C17",
         "P3"
       ],
       "errored": false,
@@ -2165,8 +2413,8 @@
         {
           "errored": 0,
           "key": "checked",
-          "label": "1 checked",
-          "n": 1,
+          "label": "2 checked",
+          "n": 2,
           "status": "pass"
         },
         {
@@ -2271,6 +2519,8 @@
       "claims": [
         "C12",
         "C13",
+        "C15",
+        "C16",
         "A1",
         "A3",
         "P4"
@@ -2288,8 +2538,8 @@
         {
           "errored": 0,
           "key": "checked",
-          "label": "2 checked",
-          "n": 2,
+          "label": "4 checked",
+          "n": 4,
           "status": "pass"
         },
         {
@@ -2429,7 +2679,7 @@
       "severity": 8,
       "title": "The cook's triangle totals no more than 26 ft",
       "token": "checked",
-      "value_text": "19.07 ft against a limit of 26 ft, 27% inside the limit",
+      "value_text": "19.13 ft against a limit of 26 ft, 26% inside the limit",
       "word": "checked"
     },
     {
@@ -2511,6 +2761,25 @@
     {
       "amber": null,
       "board": "holiday",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C17",
+      "key": "C17",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 9,
+      "row": 1,
+      "severity": 8,
+      "title": "There is at least 36 in of passage on each side of the island",
+      "token": "checked",
+      "value_text": "48 in against a limit of 36 in, 33% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "holiday",
       "claim_kind": "physical",
       "critical": true,
       "errored": false,
@@ -2519,8 +2788,8 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 9,
-      "row": 1,
+      "order": 10,
+      "row": 2,
       "severity": 6,
       "title": "The dining table stands at least 44 in east of the island's seats, so people walk behind the stools",
       "token": "pending_build",
@@ -2538,7 +2807,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 10,
+      "order": 11,
       "row": 0,
       "severity": 8,
       "title": "The island seats both children",
@@ -2557,7 +2826,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 11,
+      "order": 12,
       "row": 1,
       "severity": 8,
       "title": "Each island seat has 15 in of knee room",
@@ -2576,7 +2845,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 12,
+      "order": 13,
       "row": 2,
       "severity": 8,
       "title": "The 5-year-old can use the microwave without reaching up: its bottom is 3 in below their shoulder, or lower",
@@ -2595,7 +2864,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 13,
+      "order": 14,
       "row": 3,
       "severity": 3,
       "title": "The children are about 43 in and 50.5 in tall",
@@ -2614,7 +2883,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 14,
+      "order": 15,
       "row": 4,
       "severity": 6,
       "title": "Both children can get a cup, a plate, water and a snack without help and without walking between the cook and the range",
@@ -2633,7 +2902,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 15,
+      "order": 16,
       "row": 0,
       "severity": 8,
       "title": "The chosen cabinet line is offered in high gloss, in the chosen lower colour and the chosen lighter upper colour",
@@ -2652,7 +2921,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 16,
+      "order": 17,
       "row": 1,
       "severity": 3,
       "title": "27estore can rout an integrated handle into a high-gloss lacquer front for SEKTION",
@@ -2671,7 +2940,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 17,
+      "order": 18,
       "row": 2,
       "severity": 6,
       "title": "The gloss lower and upper colours look right together in this room, under the skylight and beside the brick",
@@ -2690,7 +2959,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 18,
+      "order": 19,
       "row": 0,
       "severity": 8,
       "title": "The cabinets drawn fill each wall to within 1/4 in of its measured length",
@@ -2709,12 +2978,50 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 19,
+      "order": 20,
       "row": 1,
       "severity": 8,
       "title": "The uppers beside the sink window clear it by at least 1 in",
       "token": "checked",
       "value_text": "2 in against a limit of 1 in, 100% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C15",
+      "key": "C15",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 21,
+      "row": 2,
+      "severity": 8,
+      "title": "No cabinet, appliance, counter or shelf occupies the same space as another, or as a wall or post",
+      "token": "checked",
+      "value_text": "0 pairs against a limit of 0 pairs",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C16",
+      "key": "C16",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 22,
+      "row": 3,
+      "severity": 8,
+      "title": "Every door, drawer and appliance door opens fully without hitting anything",
+      "token": "checked",
+      "value_text": "0 doors against a limit of 0 doors",
       "word": "checked"
     },
     {
@@ -2728,8 +3035,8 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 20,
-      "row": 2,
+      "order": 23,
+      "row": 4,
       "severity": 3,
       "title": "The old refrigerator alcove is 40 in wide and 34 in deep",
       "token": "gap",
@@ -2747,10 +3054,10 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 21,
-      "row": 3,
+      "order": 24,
+      "row": 5,
       "severity": 3,
-      "title": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep",
+      "title": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep, range 26 in deep",
       "token": "gap",
       "value_text": "",
       "word": "gap"
@@ -2766,8 +3073,8 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 22,
-      "row": 4,
+      "order": 25,
+      "row": 6,
       "severity": 6,
       "title": "The refrigerator fits the hall end and both its doors open fully beside the return wall",
       "token": "pending_build",
@@ -2785,7 +3092,7 @@
       "kind": "claim",
       "lane": "boards",
       "marks": [],
-      "order": 23,
+      "order": 26,
       "row": 0,
       "severity": 8,
       "title": "The plank chosen for the upstairs has a wear layer of 20 mil or more",
@@ -2795,13 +3102,13 @@
     }
   ],
   "schema": 2,
-  "self": "703fb095a520e913e0bc061c96a92c89288f763af2fb62cd5ec806f10b20a1ed",
+  "self": "ae779d963d782e1168d57e0f69987a70112a33fa82f948e270d1bae0c0cc39e2",
   "trace": {
     "amber": "none",
-    "key": "7d6a206be214",
-    "notice": "The model was built again with each choice changed by 10%. A thin line joins a group of choices to each shared value that moved.",
-    "round": null,
-    "singles": 11,
+    "key": "1dfbd3e19159",
+    "notice": "At round 1, the model was built again with each choice changed by 10%. A thin line joins a group of choices to each shared value that moved.",
+    "round": 1,
+    "singles": 10,
     "skipped": {
       "backsplash": "word",
       "cab_install": "word",
@@ -2822,7 +3129,7 @@
     },
     "state": "traced",
     "text": "The test did not change 16 choices: backsplash, cab_install, cab_line, counter, faucet, floor, floor_removal, fridge_at, handles, lower_color, managed_by, microwave_at, pantry, prep_sink, sink, upper_color. The map cannot show what they change. The test did not see 11 shared values change: finish_unmet, finish_unmet_count, floor_cover, floor_wear_mil, fronts, handle_integrated, island_cut_in, island_seats, markup_usd, microwave_bottom_in, permits_usd. This does not show that no choice changes them.",
-    "ties": 7,
+    "ties": 8,
     "unmoved": [
       "finish_unmet",
       "finish_unmet_count",
@@ -2906,6 +3213,26 @@
       "value_text": "34.5",
       "zone": "zone:z_std"
     },
+    "blocked_door_count": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "doors",
+      "value_text": "0 doors",
+      "zone": null
+    },
+    "blocked_doors": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
     "bom": {
       "ground": "chosen",
       "read": true,
@@ -2975,6 +3302,26 @@
       "units": "",
       "value_text": "sektion_27e_gloss",
       "zone": "zone:z_cabs"
+    },
+    "collision_count": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "pairs",
+      "value_text": "0 pairs",
+      "zone": null
+    },
+    "collision_pairs": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
     },
     "contingency": {
       "ground": "chosen",
@@ -3243,7 +3590,7 @@
       "source": "unrecorded",
       "station": "station:s_triangle",
       "units": "",
-      "value_text": "5.425",
+      "value_text": "5.451",
       "zone": null
     },
     "leg_range_fridge_ft": {
@@ -3263,7 +3610,7 @@
       "source": "unrecorded",
       "station": "station:s_triangle",
       "units": "",
-      "value_text": "5.512",
+      "value_text": "5.542",
       "zone": null
     },
     "lower_color": {
@@ -3314,6 +3661,16 @@
       "station": null,
       "units": "in",
       "value_text": "-0.4 in",
+      "zone": null
+    },
+    "opens": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
       "zone": null
     },
     "pantry": {
@@ -3443,7 +3800,7 @@
       "source": "unrecorded",
       "station": "station:s_triangle",
       "units": "",
-      "value_text": "19.07",
+      "value_text": "19.13",
       "zone": null
     },
     "upper_color": {
@@ -3475,6 +3832,26 @@
       "units": "",
       "value_text": "18",
       "zone": "zone:z_std"
+    },
+    "walkway_min_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_island",
+      "units": "in",
+      "value_text": "48 in",
+      "zone": null
+    },
+    "walkways": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
     },
     "wall1_fill_error_in": {
       "ground": "chosen",
