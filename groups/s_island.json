@@ -1,0 +1,11 @@
+{
+  "kind": "station",
+  "title": "Island clearances",
+  "line": "What the island leaves around it",
+  "members": [
+    "work_aisle_in",
+    "dishwasher_standing_in",
+    "island_knee_in",
+    "island_seats"
+  ]
+}

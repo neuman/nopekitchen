@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/photo-living-to-kitchen.jpg",
+  "kind": "reference",
+  "description": "Living room toward stairs, hallway and kitchen, with the posts",
+  "sha256": "948600c47b8a1272e9f79596fabb2c763146c8b06e180a6b6a7699eee9942268",
+  "added": "2026-11-12T18:57:49Z",
+  "extractions": [
+    {
+      "what": "Kitchen is open to the living room on its east side with two posts; the hallway leaves at the south end of the long run; stair opening with cable rail south of the kitchen; gable windows on the south wall",
+      "grounds": [
+        "post_y"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

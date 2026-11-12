@@ -1,0 +1,306 @@
+{
+  "build_quantity": 1,
+  "currency": "USD",
+  "lines": [
+    {
+      "ref": "cabinets",
+      "vendor": "IKEA Renton + 27estore (online)",
+      "vendor_pn": "cabinets",
+      "qty_per_unit": 32.92,
+      "needed": 32.92,
+      "purchased": 32.92,
+      "unit_price": 335.0,
+      "extended": 11028.2
+    },
+    {
+      "ref": "cab_install",
+      "vendor": "IKEA-kitchen installer",
+      "vendor_pn": "cab_install",
+      "qty_per_unit": 32.92,
+      "needed": 32.92,
+      "purchased": 32.92,
+      "unit_price": 100.0,
+      "extended": 3292.0
+    },
+    {
+      "ref": "counter",
+      "vendor": "IKEA Renton",
+      "vendor_pn": "counter",
+      "qty_per_unit": 59.48,
+      "needed": 59.48,
+      "purchased": 59.48,
+      "unit_price": 60.0,
+      "extended": 3568.8
+    },
+    {
+      "ref": "backsplash",
+      "vendor": "a tile setter",
+      "vendor_pn": "backsplash",
+      "qty_per_unit": 23.31,
+      "needed": 23.31,
+      "purchased": 23.31,
+      "unit_price": 40.0,
+      "extended": 932.4
+    },
+    {
+      "ref": "sink",
+      "vendor": "The Sink Boutique (online)",
+      "vendor_pn": "sink",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 430.0,
+      "extended": 430.0
+    },
+    {
+      "ref": "faucet",
+      "vendor": "IKEA Renton",
+      "vendor_pn": "faucet",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 199.0,
+      "extended": 199.0
+    },
+    {
+      "ref": "demo",
+      "vendor": "a demolition crew",
+      "vendor_pn": "demo",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 1800.0,
+      "extended": 1800.0
+    },
+    {
+      "ref": "plumb_reconnect",
+      "vendor": "a plumber",
+      "vendor_pn": "plumb_reconnect",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 800.0,
+      "extended": 800.0
+    },
+    {
+      "ref": "undercab_labor",
+      "vendor": "an electrician",
+      "vendor_pn": "undercab_labor",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 500.0,
+      "extended": 500.0
+    },
+    {
+      "ref": "undercab_lights",
+      "vendor": "IKEA Renton",
+      "vendor_pn": "undercab_lights",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 250.0,
+      "extended": 250.0
+    },
+    {
+      "ref": "drywall_paint",
+      "vendor": "a painter",
+      "vendor_pn": "drywall_paint",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 1500.0,
+      "extended": 1500.0
+    },
+    {
+      "ref": "fridge_circuit",
+      "vendor": "an electrician",
+      "vendor_pn": "fridge_circuit",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 700.0,
+      "extended": 700.0
+    },
+    {
+      "ref": "ice_line",
+      "vendor": "a plumber",
+      "vendor_pn": "ice_line",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 400.0,
+      "extended": 400.0
+    },
+    {
+      "ref": "pantry_shelves",
+      "vendor": "IKEA Renton",
+      "vendor_pn": "pantry_shelves",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 300.0,
+      "extended": 300.0
+    },
+    {
+      "ref": "prep_rough",
+      "vendor": "a plumber",
+      "vendor_pn": "prep_rough",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 3000.0,
+      "extended": 3000.0
+    },
+    {
+      "ref": "prep_bowl",
+      "vendor": "Ruvati (online)",
+      "vendor_pn": "prep_bowl",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 250.0,
+      "extended": 250.0
+    },
+    {
+      "ref": "prep_faucet",
+      "vendor": "IKEA Renton",
+      "vendor_pn": "prep_faucet",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 109.0,
+      "extended": 109.0
+    },
+    {
+      "ref": "prep_cutout",
+      "vendor": "the counter fabricator",
+      "vendor_pn": "prep_cutout",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 250.0,
+      "extended": 250.0
+    },
+    {
+      "ref": "mw_outlet",
+      "vendor": "an electrician",
+      "vendor_pn": "mw_outlet",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 350.0,
+      "extended": 350.0
+    },
+    {
+      "ref": "floor",
+      "vendor": "Home Depot, 2901 184th St SW, Lynnwood",
+      "vendor_pn": "floor",
+      "qty_per_unit": 1382.7,
+      "needed": 1382.7,
+      "purchased": 1382.7,
+      "unit_price": 3.69,
+      "extended": 5102.163
+    },
+    {
+      "ref": "floor_labor",
+      "vendor": "the flooring installer",
+      "vendor_pn": "floor_labor",
+      "qty_per_unit": 1257.0,
+      "needed": 1257.0,
+      "purchased": 1257.0,
+      "unit_price": 3.5,
+      "extended": 4399.5
+    },
+    {
+      "ref": "floor_prep",
+      "vendor": "the flooring installer",
+      "vendor_pn": "floor_prep",
+      "qty_per_unit": 1257.0,
+      "needed": 1257.0,
+      "purchased": 1257.0,
+      "unit_price": 1.0,
+      "extended": 1257.0
+    },
+    {
+      "ref": "floor_removal",
+      "vendor": "the flooring installer",
+      "vendor_pn": "floor_removal",
+      "qty_per_unit": 1257.0,
+      "needed": 1257.0,
+      "purchased": 1257.0,
+      "unit_price": 3.0,
+      "extended": 3771.0
+    },
+    {
+      "ref": "baseboard",
+      "vendor": "the flooring installer",
+      "vendor_pn": "baseboard",
+      "qty_per_unit": 500.0,
+      "needed": 500.0,
+      "purchased": 500.0,
+      "unit_price": 3.5,
+      "extended": 1750.0
+    },
+    {
+      "ref": "floor_trim",
+      "vendor": "the flooring installer",
+      "vendor_pn": "floor_trim",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 700.0,
+      "extended": 700.0
+    }
+  ],
+  "unpriced": [],
+  "parts_total": 46639.06,
+  "vendor_subtotals": {
+    "Home Depot, 2901 184th St SW, Lynnwood": 5102.16,
+    "IKEA Renton": 4426.8,
+    "IKEA Renton + 27estore (online)": 11028.2,
+    "IKEA-kitchen installer": 3292.0,
+    "Ruvati (online)": 250.0,
+    "The Sink Boutique (online)": 430.0,
+    "a demolition crew": 1800.0,
+    "a painter": 1500.0,
+    "a plumber": 4200.0,
+    "a tile setter": 932.4,
+    "an electrician": 1550.0,
+    "the counter fabricator": 250.0,
+    "the flooring installer": 11877.5
+  },
+  "order_minimum_shortfalls": [],
+  "order_minimum_unmatched": [],
+  "order_minimum_total": 0,
+  "charges": [
+    {
+      "id": "gc-markup",
+      "vendor": "",
+      "amount": 0.0,
+      "description": "general contractor overhead and profit"
+    },
+    {
+      "id": "contingency",
+      "vendor": "",
+      "amount": 5596.69,
+      "description": "contingency, 12% of the subtotal"
+    },
+    {
+      "id": "sales-tax",
+      "vendor": "",
+      "amount": 5589.22,
+      "description": "Edmonds sales tax, 10.7%, on labour and materials"
+    },
+    {
+      "id": "permits",
+      "vendor": "",
+      "amount": 200.0,
+      "description": "electrical and plumbing permits"
+    }
+  ],
+  "charge_total": 11385.91,
+  "nre_per_unit": 11385.91,
+  "run_total": 58024.97,
+  "per_unit": 58024.973
+}

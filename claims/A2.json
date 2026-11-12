@@ -1,0 +1,12 @@
+{
+  "statement": "The prices in the catalog are what the job will cost",
+  "kind": "assumption",
+  "rationale": "none is a quote. Every one is from a search-result snippet, a store tag in a photo, or an estimate from cost guides, read on 2026-11-12; no retailer page could be opened. Trades prices are national ranges with a Seattle uplift",
+  "mechanism": {
+    "how": "Get written quotes: 27estore for the fronts, IKEA for boxes and KASKER, a plumber for the island sink, a flooring installer for removal and laying. Put each in the catalog"
+  },
+  "requirements": [
+    "R1"
+  ],
+  "owner": "Eric"
+}

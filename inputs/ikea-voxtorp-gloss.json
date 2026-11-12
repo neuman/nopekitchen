@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/ikea-voxtorp-gloss.jpg",
+  "kind": "reference",
+  "description": "IKEA VOXTORP high-gloss dark gray-brown, integrated handle, 225 USD per linear ft",
+  "sha256": "a2b6b7344f2493e8ed1b51a8d9eaeff9e80567ef361f26891c408a08bb6fec88",
+  "added": "2026-11-12T18:57:50Z",
+  "extractions": [
+    {
+      "what": "VOXTORP: smooth door with integrated handle, high-gloss dark gray-brown, 225 USD per linear ft, 10x10 layout 4509 USD, marked New",
+      "grounds": [
+        "R5"
+      ]
+    }
+  ]
+}

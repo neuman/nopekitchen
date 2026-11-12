@@ -1,0 +1,17 @@
+{
+  "path": "inputs/references/photo-kitchen-existing.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen from the hallway end: long run, sink wall, skylight, tape on floor",
+  "sha256": "f241812d538ef5e8c680860baab221eb2473351bc9468459ddcd7472d4cdbb13",
+  "added": "2026-11-12T18:57:49Z",
+  "extractions": [
+    {
+      "what": "Long run on the left with the range near its middle, sink wall with window and skylight at the far end, dishwasher right of the sink, a stub wall right of the drawer stack with the fridge behind it; blue tape on the floor where an island edge would be; honey bamboo floor",
+      "grounds": [
+        "wall1_len",
+        "wall2_len"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

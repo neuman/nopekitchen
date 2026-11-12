@@ -1,0 +1,223 @@
+{
+  "schema": 1,
+  "gate": "bom.moq",
+  "rho": "e327303e381628016de5100b200d90878bd7daf6e2c429e96d4f64f07683e2f7",
+  "code": {
+    "digest": "171f4d757ff825e7a83bd86167d3e7288193bc9fbffce8a4cdbf78bea7086ca1",
+    "files": [
+      "<pack:sourcing>/bomlib.py",
+      "<pack:sourcing>/gates/sourcing.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "bom",
+          "bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "budget_total"
+        ],
+        "49a591d1ff2417b0fe97251a4a19e8f753b1c54d9f4b931f5a5a5525b0d58f4b",
+        60000.0
+      ],
+      [
+        [
+          "bom",
+          "build_quantity"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ],
+      [
+        [
+          "bom",
+          "charges"
+        ],
+        "295c597415af145a8dd663c0b8ec55386e144b2d88fdc1b6e4b330029d3ceb99"
+      ],
+      [
+        [
+          "bom",
+          "currency"
+        ],
+        "80d78a1fa9b71501a051a47776aa3278e6e0fa97b83a72e02141ddfe0d4b486c",
+        "USD"
+      ],
+      [
+        [
+          "bom",
+          "lines"
+        ],
+        "8a2aeed0227a68632ed96837eeb4abf0ccac33dec6993cf5b75a7fa87129f1c6"
+      ],
+      [
+        [
+          "bom",
+          "moq_excess_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "moq_excess_total_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "moq_idle_limit_fraction"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "moq_ratio_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "schema"
+        ],
+        "ec05e2e7609cd37cc85a36007a2adfeb4a5c9daabccdd9a40d8e63996acd2dc4",
+        "nopekit.bom/1"
+      ],
+      [
+        [
+          "bom"
+        ],
+        "360a6b20cd29a24669c747fb7d6197657ab9e3c672e96b1679b75d3513b71e27"
+      ],
+      [
+        [
+          "bom.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom.moq_excess_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom.moq_excess_total_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom.moq_idle_limit_fraction"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom.moq_ratio_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "moq_excess_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "moq_excess_total_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "moq_idle_limit_fraction"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "moq_ratio_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.moq_excess_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.moq_excess_total_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.moq_idle_limit_fraction"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.moq_ratio_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {},
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 4663.91,
+    "units": "USD",
+    "comparator": "<=",
+    "settles": "minimum order quantity overbuy",
+    "detail": "idle capital 0.00 USD vs 4,663.91 USD (10% of the 46,639.06 parts spend); no line buys more than the build consumes; 0 line(s) past 3x",
+    "evidence": [
+      "<out>/bom_moq.json"
+    ],
+    "locators": [],
+    "claims": [
+      "moq",
+      "minimum-order",
+      "overbuy",
+      "inventory"
+    ],
+    "tier": 0,
+    "pack": "sourcing"
+  },
+  "digest": "b8bea415c8356dee8ced53902c06b621adcb435ff0ed6b420085286dac53273b"
+}

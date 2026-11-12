@@ -1,0 +1,12 @@
+{
+  "kind": "station",
+  "title": "Cook's triangle",
+  "line": "Refrigerator, range and prep sink, centre front to centre front",
+  "members": [
+    "triangle_longest_ft",
+    "triangle_total_ft",
+    "leg_wet_range_ft",
+    "leg_range_fridge_ft",
+    "leg_fridge_wet_ft"
+  ]
+}

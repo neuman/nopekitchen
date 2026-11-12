@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/ikea-begripa-handles.jpg",
+  "kind": "reference",
+  "description": "IKEA BEGRIPA half-round handles in white, yellow, blue, red, lilac, 8 USD per 2-pack",
+  "sha256": "2b01d66908af0e177963ffa9eb928cc875fa475d44b202ac5865cd30a9998170",
+  "added": "2026-11-12T18:57:51Z",
+  "extractions": [
+    {
+      "what": "BEGRIPA half-round handles 5 1/8 in, 8 USD per 2-pack, in white, yellow, light blue, light red and lilac",
+      "grounds": [
+        "R5"
+      ]
+    }
+  ]
+}

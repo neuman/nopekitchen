@@ -1,0 +1,11 @@
+{
+  "kind": "station",
+  "title": "Job total",
+  "line": "Lines, contingency, tax and permits",
+  "members": [
+    "total_usd",
+    "subtotal_usd",
+    "contingency_usd",
+    "tax_usd"
+  ]
+}

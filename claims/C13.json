@@ -1,0 +1,24 @@
+{
+  "statement": "The uppers beside the sink window clear it by at least 1 in",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "window to upper gap",
+    "comparator": ">=",
+    "limit": 1.0,
+    "units": "in"
+  },
+  "rationale": "window casing needs about an inch; an upper drawn into the window is a return trip",
+  "tags": [
+    "window-gap"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "The 49 in window centred on the sink base against the edges of the uppers on either side",
+    "evaluators": [
+      "kitchen.window_gap"
+    ]
+  },
+  "requirements": [
+    "R6"
+  ]
+}

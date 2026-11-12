@@ -1,0 +1,43 @@
+{
+  "title": "The alcove is an open walk-in pantry with the microwave on a 30 in shelf",
+  "when": "2026-11-12T19:08:05Z",
+  "summary": "Open shelves on three sides cost about 300 USD and keep the alcove one step from the dishwasher and the dining table. The microwave on a 30 in shelf there is the only place the 5-year-old reaches without lifting hot food down. A door can be added later for about 1,000 USD if the shelves look untidy from the table.",
+  "rejected": [
+    {
+      "value": "a hinged door now",
+      "why": "1,000 USD more, and a door swinging beside the dishwasher; nothing is lost by adding it later",
+      "type": "dominated",
+      "returns_if": {
+        "text": "when the open shelves are seen from the dining table and bother you"
+      }
+    },
+    {
+      "value": "tall pantry cabinets with gloss fronts",
+      "why": "about 1,500 USD more and no walk-in; needs the alcove to be at least 36 in wide (A1)",
+      "type": "dominated"
+    },
+    {
+      "value": "microwave on the counter",
+      "why": "bottom at 36 in, 4.6 in above the 5-year-old's reach",
+      "type": "infeasible",
+      "returns_if": {
+        "claim": "C10",
+        "quantity": "margin",
+        "comparator": ">",
+        "value": 0.0
+      }
+    },
+    {
+      "value": "a drawer microwave in the island",
+      "why": "within reach, but about 1,750 USD and it takes a drawer stack",
+      "type": "dominated"
+    }
+  ],
+  "params_changed": [
+    "pantry",
+    "microwave_at"
+  ],
+  "claims_changed": [
+    "C10"
+  ]
+}

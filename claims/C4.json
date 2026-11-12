@@ -1,0 +1,24 @@
+{
+  "statement": "The cook's triangle totals no more than 26 ft",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "triangle perimeter",
+    "comparator": "<=",
+    "limit": 26.0,
+    "units": "ft"
+  },
+  "rationale": "NKBA Kitchen Planning Guidelines: the three legs sum to 26 ft or less",
+  "tags": [
+    "triangle-total"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "The same three straight lines, summed",
+    "evaluators": [
+      "kitchen.triangle_total"
+    ]
+  },
+  "requirements": [
+    "R2"
+  ]
+}

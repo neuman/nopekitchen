@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.aisle_one_cook",
+  "rho": "a1f33b9cea3ce1578633c365cde0e06c160497f2566c6a83d5dc958343cc7819",
+  "static": "79989611af3e66e8238df883d3450a6be2e09ed09b3a0d801a93c41ece871a18",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "f5f094dbeb04849063540f1d762e215b5b7a200a88cd95a01b56b7013bd011c6",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "8d0732087e23ffbd574b49e0523e381603c490f1c14d20f505a42d2d8377b910",
+      "files": {
+        "selftest/bad_configs.py": "5b1ebc5a04897a4b35855aac0fe7e1c9627401d1ee0137322bac379856c0a862",
+        "selftest/known_good.py": "915cac47553ac4c0606d36e4f131673642f175b61cd0a5657c9ee28b7e869192"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:island_crowds_range",
+      "expect": "fail",
+      "note": "the island pushed to 30 in from the long run",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "883ed06080489d2ae0df559815c46b7a2752997a44d02640bc6eee79c07b093f",
+    "files": {
+      "model/kitchen.py": "61f01c7d6a6eb5f97d7357551fa719a29ef5852e43a99281eea31561c27a5ee9",
+      "selftest/bad_configs.py": "5b1ebc5a04897a4b35855aac0fe7e1c9627401d1ee0137322bac379856c0a862",
+      "selftest/known_good.py": "915cac47553ac4c0606d36e4f131673642f175b61cd0a5657c9ee28b7e869192"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "work_aisle_in"
+        ],
+        "3d654dca2bf8e623024ab053b3736a76d0b08ccb25bfec37922cf05ebc30cdfe",
+        30.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C5": "290673a9fa67f4e2e2f7eb700483a3f28f5b548891438e276ba8513b0b18ba90",
+      "acceptance:C5": "6d15edc3d6802995302a3e84c2738ab462cd55e4a74b5eb78bfa04a9473180dd"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "work_aisle_in"
+          ],
+          "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+          48.0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C5": "290673a9fa67f4e2e2f7eb700483a3f28f5b548891438e276ba8513b0b18ba90",
+        "acceptance:C5": "6d15edc3d6802995302a3e84c2738ab462cd55e4a74b5eb78bfa04a9473180dd"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 48.0,
+    "limit": 42.0,
+    "units": "in",
+    "detail": "long run to island: 48 in (limit >= 42 in)",
+    "goalpost": [
+      {
+        "key": "C5",
+        "measured": 48.0,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 4.2,
+            "outcome": "pass",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 21.0,
+            "outcome": "pass",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 84.0,
+            "outcome": "fail",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 420.0,
+            "outcome": "fail",
+            "measured": 48.0,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 21,
+    "boundary": "",
+    "results": [
+      {
+        "key": [
+          "work_aisle_in"
+        ],
+        "before": 48.0,
+        "after": 35.7,
+        "outcome": "fail",
+        "measured": 35.7,
+        "limit": 42.0
+      }
+    ],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:island_crowds_range (the island pushed to 30 in from the long run): long run to island: 30 in (limit >= 42 in)",
+  "measured": 30.0,
+  "limit": 42.0,
+  "units": "in",
+  "digest": "16ffb1c853d5a8f2e297dc713370a0681787cf489a21ce92dd0184dedefcae52"
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "zone",
+  "title": "Layout",
+  "members": [
+    "fridge_at",
+    "island_len",
+    "island_top_d",
+    "island_aisle",
+    "island_north_aisle",
+    "prep_sink",
+    "pantry",
+    "microwave_at"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "gate": "kitchen.dishwasher_room",
+  "rho": "923b757c83eb7da59336efe834791c293844006aadeb1773ad11509a0161649f",
+  "code": {
+    "digest": "9828e835a7ec506c82a9c669ef54c15e3292b84daec1d11d5e273e6ea33dcc02",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "dishwasher_standing_in"
+        ],
+        "1868dc08bbc8017c21e129c03dfa94c253b28982d838ef87252609673de31136",
+        22.5
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C7": "3a985e9f8a2de9f4700331f588f1f9f1d2d9a69b8a65acd0e02f9243bb464a4e",
+      "acceptance:C7": "aeb0de9a0ae1fc1480956a145219a25565c73b4f3a4efba4529b84079b46ce5f"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 22.5,
+    "limit": 21.0,
+    "units": "in",
+    "comparator": ">=",
+    "settles": "dishwasher standing room",
+    "detail": "open dishwasher door to the island: 22.5 in (limit >= 21 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "dishwasher-room"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "e62dcc60bf9f170dbfef564cfc40f95a1806346995930841ebc82e87a75417e9"
+}

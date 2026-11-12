@@ -1,0 +1,236 @@
+{
+  "lines": [
+    {
+      "ref": "cabinets",
+      "purchase_qty": 32.92,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "cab_install",
+      "purchase_qty": 32.92,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "counter",
+      "purchase_qty": 59.48,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "backsplash",
+      "purchase_qty": 23.31,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "sink",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "faucet",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "demo",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "plumb_reconnect",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "undercab_labor",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "undercab_lights",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "drywall_paint",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "fridge_circuit",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "ice_line",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "pantry_shelves",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "prep_rough",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "prep_bowl",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "prep_faucet",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "prep_cutout",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "mw_outlet",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "floor",
+      "purchase_qty": 1382.7,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "floor_labor",
+      "purchase_qty": 1257.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "floor_prep",
+      "purchase_qty": 1257.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "floor_removal",
+      "purchase_qty": 1257.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "baseboard",
+      "purchase_qty": 500.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
+      "ref": "floor_trim",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    }
+  ],
+  "unknown": [
+    "cabinets(no lead_time_weeks)",
+    "cab_install(no lead_time_weeks)",
+    "counter(no lead_time_weeks)",
+    "backsplash(no lead_time_weeks)",
+    "sink(no lead_time_weeks)",
+    "faucet(no lead_time_weeks)",
+    "demo(no lead_time_weeks)",
+    "plumb_reconnect(no lead_time_weeks)",
+    "undercab_labor(no lead_time_weeks)",
+    "undercab_lights(no lead_time_weeks)",
+    "drywall_paint(no lead_time_weeks)",
+    "fridge_circuit(no lead_time_weeks)",
+    "ice_line(no lead_time_weeks)",
+    "pantry_shelves(no lead_time_weeks)",
+    "prep_rough(no lead_time_weeks)",
+    "prep_bowl(no lead_time_weeks)",
+    "prep_faucet(no lead_time_weeks)",
+    "prep_cutout(no lead_time_weeks)",
+    "mw_outlet(no lead_time_weeks)",
+    "floor(no lead_time_weeks)",
+    "floor_labor(no lead_time_weeks)",
+    "floor_prep(no lead_time_weeks)",
+    "floor_removal(no lead_time_weeks)",
+    "baseboard(no lead_time_weeks)",
+    "floor_trim(no lead_time_weeks)"
+  ],
+  "eol": [],
+  "flagged": [],
+  "longest_weeks": null,
+  "longest_ref": "-",
+  "lead_time_budget_weeks": null
+}

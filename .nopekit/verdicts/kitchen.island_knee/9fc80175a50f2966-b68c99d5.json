@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "gate": "kitchen.island_knee",
+  "rho": "9fc80175a50f296690d1f5de8889cb5e7168acb7b4c76f98ab9287f1fd84e55f",
+  "code": {
+    "digest": "d3c56578cda7da887b10db066e18b83507be9a63c58d392c3f04ce350ee27bb9",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "island_knee_in"
+        ],
+        "b34f99646d287db0e67fa4f3d5b7715260045d9c6226d860a653be73642ea84f",
+        15.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C9": "d50a64d921c7feb2a4ae2ca0327e4b0ea391bf36202a824698c6256ae83d0f1e",
+      "acceptance:C9": "c9e9cbd9022bbff2f57d5aebe895bc1e538e719cdee938cae5426a6163903bee"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 15.0,
+    "limit": 15.0,
+    "units": "in",
+    "comparator": ">=",
+    "settles": "island knee room",
+    "detail": "overhang past the island bases: 15 in (limit >= 15 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "island-knee"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "75ef6a561708904255ae6cdf56493242a5dd7a30eaad96340eb360db5613a964"
+}

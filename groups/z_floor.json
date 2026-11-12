@@ -1,0 +1,8 @@
+{
+  "kind": "zone",
+  "title": "Floor",
+  "members": [
+    "floor",
+    "floor_removal"
+  ]
+}

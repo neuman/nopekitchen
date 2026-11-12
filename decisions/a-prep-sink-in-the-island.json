@@ -1,0 +1,31 @@
+{
+  "title": "A prep sink in the island",
+  "when": "2026-11-12T19:08:05Z",
+  "summary": "With the refrigerator at the hall end the only sink is 12.8 ft from it. A small second sink in the island makes the cook's triangle refrigerator, island sink, range: 8.1 ft at its longest and 19.1 ft in all. It adds about 3,600 USD before tax and needs a drain through the floor (A5).",
+  "rejected": [
+    {
+      "value": "the contractor's plan as drawn, no island sink",
+      "why": "refrigerator to sink is 12.8 ft against 9 and the triangle 27.0 ft against 26",
+      "type": "infeasible",
+      "returns_if": {
+        "text": "when a plumber says a drain cannot reach the island (A5): then accept the long leg, or keep the refrigerator in the alcove"
+      }
+    },
+    {
+      "value": "refrigerator stays in the alcove",
+      "why": "refrigerator to range is 12.0 ft against 9, and the alcove cannot become a pantry",
+      "type": "infeasible",
+      "returns_if": {
+        "text": "when the hall end cannot take the refrigerator (P4)"
+      }
+    }
+  ],
+  "params_changed": [
+    "prep_sink",
+    "fridge_at"
+  ],
+  "claims_changed": [
+    "C3",
+    "C4"
+  ]
+}

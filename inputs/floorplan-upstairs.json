@@ -1,0 +1,18 @@
+{
+  "path": "inputs/sketches/floorplan-upstairs.png",
+  "kind": "sketch",
+  "description": "Homestyler floor plan of the upper storey with room sizes",
+  "sha256": "4134702457108d712008d58280efc26b97240820f2e75e89a248b11b8ee97875",
+  "added": "2026-11-12T18:57:48Z",
+  "extractions": [
+    {
+      "what": "Kitchen 193 sq ft, 11 ft 9 in by about 16 ft 6 in; living and dining 507 sq ft, east part 10 ft 5 in wide; office 10 ft 5 in by 5 ft; bedrooms 236, 89, 85 sq ft; closets 49, 26, 10, 10 sq ft; stair opening south of the kitchen beside the hallway. Drawn in a consumer app, so sizes are approximate",
+      "grounds": [
+        "floor_area_sqft",
+        "living_east_w",
+        "living_south_d"
+      ],
+      "confidence": "scaled"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "statement": "The aisle between the long run and the island is at least 42 in",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "work aisle width",
+    "comparator": ">=",
+    "limit": 42.0,
+    "units": "in"
+  },
+  "rationale": "NKBA: 42 in is the work aisle for one cook; under it an open oven door blocks the aisle",
+  "tags": [
+    "aisle-one"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Counter edge of the long run to the island top, from the model",
+    "evaluators": [
+      "kitchen.aisle_one_cook"
+    ]
+  },
+  "requirements": [
+    "R2"
+  ]
+}

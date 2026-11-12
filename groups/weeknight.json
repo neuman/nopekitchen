@@ -1,0 +1,13 @@
+{
+  "kind": "board",
+  "title": "One cook, a weeknight",
+  "line": "The cook's walk between refrigerator, sink and range is short and clear.",
+  "members": [
+    "C3",
+    "C4",
+    "C5",
+    "C7",
+    "A5"
+  ],
+  "order": 2
+}

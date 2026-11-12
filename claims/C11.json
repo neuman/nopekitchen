@@ -1,0 +1,25 @@
+{
+  "statement": "The chosen cabinet line is offered in high gloss, in the chosen lower colour and the chosen lighter upper colour",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "finish requirements not offered",
+    "comparator": "<=",
+    "limit": 0.0,
+    "units": "requirements"
+  },
+  "rationale": "the person's brief: rich bright lower, lighter upper, both high gloss. A line that cannot do one of them is not the kitchen asked for",
+  "tags": [
+    "finish-offered"
+  ],
+  "mechanism": {
+    "by": "datasheet",
+    "how": "The catalog entry for the chosen line, read for gloss and for both colours",
+    "evaluators": [
+      "kitchen.finish_offered"
+    ]
+  },
+  "requirements": [
+    "R5",
+    "R9"
+  ]
+}

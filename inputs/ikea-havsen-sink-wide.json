@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/ikea-havsen-sink-wide.jpg",
+  "kind": "reference",
+  "description": "IKEA HAVSEN apron-front sink at 299 USD on marble-look quartz",
+  "sha256": "26b3f302d5d41f97a3f7821fccfc3dfec98970589d0e3cf647422c59588a066e",
+  "added": "2026-11-12T18:57:52Z",
+  "extractions": [
+    {
+      "what": "HAVSEN/LILLVIKEN white apron-front sink, 299 USD, in a marble-look top with a spring pull-down faucet",
+      "grounds": [
+        "R4"
+      ]
+    }
+  ]
+}

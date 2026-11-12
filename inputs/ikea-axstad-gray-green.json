@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/ikea-axstad-gray-green.jpg",
+  "kind": "reference",
+  "description": "IKEA AXSTAD gray-green, 158 USD per linear ft",
+  "sha256": "39b863d54470f77ce440c81621d3a0ab96f623049df6f2ccf60f362bb5a0ec32",
+  "added": "2026-11-12T18:57:50Z",
+  "extractions": [
+    {
+      "what": "AXSTAD gray-green inset-panel door, 158 USD per linear ft, 10x10 layout 3169 USD",
+      "grounds": [
+        "R5"
+      ]
+    }
+  ]
+}

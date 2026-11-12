@@ -1,0 +1,24 @@
+{
+  "statement": "Two people can pass in the work aisle: it is at least 48 in",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "work aisle width",
+    "comparator": ">=",
+    "limit": 48.0,
+    "units": "in"
+  },
+  "rationale": "NKBA: 48 in is the work aisle where more than one person cooks; on a holiday someone stands at the range while another carries a dish past",
+  "tags": [
+    "aisle-two"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "The same aisle against the wider limit",
+    "evaluators": [
+      "kitchen.aisle_two_cooks"
+    ]
+  },
+  "requirements": [
+    "R3"
+  ]
+}

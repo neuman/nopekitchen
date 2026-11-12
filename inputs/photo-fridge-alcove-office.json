@@ -1,0 +1,17 @@
+{
+  "path": "inputs/references/photo-fridge-alcove-office.jpg",
+  "kind": "reference",
+  "description": "Existing fridge alcove beside the dishwasher, office slider, dining table",
+  "sha256": "708a6333a7044a7117b9941feea8abb438d2fcfc65f93881efa0699e1bae0ca3",
+  "added": "2026-11-12T18:57:49Z",
+  "extractions": [
+    {
+      "what": "The fridge stands in a recess at the east end of the sink wall, behind a stub wall; right of it a wall segment with a post, then the office slider. Alcove size is not measurable from the photo",
+      "grounds": [
+        "alcove_w",
+        "alcove_d"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

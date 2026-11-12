@@ -1,0 +1,24 @@
+{
+  "statement": "The plank chosen for the upstairs has a wear layer of 20 mil or more",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "floor wear layer",
+    "comparator": ">=",
+    "limit": 20.0,
+    "units": "mil"
+  },
+  "rationale": "20 mil is the residential floor for a home with children and a kitchen; 12 mil builder planks scratch through",
+  "tags": [
+    "floor-wear"
+  ],
+  "mechanism": {
+    "by": "datasheet",
+    "how": "The wear layer the maker states for the chosen plank, as recorded in the catalog",
+    "evaluators": [
+      "kitchen.floor_wear"
+    ]
+  },
+  "requirements": [
+    "R8"
+  ]
+}

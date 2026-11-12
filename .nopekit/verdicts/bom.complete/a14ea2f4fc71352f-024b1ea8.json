@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "gate": "bom.complete",
+  "rho": "a14ea2f4fc71352f4dd41567964508ce21e6a3d79ca164536f218a9dc8061ab9",
+  "code": {
+    "digest": "bc2b1ff651af4709a63d0f997cf8a4562f4cb7a7182906599c292fdb07a8f10d",
+    "files": [
+      "<pack:sourcing>/bomlib.py",
+      "<pack:sourcing>/gates/sourcing.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "bom",
+          "bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "budget_total"
+        ],
+        "49a591d1ff2417b0fe97251a4a19e8f753b1c54d9f4b931f5a5a5525b0d58f4b",
+        60000.0
+      ],
+      [
+        [
+          "bom",
+          "build_quantity"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ],
+      [
+        [
+          "bom",
+          "charges"
+        ],
+        "dabeb0234e6337ff808b12464d9f9019ced458e76513f653e2a821ff7f18817d"
+      ],
+      [
+        [
+          "bom",
+          "currency"
+        ],
+        "80d78a1fa9b71501a051a47776aa3278e6e0fa97b83a72e02141ddfe0d4b486c",
+        "USD"
+      ],
+      [
+        [
+          "bom",
+          "lines"
+        ],
+        "67a5f9e4b609f02159ef3969a32cc06474e7a37147fbfa9a41cc2d277de2229c"
+      ],
+      [
+        [
+          "bom",
+          "schema"
+        ],
+        "ec05e2e7609cd37cc85a36007a2adfeb4a5c9daabccdd9a40d8e63996acd2dc4",
+        "nopekit.bom/1"
+      ],
+      [
+        [
+          "bom"
+        ],
+        "989408d0b723a79f06ff157b283b48e6bde27f63d9dd11b6f6e3d6ea7017bccc"
+      ],
+      [
+        [
+          "bom.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {},
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "lines",
+    "comparator": "<=",
+    "settles": "bill of materials completeness",
+    "detail": "0 of 25 lines not orderable (limit 0) — every line has a part number, a quantity and a usable price",
+    "evidence": [
+      "<out>/bom_complete.json"
+    ],
+    "locators": [],
+    "claims": [
+      "sourcing",
+      "procurement",
+      "bom",
+      "cost",
+      "availability",
+      "supply-chain"
+    ],
+    "tier": 0,
+    "pack": "sourcing"
+  },
+  "digest": "a30c9ba445a5f69e2d02a3a3b6d3da97cbafb7d05201f6e8a3b9b938d7218f3f"
+}

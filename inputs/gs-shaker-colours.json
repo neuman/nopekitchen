@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/gs-shaker-colours.jpg",
+  "kind": "reference",
+  "description": "GS showroom shaker colours: Fairy Green, Black, Artisanal Ash, Timber, Swan White, Navy Blue",
+  "sha256": "31f572fd97d4b6edf787e9a89c48bc6de339ab93af2bb9766566b9897dd232c1",
+  "added": "2026-11-12T18:57:52Z",
+  "extractions": [
+    {
+      "what": "GS Kitchen and Bath shaker doors with bar pulls: Fairy Green, Black, Artisanal Ash, Timber, Swan White, Navy Blue. Painted matt shaker, not gloss, not integrated handle",
+      "grounds": [
+        "R5"
+      ]
+    }
+  ]
+}

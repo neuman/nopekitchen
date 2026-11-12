@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/ikea-terrsjo-door.jpg",
+  "kind": "reference",
+  "description": "IKEA TERRSJO red-brown wave-pattern door, 15x30 at 85 USD",
+  "sha256": "f72bb7145a2b866ba0f249460b3cf366d792292f0210d0ea95c8b1d4be7f2a6f",
+  "added": "2026-11-12T18:57:51Z",
+  "extractions": [
+    {
+      "what": "TERRSJO red-brown wave-pattern door 15x30 at 85 USD; 18x30 at 134 USD; an accent front",
+      "grounds": [
+        "R5"
+      ]
+    }
+  ]
+}

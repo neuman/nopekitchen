@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "gate": "kitchen.floor_wear",
+  "rho": "2bfb3521a0a7e26d144335ddc2e5a7b656fae517b8b5603c71e7c84eda281088",
+  "code": {
+    "digest": "c2efadb35bcdf6d340c90aadfe2c88cab91a5909b1bd9f0c06cf0861ab123f13",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "floor_wear_mil"
+        ],
+        "7bf4b34af2d4dc12ba874040cf9f3be4ab0b3ac63d997285de71f95d4a1501d7",
+        22
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C14": "a5e49976ef2da5d87a789b0b2c8be0d8ea9aee1b78ce9fc6c6a49538df185042",
+      "acceptance:C14": "a1ba292772ce6fc8417c2c3b688f8ed01c9aa745e2abc718dbf802b215a3a4e7"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 22.0,
+    "limit": 20.0,
+    "units": "mil",
+    "comparator": ">=",
+    "settles": "floor wear layer",
+    "detail": "stated wear layer: 22 mil (limit >= 20 mil)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "floor-wear"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "4c484147f15b8448305686f9493bbdb5533ba31b78984847bf28af86229281da"
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "zone",
+  "title": "Cabinets and colours",
+  "members": [
+    "cab_line",
+    "lower_color",
+    "upper_color",
+    "handles",
+    "cab_install"
+  ]
+}

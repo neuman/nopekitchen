@@ -1,0 +1,59 @@
+{
+  "title": "IKEA boxes with 27estore gloss lacquer fronts",
+  "when": "2026-11-12T19:08:05Z",
+  "summary": "The only route found with true high gloss, any RAL colour for a bright lower and a light upper, and a published price, about 11,000 USD for this kitchen. Gentian blue under oyster white is the recorded pair; any RAL pair costs the same. The integrated handle is seen in one image only (A4).",
+  "rejected": [
+    {
+      "value": "IKEA VOXTORP high gloss",
+      "why": "integrated handle and gloss from stock, but one colour in the US: dark gray-brown",
+      "type": "infeasible",
+      "returns_if": {
+        "text": "when IKEA sells VOXTORP gloss in a bright colour in the US"
+      }
+    },
+    {
+      "value": "Bofronts Pull fronts",
+      "why": "a verified integrated pull in any Benjamin Moore colour, but satin, and about 6,000 USD more",
+      "type": "dominated",
+      "returns_if": {
+        "text": "when 27estore cannot make an integrated handle (A4) and satin is acceptable"
+      }
+    },
+    {
+      "value": "Bauformat Seattle handleless gloss lacquer",
+      "why": "kitchens from about 25,000 USD: the job passes 80,000 USD",
+      "type": "infeasible",
+      "returns_if": {
+        "claim": "C1",
+        "quantity": "margin",
+        "comparator": ">",
+        "value": 0.3
+      }
+    },
+    {
+      "value": "the contractor's GS painted shaker",
+      "why": "matt paint with bar pulls: not gloss, no integrated handle",
+      "type": "infeasible",
+      "returns_if": {
+        "text": "when the brief changes to a painted shaker"
+      }
+    },
+    {
+      "value": "a local shop with Lioher finger-pull gloss doors",
+      "why": "navy over white only, and 15,000 to 28,000 USD",
+      "type": "unevaluated",
+      "returns_if": {
+        "text": "when a shop quotes it under 14,000 USD"
+      }
+    }
+  ],
+  "params_changed": [
+    "cab_line",
+    "lower_color",
+    "upper_color"
+  ],
+  "claims_changed": [
+    "C11",
+    "C1"
+  ]
+}

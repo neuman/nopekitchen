@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/ikea-lerhyttan-blue.jpg",
+  "kind": "reference",
+  "description": "IKEA LERHYTTAN blue, 200 USD per linear ft",
+  "sha256": "cd97888e0f056bc1679ae6c000646d7ddd8dd522379e632091f176d10ebd19d4",
+  "added": "2026-11-12T18:57:51Z",
+  "extractions": [
+    {
+      "what": "LERHYTTAN blue, solid wood frame, 200 USD per linear ft, 10x10 layout 4003 USD, marked New",
+      "grounds": [
+        "R5"
+      ]
+    }
+  ]
+}

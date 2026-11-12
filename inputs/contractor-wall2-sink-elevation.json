@@ -1,0 +1,16 @@
+{
+  "path": "inputs/sketches/contractor-wall2-sink-elevation.jpg",
+  "kind": "sketch",
+  "description": "GS Kitchen and Bath elevation of wall 2: sink under 49 in window, dishwasher, 138 in",
+  "sha256": "082326e1b966ca80854968383f6705d1895f5de293ecdcf7cbe10dbd12141cef",
+  "added": "2026-11-12T18:57:49Z",
+  "extractions": [
+    {
+      "what": "From the corner: 36 corner, 2 filler, 24, 33 sink base, 24 dishwasher, 18 drawers, 1 filler = 138. Window 49 wide over the sink; uppers 24 corner + 27 left of the window and 33 right of it, 30 high",
+      "grounds": [
+        "wall2_len",
+        "window_w"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "zone",
+  "title": "Counter, sink and wall",
+  "members": [
+    "counter",
+    "sink",
+    "faucet",
+    "backsplash"
+  ]
+}

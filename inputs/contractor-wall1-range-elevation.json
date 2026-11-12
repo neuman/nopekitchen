@@ -1,0 +1,18 @@
+{
+  "path": "inputs/sketches/contractor-wall1-range-elevation.jpg",
+  "kind": "sketch",
+  "description": "GS Kitchen and Bath elevation of wall 1: fridge, range, uppers, 193 in",
+  "sha256": "97f430dc65668d55bc14c315ea873e07528da18d18e1c939c29f0fbeda37b95e",
+  "added": "2026-11-12T18:57:49Z",
+  "extractions": [
+    {
+      "what": "From the hallway end: 2 3/4 filler, 36 fridge, 1 1/4 panel, 33, 30, 30 range, 24, 36 corner = 193. Uppers 40 high beside a 24 over the hood and 30 high to the corner; base 34 1/2, top 1 1/2, 18 to uppers, tops at 84, wall 96",
+      "grounds": [
+        "wall1_len",
+        "base_h",
+        "upper_gap",
+        "cab_top"
+      ]
+    }
+  ]
+}

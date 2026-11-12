@@ -1,0 +1,11 @@
+{
+  "statement": "The dining table stands at least 44 in east of the island's seats, so people walk behind the stools",
+  "kind": "physical",
+  "rationale": "the island's seat edge is 27.5 in inside the post line; the table is furniture and its place is not in the model. NKBA: 44 in to walk behind a seated person",
+  "mechanism": {
+    "how": "With tape on the floor where the island edge will be, set two chairs at it and measure to the table"
+  },
+  "requirements": [
+    "R3"
+  ]
+}

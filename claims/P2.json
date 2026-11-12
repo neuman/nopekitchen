@@ -1,0 +1,11 @@
+{
+  "statement": "Both children can get a cup, a plate, water and a snack without help and without walking between the cook and the range",
+  "kind": "physical",
+  "rationale": "no drawing settles what a 5-year-old does",
+  "mechanism": {
+    "how": "After the build: ask each child to set their own place and get a snack while someone cooks at the range; watch where they walk"
+  },
+  "requirements": [
+    "R4"
+  ]
+}

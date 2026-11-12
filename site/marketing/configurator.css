@@ -1,0 +1,95 @@
+/* The configurator. Uses page.css's tokens, so it follows the theme button. */
+.cfg { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 20px 16px 8px; max-width: 1500px; margin: 0 auto; }
+.cfg-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); margin: 0 0 4px; letter-spacing: -0.02em; text-wrap: balance; }
+.cfg-lede { margin: 0 0 12px; color: var(--ink-2); max-width: 62ch; }
+.cfg-stage { height: min(46svh, 540px); min-height: 320px; border-radius: 14px; overflow: hidden; border: 1px solid var(--grid);
+  background: radial-gradient(120% 90% at 50% 0%, var(--surface) 0%, var(--surface-2) 100%); color: var(--ink-2); display: grid; place-items: center; text-align: center; }
+.cfg-stage canvas { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+.cfg-viewbar { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 10px; }
+.cfg-seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--grid); border-radius: 9px; overflow: hidden; background: var(--surface); }
+.cfg-seg button { font: inherit; font-size: 0.82rem; padding: 6px 10px; border: 0; background: none; color: var(--ink-2); cursor: pointer; border-right: 1px solid var(--grid); }
+.cfg-seg button:last-child { border-right: 0; }
+.cfg-seg button.is-on { background: var(--ink); color: var(--page); }
+.cfg-budget { margin-top: 16px; }
+.cfg-total-num { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.cfg-total-of { color: var(--ok-ink); font-weight: 600; }
+.cfg-total.is-over .cfg-total-num, .cfg-total.is-over .cfg-total-of { color: var(--fail-ink); }
+.cfg-bar { height: 12px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--grid); overflow: hidden; display: flex; margin: 8px 0 6px; }
+.cfg-bar-k { background: var(--accent); }
+.cfg-bar-f { background: var(--amber-strong); }
+.cfg-split { margin: 0; font-size: 0.85rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.cfg-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.cfg-chip { font-size: 0.82rem; padding: 4px 10px; border-radius: 999px; text-decoration: none; border: 1px solid; font-weight: 600; }
+.cfg-chip.ok { color: var(--ok-ink); background: var(--ok-soft); border-color: transparent; }
+.cfg-chip.bad { color: var(--fail-ink); background: var(--fail-soft); border-color: var(--fail); }
+.cfg-state { margin: 12px 0 0; padding: 10px 12px; border-radius: 10px; font-size: 0.9rem; background: var(--amber-soft); color: var(--amber-ink); }
+.cfg-state.rec { background: var(--ok-soft); color: var(--ok-ink); }
+.cfg-state a { color: inherit; }
+.cfg-link { font: inherit; background: none; border: 0; padding: 0; color: inherit; text-decoration: underline; cursor: pointer; }
+.cfg-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.cfg-btn { font: inherit; font-size: 0.88rem; padding: 8px 14px; border-radius: 9px; border: 1px solid var(--axis); background: var(--surface); color: var(--ink); cursor: pointer; }
+.cfg-btn:hover { border-color: var(--ink); }
+
+.cfg-controls { display: grid; gap: 14px; align-content: start; }
+.cfg-group { border: 1px solid var(--grid); border-radius: 12px; padding: 12px 12px 14px; background: var(--surface); }
+.cfg-group h3 { margin: 0 0 2px; font-size: 0.95rem; }
+.cfg-group h4 { margin: 12px 0 6px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 600; }
+.cfg-hint { margin: 0 0 8px; font-size: 0.8rem; color: var(--ink-2); }
+.cfg-note { margin: 8px 0 0; font-size: 0.8rem; color: var(--ink-2); }
+.cfg-choices { display: grid; gap: 6px; margin-top: 6px; }
+.cfg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cfg-choice { font: inherit; text-align: left; display: grid; grid-template-columns: 1fr auto; gap: 0 8px; align-items: center; padding: 8px 10px; border-radius: 9px;
+  border: 1px solid var(--grid); background: var(--page); color: var(--ink); cursor: pointer; }
+.cfg-choice.has-chip { grid-template-columns: 18px 1fr auto; }
+.cfg-choice.has-chip::before { content: ""; width: 18px; height: 18px; border-radius: 5px; background: var(--chip); border: 1px solid var(--ring); grid-row: span 2; }
+.cfg-choice:hover:not(:disabled) { border-color: var(--axis); }
+.cfg-choice.is-on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.cfg-choice:disabled { opacity: 0.4; cursor: not-allowed; }
+.cfg-choice-label { font-size: 0.86rem; font-weight: 550; }
+.cfg-choice-sub { grid-column: 1; font-size: 0.74rem; color: var(--muted); }
+.cfg-choice.has-chip .cfg-choice-sub { grid-column: 2; }
+.cfg-delta { grid-row: 1 / span 2; grid-column: -2; font-size: 0.78rem; font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+.cfg-delta.up { color: var(--fail-ink); }
+.cfg-delta.down { color: var(--ok-ink); }
+.cfg-swatches { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.cfg-swatch { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--ring); cursor: pointer; padding: 0;
+  background: radial-gradient(circle at 32% 28%, rgba(255,255,255,0.75) 0 9%, transparent 30%), var(--sw); }
+.cfg-swatch.is-on { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.cfg-below { display: grid; gap: 14px; }
+.cfg-fold { border: 1px solid var(--grid); border-radius: 12px; background: var(--surface); padding: 4px 14px; }
+.cfg-fold summary { cursor: pointer; padding: 10px 0; }
+.cfg-fold-title { font-weight: 650; }
+.cfg-fold-sub { color: var(--muted); font-size: 0.85rem; margin-left: 6px; }
+.cfg-lenses { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 6px 26px; padding-bottom: 12px; }
+.cfg-lens h4 { margin: 10px 0 4px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.cfg-lens ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.cfg-lens li { display: grid; grid-template-columns: 18px 1fr; gap: 0 6px; font-size: 0.86rem; }
+.cfg-notes li { display: list-item; list-style: disc; margin-left: 18px; color: var(--ink-2); }
+.cfg-mark { font-weight: 700; }
+.cfg-lens li.ok .cfg-mark { color: var(--ok); }
+.cfg-lens li.bad .cfg-mark, .cfg-lens li.bad .cfg-val { color: var(--fail-ink); }
+.cfg-val { grid-column: 2; color: var(--ink-2); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.cfg-id { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+.cfg-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin-bottom: 12px; }
+#cfg-bill-body { overflow-x: auto; }
+.cfg-table th { text-align: left; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--axis); }
+.cfg-table td { padding: 7px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+.cfg-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cfg-table tr.sum td { color: var(--ink-2); border-bottom: 0; padding: 4px 8px; }
+.cfg-table tr.grand td { font-weight: 700; color: var(--ink); font-size: 1rem; border-top: 1px solid var(--axis); padding-top: 8px; }
+.cfg-vendor { display: block; font-size: 0.74rem; color: var(--muted); }
+.cfg-basis { font-size: 0.72rem; padding: 2px 7px; border-radius: 999px; white-space: nowrap; background: var(--surface-2); color: var(--ink-2); }
+.cfg-basis.estimate { background: var(--amber-soft); color: var(--amber-ink); }
+.cfg-basis.tag { background: var(--ok-soft); color: var(--ok-ink); }
+
+@media (min-width: 980px) {
+  .cfg { grid-template-columns: minmax(0, 1fr) 400px; padding: 24px 24px 8px; }
+  .cfg-left { position: sticky; top: calc(var(--viewnav-h, 52px) + 12px); align-self: start; }
+  .cfg-controls { grid-column: 2; grid-row: 1; }
+  .cfg-below { grid-column: 1 / -1; }
+}
+.cfg-fold summary { font-family: var(--sans); text-transform: none; letter-spacing: 0; color: var(--ink); font-size: 1rem; }
+.cfg-fold summary .cfg-fold-sub { font-weight: 400; }
+.cfg > *, .cfg-below > *, .cfg-fold > * { min-width: 0; }
+.cfg-lenses { grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); }

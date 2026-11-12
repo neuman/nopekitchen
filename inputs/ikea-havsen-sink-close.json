@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/ikea-havsen-sink-close.jpg",
+  "kind": "reference",
+  "description": "IKEA HAVSEN/LILLVIKEN sink close view, 299 USD",
+  "sha256": "51f51d7e653f87348dcf345ff6e6211c7bebd07df528244b80457b2abf6e2ad6",
+  "added": "2026-11-12T18:57:52Z",
+  "extractions": [
+    {
+      "what": "Same HAVSEN/LILLVIKEN sink at 299 USD; marble-look quartz with warm veining is the countertop taste",
+      "grounds": [
+        "R4"
+      ]
+    }
+  ]
+}

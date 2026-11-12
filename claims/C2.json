@@ -1,0 +1,25 @@
+{
+  "statement": "Every line of the job has a supplier, a quantity and a price",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "bill of materials completeness",
+    "comparator": "<=",
+    "limit": 0.0,
+    "units": "lines"
+  },
+  "rationale": "a line with no price is an unknown, not a zero; the total means nothing while one exists",
+  "tags": [
+    "bom"
+  ],
+  "mechanism": {
+    "by": "datasheet",
+    "how": "Each line of the bill is read for a supplier, a quantity and a usable price",
+    "evaluators": [
+      "bom.complete"
+    ]
+  },
+  "requirements": [
+    "R1",
+    "R9"
+  ]
+}

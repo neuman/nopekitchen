@@ -1,0 +1,17 @@
+{
+  "path": "inputs/sketches/contractor-plan-room1.jpg",
+  "kind": "sketch",
+  "description": "GS Kitchen and Bath plan view: cabinet codes, wall lengths 193 and 138 in, island 64 in",
+  "sha256": "3182e26d8ffed329e2066b1f7802c070d385aca7e521430aa877820200ad7737",
+  "added": "2026-11-12T18:57:48Z",
+  "extractions": [
+    {
+      "what": "L-shape: wall 1 is 193 in, wall 2 is 138 in, return walls 3 and 4 are 30 in each; island top 64 in over two B30 bases; codes REF36, B33, B3D30, ST30, B24, DCB36, FL2, B24, SB33, DW24, B3D18, FL1; uppers W3621, W3340, W3040, W3024, FL640, W3030, WDC2430, W2730, W3330",
+      "grounds": [
+        "wall1_len",
+        "wall2_len",
+        "island_len"
+      ]
+    }
+  ]
+}

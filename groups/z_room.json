@@ -1,0 +1,14 @@
+{
+  "kind": "zone",
+  "title": "The room as measured",
+  "members": [
+    "wall1_len",
+    "wall2_len",
+    "window_w",
+    "kitchen_w",
+    "alcove_w",
+    "alcove_d",
+    "floor_area_sqft",
+    "fridge_d"
+  ]
+}

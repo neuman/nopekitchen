@@ -1,0 +1,25 @@
+{
+  "statement": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "build cost per unit",
+    "comparator": "<=",
+    "limit": 60000.0,
+    "units": "USD/run"
+  },
+  "rationale": "$60k is the person's number for everything; the model's budget_usd is the same number and check warns if they part",
+  "tags": [
+    "budget"
+  ],
+  "mechanism": {
+    "by": "datasheet",
+    "how": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget",
+    "evaluators": [
+      "bom.cost"
+    ]
+  },
+  "requirements": [
+    "R1",
+    "R9"
+  ]
+}

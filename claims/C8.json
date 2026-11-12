@@ -1,0 +1,24 @@
+{
+  "statement": "The island seats both children",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "island seats",
+    "comparator": ">=",
+    "limit": 2.0,
+    "units": "seats"
+  },
+  "rationale": "two children, each a 24 in NKBA seat; the dining table 6 ft away seats the family, so the island need not",
+  "tags": [
+    "island-seats"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Island length divided by 24 in",
+    "evaluators": [
+      "kitchen.island_seats"
+    ]
+  },
+  "requirements": [
+    "R4"
+  ]
+}

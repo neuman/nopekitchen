@@ -1,0 +1,3550 @@
+{
+  "columns": {
+    "requirements": 0
+  },
+  "edges": {
+    "contradicts": {},
+    "needs": {
+      "evaluator:bom.cost": [
+        "evaluator:bom.complete"
+      ],
+      "evaluator:bom.moq": [
+        "evaluator:bom.complete"
+      ]
+    },
+    "reads": {
+      "evaluator:bom.availability": [
+        "value:bom",
+        "value:bom.bom",
+        "value:bom.lead_time_budget_weeks",
+        "value:lead_time_budget_weeks",
+        "value:sourcing",
+        "value:sourcing.bom",
+        "value:sourcing.lead_time_budget_weeks"
+      ],
+      "evaluator:bom.complete": [
+        "value:bom",
+        "value:bom.bom",
+        "value:sourcing",
+        "value:sourcing.bom"
+      ],
+      "evaluator:bom.cost": [
+        "value:bom",
+        "value:bom.bom",
+        "value:bom.budget_per_unit",
+        "value:budget_per_unit",
+        "value:sourcing",
+        "value:sourcing.bom",
+        "value:sourcing.budget_per_unit"
+      ],
+      "evaluator:bom.currency": [
+        "value:bom",
+        "value:bom.bom",
+        "value:sourcing",
+        "value:sourcing.bom"
+      ],
+      "evaluator:bom.moq": [
+        "value:bom",
+        "value:bom.bom",
+        "value:bom.moq_excess_limit",
+        "value:bom.moq_excess_total_limit",
+        "value:bom.moq_idle_limit_fraction",
+        "value:bom.moq_ratio_limit",
+        "value:moq_excess_limit",
+        "value:moq_excess_total_limit",
+        "value:moq_idle_limit_fraction",
+        "value:moq_ratio_limit",
+        "value:sourcing",
+        "value:sourcing.bom",
+        "value:sourcing.moq_excess_limit",
+        "value:sourcing.moq_excess_total_limit",
+        "value:sourcing.moq_idle_limit_fraction",
+        "value:sourcing.moq_ratio_limit"
+      ],
+      "evaluator:bom.single_source": [
+        "value:bom",
+        "value:bom.bom",
+        "value:bom.single_source_limit",
+        "value:single_source_limit",
+        "value:sourcing",
+        "value:sourcing.bom",
+        "value:sourcing.single_source_limit"
+      ],
+      "evaluator:kitchen.aisle_one_cook": [
+        "value:work_aisle_in"
+      ],
+      "evaluator:kitchen.aisle_two_cooks": [
+        "value:work_aisle_in"
+      ],
+      "evaluator:kitchen.dishwasher_room": [
+        "value:dishwasher_standing_in"
+      ],
+      "evaluator:kitchen.finish_offered": [
+        "value:finish_unmet",
+        "value:finish_unmet_count"
+      ],
+      "evaluator:kitchen.floor_wear": [
+        "value:floor_wear_mil"
+      ],
+      "evaluator:kitchen.island_knee": [
+        "value:island_knee_in"
+      ],
+      "evaluator:kitchen.island_seats": [
+        "value:island_seats"
+      ],
+      "evaluator:kitchen.microwave_reach": [
+        "value:kid_small_shoulder_in",
+        "value:microwave_bottom_in",
+        "value:microwave_over_reach_in"
+      ],
+      "evaluator:kitchen.run_fill": [
+        "value:run_fill_error_in",
+        "value:wall1_fill_error_in",
+        "value:wall2_fill_error_in"
+      ],
+      "evaluator:kitchen.triangle_leg": [
+        "value:leg_fridge_wet_ft",
+        "value:leg_range_fridge_ft",
+        "value:leg_wet_range_ft",
+        "value:triangle_longest_ft"
+      ],
+      "evaluator:kitchen.triangle_total": [
+        "value:triangle_total_ft"
+      ],
+      "evaluator:kitchen.window_gap": [
+        "value:window_gap_in"
+      ]
+    },
+    "resolves": {},
+    "rests_on": {},
+    "serves": {
+      "claim:A1": [
+        "requirement:R7"
+      ],
+      "claim:A2": [
+        "requirement:R1"
+      ],
+      "claim:A3": [
+        "requirement:R6",
+        "requirement:R8"
+      ],
+      "claim:A4": [
+        "requirement:R5"
+      ],
+      "claim:A5": [
+        "requirement:R2"
+      ],
+      "claim:A6": [
+        "requirement:R4"
+      ],
+      "claim:C1": [
+        "requirement:R1",
+        "requirement:R9"
+      ],
+      "claim:C10": [
+        "requirement:R4"
+      ],
+      "claim:C11": [
+        "requirement:R5",
+        "requirement:R9"
+      ],
+      "claim:C12": [
+        "requirement:R6"
+      ],
+      "claim:C13": [
+        "requirement:R6"
+      ],
+      "claim:C14": [
+        "requirement:R8"
+      ],
+      "claim:C2": [
+        "requirement:R1",
+        "requirement:R9"
+      ],
+      "claim:C3": [
+        "requirement:R2"
+      ],
+      "claim:C4": [
+        "requirement:R2"
+      ],
+      "claim:C5": [
+        "requirement:R2"
+      ],
+      "claim:C6": [
+        "requirement:R3"
+      ],
+      "claim:C7": [
+        "requirement:R2",
+        "requirement:R3"
+      ],
+      "claim:C8": [
+        "requirement:R4"
+      ],
+      "claim:C9": [
+        "requirement:R4"
+      ],
+      "claim:P1": [
+        "requirement:R5"
+      ],
+      "claim:P2": [
+        "requirement:R4"
+      ],
+      "claim:P3": [
+        "requirement:R3"
+      ],
+      "claim:P4": [
+        "requirement:R6"
+      ]
+    },
+    "settles": {
+      "evaluator:bom.complete": [
+        "claim:C2"
+      ],
+      "evaluator:bom.cost": [
+        "claim:C1"
+      ],
+      "evaluator:kitchen.aisle_one_cook": [
+        "claim:C5"
+      ],
+      "evaluator:kitchen.aisle_two_cooks": [
+        "claim:C6"
+      ],
+      "evaluator:kitchen.dishwasher_room": [
+        "claim:C7"
+      ],
+      "evaluator:kitchen.finish_offered": [
+        "claim:C11"
+      ],
+      "evaluator:kitchen.floor_wear": [
+        "claim:C14"
+      ],
+      "evaluator:kitchen.island_knee": [
+        "claim:C9"
+      ],
+      "evaluator:kitchen.island_seats": [
+        "claim:C8"
+      ],
+      "evaluator:kitchen.microwave_reach": [
+        "claim:C10"
+      ],
+      "evaluator:kitchen.run_fill": [
+        "claim:C12"
+      ],
+      "evaluator:kitchen.triangle_leg": [
+        "claim:C3"
+      ],
+      "evaluator:kitchen.triangle_total": [
+        "claim:C4"
+      ],
+      "evaluator:kitchen.window_gap": [
+        "claim:C13"
+      ]
+    },
+    "sources": {
+      "input:contractor-plan-room1": [
+        "value:island_len",
+        "value:wall1_len",
+        "value:wall2_len"
+      ],
+      "input:contractor-wall1-range-elevation": [
+        "value:base_h",
+        "value:cab_top",
+        "value:upper_gap",
+        "value:wall1_len"
+      ],
+      "input:contractor-wall2-sink-elevation": [
+        "value:wall2_len",
+        "value:window_w"
+      ],
+      "input:floorplan-upstairs": [
+        "value:floor_area_sqft",
+        "value:living_east_w",
+        "value:living_south_d"
+      ],
+      "input:gs-shaker-colours": [
+        "value:R5"
+      ],
+      "input:ikea-axstad-gray-green": [
+        "value:R5"
+      ],
+      "input:ikea-begripa-handles": [
+        "value:R5"
+      ],
+      "input:ikea-havsen-sink-close": [
+        "value:R4"
+      ],
+      "input:ikea-havsen-sink-wide": [
+        "value:R4"
+      ],
+      "input:ikea-lerhyttan-blue": [
+        "value:R5"
+      ],
+      "input:ikea-majsjon-sink": [
+        "value:R4"
+      ],
+      "input:ikea-terrsjo-door": [
+        "value:R5"
+      ],
+      "input:ikea-voxtorp-gloss": [
+        "value:R5"
+      ],
+      "input:photo-dining-fireplace": [
+        "value:living_east_w"
+      ],
+      "input:photo-dining-to-living": [
+        "value:living_east_w"
+      ],
+      "input:photo-fridge-alcove-office": [
+        "value:alcove_d",
+        "value:alcove_w"
+      ],
+      "input:photo-kitchen-existing": [
+        "value:wall1_len",
+        "value:wall2_len"
+      ],
+      "input:photo-living-to-kitchen": [
+        "value:post_y"
+      ]
+    }
+  },
+  "evaluators": {
+    "bom.availability": {
+      "basis": "model-only",
+      "claims": [],
+      "current": true,
+      "outcome": "fail",
+      "outcome_word": "fail",
+      "pack": "sourcing",
+      "registered": true,
+      "tier": 0
+    },
+    "bom.complete": {
+      "basis": "model-only",
+      "claims": [
+        "C2"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "sourcing",
+      "registered": true,
+      "tier": 0
+    },
+    "bom.cost": {
+      "basis": "model-only",
+      "claims": [
+        "C1"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "sourcing",
+      "registered": true,
+      "tier": 0
+    },
+    "bom.currency": {
+      "basis": "model-only",
+      "claims": [],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "sourcing",
+      "registered": true,
+      "tier": 0
+    },
+    "bom.moq": {
+      "basis": "model-only",
+      "claims": [],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "sourcing",
+      "registered": true,
+      "tier": 0
+    },
+    "bom.process_rules": {
+      "basis": "sourced",
+      "claims": [],
+      "current": false,
+      "outcome": "skipped",
+      "outcome_word": "skipped",
+      "pack": "sourcing",
+      "registered": true,
+      "tier": 0
+    },
+    "bom.single_source": {
+      "basis": "model-only",
+      "claims": [],
+      "current": true,
+      "outcome": "fail",
+      "outcome_word": "fail",
+      "pack": "sourcing",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.aisle_one_cook": {
+      "basis": "sourced",
+      "claims": [
+        "C5"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.aisle_two_cooks": {
+      "basis": "sourced",
+      "claims": [
+        "C6"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.dishwasher_room": {
+      "basis": "sourced",
+      "claims": [
+        "C7"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.finish_offered": {
+      "basis": "model-only",
+      "claims": [
+        "C11"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.floor_wear": {
+      "basis": "sourced",
+      "claims": [
+        "C14"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.island_knee": {
+      "basis": "sourced",
+      "claims": [
+        "C9"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.island_seats": {
+      "basis": "sourced",
+      "claims": [
+        "C8"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.microwave_reach": {
+      "basis": "sourced",
+      "claims": [
+        "C10"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.run_fill": {
+      "basis": "model-only",
+      "claims": [
+        "C12"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.triangle_leg": {
+      "basis": "sourced",
+      "claims": [
+        "C3"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.triangle_total": {
+      "basis": "sourced",
+      "claims": [
+        "C4"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    },
+    "kitchen.window_gap": {
+      "basis": "model-only",
+      "claims": [
+        "C13"
+      ],
+      "current": true,
+      "outcome": "pass",
+      "outcome_word": "pass",
+      "pack": "",
+      "registered": true,
+      "tier": 0
+    }
+  },
+  "feeds": [
+    {
+      "choices": [
+        "island_top_d",
+        "island_aisle",
+        "island_north_aisle"
+      ],
+      "estimate": [],
+      "to": "station:s_island",
+      "zone": "zone:z_layout"
+    },
+    {
+      "choices": [
+        "island_len",
+        "island_aisle",
+        "island_north_aisle"
+      ],
+      "estimate": [],
+      "to": "station:s_triangle",
+      "zone": "zone:z_layout"
+    },
+    {
+      "choices": [
+        "sales_tax",
+        "contingency"
+      ],
+      "estimate": [],
+      "to": "station:s_total",
+      "zone": "zone:z_money"
+    },
+    {
+      "choices": [
+        "budget_usd"
+      ],
+      "estimate": [],
+      "to": "station:@bom",
+      "zone": "zone:z_money"
+    },
+    {
+      "choices": [
+        "floor_area_sqft"
+      ],
+      "estimate": [],
+      "to": "station:s_total",
+      "zone": "zone:z_room"
+    },
+    {
+      "choices": [
+        "fridge_d"
+      ],
+      "estimate": [],
+      "to": "station:s_triangle",
+      "zone": "zone:z_room"
+    },
+    {
+      "choices": [
+        "base_d"
+      ],
+      "estimate": [],
+      "to": "station:s_island",
+      "zone": "zone:z_std"
+    },
+    {
+      "choices": [
+        "counter_d"
+      ],
+      "estimate": [],
+      "to": "station:s_triangle",
+      "zone": "zone:z_std"
+    }
+  ],
+  "generated": "nopekit site build wrote this file from the records, the results in .nopekit/verdicts/ and site/content/. It is not a source. Change those, then build again.",
+  "lanes": [
+    "requirements",
+    "zones",
+    "stations",
+    "boards"
+  ],
+  "layers": [
+    1,
+    1,
+    1
+  ],
+  "legend": [
+    {
+      "n": 6,
+      "token": "gap"
+    },
+    {
+      "n": 4,
+      "token": "pending_build"
+    },
+    {
+      "n": 14,
+      "token": "checked"
+    }
+  ],
+  "lines": [
+    {
+      "amber": null,
+      "board": "budget",
+      "claim": "C1",
+      "errored": false,
+      "fed_by": [
+        "zone:z_money",
+        "zone:z_room"
+      ],
+      "marks": [],
+      "order": 0,
+      "reads_all": null,
+      "serves": [
+        "R1",
+        "R9"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:@bom": "read",
+        "station:s_total": "upstream"
+      },
+      "stops": [
+        "station:s_total",
+        "station:@bom",
+        "claim:C1"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "bom",
+        "bom.bom",
+        "bom.budget_per_unit",
+        "budget_per_unit",
+        "sourcing",
+        "sourcing.bom",
+        "sourcing.budget_per_unit"
+      ],
+      "via": {
+        "station:@bom": [
+          "bom"
+        ],
+        "station:s_total": [
+          "tax_usd",
+          "total_usd",
+          "contingency_usd",
+          "subtotal_usd"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "budget",
+      "claim": "C2",
+      "errored": false,
+      "fed_by": [
+        "zone:z_money",
+        "zone:z_room"
+      ],
+      "marks": [],
+      "order": 1,
+      "reads_all": null,
+      "serves": [
+        "R1",
+        "R9"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:@bom": "read",
+        "station:s_total": "upstream"
+      },
+      "stops": [
+        "station:s_total",
+        "station:@bom",
+        "claim:C2"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "bom",
+        "bom.bom",
+        "sourcing",
+        "sourcing.bom"
+      ],
+      "via": {
+        "station:@bom": [
+          "bom"
+        ],
+        "station:s_total": [
+          "tax_usd",
+          "total_usd",
+          "contingency_usd",
+          "subtotal_usd"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "budget",
+      "claim": "A2",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 2,
+      "reads_all": null,
+      "serves": [
+        "R1"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:A2"
+      ],
+      "taps": [],
+      "token": "gap",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim": "C3",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_room",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 3,
+      "reads_all": null,
+      "serves": [
+        "R2"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_triangle": "read"
+      },
+      "stops": [
+        "station:s_triangle",
+        "claim:C3"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "leg_fridge_wet_ft",
+        "leg_range_fridge_ft",
+        "leg_wet_range_ft",
+        "triangle_longest_ft"
+      ],
+      "via": {
+        "station:s_triangle": [
+          "leg_fridge_wet_ft",
+          "leg_range_fridge_ft",
+          "leg_wet_range_ft",
+          "triangle_longest_ft"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim": "C4",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_room",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 4,
+      "reads_all": null,
+      "serves": [
+        "R2"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_triangle": "read"
+      },
+      "stops": [
+        "station:s_triangle",
+        "claim:C4"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "triangle_total_ft"
+      ],
+      "via": {
+        "station:s_triangle": [
+          "triangle_total_ft"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim": "C5",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 5,
+      "reads_all": null,
+      "serves": [
+        "R2"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_island": "read"
+      },
+      "stops": [
+        "station:s_island",
+        "claim:C5"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "work_aisle_in"
+      ],
+      "via": {
+        "station:s_island": [
+          "work_aisle_in"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim": "C7",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 6,
+      "reads_all": null,
+      "serves": [
+        "R2",
+        "R3"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_island": "read"
+      },
+      "stops": [
+        "station:s_island",
+        "claim:C7"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "dishwasher_standing_in"
+      ],
+      "via": {
+        "station:s_island": [
+          "dishwasher_standing_in"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim": "A5",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 7,
+      "reads_all": null,
+      "serves": [
+        "R2"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:A5"
+      ],
+      "taps": [],
+      "token": "gap",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "holiday",
+      "claim": "C6",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 8,
+      "reads_all": null,
+      "serves": [
+        "R3"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_island": "read"
+      },
+      "stops": [
+        "station:s_island",
+        "claim:C6"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "work_aisle_in"
+      ],
+      "via": {
+        "station:s_island": [
+          "work_aisle_in"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "holiday",
+      "claim": "P3",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 9,
+      "reads_all": null,
+      "serves": [
+        "R3"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:P3"
+      ],
+      "taps": [],
+      "token": "pending_build",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim": "C8",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 10,
+      "reads_all": null,
+      "serves": [
+        "R4"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_island": "read"
+      },
+      "stops": [
+        "station:s_island",
+        "claim:C8"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "island_seats"
+      ],
+      "via": {
+        "station:s_island": [
+          "island_seats"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim": "C9",
+      "errored": false,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_std"
+      ],
+      "marks": [],
+      "order": 11,
+      "reads_all": null,
+      "serves": [
+        "R4"
+      ],
+      "sets": [],
+      "stop_kind": {
+        "station:s_island": "read"
+      },
+      "stops": [
+        "station:s_island",
+        "claim:C9"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "island_knee_in"
+      ],
+      "via": {
+        "station:s_island": [
+          "island_knee_in"
+        ]
+      }
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim": "C10",
+      "errored": false,
+      "fed_by": [
+        "zone:z_people"
+      ],
+      "marks": [],
+      "order": 12,
+      "reads_all": null,
+      "serves": [
+        "R4"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:C10"
+      ],
+      "taps": [
+        {
+          "choices": [
+            "kid_small_h"
+          ],
+          "zone": "zone:z_people"
+        }
+      ],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "kid_small_shoulder_in",
+        "microwave_bottom_in",
+        "microwave_over_reach_in"
+      ],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim": "A6",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 13,
+      "reads_all": null,
+      "serves": [
+        "R4"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:A6"
+      ],
+      "taps": [],
+      "token": "gap",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim": "P2",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 14,
+      "reads_all": null,
+      "serves": [
+        "R4"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:P2"
+      ],
+      "taps": [],
+      "token": "pending_build",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "finish",
+      "claim": "C11",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 15,
+      "reads_all": null,
+      "serves": [
+        "R5",
+        "R9"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:C11"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": true,
+      "values": [
+        "finish_unmet",
+        "finish_unmet_count"
+      ],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "finish",
+      "claim": "A4",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 16,
+      "reads_all": null,
+      "serves": [
+        "R5"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:A4"
+      ],
+      "taps": [],
+      "token": "gap",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "finish",
+      "claim": "P1",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 17,
+      "reads_all": null,
+      "serves": [
+        "R5"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:P1"
+      ],
+      "taps": [],
+      "token": "pending_build",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim": "C12",
+      "errored": false,
+      "fed_by": [
+        "zone:z_room"
+      ],
+      "marks": [],
+      "order": 18,
+      "reads_all": null,
+      "serves": [
+        "R6"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:C12"
+      ],
+      "taps": [
+        {
+          "choices": [
+            "wall1_len",
+            "wall2_len"
+          ],
+          "zone": "zone:z_room"
+        }
+      ],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "run_fill_error_in",
+        "wall1_fill_error_in",
+        "wall2_fill_error_in"
+      ],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim": "C13",
+      "errored": false,
+      "fed_by": [
+        "zone:z_room"
+      ],
+      "marks": [],
+      "order": 19,
+      "reads_all": null,
+      "serves": [
+        "R6"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:C13"
+      ],
+      "taps": [
+        {
+          "choices": [
+            "window_w"
+          ],
+          "zone": "zone:z_room"
+        }
+      ],
+      "token": "checked",
+      "unseen": false,
+      "values": [
+        "window_gap_in"
+      ],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim": "A1",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 20,
+      "reads_all": null,
+      "serves": [
+        "R7"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:A1"
+      ],
+      "taps": [],
+      "token": "gap",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim": "A3",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 21,
+      "reads_all": null,
+      "serves": [
+        "R6",
+        "R8"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:A3"
+      ],
+      "taps": [],
+      "token": "gap",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim": "P4",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 22,
+      "reads_all": null,
+      "serves": [
+        "R6"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:P4"
+      ],
+      "taps": [],
+      "token": "pending_build",
+      "unseen": false,
+      "values": [],
+      "via": {}
+    },
+    {
+      "amber": null,
+      "board": "floors",
+      "claim": "C14",
+      "errored": false,
+      "fed_by": [],
+      "marks": [],
+      "order": 23,
+      "reads_all": null,
+      "serves": [
+        "R8"
+      ],
+      "sets": [],
+      "stop_kind": {},
+      "stops": [
+        "claim:C14"
+      ],
+      "taps": [],
+      "token": "checked",
+      "unseen": true,
+      "values": [
+        "floor_wear_mil"
+      ],
+      "via": {}
+    }
+  ],
+  "meta": {
+    "name": "Edmonds kitchen",
+    "records_digest": "35fed3f20792cb194483d78d1ec5c5c27f28237b1c6107bcd7b0e18c61aac07f",
+    "resolution_digest": "5e2f4d4287afcf58651919bb7132d439fcfb253ee57ee3af604421813b476ecb"
+  },
+  "nodes": [
+    {
+      "claims": [
+        "C1",
+        "C2",
+        "A2"
+      ],
+      "errored": false,
+      "id": "requirement:R1",
+      "key": "R1",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 0,
+      "rank": 0,
+      "title": "Stay inside a $60k budget for the kitchen and the new upstairs floors",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C3",
+        "C4",
+        "C5",
+        "C7",
+        "A5"
+      ],
+      "errored": false,
+      "id": "requirement:R2",
+      "key": "R2",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 1,
+      "rank": 1,
+      "title": "Movement through the space works for one person cooking on a typical day",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C7",
+        "C6",
+        "P3"
+      ],
+      "errored": false,
+      "id": "requirement:R3",
+      "key": "R3",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 2,
+      "rank": 3,
+      "title": "Movement through the space works for several people cooking at a time on a holiday",
+      "token": "pending_build",
+      "word": "pending build"
+    },
+    {
+      "claims": [
+        "C8",
+        "C9",
+        "C10",
+        "A6",
+        "P2"
+      ],
+      "errored": false,
+      "id": "requirement:R4",
+      "key": "R4",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 3,
+      "rank": 4,
+      "title": "Usable by me, my wife and our 8 and 5 year old, who will grow with the space",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C11",
+        "A4",
+        "P1"
+      ],
+      "errored": false,
+      "id": "requirement:R5",
+      "key": "R5",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 4,
+      "rank": 5,
+      "title": "One colour for the lower cabinets and another for the uppers: a rich bright lower and a lighter upper, both high gloss with an integrated handle",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C12",
+        "C13",
+        "A3",
+        "P4"
+      ],
+      "errored": false,
+      "id": "requirement:R6",
+      "key": "R6",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 5,
+      "rank": 6,
+      "title": "The refrigerator moves from its alcove to the space near the hallway and stairs, as in the contractor's mock-up",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "A1"
+      ],
+      "errored": false,
+      "id": "requirement:R7",
+      "key": "R7",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 6,
+      "rank": 7,
+      "title": "Decide whether the old refrigerator alcove gets a door to become a pantry or stays an open walk-in",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "A3",
+        "C14"
+      ],
+      "errored": false,
+      "id": "requirement:R8",
+      "key": "R8",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 7,
+      "rank": 8,
+      "title": "New floors for the upstairs of the home, probably a high quality LVP",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C1",
+        "C2",
+        "C11"
+      ],
+      "errored": false,
+      "id": "requirement:R9",
+      "key": "R9",
+      "kind": "requirement",
+      "lane": "requirements",
+      "marks": [],
+      "order": 8,
+      "rank": 2,
+      "title": "Cabinets and floors I can actually buy, from Seattle-area providers where that makes sense, custom or national where it does not",
+      "token": "checked",
+      "word": "checked"
+    },
+    {
+      "assumptions": [],
+      "claims": [],
+      "count": 5,
+      "estimate": [],
+      "feeds": [],
+      "generated": false,
+      "ground": {
+        "assumption": 0,
+        "chosen": 5,
+        "input": 0
+      },
+      "id": "zone:z_cabs",
+      "idle": false,
+      "key": "z_cabs",
+      "kind": "zone",
+      "lane": "zones",
+      "line": "",
+      "members": [
+        "cab_line",
+        "lower_color",
+        "upper_color",
+        "handles",
+        "cab_install"
+      ],
+      "moved": [],
+      "order": 0,
+      "rank": 5,
+      "sources": {
+        "assumption": 0,
+        "chosen": 0,
+        "datasheet": 0,
+        "estimate": 0,
+        "unrecorded": 5
+      },
+      "taps": [],
+      "title": "Cabinets and colours",
+      "unmeasured": [
+        "cab_line",
+        "lower_color",
+        "upper_color",
+        "handles",
+        "cab_install"
+      ]
+    },
+    {
+      "assumptions": [],
+      "claims": [],
+      "count": 2,
+      "estimate": [],
+      "feeds": [],
+      "generated": false,
+      "ground": {
+        "assumption": 0,
+        "chosen": 2,
+        "input": 0
+      },
+      "id": "zone:z_floor",
+      "idle": false,
+      "key": "z_floor",
+      "kind": "zone",
+      "lane": "zones",
+      "line": "",
+      "members": [
+        "floor",
+        "floor_removal"
+      ],
+      "moved": [],
+      "order": 1,
+      "rank": 6,
+      "sources": {
+        "assumption": 0,
+        "chosen": 0,
+        "datasheet": 0,
+        "estimate": 0,
+        "unrecorded": 2
+      },
+      "taps": [],
+      "title": "Floor",
+      "unmeasured": [
+        "floor",
+        "floor_removal"
+      ]
+    },
+    {
+      "assumptions": [],
+      "claims": [
+        "C3",
+        "C4",
+        "C5",
+        "C7",
+        "C6",
+        "C8",
+        "C9"
+      ],
+      "count": 8,
+      "estimate": [],
+      "feeds": [
+        "station:s_island",
+        "station:s_triangle"
+      ],
+      "generated": false,
+      "ground": {
+        "assumption": 0,
+        "chosen": 7,
+        "input": 1
+      },
+      "id": "zone:z_layout",
+      "idle": false,
+      "key": "z_layout",
+      "kind": "zone",
+      "lane": "zones",
+      "line": "",
+      "members": [
+        "fridge_at",
+        "island_len",
+        "island_top_d",
+        "island_aisle",
+        "island_north_aisle",
+        "prep_sink",
+        "pantry",
+        "microwave_at"
+      ],
+      "moved": [
+        "island_len",
+        "island_top_d",
+        "island_aisle",
+        "island_north_aisle"
+      ],
+      "order": 2,
+      "rank": 1,
+      "sources": {
+        "assumption": 0,
+        "chosen": 4,
+        "datasheet": 0,
+        "estimate": 1,
+        "unrecorded": 3
+      },
+      "taps": [],
+      "title": "Layout",
+      "unmeasured": []
+    },
+    {
+      "assumptions": [],
+      "claims": [
+        "C1",
+        "C2"
+      ],
+      "count": 4,
+      "estimate": [],
+      "feeds": [
+        "station:s_total",
+        "station:@bom"
+      ],
+      "generated": false,
+      "ground": {
+        "assumption": 0,
+        "chosen": 4,
+        "input": 0
+      },
+      "id": "zone:z_money",
+      "idle": false,
+      "key": "z_money",
+      "kind": "zone",
+      "lane": "zones",
+      "line": "",
+      "members": [
+        "budget_usd",
+        "sales_tax",
+        "contingency",
+        "managed_by"
+      ],
+      "moved": [
+        "budget_usd",
+        "sales_tax",
+        "contingency"
+      ],
+      "order": 3,
+      "rank": 0,
+      "sources": {
+        "assumption": 0,
+        "chosen": 0,
+        "datasheet": 0,
+        "estimate": 0,
+        "unrecorded": 4
+      },
+      "taps": [],
+      "title": "Money",
+      "unmeasured": []
+    },
+    {
+      "assumptions": [],
+      "claims": [
+        "C10"
+      ],
+      "count": 2,
+      "estimate": [],
+      "feeds": [],
+      "generated": false,
+      "ground": {
+        "assumption": 0,
+        "chosen": 2,
+        "input": 0
+      },
+      "id": "zone:z_people",
+      "idle": false,
+      "key": "z_people",
+      "kind": "zone",
+      "lane": "zones",
+      "line": "",
+      "members": [
+        "kid_small_h",
+        "kid_big_h"
+      ],
+      "moved": [
+        "kid_small_h",
+        "kid_big_h"
+      ],
+      "order": 4,
+      "rank": 4,
+      "sources": {
+        "assumption": 0,
+        "chosen": 0,
+        "datasheet": 0,
+        "estimate": 0,
+        "unrecorded": 2
+      },
+      "taps": [
+        "C10"
+      ],
+      "title": "The children",
+      "unmeasured": []
+    },
+    {
+      "assumptions": [],
+      "claims": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C12",
+        "C13"
+      ],
+      "count": 8,
+      "estimate": [],
+      "feeds": [
+        "station:s_total",
+        "station:s_triangle"
+      ],
+      "generated": false,
+      "ground": {
+        "assumption": 0,
+        "chosen": 2,
+        "input": 6
+      },
+      "id": "zone:z_room",
+      "idle": false,
+      "key": "z_room",
+      "kind": "zone",
+      "lane": "zones",
+      "line": "",
+      "members": [
+        "wall1_len",
+        "wall2_len",
+        "window_w",
+        "kitchen_w",
+        "alcove_w",
+        "alcove_d",
+        "floor_area_sqft",
+        "fridge_d"
+      ],
+      "moved": [
+        "wall1_len",
+        "wall2_len",
+        "window_w",
+        "kitchen_w",
+        "alcove_w",
+        "alcove_d",
+        "floor_area_sqft",
+        "fridge_d"
+      ],
+      "order": 5,
+      "rank": 3,
+      "sources": {
+        "assumption": 0,
+        "chosen": 0,
+        "datasheet": 0,
+        "estimate": 6,
+        "unrecorded": 2
+      },
+      "taps": [
+        "C12",
+        "C13"
+      ],
+      "title": "The room as measured",
+      "unmeasured": []
+    },
+    {
+      "assumptions": [],
+      "claims": [
+        "C3",
+        "C4",
+        "C5",
+        "C7",
+        "C6",
+        "C8",
+        "C9"
+      ],
+      "count": 6,
+      "estimate": [],
+      "feeds": [
+        "station:s_island",
+        "station:s_triangle"
+      ],
+      "generated": false,
+      "ground": {
+        "assumption": 0,
+        "chosen": 4,
+        "input": 2
+      },
+      "id": "zone:z_std",
+      "idle": false,
+      "key": "z_std",
+      "kind": "zone",
+      "lane": "zones",
+      "line": "",
+      "members": [
+        "base_h",
+        "counter_t",
+        "upper_gap",
+        "base_d",
+        "counter_d",
+        "upper_d"
+      ],
+      "moved": [
+        "base_h",
+        "counter_t",
+        "upper_gap",
+        "base_d",
+        "counter_d",
+        "upper_d"
+      ],
+      "order": 6,
+      "rank": 2,
+      "sources": {
+        "assumption": 0,
+        "chosen": 0,
+        "datasheet": 0,
+        "estimate": 2,
+        "unrecorded": 4
+      },
+      "taps": [],
+      "title": "Cabinet standards",
+      "unmeasured": []
+    },
+    {
+      "assumptions": [],
+      "claims": [],
+      "count": 4,
+      "estimate": [],
+      "feeds": [],
+      "generated": false,
+      "ground": {
+        "assumption": 0,
+        "chosen": 4,
+        "input": 0
+      },
+      "id": "zone:z_surfaces",
+      "idle": false,
+      "key": "z_surfaces",
+      "kind": "zone",
+      "lane": "zones",
+      "line": "",
+      "members": [
+        "counter",
+        "sink",
+        "faucet",
+        "backsplash"
+      ],
+      "moved": [],
+      "order": 7,
+      "rank": 7,
+      "sources": {
+        "assumption": 0,
+        "chosen": 0,
+        "datasheet": 0,
+        "estimate": 0,
+        "unrecorded": 4
+      },
+      "taps": [],
+      "title": "Counter, sink and wall",
+      "unmeasured": [
+        "counter",
+        "sink",
+        "faucet",
+        "backsplash"
+      ]
+    },
+    {
+      "claims": [
+        "C5",
+        "C7",
+        "C6",
+        "C8",
+        "C9"
+      ],
+      "column": 0,
+      "depth": 0,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_std"
+      ],
+      "generated": false,
+      "head": "work_aisle_in",
+      "id": "station:s_island",
+      "key": "s_island",
+      "kind": "station",
+      "lane": "stations",
+      "layer": 0,
+      "line": "What the island leaves around it",
+      "members": [
+        "work_aisle_in",
+        "dishwasher_standing_in",
+        "island_knee_in",
+        "island_seats"
+      ],
+      "order": 0,
+      "rank": 1,
+      "stop_kinds": {
+        "C5": "read",
+        "C6": "read",
+        "C7": "read",
+        "C8": "read",
+        "C9": "read"
+      },
+      "title": "Island clearances",
+      "value_text": "48 in"
+    },
+    {
+      "claims": [
+        "C1",
+        "C2"
+      ],
+      "column": 0,
+      "depth": 4,
+      "fed_by": [
+        "zone:z_money",
+        "zone:z_room"
+      ],
+      "generated": false,
+      "head": "total_usd",
+      "id": "station:s_total",
+      "key": "s_total",
+      "kind": "station",
+      "lane": "stations",
+      "layer": 1,
+      "line": "Lines, contingency, tax and permits",
+      "members": [
+        "total_usd",
+        "subtotal_usd",
+        "contingency_usd",
+        "tax_usd"
+      ],
+      "order": 1,
+      "rank": 0,
+      "stop_kinds": {
+        "C1": "upstream",
+        "C2": "upstream"
+      },
+      "title": "Job total",
+      "value_text": ""
+    },
+    {
+      "claims": [
+        "C3",
+        "C4"
+      ],
+      "column": 0,
+      "depth": 0,
+      "fed_by": [
+        "zone:z_layout",
+        "zone:z_room",
+        "zone:z_std"
+      ],
+      "generated": false,
+      "head": "triangle_longest_ft",
+      "id": "station:s_triangle",
+      "key": "s_triangle",
+      "kind": "station",
+      "lane": "stations",
+      "layer": 0,
+      "line": "Refrigerator, range and prep sink, centre front to centre front",
+      "members": [
+        "triangle_longest_ft",
+        "triangle_total_ft",
+        "leg_wet_range_ft",
+        "leg_range_fridge_ft",
+        "leg_fridge_wet_ft"
+      ],
+      "order": 2,
+      "rank": 0,
+      "stop_kinds": {
+        "C3": "read",
+        "C4": "read"
+      },
+      "title": "Cook's triangle",
+      "value_text": ""
+    },
+    {
+      "claims": [
+        "C1",
+        "C2"
+      ],
+      "column": 0,
+      "depth": 5,
+      "fed_by": [
+        "zone:z_money"
+      ],
+      "generated": true,
+      "head": "bom",
+      "id": "station:@bom",
+      "key": "@bom",
+      "kind": "station",
+      "lane": "stations",
+      "layer": 2,
+      "line": "",
+      "members": [
+        "bom"
+      ],
+      "order": 3,
+      "rank": 0,
+      "stop_kinds": {
+        "C1": "read",
+        "C2": "read"
+      },
+      "title": "bom",
+      "value_text": ""
+    },
+    {
+      "claims": [
+        "C1",
+        "C2",
+        "A2"
+      ],
+      "errored": false,
+      "generated": false,
+      "id": "board:budget",
+      "key": "budget",
+      "kind": "board",
+      "lane": "boards",
+      "line": "The kitchen and the upstairs floors, with tax and contingency, inside the budget.",
+      "marks": [],
+      "order": 0,
+      "tally": [
+        {
+          "errored": 0,
+          "key": "checked",
+          "label": "2 checked",
+          "n": 2,
+          "status": "pass"
+        },
+        {
+          "errored": 0,
+          "key": "gap",
+          "label": "1 gap",
+          "n": 1,
+          "status": "unclaimed"
+        }
+      ],
+      "title": "Fits $60k",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C3",
+        "C4",
+        "C5",
+        "C7",
+        "A5"
+      ],
+      "errored": false,
+      "generated": false,
+      "id": "board:weeknight",
+      "key": "weeknight",
+      "kind": "board",
+      "lane": "boards",
+      "line": "The cook's walk between refrigerator, sink and range is short and clear.",
+      "marks": [],
+      "order": 1,
+      "tally": [
+        {
+          "errored": 0,
+          "key": "checked",
+          "label": "4 checked",
+          "n": 4,
+          "status": "pass"
+        },
+        {
+          "errored": 0,
+          "key": "gap",
+          "label": "1 gap",
+          "n": 1,
+          "status": "unclaimed"
+        }
+      ],
+      "title": "One cook, a weeknight",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C6",
+        "P3"
+      ],
+      "errored": false,
+      "generated": false,
+      "id": "board:holiday",
+      "key": "holiday",
+      "kind": "board",
+      "lane": "boards",
+      "line": "Two people pass in the aisle and people walk behind the island seats.",
+      "marks": [],
+      "order": 2,
+      "tally": [
+        {
+          "errored": 0,
+          "key": "checked",
+          "label": "1 checked",
+          "n": 1,
+          "status": "pass"
+        },
+        {
+          "errored": 0,
+          "key": "pending_build",
+          "label": "1 pending build",
+          "n": 1,
+          "status": "unverified"
+        }
+      ],
+      "title": "Several cooks, a holiday",
+      "token": "pending_build",
+      "word": "pending build"
+    },
+    {
+      "claims": [
+        "C8",
+        "C9",
+        "C10",
+        "A6",
+        "P2"
+      ],
+      "errored": false,
+      "generated": false,
+      "id": "board:family",
+      "key": "family",
+      "kind": "board",
+      "lane": "boards",
+      "line": "The 5 and 8 year old sit, reach and help themselves, and still fit when grown.",
+      "marks": [],
+      "order": 3,
+      "tally": [
+        {
+          "errored": 0,
+          "key": "checked",
+          "label": "3 checked",
+          "n": 3,
+          "status": "pass"
+        },
+        {
+          "errored": 0,
+          "key": "gap",
+          "label": "1 gap",
+          "n": 1,
+          "status": "unclaimed"
+        },
+        {
+          "errored": 0,
+          "key": "pending_build",
+          "label": "1 pending build",
+          "n": 1,
+          "status": "unverified"
+        }
+      ],
+      "title": "Works for the children",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C11",
+        "A4",
+        "P1"
+      ],
+      "errored": false,
+      "generated": false,
+      "id": "board:finish",
+      "key": "finish",
+      "kind": "board",
+      "lane": "boards",
+      "line": "A rich bright lower and a lighter upper, both high gloss, that can be bought.",
+      "marks": [],
+      "order": 4,
+      "tally": [
+        {
+          "errored": 0,
+          "key": "checked",
+          "label": "1 checked",
+          "n": 1,
+          "status": "pass"
+        },
+        {
+          "errored": 0,
+          "key": "gap",
+          "label": "1 gap",
+          "n": 1,
+          "status": "unclaimed"
+        },
+        {
+          "errored": 0,
+          "key": "pending_build",
+          "label": "1 pending build",
+          "n": 1,
+          "status": "unverified"
+        }
+      ],
+      "title": "Gloss two-tone, integrated handle",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C12",
+        "C13",
+        "A1",
+        "A3",
+        "P4"
+      ],
+      "errored": false,
+      "generated": false,
+      "id": "board:fits",
+      "key": "fits",
+      "kind": "board",
+      "lane": "boards",
+      "line": "The cabinets fill the walls as measured and the refrigerator moves to the hall end.",
+      "marks": [],
+      "order": 5,
+      "tally": [
+        {
+          "errored": 0,
+          "key": "checked",
+          "label": "2 checked",
+          "n": 2,
+          "status": "pass"
+        },
+        {
+          "errored": 0,
+          "key": "gap",
+          "label": "2 gaps",
+          "n": 2,
+          "status": "unclaimed"
+        },
+        {
+          "errored": 0,
+          "key": "pending_build",
+          "label": "1 pending build",
+          "n": 1,
+          "status": "unverified"
+        }
+      ],
+      "title": "Fits the room",
+      "token": "gap",
+      "word": "gap"
+    },
+    {
+      "claims": [
+        "C14"
+      ],
+      "errored": false,
+      "generated": false,
+      "id": "board:floors",
+      "key": "floors",
+      "kind": "board",
+      "lane": "boards",
+      "line": "A plank that stands up to children and a kitchen.",
+      "marks": [],
+      "order": 6,
+      "tally": [
+        {
+          "errored": 0,
+          "key": "checked",
+          "label": "1 checked",
+          "n": 1,
+          "status": "pass"
+        }
+      ],
+      "title": "New upstairs floors",
+      "token": "checked",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "budget",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C1",
+      "key": "C1",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 0,
+      "row": 0,
+      "severity": 8,
+      "title": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
+      "token": "checked",
+      "value_text": "58025 USD/run against a limit of 60000 USD/run, 3% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "budget",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C2",
+      "key": "C2",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 1,
+      "row": 1,
+      "severity": 8,
+      "title": "Every line of the job has a supplier, a quantity and a price",
+      "token": "checked",
+      "value_text": "0 lines against a limit of 0 lines",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "budget",
+      "claim_kind": "assumption",
+      "critical": true,
+      "errored": false,
+      "id": "claim:A2",
+      "key": "A2",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 2,
+      "row": 2,
+      "severity": 3,
+      "title": "The prices in the catalog are what the job will cost",
+      "token": "gap",
+      "value_text": "",
+      "word": "gap"
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C3",
+      "key": "C3",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 3,
+      "row": 0,
+      "severity": 8,
+      "title": "No leg of the cook's triangle (refrigerator, range, and the sink the cook preps at) is longer than 9 ft",
+      "token": "checked",
+      "value_text": "8.14 ft against a limit of 9 ft, 10% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C4",
+      "key": "C4",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 4,
+      "row": 1,
+      "severity": 8,
+      "title": "The cook's triangle totals no more than 26 ft",
+      "token": "checked",
+      "value_text": "19.07 ft against a limit of 26 ft, 27% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C5",
+      "key": "C5",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 5,
+      "row": 2,
+      "severity": 8,
+      "title": "The aisle between the long run and the island is at least 42 in",
+      "token": "checked",
+      "value_text": "48 in against a limit of 42 in, 14% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C7",
+      "key": "C7",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 6,
+      "row": 3,
+      "severity": 8,
+      "title": "Someone can stand at the open dishwasher: 21 in clear behind its door",
+      "token": "checked",
+      "value_text": "22.5 in against a limit of 21 in, 7% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "weeknight",
+      "claim_kind": "assumption",
+      "critical": true,
+      "errored": false,
+      "id": "claim:A5",
+      "key": "A5",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 7,
+      "row": 4,
+      "severity": 3,
+      "title": "A drain, a vent and supply lines can reach the island through the floor",
+      "token": "gap",
+      "value_text": "",
+      "word": "gap"
+    },
+    {
+      "amber": null,
+      "board": "holiday",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C6",
+      "key": "C6",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 8,
+      "row": 0,
+      "severity": 8,
+      "title": "Two people can pass in the work aisle: it is at least 48 in",
+      "token": "checked",
+      "value_text": "48 in against a limit of 48 in, at the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "holiday",
+      "claim_kind": "physical",
+      "critical": true,
+      "errored": false,
+      "id": "claim:P3",
+      "key": "P3",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 9,
+      "row": 1,
+      "severity": 6,
+      "title": "The dining table stands at least 44 in east of the island's seats, so people walk behind the stools",
+      "token": "pending_build",
+      "value_text": "",
+      "word": "pending build"
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C8",
+      "key": "C8",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 10,
+      "row": 0,
+      "severity": 8,
+      "title": "The island seats both children",
+      "token": "checked",
+      "value_text": "2 seats against a limit of 2 seats, at the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C9",
+      "key": "C9",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 11,
+      "row": 1,
+      "severity": 8,
+      "title": "Each island seat has 15 in of knee room",
+      "token": "checked",
+      "value_text": "15 in against a limit of 15 in, at the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C10",
+      "key": "C10",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 12,
+      "row": 2,
+      "severity": 8,
+      "title": "The 5-year-old can use the microwave without reaching up: its bottom is 3 in below their shoulder, or lower",
+      "token": "checked",
+      "value_text": "-0.4 in against a limit of 0 in",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim_kind": "assumption",
+      "critical": true,
+      "errored": false,
+      "id": "claim:A6",
+      "key": "A6",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 13,
+      "row": 3,
+      "severity": 3,
+      "title": "The children are about 43 in and 50.5 in tall",
+      "token": "gap",
+      "value_text": "",
+      "word": "gap"
+    },
+    {
+      "amber": null,
+      "board": "family",
+      "claim_kind": "physical",
+      "critical": true,
+      "errored": false,
+      "id": "claim:P2",
+      "key": "P2",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 14,
+      "row": 4,
+      "severity": 6,
+      "title": "Both children can get a cup, a plate, water and a snack without help and without walking between the cook and the range",
+      "token": "pending_build",
+      "value_text": "",
+      "word": "pending build"
+    },
+    {
+      "amber": null,
+      "board": "finish",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C11",
+      "key": "C11",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 15,
+      "row": 0,
+      "severity": 8,
+      "title": "The chosen cabinet line is offered in high gloss, in the chosen lower colour and the chosen lighter upper colour",
+      "token": "checked",
+      "value_text": "0 requirements against a limit of 0 requirements",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "finish",
+      "claim_kind": "assumption",
+      "critical": true,
+      "errored": false,
+      "id": "claim:A4",
+      "key": "A4",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 16,
+      "row": 1,
+      "severity": 3,
+      "title": "27estore can rout an integrated handle into a high-gloss lacquer front for SEKTION",
+      "token": "gap",
+      "value_text": "",
+      "word": "gap"
+    },
+    {
+      "amber": null,
+      "board": "finish",
+      "claim_kind": "physical",
+      "critical": true,
+      "errored": false,
+      "id": "claim:P1",
+      "key": "P1",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 17,
+      "row": 2,
+      "severity": 6,
+      "title": "The gloss lower and upper colours look right together in this room, under the skylight and beside the brick",
+      "token": "pending_build",
+      "value_text": "",
+      "word": "pending build"
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C12",
+      "key": "C12",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 18,
+      "row": 0,
+      "severity": 8,
+      "title": "The cabinets drawn fill each wall to within 1/4 in of its measured length",
+      "token": "checked",
+      "value_text": "0 in against a limit of 0.25 in, 100% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C13",
+      "key": "C13",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 19,
+      "row": 1,
+      "severity": 8,
+      "title": "The uppers beside the sink window clear it by at least 1 in",
+      "token": "checked",
+      "value_text": "2 in against a limit of 1 in, 100% inside the limit",
+      "word": "checked"
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim_kind": "assumption",
+      "critical": true,
+      "errored": false,
+      "id": "claim:A1",
+      "key": "A1",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 20,
+      "row": 2,
+      "severity": 3,
+      "title": "The old refrigerator alcove is 40 in wide and 34 in deep",
+      "token": "gap",
+      "value_text": "",
+      "word": "gap"
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim_kind": "assumption",
+      "critical": true,
+      "errored": false,
+      "id": "claim:A3",
+      "key": "A3",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 21,
+      "row": 3,
+      "severity": 3,
+      "title": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep",
+      "token": "gap",
+      "value_text": "",
+      "word": "gap"
+    },
+    {
+      "amber": null,
+      "board": "fits",
+      "claim_kind": "physical",
+      "critical": true,
+      "errored": false,
+      "id": "claim:P4",
+      "key": "P4",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 22,
+      "row": 4,
+      "severity": 6,
+      "title": "The refrigerator fits the hall end and both its doors open fully beside the return wall",
+      "token": "pending_build",
+      "value_text": "",
+      "word": "pending build"
+    },
+    {
+      "amber": null,
+      "board": "floors",
+      "claim_kind": "measurable",
+      "critical": true,
+      "errored": false,
+      "id": "claim:C14",
+      "key": "C14",
+      "kind": "claim",
+      "lane": "boards",
+      "marks": [],
+      "order": 23,
+      "row": 0,
+      "severity": 8,
+      "title": "The plank chosen for the upstairs has a wear layer of 20 mil or more",
+      "token": "checked",
+      "value_text": "22 mil against a limit of 20 mil, 10% inside the limit",
+      "word": "checked"
+    }
+  ],
+  "schema": 2,
+  "self": "703fb095a520e913e0bc061c96a92c89288f763af2fb62cd5ec806f10b20a1ed",
+  "trace": {
+    "amber": "none",
+    "key": "7d6a206be214",
+    "notice": "The model was built again with each choice changed by 10%. A thin line joins a group of choices to each shared value that moved.",
+    "round": null,
+    "singles": 11,
+    "skipped": {
+      "backsplash": "word",
+      "cab_install": "word",
+      "cab_line": "word",
+      "counter": "word",
+      "faucet": "word",
+      "floor": "word",
+      "floor_removal": "word",
+      "fridge_at": "word",
+      "handles": "word",
+      "lower_color": "word",
+      "managed_by": "word",
+      "microwave_at": "word",
+      "pantry": "word",
+      "prep_sink": "yes-no",
+      "sink": "word",
+      "upper_color": "word"
+    },
+    "state": "traced",
+    "text": "The test did not change 16 choices: backsplash, cab_install, cab_line, counter, faucet, floor, floor_removal, fridge_at, handles, lower_color, managed_by, microwave_at, pantry, prep_sink, sink, upper_color. The map cannot show what they change. The test did not see 11 shared values change: finish_unmet, finish_unmet_count, floor_cover, floor_wear_mil, fronts, handle_integrated, island_cut_in, island_seats, markup_usd, microwave_bottom_in, permits_usd. This does not show that no choice changes them.",
+    "ties": 7,
+    "unmoved": [
+      "finish_unmet",
+      "finish_unmet_count",
+      "floor_cover",
+      "floor_wear_mil",
+      "fronts",
+      "handle_integrated",
+      "island_cut_in",
+      "island_seats",
+      "markup_usd",
+      "microwave_bottom_in",
+      "permits_usd"
+    ]
+  },
+  "unread": [
+    "backsplash",
+    "cab_install",
+    "cab_line",
+    "counter",
+    "faucet",
+    "floor",
+    "floor_removal",
+    "fridge_at",
+    "handles",
+    "lower_color",
+    "managed_by",
+    "microwave_at",
+    "pantry",
+    "prep_sink",
+    "sink",
+    "upper_color"
+  ],
+  "values": {
+    "alcove_d": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "34",
+      "zone": "zone:z_room"
+    },
+    "alcove_w": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "40",
+      "zone": "zone:z_room"
+    },
+    "backsplash": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "tile",
+      "zone": "zone:z_surfaces"
+    },
+    "base_d": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "24",
+      "zone": "zone:z_std"
+    },
+    "base_h": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "34.5",
+      "zone": "zone:z_std"
+    },
+    "bom": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:@bom",
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
+    "bom.bom": {
+      "ground": "chosen",
+      "read": true,
+      "role": "absent",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
+    "bom.budget_per_unit": {
+      "ground": "chosen",
+      "read": true,
+      "role": "absent",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
+    "budget_per_unit": {
+      "ground": "chosen",
+      "read": true,
+      "role": "absent",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
+    "budget_usd": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "60000",
+      "zone": "zone:z_money"
+    },
+    "cab_install": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "self_assemble",
+      "zone": "zone:z_cabs"
+    },
+    "cab_line": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "sektion_27e_gloss",
+      "zone": "zone:z_cabs"
+    },
+    "contingency": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "0.12",
+      "zone": "zone:z_money"
+    },
+    "contingency_usd": {
+      "ground": "chosen",
+      "read": false,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_total",
+      "units": "",
+      "value_text": "5597",
+      "zone": null
+    },
+    "counter": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "ikea_kasker",
+      "zone": "zone:z_surfaces"
+    },
+    "counter_d": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "25.5",
+      "zone": "zone:z_std"
+    },
+    "counter_t": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "1.5",
+      "zone": "zone:z_std"
+    },
+    "dishwasher_standing_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_island",
+      "units": "in",
+      "value_text": "22.5 in",
+      "zone": null
+    },
+    "faucet": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "majsjon",
+      "zone": "zone:z_surfaces"
+    },
+    "finish_unmet": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
+    "finish_unmet_count": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "requirements",
+      "value_text": "0 requirements",
+      "zone": null
+    },
+    "floor": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "lifeproof_sterling",
+      "zone": "zone:z_floor"
+    },
+    "floor_area_sqft": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "1257",
+      "zone": "zone:z_room"
+    },
+    "floor_removal": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "pro",
+      "zone": "zone:z_floor"
+    },
+    "floor_wear_mil": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "mil",
+      "value_text": "22 mil",
+      "zone": null
+    },
+    "fridge_at": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "chosen",
+      "station": null,
+      "units": "",
+      "value_text": "hall",
+      "zone": "zone:z_layout"
+    },
+    "fridge_d": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "34",
+      "zone": "zone:z_room"
+    },
+    "handles": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "integrated",
+      "zone": "zone:z_cabs"
+    },
+    "island_aisle": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "chosen",
+      "station": null,
+      "units": "in",
+      "value_text": "48 in",
+      "zone": "zone:z_layout"
+    },
+    "island_knee_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_island",
+      "units": "in",
+      "value_text": "15 in",
+      "zone": null
+    },
+    "island_len": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "64",
+      "zone": "zone:z_layout"
+    },
+    "island_north_aisle": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "48",
+      "zone": "zone:z_layout"
+    },
+    "island_seats": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_island",
+      "units": "seats",
+      "value_text": "2 seats",
+      "zone": null
+    },
+    "island_top_d": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "chosen",
+      "station": null,
+      "units": "in",
+      "value_text": "40 in",
+      "zone": "zone:z_layout"
+    },
+    "kid_big_h": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "50.5",
+      "zone": "zone:z_people"
+    },
+    "kid_small_h": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "43",
+      "zone": "zone:z_people"
+    },
+    "kid_small_shoulder_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "34.4",
+      "zone": null
+    },
+    "kitchen_w": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "141",
+      "zone": "zone:z_room"
+    },
+    "leg_fridge_wet_ft": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_triangle",
+      "units": "",
+      "value_text": "5.425",
+      "zone": null
+    },
+    "leg_range_fridge_ft": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_triangle",
+      "units": "",
+      "value_text": "8.135",
+      "zone": null
+    },
+    "leg_wet_range_ft": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_triangle",
+      "units": "",
+      "value_text": "5.512",
+      "zone": null
+    },
+    "lower_color": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "gentian",
+      "zone": "zone:z_cabs"
+    },
+    "managed_by": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "self",
+      "zone": "zone:z_money"
+    },
+    "microwave_at": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "pantry",
+      "zone": "zone:z_layout"
+    },
+    "microwave_bottom_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "31",
+      "zone": null
+    },
+    "microwave_over_reach_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "in",
+      "value_text": "-0.4 in",
+      "zone": null
+    },
+    "pantry": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "open",
+      "zone": "zone:z_layout"
+    },
+    "prep_sink": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "chosen",
+      "station": null,
+      "units": "",
+      "value_text": "true",
+      "zone": "zone:z_layout"
+    },
+    "run_fill_error_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "in",
+      "value_text": "0 in",
+      "zone": null
+    },
+    "sales_tax": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "0.107",
+      "zone": "zone:z_money"
+    },
+    "sink": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "ruvati_32",
+      "zone": "zone:z_surfaces"
+    },
+    "sourcing": {
+      "ground": "chosen",
+      "read": true,
+      "role": "absent",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
+    "sourcing.bom": {
+      "ground": "chosen",
+      "read": true,
+      "role": "absent",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
+    "sourcing.budget_per_unit": {
+      "ground": "chosen",
+      "read": true,
+      "role": "absent",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "",
+      "zone": null
+    },
+    "subtotal_usd": {
+      "ground": "chosen",
+      "read": false,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_total",
+      "units": "",
+      "value_text": "46639",
+      "zone": null
+    },
+    "tax_usd": {
+      "ground": "chosen",
+      "read": false,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_total",
+      "units": "",
+      "value_text": "5589",
+      "zone": null
+    },
+    "total_usd": {
+      "ground": "chosen",
+      "read": false,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_total",
+      "units": "",
+      "value_text": "58025",
+      "zone": null
+    },
+    "triangle_longest_ft": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_triangle",
+      "units": "",
+      "value_text": "8.135",
+      "zone": null
+    },
+    "triangle_total_ft": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_triangle",
+      "units": "",
+      "value_text": "19.07",
+      "zone": null
+    },
+    "upper_color": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "oyster",
+      "zone": "zone:z_cabs"
+    },
+    "upper_d": {
+      "ground": "chosen",
+      "read": false,
+      "role": "choice",
+      "source": "unrecorded",
+      "station": null,
+      "units": "",
+      "value_text": "13",
+      "zone": "zone:z_std"
+    },
+    "upper_gap": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "18",
+      "zone": "zone:z_std"
+    },
+    "wall1_fill_error_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "in",
+      "value_text": "0 in",
+      "zone": null
+    },
+    "wall1_len": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "193",
+      "zone": "zone:z_room"
+    },
+    "wall2_fill_error_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "in",
+      "value_text": "0 in",
+      "zone": null
+    },
+    "wall2_len": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "138",
+      "zone": "zone:z_room"
+    },
+    "window_gap_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": null,
+      "units": "in",
+      "value_text": "2 in",
+      "zone": null
+    },
+    "window_w": {
+      "ground": "input",
+      "read": false,
+      "role": "choice",
+      "source": "estimate",
+      "station": null,
+      "units": "",
+      "value_text": "49",
+      "zone": "zone:z_room"
+    },
+    "work_aisle_in": {
+      "ground": "chosen",
+      "read": true,
+      "role": "derived",
+      "source": "unrecorded",
+      "station": "station:s_island",
+      "units": "in",
+      "value_text": "48 in",
+      "zone": null
+    }
+  }
+}

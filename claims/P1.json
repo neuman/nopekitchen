@@ -1,0 +1,11 @@
+{
+  "statement": "The gloss lower and upper colours look right together in this room, under the skylight and beside the brick",
+  "kind": "physical",
+  "rationale": "a hex colour on a screen is not lacquer in daylight; gloss shows every reflection of the gable windows",
+  "mechanism": {
+    "how": "Order sample fronts in both colours, stand them against the existing cabinets at noon and at dusk, with the plank sample on the floor"
+  },
+  "requirements": [
+    "R5"
+  ]
+}

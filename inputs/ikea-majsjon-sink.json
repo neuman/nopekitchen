@@ -1,0 +1,15 @@
+{
+  "path": "inputs/references/ikea-majsjon-sink.jpg",
+  "kind": "reference",
+  "description": "IKEA MAJSJON stainless undermount sink at 199 USD with a square stainless faucet on white quartz",
+  "sha256": "f34f7d73e58e74d59d16b51fccb2e92b0e47bff9de2e85d07f508bc9afe09b07",
+  "added": "2026-11-12T18:57:51Z",
+  "extractions": [
+    {
+      "what": "MAJSJON stainless undermount sink, 199 USD, shown with a square brushed faucet in white quartz",
+      "grounds": [
+        "R4"
+      ]
+    }
+  ]
+}

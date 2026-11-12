@@ -1,0 +1,12 @@
+{
+  "statement": "The children are about 43 in and 50.5 in tall",
+  "kind": "assumption",
+  "rationale": "CDC 50th percentile for 5 and 8 years; not measured",
+  "mechanism": {
+    "how": "Measure both children"
+  },
+  "requirements": [
+    "R4"
+  ],
+  "owner": "Eric"
+}

@@ -1,0 +1,593 @@
+{
+  "columns": [
+    {
+      "align": "left",
+      "key": "ref",
+      "label": "Ref"
+    },
+    {
+      "align": "left",
+      "key": "description",
+      "label": "Description"
+    },
+    {
+      "align": "left",
+      "key": "vendor",
+      "label": "Vendor"
+    },
+    {
+      "align": "left",
+      "key": "vendor_pn",
+      "label": "Vendor P/N"
+    },
+    {
+      "align": "right",
+      "key": "purchased",
+      "label": "Buy",
+      "note": "pieces ordered for the run — MOQ and order multiples included"
+    },
+    {
+      "align": "right",
+      "key": "unit_price",
+      "kind": "money",
+      "label": "Unit"
+    },
+    {
+      "align": "right",
+      "key": "extended",
+      "kind": "money",
+      "label": "Extended",
+      "note": "null where the line is unpriced. Not zero: an unknown that adds up is an unknown that makes the total smaller"
+    },
+    {
+      "align": "right",
+      "key": "lead_time_weeks",
+      "label": "Lead",
+      "note": "effective: zero where distributor stock already covers the order",
+      "units": "wk"
+    },
+    {
+      "align": "left",
+      "key": "lifecycle",
+      "label": "Lifecycle"
+    },
+    {
+      "align": "right",
+      "key": "sources",
+      "label": "Sources",
+      "note": "independent sources, counted from who MAKES the part where the line records it. Two distributors of one factory's part is one source"
+    },
+    {
+      "align": "left",
+      "key": "risk",
+      "label": "Risk"
+    }
+  ],
+  "rows": [
+    {
+      "description": "IKEA SEKTION boxes + 27estore high-gloss lacquer fronts",
+      "extended": 11028.2,
+      "id": "cabinets",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 32.92,
+      "purchased": 32.92,
+      "quoted_lead_weeks": null,
+      "ref": "cabinets",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "IKEA Renton + 27estore (online)"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 335.0,
+      "vendor": "IKEA Renton + 27estore (online)",
+      "vendor_pn": "cabinets"
+    },
+    {
+      "description": "Cabinets: you assemble the boxes, installer hangs them",
+      "extended": 3292.0,
+      "id": "cab_install",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 32.92,
+      "purchased": 32.92,
+      "quoted_lead_weeks": null,
+      "ref": "cab_install",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "IKEA-kitchen installer"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 100.0,
+      "vendor": "IKEA-kitchen installer",
+      "vendor_pn": "cab_install"
+    },
+    {
+      "description": "Countertop, installed: IKEA KASKER custom quartz",
+      "extended": 3568.8,
+      "id": "counter",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 59.48,
+      "purchased": 59.48,
+      "quoted_lead_weeks": null,
+      "ref": "counter",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "IKEA Renton"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 60.0,
+      "vendor": "IKEA Renton",
+      "vendor_pn": "counter"
+    },
+    {
+      "description": "Backsplash, installed: Tile",
+      "extended": 932.4,
+      "id": "backsplash",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 23.31,
+      "purchased": 23.31,
+      "quoted_lead_weeks": null,
+      "ref": "backsplash",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "a tile setter"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 40.0,
+      "vendor": "a tile setter",
+      "vendor_pn": "backsplash"
+    },
+    {
+      "description": "Ruvati 32 in undermount workstation, 16 ga",
+      "extended": 430.0,
+      "id": "sink",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "sink",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "The Sink Boutique (online)"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 430.0,
+      "vendor": "The Sink Boutique (online)",
+      "vendor_pn": "sink"
+    },
+    {
+      "description": "IKEA MAJSJON pull-down, stainless",
+      "extended": 199.0,
+      "id": "faucet",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "faucet",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "IKEA Renton"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 199.0,
+      "vendor": "IKEA Renton",
+      "vendor_pn": "faucet"
+    },
+    {
+      "description": "Demolition and disposal of the old kitchen",
+      "extended": 1800.0,
+      "id": "demo",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "demo",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "a demolition crew"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 1800.0,
+      "vendor": "a demolition crew",
+      "vendor_pn": "demo"
+    },
+    {
+      "description": "Plumber: sink, faucet, disposal and dishwasher reconnect",
+      "extended": 800.0,
+      "id": "plumb_reconnect",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "plumb_reconnect",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "a plumber"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 800.0,
+      "vendor": "a plumber",
+      "vendor_pn": "plumb_reconnect"
+    },
+    {
+      "description": "Electrician: under-cabinet lighting",
+      "extended": 500.0,
+      "id": "undercab_labor",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "undercab_labor",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "an electrician"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 500.0,
+      "vendor": "an electrician",
+      "vendor_pn": "undercab_labor"
+    },
+    {
+      "description": "IKEA MITTLED LED strips, driver and cords",
+      "extended": 250.0,
+      "id": "undercab_lights",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "undercab_lights",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "IKEA Renton"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 250.0,
+      "vendor": "IKEA Renton",
+      "vendor_pn": "undercab_lights"
+    },
+    {
+      "description": "Drywall patch and kitchen repaint",
+      "extended": 1500.0,
+      "id": "drywall_paint",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "drywall_paint",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "a painter"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 1500.0,
+      "vendor": "a painter",
+      "vendor_pn": "drywall_paint"
+    },
+    {
+      "description": "Electrician: new 120 V refrigerator receptacle at the hall end",
+      "extended": 700.0,
+      "id": "fridge_circuit",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "fridge_circuit",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "an electrician"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 700.0,
+      "vendor": "an electrician",
+      "vendor_pn": "fridge_circuit"
+    },
+    {
+      "description": "Plumber: ice-maker water line to the hall end",
+      "extended": 400.0,
+      "id": "ice_line",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "ice_line",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "a plumber"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 400.0,
+      "vendor": "a plumber",
+      "vendor_pn": "ice_line"
+    },
+    {
+      "description": "Pantry shelving on three walls (IKEA BOAXEL or site-built)",
+      "extended": 300.0,
+      "id": "pantry_shelves",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "pantry_shelves",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "IKEA Renton"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 300.0,
+      "vendor": "IKEA Renton",
+      "vendor_pn": "pantry_shelves"
+    },
+    {
+      "description": "Plumber: supply, drain and vent to the island through the floor, ceiling below patched",
+      "extended": 3000.0,
+      "id": "prep_rough",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "prep_rough",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "a plumber"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 3000.0,
+      "vendor": "a plumber",
+      "vendor_pn": "prep_rough"
+    },
+    {
+      "description": "15 in undermount bar sink",
+      "extended": 250.0,
+      "id": "prep_bowl",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "prep_bowl",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "Ruvati (online)"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 250.0,
+      "vendor": "Ruvati (online)",
+      "vendor_pn": "prep_bowl"
+    },
+    {
+      "description": "IKEA MACKSJON pull-down faucet",
+      "extended": 109.0,
+      "id": "prep_faucet",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "prep_faucet",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "IKEA Renton"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 109.0,
+      "vendor": "IKEA Renton",
+      "vendor_pn": "prep_faucet"
+    },
+    {
+      "description": "Second sink cut-out in the island top",
+      "extended": 250.0,
+      "id": "prep_cutout",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "prep_cutout",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "the counter fabricator"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 250.0,
+      "vendor": "the counter fabricator",
+      "vendor_pn": "prep_cutout"
+    },
+    {
+      "description": "Electrician: receptacle at the pantry shelf",
+      "extended": 350.0,
+      "id": "mw_outlet",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "mw_outlet",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "an electrician"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 350.0,
+      "vendor": "an electrician",
+      "vendor_pn": "mw_outlet"
+    },
+    {
+      "description": "LVP: LifeProof Sterling Oak",
+      "extended": 5102.163,
+      "id": "floor",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1382.7,
+      "purchased": 1382.7,
+      "quoted_lead_weeks": null,
+      "ref": "floor",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "Home Depot, 2901 184th St SW, Lynnwood"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 3.69,
+      "vendor": "Home Depot, 2901 184th St SW, Lynnwood",
+      "vendor_pn": "floor"
+    },
+    {
+      "description": "Floating click LVP installation",
+      "extended": 4399.5,
+      "id": "floor_labor",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1257.0,
+      "purchased": 1257.0,
+      "quoted_lead_weeks": null,
+      "ref": "floor_labor",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "the flooring installer"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 3.5,
+      "vendor": "the flooring installer",
+      "vendor_pn": "floor_labor"
+    },
+    {
+      "description": "Subfloor prep and levelling",
+      "extended": 1257.0,
+      "id": "floor_prep",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1257.0,
+      "purchased": 1257.0,
+      "quoted_lead_weeks": null,
+      "ref": "floor_prep",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "the flooring installer"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 1.0,
+      "vendor": "the flooring installer",
+      "vendor_pn": "floor_prep"
+    },
+    {
+      "description": "Old bamboo: installer removes and hauls the bamboo",
+      "extended": 3771.0,
+      "id": "floor_removal",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1257.0,
+      "purchased": 1257.0,
+      "quoted_lead_weeks": null,
+      "ref": "floor_removal",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "the flooring installer"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 3.0,
+      "vendor": "the flooring installer",
+      "vendor_pn": "floor_removal"
+    },
+    {
+      "description": "Baseboard removed and reinstalled",
+      "extended": 1750.0,
+      "id": "baseboard",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 500.0,
+      "purchased": 500.0,
+      "quoted_lead_weeks": null,
+      "ref": "baseboard",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "the flooring installer"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 3.5,
+      "vendor": "the flooring installer",
+      "vendor_pn": "baseboard"
+    },
+    {
+      "description": "Transitions, stair nose and scribing at the rail",
+      "extended": 700.0,
+      "id": "floor_trim",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "floor_trim",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "the flooring installer"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 700.0,
+      "vendor": "the flooring installer",
+      "vendor_pn": "floor_trim"
+    }
+  ]
+}

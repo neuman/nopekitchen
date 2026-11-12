@@ -1,0 +1,13 @@
+{
+  "kind": "board",
+  "title": "Fits the room",
+  "line": "The cabinets fill the walls as measured and the refrigerator moves to the hall end.",
+  "members": [
+    "C12",
+    "C13",
+    "A1",
+    "A3",
+    "P4"
+  ],
+  "order": 6
+}

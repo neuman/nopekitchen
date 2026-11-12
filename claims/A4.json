@@ -1,0 +1,12 @@
+{
+  "statement": "27estore can rout an integrated handle into a high-gloss lacquer front for SEKTION",
+  "kind": "assumption",
+  "rationale": "one product image on their site is captioned as a high-gloss front with integrated handles; no specification or price for it was found. If they cannot, the fallbacks are push latches or an aluminium J-channel",
+  "mechanism": {
+    "how": "Ask 27estore for the handle detail, its price and a sample front in the lower colour before ordering"
+  },
+  "requirements": [
+    "R5"
+  ],
+  "owner": "Eric"
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Island 64 by 40 in, 48 in from both runs",
+  "when": "2026-11-12T19:08:05Z",
+  "summary": "The contractor's 64 in island, made 40 in deep for 15 in of knee room, standing 48 in from the long run so two cooks pass, and 48 in from the sink run so the dishwasher opens with room to stand.",
+  "rejected": [
+    {
+      "value": "a 36 in deep top",
+      "why": "11 in of knee room against 15",
+      "type": "infeasible"
+    },
+    {
+      "value": "42 in from the long run",
+      "why": "right for one cook, 6 in short for two on a holiday",
+      "type": "infeasible",
+      "returns_if": {
+        "text": "when the dining table needs the 6 in (P3)"
+      }
+    },
+    {
+      "value": "a 76 in island for three seats",
+      "why": "not checked against the walk from the hall to the dining room",
+      "type": "unevaluated",
+      "returns_if": {
+        "text": "when a third seat matters more than the south passage"
+      }
+    }
+  ],
+  "params_changed": [
+    "island_len",
+    "island_top_d",
+    "island_aisle",
+    "island_north_aisle"
+  ],
+  "claims_changed": [
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9"
+  ]
+}

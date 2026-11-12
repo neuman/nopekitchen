@@ -1,0 +1,50 @@
+{
+  "title": "Where the budget was found",
+  "when": "2026-11-12T19:08:06Z",
+  "summary": "The wish list with installer-assembled cabinets and the 40 mil Flooret plank comes to about 63,400 USD. Assembling the IKEA boxes yourself and laying LifeProof Sterling Oak, 22 mil, from Home Depot in Lynnwood brings it to about 58,000 USD. IKEA KASKER quartz is already the counter.",
+  "rejected": [
+    {
+      "value": "Flooret Modin Signature Soho, 40 mil",
+      "why": "the better plank, but 2,160 USD more: the job is then 60,183 USD",
+      "type": "infeasible",
+      "returns_if": {
+        "claim": "C1",
+        "quantity": "margin",
+        "comparator": ">",
+        "value": 0.04
+      }
+    },
+    {
+      "value": "installer assembles the cabinets",
+      "why": "3,265 USD more: the job is then 61,288 USD",
+      "type": "infeasible",
+      "returns_if": {
+        "claim": "C1",
+        "quantity": "margin",
+        "comparator": ">",
+        "value": 0.06
+      }
+    },
+    {
+      "value": "a general contractor runs the job",
+      "why": "18 percent on everything: 68,432 USD",
+      "type": "infeasible"
+    },
+    {
+      "value": "pulling the bamboo yourself",
+      "why": "saves about 4,100 USD but it is 1,257 sq ft of floor; kept as the reserve lever",
+      "type": "unevaluated"
+    }
+  ],
+  "params_changed": [
+    "floor",
+    "cab_install",
+    "floor_removal",
+    "managed_by",
+    "counter"
+  ],
+  "claims_changed": [
+    "C1",
+    "C14"
+  ]
+}

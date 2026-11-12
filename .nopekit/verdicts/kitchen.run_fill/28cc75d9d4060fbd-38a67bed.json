@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "gate": "kitchen.run_fill",
+  "rho": "28cc75d9d4060fbd2854545f49af48ff71896c5d61056cdc89cd8764b18250d3",
+  "code": {
+    "digest": "c82c9436b82eb75a5063513df5b3c25ea4d8a59d1f82c59b436e79d9aea2f7b0",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "run_fill_error_in"
+        ],
+        "a4107358283f49baaa6b4c6cf6f83c37775f68878d615d257bd6950391fbfea4",
+        0.0
+      ],
+      [
+        [
+          "wall1_fill_error_in"
+        ],
+        "a4107358283f49baaa6b4c6cf6f83c37775f68878d615d257bd6950391fbfea4",
+        0.0
+      ],
+      [
+        [
+          "wall2_fill_error_in"
+        ],
+        "a4107358283f49baaa6b4c6cf6f83c37775f68878d615d257bd6950391fbfea4",
+        0.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C12": "e1c34ad4b1daae30b9bf6cc93510fd7b0e08e0f4ea1989c8a11e6858ae5c0a78",
+      "acceptance:C12": "da6bcd326adbc878fa744e64bd1d0d0dba5a60fa82dee92cacf273448585ae31"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 0.25,
+    "units": "in",
+    "comparator": "<=",
+    "settles": "run fill error",
+    "detail": "wall 1 off by 0, wall 2 by 0; worst: 0 in (limit <= 0.25 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "run-fill"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "ec5be702e4002875e7c66262827ac1a489995bed1d48cff4b69ec091ba8b3292"
+}

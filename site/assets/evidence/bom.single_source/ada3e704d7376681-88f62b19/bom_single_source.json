@@ -1,0 +1,435 @@
+{
+  "single_source": [
+    {
+      "ref": "cabinets",
+      "source": "IKEA Renton + 27estore (online)",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton + 27estore (online)"
+      ]
+    },
+    {
+      "ref": "cab_install",
+      "source": "IKEA-kitchen installer",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA-kitchen installer"
+      ]
+    },
+    {
+      "ref": "counter",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ]
+    },
+    {
+      "ref": "backsplash",
+      "source": "a tile setter",
+      "basis": "supplier",
+      "suppliers": [
+        "a tile setter"
+      ]
+    },
+    {
+      "ref": "sink",
+      "source": "The Sink Boutique (online)",
+      "basis": "supplier",
+      "suppliers": [
+        "The Sink Boutique (online)"
+      ]
+    },
+    {
+      "ref": "faucet",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ]
+    },
+    {
+      "ref": "demo",
+      "source": "a demolition crew",
+      "basis": "supplier",
+      "suppliers": [
+        "a demolition crew"
+      ]
+    },
+    {
+      "ref": "plumb_reconnect",
+      "source": "a plumber",
+      "basis": "supplier",
+      "suppliers": [
+        "a plumber"
+      ]
+    },
+    {
+      "ref": "undercab_labor",
+      "source": "an electrician",
+      "basis": "supplier",
+      "suppliers": [
+        "an electrician"
+      ]
+    },
+    {
+      "ref": "undercab_lights",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ]
+    },
+    {
+      "ref": "drywall_paint",
+      "source": "a painter",
+      "basis": "supplier",
+      "suppliers": [
+        "a painter"
+      ]
+    },
+    {
+      "ref": "fridge_circuit",
+      "source": "an electrician",
+      "basis": "supplier",
+      "suppliers": [
+        "an electrician"
+      ]
+    },
+    {
+      "ref": "ice_line",
+      "source": "a plumber",
+      "basis": "supplier",
+      "suppliers": [
+        "a plumber"
+      ]
+    },
+    {
+      "ref": "pantry_shelves",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ]
+    },
+    {
+      "ref": "prep_rough",
+      "source": "a plumber",
+      "basis": "supplier",
+      "suppliers": [
+        "a plumber"
+      ]
+    },
+    {
+      "ref": "prep_bowl",
+      "source": "Ruvati (online)",
+      "basis": "supplier",
+      "suppliers": [
+        "Ruvati (online)"
+      ]
+    },
+    {
+      "ref": "prep_faucet",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ]
+    },
+    {
+      "ref": "prep_cutout",
+      "source": "the counter fabricator",
+      "basis": "supplier",
+      "suppliers": [
+        "the counter fabricator"
+      ]
+    },
+    {
+      "ref": "mw_outlet",
+      "source": "an electrician",
+      "basis": "supplier",
+      "suppliers": [
+        "an electrician"
+      ]
+    },
+    {
+      "ref": "floor",
+      "source": "Home Depot, 2901 184th St SW, Lynnwood",
+      "basis": "supplier",
+      "suppliers": [
+        "Home Depot, 2901 184th St SW, Lynnwood"
+      ]
+    },
+    {
+      "ref": "floor_labor",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ]
+    },
+    {
+      "ref": "floor_prep",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ]
+    },
+    {
+      "ref": "floor_removal",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ]
+    },
+    {
+      "ref": "baseboard",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ]
+    },
+    {
+      "ref": "floor_trim",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ]
+    }
+  ],
+  "accepted_in_writing": [],
+  "covered_by_qualified_alternate": [],
+  "unrecorded": [
+    {
+      "ref": "cabinets",
+      "source": "IKEA Renton + 27estore (online)",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton + 27estore (online)"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "cab_install",
+      "source": "IKEA-kitchen installer",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA-kitchen installer"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "counter",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "backsplash",
+      "source": "a tile setter",
+      "basis": "supplier",
+      "suppliers": [
+        "a tile setter"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "sink",
+      "source": "The Sink Boutique (online)",
+      "basis": "supplier",
+      "suppliers": [
+        "The Sink Boutique (online)"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "faucet",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "demo",
+      "source": "a demolition crew",
+      "basis": "supplier",
+      "suppliers": [
+        "a demolition crew"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "plumb_reconnect",
+      "source": "a plumber",
+      "basis": "supplier",
+      "suppliers": [
+        "a plumber"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "undercab_labor",
+      "source": "an electrician",
+      "basis": "supplier",
+      "suppliers": [
+        "an electrician"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "undercab_lights",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "drywall_paint",
+      "source": "a painter",
+      "basis": "supplier",
+      "suppliers": [
+        "a painter"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "fridge_circuit",
+      "source": "an electrician",
+      "basis": "supplier",
+      "suppliers": [
+        "an electrician"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "ice_line",
+      "source": "a plumber",
+      "basis": "supplier",
+      "suppliers": [
+        "a plumber"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "pantry_shelves",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "prep_rough",
+      "source": "a plumber",
+      "basis": "supplier",
+      "suppliers": [
+        "a plumber"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "prep_bowl",
+      "source": "Ruvati (online)",
+      "basis": "supplier",
+      "suppliers": [
+        "Ruvati (online)"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "prep_faucet",
+      "source": "IKEA Renton",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "prep_cutout",
+      "source": "the counter fabricator",
+      "basis": "supplier",
+      "suppliers": [
+        "the counter fabricator"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "mw_outlet",
+      "source": "an electrician",
+      "basis": "supplier",
+      "suppliers": [
+        "an electrician"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "floor",
+      "source": "Home Depot, 2901 184th St SW, Lynnwood",
+      "basis": "supplier",
+      "suppliers": [
+        "Home Depot, 2901 184th St SW, Lynnwood"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "floor_labor",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "floor_prep",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "floor_removal",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "baseboard",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
+      "ref": "floor_trim",
+      "source": "the flooring installer",
+      "basis": "supplier",
+      "suppliers": [
+        "the flooring installer"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    }
+  ],
+  "lines_with_no_manufacturer_recorded": 25,
+  "limit": 0.0
+}

@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/photo-dining-to-living.jpg",
+  "kind": "reference",
+  "description": "Dining table toward gable windows, fireplace, stair rail",
+  "sha256": "6d1401f9206facb16f7c167d44918549487de299017374e4e805f051868a2e2b",
+  "added": "2026-11-12T18:57:50Z",
+  "extractions": [
+    {
+      "what": "Brick fireplace and TV on the east wall, gable windows south, ridge beam, sofa and rug in the south-east, stair rail south-west",
+      "grounds": [
+        "living_east_w"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

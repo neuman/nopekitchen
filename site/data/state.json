@@ -1,0 +1,5007 @@
+{
+  "amber": {},
+  "claims": [
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "fits",
+      "cause": "owner-unattributed",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "A1",
+      "key": "gap",
+      "kind": "assumption",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Measure the alcove wall to wall and front to back with a tape, at the floor and at 6 ft"
+      },
+      "not_compared": [],
+      "note": "Measure the alcove wall to wall and front to back with a tape, at the floor and at 6 ft",
+      "owner": "Eric",
+      "physical_result": null,
+      "rationale": "nobody measured it; the sizes are read from a photo of a 36 in refrigerator standing in it. Under 36 in wide it will not take pantry cabinets; under 30 in deep it is a reach-in, not a walk-in",
+      "reason": "owner Eric is named in claims/A1.json and has not recorded it — Eric records it in their own shell: nopekit claim physical A1 assume",
+      "requirements": [
+        "R7"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The old refrigerator alcove is 40 in wide and 34 in deep",
+      "status": "unclaimed",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "assumption",
+      "unproven": [],
+      "verdicts": [],
+      "word": "gap"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "budget",
+      "cause": "owner-unattributed",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "A2",
+      "key": "gap",
+      "kind": "assumption",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Get written quotes: 27estore for the fronts, IKEA for boxes and KASKER, a plumber for the island sink, a flooring installer for removal and laying. Put each in the catalog"
+      },
+      "not_compared": [],
+      "note": "Get written quotes: 27estore for the fronts, IKEA for boxes and KASKER, a plumber for the island sink, a flooring installer for removal and laying. Put each in the catalog",
+      "owner": "Eric",
+      "physical_result": null,
+      "rationale": "none is a quote. Every one is from a search-result snippet, a store tag in a photo, or an estimate from cost guides, read on 2026-11-12; no retailer page could be opened. Trades prices are national ranges with a Seattle uplift",
+      "reason": "owner Eric is named in claims/A2.json and has not recorded it — Eric records it in their own shell: nopekit claim physical A2 assume",
+      "requirements": [
+        "R1"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The prices in the catalog are what the job will cost",
+      "status": "unclaimed",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "assumption",
+      "unproven": [],
+      "verdicts": [],
+      "word": "gap"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "fits",
+      "cause": "owner-unattributed",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "A3",
+      "key": "gap",
+      "kind": "assumption",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator wall to door face"
+      },
+      "not_compared": [],
+      "note": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator wall to door face",
+      "owner": "Eric",
+      "physical_result": null,
+      "rationale": "the 141 in and the floor area are scaled from a consumer floor-plan app; the refrigerator's depth is a standard, not its datasheet",
+      "reason": "owner Eric is named in claims/A3.json and has not recorded it — Eric records it in their own shell: nopekit claim physical A3 assume",
+      "requirements": [
+        "R6",
+        "R8"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep",
+      "status": "unclaimed",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "assumption",
+      "unproven": [],
+      "verdicts": [],
+      "word": "gap"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "finish",
+      "cause": "owner-unattributed",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "A4",
+      "key": "gap",
+      "kind": "assumption",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Ask 27estore for the handle detail, its price and a sample front in the lower colour before ordering"
+      },
+      "not_compared": [],
+      "note": "Ask 27estore for the handle detail, its price and a sample front in the lower colour before ordering",
+      "owner": "Eric",
+      "physical_result": null,
+      "rationale": "one product image on their site is captioned as a high-gloss front with integrated handles; no specification or price for it was found. If they cannot, the fallbacks are push latches or an aluminium J-channel",
+      "reason": "owner Eric is named in claims/A4.json and has not recorded it — Eric records it in their own shell: nopekit claim physical A4 assume",
+      "requirements": [
+        "R5"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "27estore can rout an integrated handle into a high-gloss lacquer front for SEKTION",
+      "status": "unclaimed",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "assumption",
+      "unproven": [],
+      "verdicts": [],
+      "word": "gap"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "weeknight",
+      "cause": "owner-unattributed",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "A5",
+      "key": "gap",
+      "kind": "assumption",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Have a plumber look at the ceiling below the island and price the run"
+      },
+      "not_compared": [],
+      "note": "Have a plumber look at the ceiling below the island and price the run",
+      "owner": "Eric",
+      "physical_result": null,
+      "rationale": "the kitchen is on the upper storey, so the pipes run in the joists over a finished room; nobody has looked at which way the joists run or what is below",
+      "reason": "owner Eric is named in claims/A5.json and has not recorded it — Eric records it in their own shell: nopekit claim physical A5 assume",
+      "requirements": [
+        "R2"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "A drain, a vent and supply lines can reach the island through the floor",
+      "status": "unclaimed",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "assumption",
+      "unproven": [],
+      "verdicts": [],
+      "word": "gap"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "family",
+      "cause": "owner-unattributed",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "A6",
+      "key": "gap",
+      "kind": "assumption",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Measure both children"
+      },
+      "not_compared": [],
+      "note": "Measure both children",
+      "owner": "Eric",
+      "physical_result": null,
+      "rationale": "CDC 50th percentile for 5 and 8 years; not measured",
+      "reason": "owner Eric is named in claims/A6.json and has not recorded it — Eric records it in their own shell: nopekit claim physical A6 assume",
+      "requirements": [
+        "R4"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The children are about 43 in and 50.5 in tall",
+      "status": "unclaimed",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "assumption",
+      "unproven": [],
+      "verdicts": [],
+      "word": "gap"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "finish",
+      "cause": "no-article",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "P1",
+      "key": "pending_build",
+      "kind": "physical",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Order sample fronts in both colours, stand them against the existing cabinets at noon and at dusk, with the plank sample on the floor"
+      },
+      "not_compared": [],
+      "note": "Order sample fronts in both colours, stand them against the existing cabinets at noon and at dusk, with the plank sample on the floor",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a hex colour on a screen is not lacquer in daylight; gloss shows every reflection of the gable windows",
+      "reason": "needs an article",
+      "requirements": [
+        "R5"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The gloss lower and upper colours look right together in this room, under the skylight and beside the brick",
+      "status": "unverified",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "measurement",
+      "unproven": [],
+      "verdicts": [],
+      "word": "pending build"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "family",
+      "cause": "no-article",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "P2",
+      "key": "pending_build",
+      "kind": "physical",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "After the build: ask each child to set their own place and get a snack while someone cooks at the range; watch where they walk"
+      },
+      "not_compared": [],
+      "note": "After the build: ask each child to set their own place and get a snack while someone cooks at the range; watch where they walk",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "no drawing settles what a 5-year-old does",
+      "reason": "needs an article",
+      "requirements": [
+        "R4"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Both children can get a cup, a plate, water and a snack without help and without walking between the cook and the range",
+      "status": "unverified",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "measurement",
+      "unproven": [],
+      "verdicts": [],
+      "word": "pending build"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "holiday",
+      "cause": "no-article",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "P3",
+      "key": "pending_build",
+      "kind": "physical",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "With tape on the floor where the island edge will be, set two chairs at it and measure to the table"
+      },
+      "not_compared": [],
+      "note": "With tape on the floor where the island edge will be, set two chairs at it and measure to the table",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "the island's seat edge is 27.5 in inside the post line; the table is furniture and its place is not in the model. NKBA: 44 in to walk behind a seated person",
+      "reason": "needs an article",
+      "requirements": [
+        "R3"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The dining table stands at least 44 in east of the island's seats, so people walk behind the stools",
+      "status": "unverified",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "measurement",
+      "unproven": [],
+      "verdicts": [],
+      "word": "pending build"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "fits",
+      "cause": "no-article",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "P4",
+      "key": "pending_build",
+      "kind": "physical",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Before ordering: measure the refrigerator's width with doors at 90 degrees. After: open both doors and pull the drawers"
+      },
+      "not_compared": [],
+      "note": "Before ordering: measure the refrigerator's width with doors at 90 degrees. After: open both doors and pull the drawers",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "the 2 3/4 in filler is the contractor's allowance; the refrigerator's hinge side needs checking against the 30 in return wall",
+      "reason": "needs an article",
+      "requirements": [
+        "R6"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The refrigerator fits the hall end and both its doors open fully beside the return wall",
+      "status": "unverified",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "measurement",
+      "unproven": [],
+      "verdicts": [],
+      "word": "pending build"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 60000.0,
+        "limit_hi": null,
+        "quantity": "build cost per unit",
+        "units": "USD/run"
+      },
+      "acceptance_render": "build cost per unit <= 60000.0 USD/run",
+      "article": "",
+      "authority": "",
+      "board": "budget",
+      "cause": "checked",
+      "compared": [
+        "bom.cost"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [
+        "<out>/bom_cost.json"
+      ],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "bom.cost"
+      ],
+      "grounded_by": [],
+      "id": "C1",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "60000 USD/run",
+      "mechanism": {
+        "by": "datasheet",
+        "evaluators": [
+          "bom.cost"
+        ],
+        "how": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget"
+      },
+      "not_compared": [],
+      "note": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "$60k is the person's number for everything; the model's budget_usd is the same number and check warns if they part",
+      "reason": "—",
+      "requirements": [
+        "R1",
+        "R9"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "budget"
+      ],
+      "terminal": "datasheet",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "bom.cost"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "bill of materials completeness",
+        "units": "lines"
+      },
+      "acceptance_render": "bill of materials completeness <= 0.0 lines",
+      "article": "",
+      "authority": "",
+      "board": "budget",
+      "cause": "checked",
+      "compared": [
+        "bom.complete"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [
+        "<out>/bom_complete.json"
+      ],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "bom.complete"
+      ],
+      "grounded_by": [],
+      "id": "C2",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 lines",
+      "mechanism": {
+        "by": "datasheet",
+        "evaluators": [
+          "bom.complete"
+        ],
+        "how": "Each line of the bill is read for a supplier, a quantity and a usable price"
+      },
+      "not_compared": [],
+      "note": "Each line of the bill is read for a supplier, a quantity and a usable price",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a line with no price is an unknown, not a zero; the total means nothing while one exists",
+      "reason": "—",
+      "requirements": [
+        "R1",
+        "R9"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Every line of the job has a supplier, a quantity and a price",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "bom"
+      ],
+      "terminal": "datasheet",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "bom.complete"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 9.0,
+        "limit_hi": null,
+        "quantity": "longest triangle leg",
+        "units": "ft"
+      },
+      "acceptance_render": "longest triangle leg <= 9.0 ft",
+      "article": "",
+      "authority": "",
+      "board": "weeknight",
+      "cause": "checked",
+      "compared": [
+        "kitchen.triangle_leg"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.triangle_leg"
+      ],
+      "grounded_by": [],
+      "id": "C3",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "9 ft",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.triangle_leg"
+        ],
+        "how": "Straight lines between the centre fronts of the refrigerator, the range and the prep sink, from the cabinet positions in the model"
+      },
+      "not_compared": [],
+      "note": "Straight lines between the centre fronts of the refrigerator, the range and the prep sink, from the cabinet positions in the model",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA Kitchen Planning Guidelines, distance between work centres: no leg over 9 ft. Past that a cook carries food across the room for every step. With an island sink the cook preps there; the window sink is then the clean-up sink, and its distance from the refrigerator is reported, not judged",
+      "reason": "—",
+      "requirements": [
+        "R2"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "No leg of the cook's triangle (refrigerator, range, and the sink the cook preps at) is longer than 9 ft",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "triangle-leg"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.triangle_leg"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 26.0,
+        "limit_hi": null,
+        "quantity": "triangle perimeter",
+        "units": "ft"
+      },
+      "acceptance_render": "triangle perimeter <= 26.0 ft",
+      "article": "",
+      "authority": "",
+      "board": "weeknight",
+      "cause": "checked",
+      "compared": [
+        "kitchen.triangle_total"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.triangle_total"
+      ],
+      "grounded_by": [],
+      "id": "C4",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "26 ft",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.triangle_total"
+        ],
+        "how": "The same three straight lines, summed"
+      },
+      "not_compared": [],
+      "note": "The same three straight lines, summed",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA Kitchen Planning Guidelines: the three legs sum to 26 ft or less",
+      "reason": "—",
+      "requirements": [
+        "R2"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The cook's triangle totals no more than 26 ft",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "triangle-total"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.triangle_total"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 42.0,
+        "limit_hi": null,
+        "quantity": "work aisle width",
+        "units": "in"
+      },
+      "acceptance_render": "work aisle width >= 42.0 in",
+      "article": "",
+      "authority": "",
+      "board": "weeknight",
+      "cause": "checked",
+      "compared": [
+        "kitchen.aisle_one_cook"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.aisle_one_cook"
+      ],
+      "grounded_by": [],
+      "id": "C5",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "42 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.aisle_one_cook"
+        ],
+        "how": "Counter edge of the long run to the island top, from the model"
+      },
+      "not_compared": [],
+      "note": "Counter edge of the long run to the island top, from the model",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA: 42 in is the work aisle for one cook; under it an open oven door blocks the aisle",
+      "reason": "—",
+      "requirements": [
+        "R2"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The aisle between the long run and the island is at least 42 in",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "aisle-one"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.aisle_one_cook"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 48.0,
+        "limit_hi": null,
+        "quantity": "work aisle width",
+        "units": "in"
+      },
+      "acceptance_render": "work aisle width >= 48.0 in",
+      "article": "",
+      "authority": "",
+      "board": "holiday",
+      "cause": "checked",
+      "compared": [
+        "kitchen.aisle_two_cooks"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.aisle_two_cooks"
+      ],
+      "grounded_by": [],
+      "id": "C6",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "48 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.aisle_two_cooks"
+        ],
+        "how": "The same aisle against the wider limit"
+      },
+      "not_compared": [],
+      "note": "The same aisle against the wider limit",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA: 48 in is the work aisle where more than one person cooks; on a holiday someone stands at the range while another carries a dish past",
+      "reason": "—",
+      "requirements": [
+        "R3"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Two people can pass in the work aisle: it is at least 48 in",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "aisle-two"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.aisle_two_cooks"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 21.0,
+        "limit_hi": null,
+        "quantity": "dishwasher standing room",
+        "units": "in"
+      },
+      "acceptance_render": "dishwasher standing room >= 21.0 in",
+      "article": "",
+      "authority": "",
+      "board": "weeknight",
+      "cause": "checked",
+      "compared": [
+        "kitchen.dishwasher_room"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.dishwasher_room"
+      ],
+      "grounded_by": [],
+      "id": "C7",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "21 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.dishwasher_room"
+        ],
+        "how": "Sink-run counter edge to the island's north end, less the 25.5 in an open door takes"
+      },
+      "not_compared": [],
+      "note": "Sink-run counter edge to the island's north end, less the 25.5 in an open door takes",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA: 21 in between the edge of an open dishwasher door and whatever faces it",
+      "reason": "—",
+      "requirements": [
+        "R2",
+        "R3"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Someone can stand at the open dishwasher: 21 in clear behind its door",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "dishwasher-room"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.dishwasher_room"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 2.0,
+        "limit_hi": null,
+        "quantity": "island seats",
+        "units": "seats"
+      },
+      "acceptance_render": "island seats >= 2.0 seats",
+      "article": "",
+      "authority": "",
+      "board": "family",
+      "cause": "checked",
+      "compared": [
+        "kitchen.island_seats"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.island_seats"
+      ],
+      "grounded_by": [],
+      "id": "C8",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "2 seats",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.island_seats"
+        ],
+        "how": "Island length divided by 24 in"
+      },
+      "not_compared": [],
+      "note": "Island length divided by 24 in",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "two children, each a 24 in NKBA seat; the dining table 6 ft away seats the family, so the island need not",
+      "reason": "—",
+      "requirements": [
+        "R4"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The island seats both children",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "island-seats"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.island_seats"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 15.0,
+        "limit_hi": null,
+        "quantity": "island knee room",
+        "units": "in"
+      },
+      "acceptance_render": "island knee room >= 15.0 in",
+      "article": "",
+      "authority": "",
+      "board": "family",
+      "cause": "checked",
+      "compared": [
+        "kitchen.island_knee"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.island_knee"
+      ],
+      "grounded_by": [],
+      "id": "C9",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "15 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.island_knee"
+        ],
+        "how": "Island top depth less the 24 in base and its 1 in front overhang"
+      },
+      "not_compared": [],
+      "note": "Island top depth less the 24 in base and its 1 in front overhang",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA: 15 in clear at a 36 in counter. Less and an adult sits sideways; the children will be adult size inside this kitchen's life",
+      "reason": "—",
+      "requirements": [
+        "R4"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Each island seat has 15 in of knee room",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "island-knee"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.island_knee"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "microwave height over the small child's reach",
+        "units": "in"
+      },
+      "acceptance_render": "microwave height over the small child's reach <= 0.0 in",
+      "article": "",
+      "authority": "",
+      "board": "family",
+      "cause": "checked",
+      "compared": [
+        "kitchen.microwave_reach"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.microwave_reach"
+      ],
+      "grounded_by": [],
+      "id": "C10",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.microwave_reach"
+        ],
+        "how": "Microwave bottom height from the model, against 0.80 of the smaller child's assumed stature less 3 in"
+      },
+      "not_compared": [],
+      "note": "Microwave bottom height from the model, against 0.80 of the smaller child's assumed stature less 3 in",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA: a microwave's bottom is 3 in below the principal user's shoulder. Hot food lifted down from above the shoulder is how children are scalded. The limit gets easier each year they grow",
+      "reason": "—",
+      "requirements": [
+        "R4"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The 5-year-old can use the microwave without reaching up: its bottom is 3 in below their shoulder, or lower",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "microwave-reach"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.microwave_reach"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "finish requirements not offered",
+        "units": "requirements"
+      },
+      "acceptance_render": "finish requirements not offered <= 0.0 requirements",
+      "article": "",
+      "authority": "",
+      "board": "finish",
+      "cause": "checked",
+      "compared": [
+        "kitchen.finish_offered"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.finish_offered"
+      ],
+      "grounded_by": [],
+      "id": "C11",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 requirements",
+      "mechanism": {
+        "by": "datasheet",
+        "evaluators": [
+          "kitchen.finish_offered"
+        ],
+        "how": "The catalog entry for the chosen line, read for gloss and for both colours"
+      },
+      "not_compared": [],
+      "note": "The catalog entry for the chosen line, read for gloss and for both colours",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "the person's brief: rich bright lower, lighter upper, both high gloss. A line that cannot do one of them is not the kitchen asked for",
+      "reason": "—",
+      "requirements": [
+        "R5",
+        "R9"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The chosen cabinet line is offered in high gloss, in the chosen lower colour and the chosen lighter upper colour",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "finish-offered"
+      ],
+      "terminal": "datasheet",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.finish_offered"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.25,
+        "limit_hi": null,
+        "quantity": "run fill error",
+        "units": "in"
+      },
+      "acceptance_render": "run fill error <= 0.25 in",
+      "article": "",
+      "authority": "",
+      "board": "fits",
+      "cause": "checked",
+      "compared": [
+        "kitchen.run_fill"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.run_fill"
+      ],
+      "grounded_by": [],
+      "id": "C12",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0.25 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.run_fill"
+        ],
+        "how": "The widths of every box, appliance and filler on each wall, summed, against the wall length on the contractor's drawing"
+      },
+      "not_compared": [],
+      "note": "The widths of every box, appliance and filler on each wall, summed, against the wall length on the contractor's drawing",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a run that sums 2 in short of its wall is a filler nobody ordered; 1/4 in is what scribing takes up",
+      "reason": "—",
+      "requirements": [
+        "R6"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The cabinets drawn fill each wall to within 1/4 in of its measured length",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "run-fill"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.run_fill"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 1.0,
+        "limit_hi": null,
+        "quantity": "window to upper gap",
+        "units": "in"
+      },
+      "acceptance_render": "window to upper gap >= 1.0 in",
+      "article": "",
+      "authority": "",
+      "board": "fits",
+      "cause": "checked",
+      "compared": [
+        "kitchen.window_gap"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.window_gap"
+      ],
+      "grounded_by": [],
+      "id": "C13",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "1 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.window_gap"
+        ],
+        "how": "The 49 in window centred on the sink base against the edges of the uppers on either side"
+      },
+      "not_compared": [],
+      "note": "The 49 in window centred on the sink base against the edges of the uppers on either side",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "window casing needs about an inch; an upper drawn into the window is a return trip",
+      "reason": "—",
+      "requirements": [
+        "R6"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The uppers beside the sink window clear it by at least 1 in",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "window-gap"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.window_gap"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 20.0,
+        "limit_hi": null,
+        "quantity": "floor wear layer",
+        "units": "mil"
+      },
+      "acceptance_render": "floor wear layer >= 20.0 mil",
+      "article": "",
+      "authority": "",
+      "board": "floors",
+      "cause": "checked",
+      "compared": [
+        "kitchen.floor_wear"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.floor_wear"
+      ],
+      "grounded_by": [],
+      "id": "C14",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "20 mil",
+      "mechanism": {
+        "by": "datasheet",
+        "evaluators": [
+          "kitchen.floor_wear"
+        ],
+        "how": "The wear layer the maker states for the chosen plank, as recorded in the catalog"
+      },
+      "not_compared": [],
+      "note": "The wear layer the maker states for the chosen plank, as recorded in the catalog",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "20 mil is the residential floor for a home with children and a kitchen; 12 mil builder planks scratch through",
+      "reason": "—",
+      "requirements": [
+        "R8"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The plank chosen for the upstairs has a wear layer of 20 mil or more",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "floor-wear"
+      ],
+      "terminal": "datasheet",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.floor_wear"
+      ],
+      "word": "checked"
+    }
+  ],
+  "decisions": [
+    {
+      "body": "",
+      "claims_changed": [
+        "C1",
+        "C14"
+      ],
+      "evidence": [],
+      "id": "where-the-budget-was-found",
+      "params_changed": [
+        "floor",
+        "cab_install",
+        "floor_removal",
+        "managed_by",
+        "counter"
+      ],
+      "rejected": [
+        {
+          "evidence": "",
+          "returns_if": {
+            "claim": "C1",
+            "comparator": ">",
+            "quantity": "margin",
+            "value": 0.04
+          },
+          "type": "infeasible",
+          "value": "Flooret Modin Signature Soho, 40 mil",
+          "why": "the better plank, but 2,160 USD more: the job is then 60,183 USD"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "claim": "C1",
+            "comparator": ">",
+            "quantity": "margin",
+            "value": 0.06
+          },
+          "type": "infeasible",
+          "value": "installer assembles the cabinets",
+          "why": "3,265 USD more: the job is then 61,288 USD"
+        },
+        {
+          "evidence": "",
+          "type": "infeasible",
+          "value": "a general contractor runs the job",
+          "why": "18 percent on everything: 68,432 USD"
+        },
+        {
+          "evidence": "",
+          "type": "unevaluated",
+          "value": "pulling the bamboo yourself",
+          "why": "saves about 4,100 USD but it is 1,257 sq ft of floor; kept as the reserve lever"
+        }
+      ],
+      "summary": "The wish list with installer-assembled cabinets and the 40 mil Flooret plank comes to about 63,400 USD. Assembling the IKEA boxes yourself and laying LifeProof Sterling Oak, 22 mil, from Home Depot in Lynnwood brings it to about 58,000 USD. IKEA KASKER quartz is already the counter.",
+      "title": "Where the budget was found",
+      "when": "2026-11-12T19:08:06Z"
+    },
+    {
+      "body": "",
+      "claims_changed": [
+        "C3",
+        "C4"
+      ],
+      "evidence": [],
+      "id": "a-prep-sink-in-the-island",
+      "params_changed": [
+        "prep_sink",
+        "fridge_at"
+      ],
+      "rejected": [
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when a plumber says a drain cannot reach the island (A5): then accept the long leg, or keep the refrigerator in the alcove"
+          },
+          "type": "infeasible",
+          "value": "the contractor's plan as drawn, no island sink",
+          "why": "refrigerator to sink is 12.8 ft against 9 and the triangle 27.0 ft against 26"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when the hall end cannot take the refrigerator (P4)"
+          },
+          "type": "infeasible",
+          "value": "refrigerator stays in the alcove",
+          "why": "refrigerator to range is 12.0 ft against 9, and the alcove cannot become a pantry"
+        }
+      ],
+      "summary": "With the refrigerator at the hall end the only sink is 12.8 ft from it. A small second sink in the island makes the cook's triangle refrigerator, island sink, range: 8.1 ft at its longest and 19.1 ft in all. It adds about 3,600 USD before tax and needs a drain through the floor (A5).",
+      "title": "A prep sink in the island",
+      "when": "2026-11-12T19:08:05Z"
+    },
+    {
+      "body": "",
+      "claims_changed": [
+        "C11",
+        "C1"
+      ],
+      "evidence": [],
+      "id": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "params_changed": [
+        "cab_line",
+        "lower_color",
+        "upper_color"
+      ],
+      "rejected": [
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when IKEA sells VOXTORP gloss in a bright colour in the US"
+          },
+          "type": "infeasible",
+          "value": "IKEA VOXTORP high gloss",
+          "why": "integrated handle and gloss from stock, but one colour in the US: dark gray-brown"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when 27estore cannot make an integrated handle (A4) and satin is acceptable"
+          },
+          "type": "dominated",
+          "value": "Bofronts Pull fronts",
+          "why": "a verified integrated pull in any Benjamin Moore colour, but satin, and about 6,000 USD more"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "claim": "C1",
+            "comparator": ">",
+            "quantity": "margin",
+            "value": 0.3
+          },
+          "type": "infeasible",
+          "value": "Bauformat Seattle handleless gloss lacquer",
+          "why": "kitchens from about 25,000 USD: the job passes 80,000 USD"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when the brief changes to a painted shaker"
+          },
+          "type": "infeasible",
+          "value": "the contractor's GS painted shaker",
+          "why": "matt paint with bar pulls: not gloss, no integrated handle"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when a shop quotes it under 14,000 USD"
+          },
+          "type": "unevaluated",
+          "value": "a local shop with Lioher finger-pull gloss doors",
+          "why": "navy over white only, and 15,000 to 28,000 USD"
+        }
+      ],
+      "summary": "The only route found with true high gloss, any RAL colour for a bright lower and a light upper, and a published price, about 11,000 USD for this kitchen. Gentian blue under oyster white is the recorded pair; any RAL pair costs the same. The integrated handle is seen in one image only (A4).",
+      "title": "IKEA boxes with 27estore gloss lacquer fronts",
+      "when": "2026-11-12T19:08:05Z"
+    },
+    {
+      "body": "",
+      "claims_changed": [
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "evidence": [],
+      "id": "island-64-by-40-in-48-in-from-both-runs",
+      "params_changed": [
+        "island_len",
+        "island_top_d",
+        "island_aisle",
+        "island_north_aisle"
+      ],
+      "rejected": [
+        {
+          "evidence": "",
+          "type": "infeasible",
+          "value": "a 36 in deep top",
+          "why": "11 in of knee room against 15"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when the dining table needs the 6 in (P3)"
+          },
+          "type": "infeasible",
+          "value": "42 in from the long run",
+          "why": "right for one cook, 6 in short for two on a holiday"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when a third seat matters more than the south passage"
+          },
+          "type": "unevaluated",
+          "value": "a 76 in island for three seats",
+          "why": "not checked against the walk from the hall to the dining room"
+        }
+      ],
+      "summary": "The contractor's 64 in island, made 40 in deep for 15 in of knee room, standing 48 in from the long run so two cooks pass, and 48 in from the sink run so the dishwasher opens with room to stand.",
+      "title": "Island 64 by 40 in, 48 in from both runs",
+      "when": "2026-11-12T19:08:05Z"
+    },
+    {
+      "body": "",
+      "claims_changed": [
+        "C10"
+      ],
+      "evidence": [],
+      "id": "the-alcove-is-an-open-walk-in-pantry-with-the-mi",
+      "params_changed": [
+        "pantry",
+        "microwave_at"
+      ],
+      "rejected": [
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "when the open shelves are seen from the dining table and bother you"
+          },
+          "type": "dominated",
+          "value": "a hinged door now",
+          "why": "1,000 USD more, and a door swinging beside the dishwasher; nothing is lost by adding it later"
+        },
+        {
+          "evidence": "",
+          "type": "dominated",
+          "value": "tall pantry cabinets with gloss fronts",
+          "why": "about 1,500 USD more and no walk-in; needs the alcove to be at least 36 in wide (A1)"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "claim": "C10",
+            "comparator": ">",
+            "quantity": "margin",
+            "value": 0.0
+          },
+          "type": "infeasible",
+          "value": "microwave on the counter",
+          "why": "bottom at 36 in, 4.6 in above the 5-year-old's reach"
+        },
+        {
+          "evidence": "",
+          "type": "dominated",
+          "value": "a drawer microwave in the island",
+          "why": "within reach, but about 1,750 USD and it takes a drawer stack"
+        }
+      ],
+      "summary": "Open shelves on three sides cost about 300 USD and keep the alcove one step from the dishwasher and the dining table. The microwave on a 30 in shelf there is the only place the 5-year-old reaches without lifting hot food down. A door can be added later for about 1,000 USD if the shelves look untidy from the table.",
+      "title": "The alcove is an open walk-in pantry with the microwave on a 30 in shelf",
+      "when": "2026-11-12T19:08:05Z"
+    }
+  ],
+  "gaps": [],
+  "inputs": [
+    {
+      "added": "2026-11-12T18:57:48Z",
+      "basis": "",
+      "bytes": 1181520,
+      "description": "GS Kitchen and Bath plan view: cabinet codes, wall lengths 193 and 138 in, island 64 in",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "wall1_len",
+            "wall2_len",
+            "island_len"
+          ],
+          "note": "",
+          "what": "L-shape: wall 1 is 193 in, wall 2 is 138 in, return walls 3 and 4 are 30 in each; island top 64 in over two B30 bases; codes REF36, B33, B3D30, ST30, B24, DCB36, FL2, B24, SB33, DW24, B3D18, FL1; uppers W3621, W3340, W3040, W3024, FL640, W3030, WDC2430, W2730, W3330"
+        }
+      ],
+      "id": "contractor-plan-room1",
+      "kind": "sketch",
+      "licence": "",
+      "note": "",
+      "path": "inputs/sketches/contractor-plan-room1.jpg",
+      "proposer": "",
+      "sha256": "3182e26d8ffed329e2066b1f7802c070d385aca7e521430aa877820200ad7737",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:49Z",
+      "basis": "",
+      "bytes": 1325875,
+      "description": "GS Kitchen and Bath elevation of wall 1: fridge, range, uppers, 193 in",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "wall1_len",
+            "base_h",
+            "upper_gap",
+            "cab_top"
+          ],
+          "note": "",
+          "what": "From the hallway end: 2 3/4 filler, 36 fridge, 1 1/4 panel, 33, 30, 30 range, 24, 36 corner = 193. Uppers 40 high beside a 24 over the hood and 30 high to the corner; base 34 1/2, top 1 1/2, 18 to uppers, tops at 84, wall 96"
+        }
+      ],
+      "id": "contractor-wall1-range-elevation",
+      "kind": "sketch",
+      "licence": "",
+      "note": "",
+      "path": "inputs/sketches/contractor-wall1-range-elevation.jpg",
+      "proposer": "",
+      "sha256": "97f430dc65668d55bc14c315ea873e07528da18d18e1c939c29f0fbeda37b95e",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:49Z",
+      "basis": "",
+      "bytes": 1119193,
+      "description": "GS Kitchen and Bath elevation of wall 2: sink under 49 in window, dishwasher, 138 in",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "wall2_len",
+            "window_w"
+          ],
+          "note": "",
+          "what": "From the corner: 36 corner, 2 filler, 24, 33 sink base, 24 dishwasher, 18 drawers, 1 filler = 138. Window 49 wide over the sink; uppers 24 corner + 27 left of the window and 33 right of it, 30 high"
+        }
+      ],
+      "id": "contractor-wall2-sink-elevation",
+      "kind": "sketch",
+      "licence": "",
+      "note": "",
+      "path": "inputs/sketches/contractor-wall2-sink-elevation.jpg",
+      "proposer": "",
+      "sha256": "082326e1b966ca80854968383f6705d1895f5de293ecdcf7cbe10dbd12141cef",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:48Z",
+      "basis": "",
+      "bytes": 690045,
+      "description": "Homestyler floor plan of the upper storey with room sizes",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "scaled",
+          "grounds": [
+            "floor_area_sqft",
+            "living_east_w",
+            "living_south_d"
+          ],
+          "note": "",
+          "what": "Kitchen 193 sq ft, 11 ft 9 in by about 16 ft 6 in; living and dining 507 sq ft, east part 10 ft 5 in wide; office 10 ft 5 in by 5 ft; bedrooms 236, 89, 85 sq ft; closets 49, 26, 10, 10 sq ft; stair opening south of the kitchen beside the hallway. Drawn in a consumer app, so sizes are approximate"
+        }
+      ],
+      "id": "floorplan-upstairs",
+      "kind": "sketch",
+      "licence": "",
+      "note": "",
+      "path": "inputs/sketches/floorplan-upstairs.png",
+      "proposer": "",
+      "sha256": "4134702457108d712008d58280efc26b97240820f2e75e89a248b11b8ee97875",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:52Z",
+      "basis": "",
+      "bytes": 1546147,
+      "description": "GS showroom shaker colours: Fairy Green, Black, Artisanal Ash, Timber, Swan White, Navy Blue",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R5"
+          ],
+          "note": "",
+          "what": "GS Kitchen and Bath shaker doors with bar pulls: Fairy Green, Black, Artisanal Ash, Timber, Swan White, Navy Blue. Painted matt shaker, not gloss, not integrated handle"
+        }
+      ],
+      "id": "gs-shaker-colours",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/gs-shaker-colours.jpg",
+      "proposer": "",
+      "sha256": "31f572fd97d4b6edf787e9a89c48bc6de339ab93af2bb9766566b9897dd232c1",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:50Z",
+      "basis": "",
+      "bytes": 1352474,
+      "description": "IKEA AXSTAD gray-green, 158 USD per linear ft",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R5"
+          ],
+          "note": "",
+          "what": "AXSTAD gray-green inset-panel door, 158 USD per linear ft, 10x10 layout 3169 USD"
+        }
+      ],
+      "id": "ikea-axstad-gray-green",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/ikea-axstad-gray-green.jpg",
+      "proposer": "",
+      "sha256": "39b863d54470f77ce440c81621d3a0ab96f623049df6f2ccf60f362bb5a0ec32",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:51Z",
+      "basis": "",
+      "bytes": 1705252,
+      "description": "IKEA BEGRIPA half-round handles in white, yellow, blue, red, lilac, 8 USD per 2-pack",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R5"
+          ],
+          "note": "",
+          "what": "BEGRIPA half-round handles 5 1/8 in, 8 USD per 2-pack, in white, yellow, light blue, light red and lilac"
+        }
+      ],
+      "id": "ikea-begripa-handles",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/ikea-begripa-handles.jpg",
+      "proposer": "",
+      "sha256": "2b01d66908af0e177963ffa9eb928cc875fa475d44b202ac5865cd30a9998170",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:52Z",
+      "basis": "",
+      "bytes": 2218101,
+      "description": "IKEA HAVSEN/LILLVIKEN sink close view, 299 USD",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R4"
+          ],
+          "note": "",
+          "what": "Same HAVSEN/LILLVIKEN sink at 299 USD; marble-look quartz with warm veining is the countertop taste"
+        }
+      ],
+      "id": "ikea-havsen-sink-close",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/ikea-havsen-sink-close.jpg",
+      "proposer": "",
+      "sha256": "51f51d7e653f87348dcf345ff6e6211c7bebd07df528244b80457b2abf6e2ad6",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:52Z",
+      "basis": "",
+      "bytes": 2040986,
+      "description": "IKEA HAVSEN apron-front sink at 299 USD on marble-look quartz",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R4"
+          ],
+          "note": "",
+          "what": "HAVSEN/LILLVIKEN white apron-front sink, 299 USD, in a marble-look top with a spring pull-down faucet"
+        }
+      ],
+      "id": "ikea-havsen-sink-wide",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/ikea-havsen-sink-wide.jpg",
+      "proposer": "",
+      "sha256": "26b3f302d5d41f97a3f7821fccfc3dfec98970589d0e3cf647422c59588a066e",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:51Z",
+      "basis": "",
+      "bytes": 1406184,
+      "description": "IKEA LERHYTTAN blue, 200 USD per linear ft",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R5"
+          ],
+          "note": "",
+          "what": "LERHYTTAN blue, solid wood frame, 200 USD per linear ft, 10x10 layout 4003 USD, marked New"
+        }
+      ],
+      "id": "ikea-lerhyttan-blue",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/ikea-lerhyttan-blue.jpg",
+      "proposer": "",
+      "sha256": "cd97888e0f056bc1679ae6c000646d7ddd8dd522379e632091f176d10ebd19d4",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:51Z",
+      "basis": "",
+      "bytes": 1664366,
+      "description": "IKEA MAJSJON stainless undermount sink at 199 USD with a square stainless faucet on white quartz",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R4"
+          ],
+          "note": "",
+          "what": "MAJSJON stainless undermount sink, 199 USD, shown with a square brushed faucet in white quartz"
+        }
+      ],
+      "id": "ikea-majsjon-sink",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/ikea-majsjon-sink.jpg",
+      "proposer": "",
+      "sha256": "f34f7d73e58e74d59d16b51fccb2e92b0e47bff9de2e85d07f508bc9afe09b07",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:51Z",
+      "basis": "",
+      "bytes": 1399266,
+      "description": "IKEA TERRSJO red-brown wave-pattern door, 15x30 at 85 USD",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R5"
+          ],
+          "note": "",
+          "what": "TERRSJO red-brown wave-pattern door 15x30 at 85 USD; 18x30 at 134 USD; an accent front"
+        }
+      ],
+      "id": "ikea-terrsjo-door",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/ikea-terrsjo-door.jpg",
+      "proposer": "",
+      "sha256": "f72bb7145a2b866ba0f249460b3cf366d792292f0210d0ea95c8b1d4be7f2a6f",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:50Z",
+      "basis": "",
+      "bytes": 1143899,
+      "description": "IKEA VOXTORP high-gloss dark gray-brown, integrated handle, 225 USD per linear ft",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "stated",
+          "grounds": [
+            "R5"
+          ],
+          "note": "",
+          "what": "VOXTORP: smooth door with integrated handle, high-gloss dark gray-brown, 225 USD per linear ft, 10x10 layout 4509 USD, marked New"
+        }
+      ],
+      "id": "ikea-voxtorp-gloss",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/ikea-voxtorp-gloss.jpg",
+      "proposer": "",
+      "sha256": "a2b6b7344f2493e8ed1b51a8d9eaeff9e80567ef361f26891c408a08bb6fec88",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:50Z",
+      "basis": "",
+      "bytes": 2352217,
+      "description": "Dining table, brick fireplace, gable windows",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "living_east_w"
+          ],
+          "note": "",
+          "what": "Dining table runs north-south in the east part of the room below the office wall; fireplace on the east wall"
+        }
+      ],
+      "id": "photo-dining-fireplace",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/photo-dining-fireplace.jpg",
+      "proposer": "",
+      "sha256": "1a59cabd708330ca555a0f0d1db13124b5cf924a7b15d1064149a648d9b734a1",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:50Z",
+      "basis": "",
+      "bytes": 2185255,
+      "description": "Dining table toward gable windows, fireplace, stair rail",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "living_east_w"
+          ],
+          "note": "",
+          "what": "Brick fireplace and TV on the east wall, gable windows south, ridge beam, sofa and rug in the south-east, stair rail south-west"
+        }
+      ],
+      "id": "photo-dining-to-living",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/photo-dining-to-living.jpg",
+      "proposer": "",
+      "sha256": "6d1401f9206facb16f7c167d44918549487de299017374e4e805f051868a2e2b",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:49Z",
+      "basis": "",
+      "bytes": 1845597,
+      "description": "Existing fridge alcove beside the dishwasher, office slider, dining table",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "alcove_w",
+            "alcove_d"
+          ],
+          "note": "",
+          "what": "The fridge stands in a recess at the east end of the sink wall, behind a stub wall; right of it a wall segment with a post, then the office slider. Alcove size is not measurable from the photo"
+        }
+      ],
+      "id": "photo-fridge-alcove-office",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/photo-fridge-alcove-office.jpg",
+      "proposer": "",
+      "sha256": "708a6333a7044a7117b9941feea8abb438d2fcfc65f93881efa0699e1bae0ca3",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:49Z",
+      "basis": "",
+      "bytes": 1849571,
+      "description": "Existing kitchen from the hallway end: long run, sink wall, skylight, tape on floor",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "wall1_len",
+            "wall2_len"
+          ],
+          "note": "",
+          "what": "Long run on the left with the range near its middle, sink wall with window and skylight at the far end, dishwasher right of the sink, a stub wall right of the drawer stack with the fridge behind it; blue tape on the floor where an island edge would be; honey bamboo floor"
+        }
+      ],
+      "id": "photo-kitchen-existing",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/photo-kitchen-existing.jpg",
+      "proposer": "",
+      "sha256": "f241812d538ef5e8c680860baab221eb2473351bc9468459ddcd7472d4cdbb13",
+      "url": ""
+    },
+    {
+      "added": "2026-11-12T18:57:49Z",
+      "basis": "",
+      "bytes": 2179685,
+      "description": "Living room toward stairs, hallway and kitchen, with the posts",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "post_y"
+          ],
+          "note": "",
+          "what": "Kitchen is open to the living room on its east side with two posts; the hallway leaves at the south end of the long run; stair opening with cable rail south of the kitchen; gable windows on the south wall"
+        }
+      ],
+      "id": "photo-living-to-kitchen",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/photo-living-to-kitchen.jpg",
+      "proposer": "",
+      "sha256": "948600c47b8a1272e9f79596fabb2c763146c8b06e180a6b6a7699eee9942268",
+      "url": ""
+    }
+  ],
+  "locator_problems": [],
+  "meta": {
+    "created": "2026-11-12T18:55:00Z",
+    "generated": "nopekit site build — an output of the ledger and its verdict cache, not a source. If a number here is wrong, the ledger is wrong.",
+    "model_entry": "model/kitchen.py",
+    "name": "Edmonds kitchen",
+    "packs": [
+      "sourcing"
+    ],
+    "records_digest": "35fed3f20792cb194483d78d1ec5c5c27f28237b1c6107bcd7b0e18c61aac07f",
+    "resolution_digest": "5e2f4d4287afcf58651919bb7132d439fcfb253ee57ee3af604421813b476ecb",
+    "revision": "v0.1",
+    "spine_version": "0.1.0",
+    "stale": false,
+    "stale_check": "",
+    "stale_reason": "",
+    "stale_unseen": false,
+    "summary": "Kitchen, living room and upstairs floors: gloss two-tone cabinets, refrigerator to the hall end, island with a prep sink, inside $60k"
+  },
+  "outcome_words": {
+    "errored": "errored",
+    "fail": "fail",
+    "outside-context": "outside operating context",
+    "pass": "pass",
+    "skipped": "skipped",
+    "unqualified": "unqualified"
+  },
+  "params": [
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.wall1_len",
+      "model_error": "",
+      "name": "wall1_len",
+      "rationale": "in, the long wall. Stated on the GS Kitchen and Bath plan and elevation; the cabinet widths on that elevation sum to it exactly.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:contractor-plan-room1",
+        "input:contractor-wall1-range-elevation",
+        "input:photo-kitchen-existing"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 193.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.wall2_len",
+      "model_error": "",
+      "name": "wall2_len",
+      "rationale": "in, the sink wall, corner to the stub wall beside the alcove. Stated.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:contractor-plan-room1",
+        "input:contractor-wall2-sink-elevation",
+        "input:photo-kitchen-existing"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 138.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.window_w",
+      "model_error": "",
+      "name": "window_w",
+      "rationale": "in, the window over the sink (Win49 on the elevation). It stays.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:contractor-wall2-sink-elevation"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 49.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.kitchen_w",
+      "model_error": "",
+      "name": "kitchen_w",
+      "rationale": "in, wall 1 to the line of the two posts that open the kitchen to the dining area. Scaled from the floor plan (11 ft 9 in), not measured.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 141.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.alcove_w",
+      "model_error": "",
+      "name": "alcove_w",
+      "rationale": "in, the old refrigerator recess, wall to wall. ASSUMED from a 36 in refrigerator with trim; claim A1 owns it. 36 would not take two 18 in pantry cabinets with fillers; measure before ordering anything for it.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:photo-fridge-alcove-office"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 40.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.alcove_d",
+      "model_error": "",
+      "name": "alcove_d",
+      "rationale": "in, front to back of the recess. ASSUMED (a standard-depth refrigerator sits nearly flush in it in the photo). Under 30 it is a reach-in, not a walk-in.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:photo-fridge-alcove-office"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 34.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.floor_area_sqft",
+      "model_error": "",
+      "name": "floor_area_sqft",
+      "rationale": "sq ft of new floor: kitchen 193, living and dining 507, office 52, bedrooms 236 + 89 + 85, closets 49 + 26 + 10 + 10. Scaled: the sum of the floor plan's room labels, without the two bathrooms. A tape measure will move it.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:floorplan-upstairs"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 1257.0
+    },
+    {
+      "changed_in": "",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.base_h",
+      "model_error": "",
+      "name": "base_h",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:contractor-wall1-range-elevation"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 34.5
+    },
+    {
+      "changed_in": "",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.counter_t",
+      "model_error": "",
+      "name": "counter_t",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 1.5
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.upper_gap",
+      "model_error": "",
+      "name": "upper_gap",
+      "rationale": "in, counter to the underside of the uppers. Stated; also the NKBA minimum of 15 with margin.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:contractor-wall1-range-elevation"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 18.0
+    },
+    {
+      "changed_in": "",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.base_d",
+      "model_error": "",
+      "name": "base_d",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 24.0
+    },
+    {
+      "changed_in": "",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.counter_d",
+      "model_error": "",
+      "name": "counter_d",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 25.5
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.upper_d",
+      "model_error": "",
+      "name": "upper_d",
+      "rationale": "in, wall cabinet with its door. 12 in box plus a slab front.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 13.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.fridge_d",
+      "model_error": "",
+      "name": "fridge_d",
+      "rationale": "in, wall to the refrigerator's door face. ASSUMED standard depth; the existing French-door unit is kept and its model is not recorded.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 34.0
+    },
+    {
+      "changed_in": "a-prep-sink-in-the-island",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.fridge_at",
+      "model_error": "",
+      "name": "fridge_at",
+      "rationale": "'hall' (the contractor's mock-up, requirement R6) or 'alcove' (where it is today). What each costs in walking distance is in PARAMS.",
+      "read_by": [],
+      "record": "",
+      "rejected": [
+        {
+          "evidence": "",
+          "origin": "model/kitchen.py PARAMS",
+          "value": "alcove (where it is today)",
+          "why": "refrigerator to range is 12.0 ft, over 9 ft, and the alcove cannot become a pantry; the person asked for the move (R6)"
+        }
+      ],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "hall"
+    },
+    {
+      "changed_in": "island-64-by-40-in-48-in-from-both-runs",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.island_len",
+      "model_error": "",
+      "name": "island_len",
+      "rationale": "in, the island top along the long wall; 0 is no island. 64 is the contractor's: two 30 in bases and a 2 in overhang each end. 76 seats three.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "input:contractor-plan-room1"
+      ],
+      "tags": [],
+      "units": "",
+      "value": 64.0
+    },
+    {
+      "changed_in": "island-64-by-40-in-48-in-from-both-runs",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.island_top_d",
+      "model_error": "",
+      "name": "island_top_d",
+      "rationale": "in, the island top across. 24 in base, 1 in front overhang, 15 in of knee room: the NKBA depth for a seat at a 36 in counter. The 36 in top that the contractor's plan suggests leaves 11 in and lost; see PARAMS.",
+      "read_by": [],
+      "record": "",
+      "rejected": [
+        {
+          "evidence": "",
+          "origin": "model/kitchen.py PARAMS",
+          "value": "36 in",
+          "why": "11 in of knee room, 4 in short of the 15 in a seat at a 36 in counter needs"
+        }
+      ],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "in",
+      "value": 40.0
+    },
+    {
+      "changed_in": "island-64-by-40-in-48-in-from-both-runs",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.island_aisle",
+      "model_error": "",
+      "name": "island_aisle",
+      "rationale": "in, the long run's counter edge to the island: the work aisle. 48 is the NKBA width for more than one cook; 42 is its width for one.",
+      "read_by": [],
+      "record": "",
+      "rejected": [
+        {
+          "evidence": "",
+          "origin": "model/kitchen.py PARAMS",
+          "value": "42 in",
+          "why": "right for one cook, 6 in short of the width for two to pass on a holiday"
+        }
+      ],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "in",
+      "value": 48.0
+    },
+    {
+      "changed_in": "island-64-by-40-in-48-in-from-both-runs",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.island_north_aisle",
+      "model_error": "",
+      "name": "island_north_aisle",
+      "rationale": "in, the sink run's counter edge to the island's north end. Leaves 22.5 in to stand behind an open dishwasher door.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 48.0
+    },
+    {
+      "changed_in": "a-prep-sink-in-the-island",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.prep_sink",
+      "model_error": "",
+      "name": "prep_sink",
+      "rationale": "A small second sink in the island. It is what brings the cook's triangle inside 9 ft a leg once the refrigerator is at the hall end; without it the walk from the refrigerator to the only sink is 12.7 ft. See PARAMS.",
+      "read_by": [],
+      "record": "",
+      "rejected": [
+        {
+          "evidence": "",
+          "origin": "model/kitchen.py PARAMS",
+          "value": "no island sink (the contractor's plan as drawn)",
+          "why": "refrigerator to sink is 12.7 ft, over the 9 ft a leg may be, and the triangle is 26.9 ft against 26"
+        }
+      ],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": true
+    },
+    {
+      "changed_in": "the-alcove-is-an-open-walk-in-pantry-with-the-mi",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.pantry",
+      "model_error": "",
+      "name": "pantry",
+      "rationale": "What the old alcove becomes when the refrigerator leaves it: 'open' (shelves on three sides, no door), 'door' (the same behind a hinged door) or 'cabinets' (tall cabinets with fronts in the lower colour).",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "open"
+    },
+    {
+      "changed_in": "the-alcove-is-an-open-walk-in-pantry-with-the-mi",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.microwave_at",
+      "model_error": "",
+      "name": "microwave_at",
+      "rationale": "'counter' (as today), 'pantry' (a shelf at 30 in in the alcove) or 'island' (a drawer microwave in the island).",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "pantry"
+    },
+    {
+      "changed_in": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.cab_line",
+      "model_error": "",
+      "name": "cab_line",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "sektion_27e_gloss"
+    },
+    {
+      "changed_in": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.lower_color",
+      "model_error": "",
+      "name": "lower_color",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "gentian"
+    },
+    {
+      "changed_in": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.upper_color",
+      "model_error": "",
+      "name": "upper_color",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "oyster"
+    },
+    {
+      "changed_in": "where-the-budget-was-found",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.counter",
+      "model_error": "",
+      "name": "counter",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "ikea_kasker"
+    },
+    {
+      "changed_in": "",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.sink",
+      "model_error": "",
+      "name": "sink",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "ruvati_32"
+    },
+    {
+      "changed_in": "",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.faucet",
+      "model_error": "",
+      "name": "faucet",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "majsjon"
+    },
+    {
+      "changed_in": "",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.backsplash",
+      "model_error": "",
+      "name": "backsplash",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "tile"
+    },
+    {
+      "changed_in": "where-the-budget-was-found",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.floor",
+      "model_error": "",
+      "name": "floor",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "lifeproof_sterling"
+    },
+    {
+      "changed_in": "",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.handles",
+      "model_error": "",
+      "name": "handles",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "integrated"
+    },
+    {
+      "changed_in": "where-the-budget-was-found",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.managed_by",
+      "model_error": "",
+      "name": "managed_by",
+      "rationale": "'self': the person hires the trades; 'gc': a general contractor adds 18%.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "self"
+    },
+    {
+      "changed_in": "where-the-budget-was-found",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.cab_install",
+      "model_error": "",
+      "name": "cab_install",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "self_assemble"
+    },
+    {
+      "changed_in": "where-the-budget-was-found",
+      "defended": false,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.floor_removal",
+      "model_error": "",
+      "name": "floor_removal",
+      "rationale": "",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "pro"
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.budget_usd",
+      "model_error": "",
+      "name": "budget_usd",
+      "rationale": "USD, the whole job: kitchen and upstairs floors. The person's number.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 60000.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.sales_tax",
+      "model_error": "",
+      "name": "sales_tax",
+      "rationale": "Edmonds combined rate (location code 3104), 6.5% state + 4.2% local, in effect from 1 April 2026 per the WA DOR table as quoted by two aggregators; the Q4 2026 notice was not seen. Washington taxes remodel labour as well as materials, so it applies to every line but permits.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 0.107
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.contingency",
+      "model_error": "",
+      "name": "contingency",
+      "rationale": "Of the pre-tax subtotal. 10% is a contractor's usual line and 20% a budgeting guide's; 12 because the sink and the range stay where they are, and the island drain and the refrigerator circuit are the only work inside walls.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 0.12
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.kid_small_h",
+      "model_error": "",
+      "name": "kid_small_h",
+      "rationale": "in, a 5-year-old at the CDC 50th percentile. ASSUMED, not measured.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 43.0
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.kid_big_h",
+      "model_error": "",
+      "name": "kid_big_h",
+      "rationale": "in, an 8-year-old at the CDC 50th percentile. ASSUMED, not measured.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": 50.5
+    }
+  ],
+  "phrases": {
+    "chart_empty": "This chart has no series. There is nothing to draw.",
+    "chart_table": "The chart did not load. This table shows its numbers.",
+    "disagree": "the resolver and the verdicts disagree — a defect to report",
+    "invalidated": "invalidated",
+    "judgment_blurb": "Each stays with the person or institution it names, who settles it in their own shell — no evaluator here does. Each row says whether its authority has recorded it.",
+    "judgment_title": "Expert judgments",
+    "need": {
+      "abandoned": "abandoned",
+      "deferred": "deferred",
+      "installing": "installing",
+      "open": "identified",
+      "proposed": "proposed",
+      "satisfied": "satisfied"
+    },
+    "outcome_hint": {
+      "errored": "the evaluator crashed — nothing was evaluated, and the evaluator itself is broken",
+      "fail": "the evaluator ran and failed",
+      "outside-context": "the evaluator passed on inputs outside the range it was qualified on — the pass does not count; a fail there would",
+      "pass": "the evaluator ran and passed",
+      "skipped": "nothing was evaluated: its tool is missing here, it skipped itself on its input, or a prerequisite is not established"
+    },
+    "result_counts": "it counts",
+    "result_not_counted": "it does not count",
+    "result_recorded": "A physical result was recorded:",
+    "unseen": "unseen inputs"
+  },
+  "readiness": {
+    "all_required_checked": false,
+    "blocking": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "by_key": {
+      "assumed": 0,
+      "checked": 14,
+      "failing": 0,
+      "gap": 6,
+      "open": 0,
+      "pending_build": 4,
+      "skipped": 0,
+      "stale": 0
+    },
+    "counts": {
+      "asserted": 0,
+      "blocked": 0,
+      "fail": 0,
+      "pass": 14,
+      "pending": 0,
+      "refuted": 0,
+      "stale": 0,
+      "unclaimed": 6,
+      "unverified": 4,
+      "verified": 0
+    },
+    "errored": 0,
+    "kinds": {
+      "assumption": 6,
+      "measurable": 14,
+      "physical": 4
+    },
+    "milestones": {},
+    "n_claims": 24,
+    "n_critical": 24,
+    "n_gaps": 0,
+    "n_gates": 19,
+    "ready": false,
+    "tally": [
+      {
+        "errored": 0,
+        "key": "checked",
+        "label": "14 checked",
+        "n": 14,
+        "status": "pass"
+      },
+      {
+        "errored": 0,
+        "key": "gap",
+        "label": "6 gaps",
+        "n": 6,
+        "status": "unclaimed"
+      },
+      {
+        "errored": 0,
+        "key": "pending_build",
+        "label": "4 pending build",
+        "n": 4,
+        "status": "unverified"
+      }
+    ],
+    "unresolved": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6",
+      "P1",
+      "P2",
+      "P3",
+      "P4"
+    ],
+    "verdict": "v0.1 is NOT ready: 10 of 24 required claims are unresolved — 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 14 of 24 claims are checked against the current inputs. Pending build: 4 claims need an article (P1, P2, P3, P4). No claim is checked on any article."
+  },
+  "rebuild": [],
+  "rejections": [
+    {
+      "by": null,
+      "decision": "where-the-budget-was-found",
+      "index": 0,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "C1",
+        "detail": "",
+        "gate": "bom.cost",
+        "observed": 0.03291716666666665,
+        "state": "does-not-hold",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "claim": "C1",
+        "comparator": ">",
+        "quantity": "margin",
+        "value": 0.04
+      },
+      "type": "infeasible",
+      "value": "Flooret Modin Signature Soho, 40 mil"
+    },
+    {
+      "by": null,
+      "decision": "where-the-budget-was-found",
+      "index": 1,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "C1",
+        "detail": "",
+        "gate": "bom.cost",
+        "observed": 0.03291716666666665,
+        "state": "does-not-hold",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "claim": "C1",
+        "comparator": ">",
+        "quantity": "margin",
+        "value": 0.06
+      },
+      "type": "infeasible",
+      "value": "installer assembles the cabinets"
+    },
+    {
+      "by": null,
+      "decision": "where-the-budget-was-found",
+      "index": 2,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "none",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": null,
+      "type": "infeasible",
+      "value": "a general contractor runs the job"
+    },
+    {
+      "by": null,
+      "decision": "where-the-budget-was-found",
+      "index": 3,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "none",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": null,
+      "type": "unevaluated",
+      "value": "pulling the bamboo yourself"
+    },
+    {
+      "by": null,
+      "decision": "a-prep-sink-in-the-island",
+      "index": 0,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when a plumber says a drain cannot reach the island (A5): then accept the long leg, or keep the refrigerator in the alcove"
+      },
+      "type": "infeasible",
+      "value": "the contractor's plan as drawn, no island sink"
+    },
+    {
+      "by": null,
+      "decision": "a-prep-sink-in-the-island",
+      "index": 1,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when the hall end cannot take the refrigerator (P4)"
+      },
+      "type": "infeasible",
+      "value": "refrigerator stays in the alcove"
+    },
+    {
+      "by": null,
+      "decision": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "index": 0,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when IKEA sells VOXTORP gloss in a bright colour in the US"
+      },
+      "type": "infeasible",
+      "value": "IKEA VOXTORP high gloss"
+    },
+    {
+      "by": null,
+      "decision": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "index": 1,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when 27estore cannot make an integrated handle (A4) and satin is acceptable"
+      },
+      "type": "dominated",
+      "value": "Bofronts Pull fronts"
+    },
+    {
+      "by": null,
+      "decision": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "index": 2,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "C1",
+        "detail": "",
+        "gate": "bom.cost",
+        "observed": 0.03291716666666665,
+        "state": "does-not-hold",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "claim": "C1",
+        "comparator": ">",
+        "quantity": "margin",
+        "value": 0.3
+      },
+      "type": "infeasible",
+      "value": "Bauformat Seattle handleless gloss lacquer"
+    },
+    {
+      "by": null,
+      "decision": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "index": 3,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when the brief changes to a painted shaker"
+      },
+      "type": "infeasible",
+      "value": "the contractor's GS painted shaker"
+    },
+    {
+      "by": null,
+      "decision": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
+      "index": 4,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when a shop quotes it under 14,000 USD"
+      },
+      "type": "unevaluated",
+      "value": "a local shop with Lioher finger-pull gloss doors"
+    },
+    {
+      "by": null,
+      "decision": "island-64-by-40-in-48-in-from-both-runs",
+      "index": 0,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "none",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": null,
+      "type": "infeasible",
+      "value": "a 36 in deep top"
+    },
+    {
+      "by": null,
+      "decision": "island-64-by-40-in-48-in-from-both-runs",
+      "index": 1,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when the dining table needs the 6 in (P3)"
+      },
+      "type": "infeasible",
+      "value": "42 in from the long run"
+    },
+    {
+      "by": null,
+      "decision": "island-64-by-40-in-48-in-from-both-runs",
+      "index": 2,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when a third seat matters more than the south passage"
+      },
+      "type": "unevaluated",
+      "value": "a 76 in island for three seats"
+    },
+    {
+      "by": null,
+      "decision": "the-alcove-is-an-open-walk-in-pantry-with-the-mi",
+      "index": 0,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "when the open shelves are seen from the dining table and bother you"
+      },
+      "type": "dominated",
+      "value": "a hinged door now"
+    },
+    {
+      "by": null,
+      "decision": "the-alcove-is-an-open-walk-in-pantry-with-the-mi",
+      "index": 1,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "none",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": null,
+      "type": "dominated",
+      "value": "tall pantry cabinets with gloss fronts"
+    },
+    {
+      "by": null,
+      "decision": "the-alcove-is-an-open-walk-in-pantry-with-the-mi",
+      "index": 2,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "C10",
+        "detail": "zero-limit",
+        "gate": "kitchen.microwave_reach",
+        "observed": null,
+        "state": "cannot-evaluate",
+        "status": "",
+        "why": "no-margin"
+      },
+      "returns_if": {
+        "claim": "C10",
+        "comparator": ">",
+        "quantity": "margin",
+        "value": 0.0
+      },
+      "type": "infeasible",
+      "value": "microwave on the counter"
+    },
+    {
+      "by": null,
+      "decision": "the-alcove-is-an-open-walk-in-pantry-with-the-mi",
+      "index": 3,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "none",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": null,
+      "type": "dominated",
+      "value": "a drawer microwave in the island"
+    }
+  ],
+  "requirements": [
+    {
+      "claims": [
+        "A2",
+        "C1",
+        "C2"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R1",
+      "key": "gap",
+      "source": "interview",
+      "statement": "Stay inside a $60k budget for the kitchen and the new upstairs floors",
+      "status": "unclaimed",
+      "word": "gap",
+      "worst": [
+        "A2"
+      ]
+    },
+    {
+      "claims": [
+        "A5",
+        "C3",
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R2",
+      "key": "gap",
+      "source": "interview",
+      "statement": "Movement through the space works for one person cooking on a typical day",
+      "status": "unclaimed",
+      "word": "gap",
+      "worst": [
+        "A5"
+      ]
+    },
+    {
+      "claims": [
+        "C6",
+        "C7",
+        "P3"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R3",
+      "key": "pending_build",
+      "source": "interview",
+      "statement": "Movement through the space works for several people cooking at a time on a holiday",
+      "status": "unverified",
+      "word": "pending build",
+      "worst": [
+        "P3"
+      ]
+    },
+    {
+      "claims": [
+        "A6",
+        "C8",
+        "C9",
+        "C10",
+        "P2"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R4",
+      "key": "gap",
+      "source": "interview",
+      "statement": "Usable by me, my wife and our 8 and 5 year old, who will grow with the space",
+      "status": "unclaimed",
+      "word": "gap",
+      "worst": [
+        "A6"
+      ]
+    },
+    {
+      "claims": [
+        "A4",
+        "C11",
+        "P1"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R5",
+      "key": "gap",
+      "source": "interview",
+      "statement": "One colour for the lower cabinets and another for the uppers: a rich bright lower and a lighter upper, both high gloss with an integrated handle",
+      "status": "unclaimed",
+      "word": "gap",
+      "worst": [
+        "A4"
+      ]
+    },
+    {
+      "claims": [
+        "A3",
+        "C12",
+        "C13",
+        "P4"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R6",
+      "key": "gap",
+      "source": "interview",
+      "statement": "The refrigerator moves from its alcove to the space near the hallway and stairs, as in the contractor's mock-up",
+      "status": "unclaimed",
+      "word": "gap",
+      "worst": [
+        "A3"
+      ]
+    },
+    {
+      "claims": [
+        "A1"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R7",
+      "key": "gap",
+      "source": "interview",
+      "statement": "Decide whether the old refrigerator alcove gets a door to become a pantry or stays an open walk-in",
+      "status": "unclaimed",
+      "word": "gap",
+      "worst": [
+        "A1"
+      ]
+    },
+    {
+      "claims": [
+        "A3",
+        "C14"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R8",
+      "key": "gap",
+      "source": "interview",
+      "statement": "New floors for the upstairs of the home, probably a high quality LVP",
+      "status": "unclaimed",
+      "word": "gap",
+      "worst": [
+        "A3"
+      ]
+    },
+    {
+      "claims": [
+        "C1",
+        "C2",
+        "C11"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R9",
+      "key": "checked",
+      "source": "interview",
+      "statement": "Cabinets and floors I can actually buy, from Seattle-area providers where that makes sense, custom or national where it does not",
+      "status": "pass",
+      "word": "checked",
+      "worst": [
+        "C1",
+        "C2",
+        "C11"
+      ]
+    }
+  ],
+  "trace": {
+    "key": "7d6a206be214",
+    "round": null,
+    "state": "traced"
+  },
+  "verdicts": [
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "sourcing",
+        "procurement",
+        "bom",
+        "cost",
+        "availability",
+        "supply-chain"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "0 of 25 lines not orderable (limit 0) — every line has a part number, a quantity and a usable price",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [
+        "<out>/bom_complete.json"
+      ],
+      "evidence_assets": [
+        "assets/evidence/bom.complete/dfb35551dc1c05c4-024b1ea8/bom_complete.json"
+      ],
+      "fresh": true,
+      "gate": "bom.complete",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 0.0,
+      "ok": true,
+      "order": 3,
+      "pack": "sourcing",
+      "passed": true,
+      "rho": "dfb35551dc1c05c43889396293437ccce0027f2c8e673992be3af86fa99c8b20",
+      "settles": "bill of materials completeness",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "lines",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "cost",
+        "build-cost",
+        "budget",
+        "unit-cost"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "58,024.97 USD for the run of 1 vs 60,000.00 USD budget; parts 46,639.06 USD + minimums 0.00 USD + one-time 11,385.91 USD (11,385.91 USD/unit amortised) = 58,024.97 USD run",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [
+        "<out>/bom_cost.json"
+      ],
+      "evidence_assets": [
+        "assets/evidence/bom.cost/a4de84defde1e299-c5960d34/bom_cost.json"
+      ],
+      "fresh": true,
+      "gate": "bom.cost",
+      "limit": 60000.0,
+      "locators": [],
+      "margin": 0.0329172,
+      "margin_why": "",
+      "measured": 58024.97,
+      "ok": true,
+      "order": 4,
+      "pack": "sourcing",
+      "passed": true,
+      "rho": "a4de84defde1e29945da535149839c9f7de0d638843a9936321ec5637a20bd8e",
+      "settles": "build cost per unit",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "USD/run",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "availability",
+        "lead-time",
+        "ship-date",
+        "stock"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "longest lead unknown wk (-); no lead-time budget set (nothing to compare against); 25 unknown, 0 EOL, 0 flagged; no ship date: cabinets(no lead_time_weeks), cab_install(no lead_time_weeks), counter(no lead_time_weeks), backsplash(no lead_time_weeks)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [
+        "<out>/bom_availability.json"
+      ],
+      "evidence_assets": [
+        "assets/evidence/bom.availability/caf85f814049749f-999dcf7f/bom_availability.json"
+      ],
+      "fresh": true,
+      "gate": "bom.availability",
+      "limit": null,
+      "locators": [
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "cabinets",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "cab_install",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "counter",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "backsplash",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "sink",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "faucet",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "demo",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "plumb_reconnect",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "undercab_labor",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "undercab_lights",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "drywall_paint",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
+          "target": "fridge_circuit",
+          "value": null,
+          "view": "bom"
+        }
+      ],
+      "margin": null,
+      "margin_why": "no-value",
+      "measured": null,
+      "ok": false,
+      "order": 0,
+      "pack": "sourcing",
+      "passed": false,
+      "rho": "caf85f814049749f33103e0d85eb074b8e9ace7ebe874148ed8ea1dccae38a53",
+      "settles": "longest lead time",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "fail",
+      "tier": 0,
+      "units": "weeks",
+      "unqualified": "",
+      "unseen": false,
+      "views": [
+        "bom"
+      ]
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "moq",
+        "minimum-order",
+        "overbuy",
+        "inventory"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "idle capital 0.00 USD vs 4,663.91 USD (10% of the 46,639.06 parts spend); no line buys more than the build consumes; 0 line(s) past 3x",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [
+        "<out>/bom_moq.json"
+      ],
+      "evidence_assets": [
+        "assets/evidence/bom.moq/e327303e38162801-c1c15d5d/bom_moq.json"
+      ],
+      "fresh": true,
+      "gate": "bom.moq",
+      "limit": 4663.91,
+      "locators": [],
+      "margin": 1.0,
+      "margin_why": "",
+      "measured": 0.0,
+      "ok": true,
+      "order": 6,
+      "pack": "sourcing",
+      "passed": true,
+      "rho": "e327303e381628016de5100b200d90878bd7daf6e2c429e96d4f64f07683e2f7",
+      "settles": "minimum order quantity overbuy",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "USD",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": false,
+      "claims": [
+        "process-rules",
+        "vendor-capability",
+        "manufacturability",
+        "dfm"
+      ],
+      "comparator": "",
+      "cpu_s": 0.0,
+      "detail": "",
+      "duration_s": 0.001817,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": false,
+      "gate": "bom.process_rules",
+      "limit": null,
+      "locators": [],
+      "margin": null,
+      "margin_why": "no-verdict",
+      "measured": null,
+      "ok": false,
+      "order": 2,
+      "pack": "sourcing",
+      "passed": false,
+      "rho": "6a521ecd0c6836513793b2f0dcec494af2fc9ca82bcfdefc4ab56410dbacb5cb",
+      "settles": "vendor process capability",
+      "skip_reason": "no 'process_rules' in the BOM document — the vendor's capability set is project data (ask for it in writing with the quote); nothing to check the design against",
+      "skipped": true,
+      "stale_reason": "",
+      "status": "skipped",
+      "tier": 0,
+      "unanchored": true,
+      "units": "",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "single-source",
+        "supply-risk",
+        "second-source",
+        "supply-chain-risk"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "25 unrecorded single-source line(s) vs limit 0 (25 behind one source in total, 0 with a qualified alternate, 0 accepted in writing): cabinets (supplier IKEA Renton + 27estore (online)), cab_install (supplier IKEA-kitchen installer), counter (supplier IKEA Renton), backsplash (supplier a tile setter); 25 line(s) record no manufacturer, so their sources are counted by supplier — two distributors of one factory's part would read as two there",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [
+        "<out>/bom_single_source.json"
+      ],
+      "evidence_assets": [
+        "assets/evidence/bom.single_source/ada3e704d7376681-88f62b19/bom_single_source.json"
+      ],
+      "fresh": true,
+      "gate": "bom.single_source",
+      "limit": 0.0,
+      "locators": [
+        {
+          "kind": "row",
+          "label": "single source (supplier IKEA Renton + 27estore (online)) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "cabinets",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier IKEA-kitchen installer) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "cab_install",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier IKEA Renton) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "counter",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier a tile setter) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "backsplash",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier The Sink Boutique (online)) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "sink",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier IKEA Renton) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "faucet",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier a demolition crew) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "demo",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier a plumber) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "plumb_reconnect",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier an electrician) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "undercab_labor",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier IKEA Renton) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "undercab_lights",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier a painter) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "drywall_paint",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "single source (supplier an electrician) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "fridge_circuit",
+          "value": null,
+          "view": "bom"
+        }
+      ],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 25.0,
+      "ok": false,
+      "order": 1,
+      "pack": "sourcing",
+      "passed": false,
+      "rho": "ada3e704d7376681fddf9c2e1bb06ef9dbd12ccdec1867183ce06fca62dd91cd",
+      "settles": "single source count",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "fail",
+      "tier": 0,
+      "units": "lines",
+      "unqualified": "",
+      "unseen": false,
+      "views": [
+        "bom"
+      ]
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "currency",
+        "fx",
+        "price-currency",
+        "cost"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "0 of 25 line(s) priced in a currency this document cannot convert (limit 0) — base USD (the document's 'currency'), every line quoted in the base currency",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [
+        "<out>/bom_currency.json"
+      ],
+      "evidence_assets": [
+        "assets/evidence/bom.currency/ccfb5cac68f1cda7-024b1ea8/bom_currency.json"
+      ],
+      "fresh": true,
+      "gate": "bom.currency",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 0.0,
+      "ok": true,
+      "order": 5,
+      "pack": "sourcing",
+      "passed": true,
+      "rho": "ccfb5cac68f1cda7e0bb69548d985fa23557adaab426096f05954ab088f32543",
+      "settles": "price currency coherence",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "lines",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "triangle-leg"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.4; longest: 8.14 ft (limit <= 9 ft)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.triangle_leg",
+      "limit": 9.0,
+      "locators": [],
+      "margin": 0.0955556,
+      "margin_why": "",
+      "measured": 8.14,
+      "ok": true,
+      "order": 16,
+      "pack": "",
+      "passed": true,
+      "rho": "658cd57afcb7b6b8bb985b93849250c6ea8013db56ed5d594dc34de52ea56c3e",
+      "settles": "longest triangle leg",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "ft",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "triangle-total"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "the three legs sum to: 19.07 ft (limit <= 26 ft)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.triangle_total",
+      "limit": 26.0,
+      "locators": [],
+      "margin": 0.266538,
+      "margin_why": "",
+      "measured": 19.07,
+      "ok": true,
+      "order": 17,
+      "pack": "",
+      "passed": true,
+      "rho": "ad003e5617684387c183aa85b44041b38c33b7d72f54e28295e0293507c098ff",
+      "settles": "triangle perimeter",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "ft",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "aisle-one"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "long run to island: 48 in (limit >= 42 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.aisle_one_cook",
+      "limit": 42.0,
+      "locators": [],
+      "margin": 0.142857,
+      "margin_why": "",
+      "measured": 48.0,
+      "ok": true,
+      "order": 7,
+      "pack": "",
+      "passed": true,
+      "rho": "733cf58926a648db1d88301faf7ab78ece8fe6fd6eb2d074751459c60418c943",
+      "settles": "work aisle width",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "aisle-two"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "long run to island: 48 in (limit >= 48 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.aisle_two_cooks",
+      "limit": 48.0,
+      "locators": [],
+      "margin": 0.0,
+      "margin_why": "",
+      "measured": 48.0,
+      "ok": true,
+      "order": 8,
+      "pack": "",
+      "passed": true,
+      "rho": "9eed31e0ec7a052dc20379f1ea5da60b65c7d03e7859cceec1ccd48f56e6738e",
+      "settles": "work aisle width",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "dishwasher-room"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "open dishwasher door to the island: 22.5 in (limit >= 21 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.dishwasher_room",
+      "limit": 21.0,
+      "locators": [],
+      "margin": 0.0714286,
+      "margin_why": "",
+      "measured": 22.5,
+      "ok": true,
+      "order": 9,
+      "pack": "",
+      "passed": true,
+      "rho": "923b757c83eb7da59336efe834791c293844006aadeb1773ad11509a0161649f",
+      "settles": "dishwasher standing room",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "island-seats"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "24 in seats along the island: 2 seats (limit >= 2 seats)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.island_seats",
+      "limit": 2.0,
+      "locators": [],
+      "margin": 0.0,
+      "margin_why": "",
+      "measured": 2.0,
+      "ok": true,
+      "order": 13,
+      "pack": "",
+      "passed": true,
+      "rho": "f90f65237edcd8d335541778301a5a8c3ee2e833071045fbbe7b2fce56caa0b0",
+      "settles": "island seats",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "seats",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "island-knee"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "overhang past the island bases: 15 in (limit >= 15 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.island_knee",
+      "limit": 15.0,
+      "locators": [],
+      "margin": 0.0,
+      "margin_why": "",
+      "measured": 15.0,
+      "ok": true,
+      "order": 12,
+      "pack": "",
+      "passed": true,
+      "rho": "9fc80175a50f296690d1f5de8889cb5e7168acb7b4c76f98ab9287f1fd84e55f",
+      "settles": "island knee room",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "microwave-reach"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "microwave bottom at 31 in, child's shoulder at 34.4 in; bottom above shoulder less 3 in by: -0.4 in (limit <= 0 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.microwave_reach",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": -0.4,
+      "ok": true,
+      "order": 14,
+      "pack": "",
+      "passed": true,
+      "rho": "e7292cada2255befc2fb3696dd8d2c3c154a62e7db74558a1bb13297f7372129",
+      "settles": "microwave height over the small child's reach",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "finish-offered"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "gloss, both colours and two tones are offered; unmet: 0 requirements (limit <= 0 requirements)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.finish_offered",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 0.0,
+      "ok": true,
+      "order": 10,
+      "pack": "",
+      "passed": true,
+      "rho": "9a20299b16d631e12bc6938fdd38b5b783547cd1b9960b8e387fd819b5677ccf",
+      "settles": "finish requirements not offered",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "requirements",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "run-fill"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "wall 1 off by 0, wall 2 by 0; worst: 0 in (limit <= 0.25 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.run_fill",
+      "limit": 0.25,
+      "locators": [],
+      "margin": 1.0,
+      "margin_why": "",
+      "measured": 0.0,
+      "ok": true,
+      "order": 15,
+      "pack": "",
+      "passed": true,
+      "rho": "28cc75d9d4060fbd2854545f49af48ff71896c5d61056cdc89cd8764b18250d3",
+      "settles": "run fill error",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "window-gap"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "nearest upper to the window: 2 in (limit >= 1 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.window_gap",
+      "limit": 1.0,
+      "locators": [],
+      "margin": 1.0,
+      "margin_why": "",
+      "measured": 2.0,
+      "ok": true,
+      "order": 18,
+      "pack": "",
+      "passed": true,
+      "rho": "bd10dd1f5f80d52bf356499ba068063faf77860264be88a4f01a7f9aae7abbcc",
+      "settles": "window to upper gap",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "floor-wear"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "stated wear layer: 22 mil (limit >= 20 mil)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.floor_wear",
+      "limit": 20.0,
+      "locators": [],
+      "margin": 0.1,
+      "margin_why": "",
+      "measured": 22.0,
+      "ok": true,
+      "order": 11,
+      "pack": "",
+      "passed": true,
+      "rho": "2bfb3521a0a7e26d144335ddc2e5a7b656fae517b8b5603c71e7c84eda281088",
+      "settles": "floor wear layer",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "mil",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    }
+  ],
+  "views": [
+    {
+      "data": {},
+      "description": "The recorded design in its room. The kitchen's walls are the contractor's measurements; the rest of the room is approximate.",
+      "gates": [],
+      "id": "twin",
+      "kind": "model3d",
+      "meta": {
+        "parts": {
+          "Countertops": [
+            "isl_top",
+            "top_w1_north",
+            "top_w1_south",
+            "top_w2"
+          ],
+          "Floor": [
+            "floor_main",
+            "floor_hall"
+          ],
+          "Furniture": [
+            "f_table",
+            "f_table_leg0",
+            "f_table_leg1",
+            "f_table_leg2",
+            "f_table_leg3",
+            "f_sofa_seat",
+            "f_sofa_back"
+          ],
+          "Lower cabinets": [
+            "w1_corner",
+            "w1_b24",
+            "w1_b3d30",
+            "w1_b33",
+            "w1_panel",
+            "w1_filler",
+            "w2_corner_return",
+            "w2_fill_l",
+            "w2_b24",
+            "w2_sink",
+            "w2_b3d18",
+            "w2_fill_r",
+            "isl_b0",
+            "isl_b1",
+            "isl_back"
+          ],
+          "Upper cabinets": [
+            "w1_u_corner",
+            "w1_u30",
+            "w1_u_fill",
+            "w1_u_hood",
+            "w1_u3040",
+            "w1_u3340",
+            "w1_u_fridge",
+            "w2_u27",
+            "w2_u33"
+          ],
+          "Walls": [
+            "wall_w_kitchen",
+            "wall_w_south",
+            "wall_n",
+            "wall_stub3",
+            "wall_stub4",
+            "wall_alcove_e",
+            "wall_office_s1",
+            "wall_office_s2",
+            "wall_office_head",
+            "wall_e",
+            "wall_s_sill",
+            "wall_s_w",
+            "wall_s_e"
+          ]
+        },
+        "units": "m",
+        "up": "+Y"
+      },
+      "order": 1,
+      "pack": "",
+      "src": "assets/twin.glb",
+      "title": "The kitchen in its room"
+    },
+    {
+      "data": {},
+      "data_url": "data/views/bom.json",
+      "description": "Every line with its purchase quantity, cost, lead time and supply risk, and the roll-up the cost gate reports.",
+      "gates": [
+        "bom.availability",
+        "bom.complete",
+        "bom.cost",
+        "bom.currency",
+        "bom.moq",
+        "bom.process_rules",
+        "bom.single_source"
+      ],
+      "id": "bom",
+      "kind": "table",
+      "meta": {
+        "build_quantity": 1,
+        "currency": "USD",
+        "gate": "bom.cost",
+        "product": "",
+        "row_id": "the BOM line's `ref` — the string a buyer types on a purchase order, and what every locator in this pack targets",
+        "source": "params['bom']",
+        "totals": {
+          "charge_total": 11385.91,
+          "nre_per_unit": 11385.91,
+          "order_minimum_total": 0,
+          "parts_total": 46639.06,
+          "per_unit": 58024.973,
+          "run_total": 58024.97,
+          "unpriced_lines": []
+        },
+        "totals_note": "run_total is parts + per-order minimum shortfalls + one-time charges, so it is larger than the Extended column adds to. per_unit amortises the charges over the run, which is why a per-unit price quoted from one build quantity is fiction at another"
+      },
+      "order": 30,
+      "pack": "sourcing",
+      "src": "",
+      "title": "Bill of materials"
+    }
+  ],
+  "words": {
+    "asserted": {
+      "hint": "accepted provisionally, with a reason and an owner — an assumption, or a claim carried outside an evaluator's operating context — unresolved",
+      "key": "assumed",
+      "plural": "assumed",
+      "term": "Assumed",
+      "word": "assumed"
+    },
+    "blocked": {
+      "hint": "an evaluator skipped — its tool is missing here, it skipped itself on its input, or a prerequisite is not established — and none failed: no usable verdict",
+      "key": "skipped",
+      "plural": "skipped",
+      "term": "Skipped",
+      "word": "skipped"
+    },
+    "errored": {
+      "hint": "an evaluator errored: it crashed, so nothing was evaluated, and the evaluator itself is broken",
+      "key": "skipped",
+      "plural": "skipped",
+      "term": "Skipped",
+      "word": "skipped"
+    },
+    "fail": {
+      "hint": "an evaluator failed the current design, a physical result failed, or an evaluator's value does not meet the claim's acceptance condition",
+      "key": "failing",
+      "plural": "failing",
+      "term": "Failing",
+      "word": "failing"
+    },
+    "pass": {
+      "hint": "every evaluator is qualified and passed on the current inputs, inside its operating context, and every value compared with the acceptance condition meets it — checked does not mean true",
+      "key": "checked",
+      "plural": "checked",
+      "term": "Checked",
+      "word": "checked"
+    },
+    "pending": {
+      "hint": "an evaluator of the claim is unrun on the current inputs",
+      "key": "open",
+      "plural": "open",
+      "term": "Open",
+      "word": "open"
+    },
+    "refuted": {
+      "hint": "an evaluator failed the current design, a physical result failed, or an evaluator's value does not meet the claim's acceptance condition",
+      "key": "failing",
+      "plural": "failing",
+      "term": "Failing",
+      "word": "failing"
+    },
+    "stale": {
+      "hint": "a pass whose read set has changed since, or whose prerequisite is invalidated or unrun: nothing is checked now",
+      "key": "stale",
+      "plural": "stale",
+      "term": "Stale",
+      "word": "stale"
+    },
+    "unclaimed": {
+      "hint": "no evaluator, none qualified, one unqualified, or one outside its operating context; or an assumption nobody owns",
+      "key": "gap",
+      "plural": "gaps",
+      "term": "Gap",
+      "word": "gap"
+    },
+    "unverified": {
+      "hint": "waits on an article: no physical result yet, or a pass no article binds to the current inputs",
+      "key": "pending_build",
+      "plural": "pending build",
+      "term": "Pending build",
+      "word": "pending build"
+    },
+    "verified": {
+      "hint": "every evaluator is qualified and passed on the current inputs, inside its operating context, and every value compared with the acceptance condition meets it — checked does not mean true",
+      "key": "checked",
+      "plural": "checked",
+      "term": "Checked",
+      "word": "checked"
+    }
+  }
+}

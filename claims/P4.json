@@ -1,0 +1,11 @@
+{
+  "statement": "The refrigerator fits the hall end and both its doors open fully beside the return wall",
+  "kind": "physical",
+  "rationale": "the 2 3/4 in filler is the contractor's allowance; the refrigerator's hinge side needs checking against the 30 in return wall",
+  "mechanism": {
+    "how": "Before ordering: measure the refrigerator's width with doors at 90 degrees. After: open both doors and pull the drawers"
+  },
+  "requirements": [
+    "R6"
+  ]
+}

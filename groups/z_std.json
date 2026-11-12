@@ -1,0 +1,12 @@
+{
+  "kind": "zone",
+  "title": "Cabinet standards",
+  "members": [
+    "base_h",
+    "counter_t",
+    "upper_gap",
+    "base_d",
+    "counter_d",
+    "upper_d"
+  ]
+}

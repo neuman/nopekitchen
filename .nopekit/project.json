@@ -1,0 +1,18 @@
+{
+  "schema": 2,
+  "name": "Edmonds kitchen",
+  "summary": "Kitchen, living room and upstairs floors: gloss two-tone cabinets, refrigerator to the hall end, island with a prep sink, inside $60k",
+  "created": "2026-11-12T18:55:00Z",
+  "revision": "v0.1",
+  "model_entry": "model/kitchen.py",
+  "packs": [
+    "sourcing"
+  ],
+  "spine_version": "0.1.0",
+  "people": [
+    {
+      "name": "Claude",
+      "email": "noreply@anthropic.com"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "zone",
+  "title": "Money",
+  "members": [
+    "budget_usd",
+    "sales_tax",
+    "contingency",
+    "managed_by"
+  ]
+}

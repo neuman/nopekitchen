@@ -1,0 +1,25 @@
+{
+  "statement": "Someone can stand at the open dishwasher: 21 in clear behind its door",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "dishwasher standing room",
+    "comparator": ">=",
+    "limit": 21.0,
+    "units": "in"
+  },
+  "rationale": "NKBA: 21 in between the edge of an open dishwasher door and whatever faces it",
+  "tags": [
+    "dishwasher-room"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Sink-run counter edge to the island's north end, less the 25.5 in an open door takes",
+    "evaluators": [
+      "kitchen.dishwasher_room"
+    ]
+  },
+  "requirements": [
+    "R2",
+    "R3"
+  ]
+}

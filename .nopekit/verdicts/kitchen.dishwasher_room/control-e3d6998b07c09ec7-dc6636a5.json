@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.dishwasher_room",
+  "rho": "e3d6998b07c09ec7e9c2025271823ae4d0b8ea8f9adf4d061955abe65e02954d",
+  "static": "1a0341ba920205616263b6a637cacb685fb5b1d3e783a0b2bf54ba6ef8874240",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "9828e835a7ec506c82a9c669ef54c15e3292b84daec1d11d5e273e6ea33dcc02",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "8d0732087e23ffbd574b49e0523e381603c490f1c14d20f505a42d2d8377b910",
+      "files": {
+        "selftest/bad_configs.py": "5b1ebc5a04897a4b35855aac0fe7e1c9627401d1ee0137322bac379856c0a862",
+        "selftest/known_good.py": "915cac47553ac4c0606d36e4f131673642f175b61cd0a5657c9ee28b7e869192"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:island_crowds_sink",
+      "expect": "fail",
+      "note": "the island moved to 40 in from the sink run",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "883ed06080489d2ae0df559815c46b7a2752997a44d02640bc6eee79c07b093f",
+    "files": {
+      "model/kitchen.py": "61f01c7d6a6eb5f97d7357551fa719a29ef5852e43a99281eea31561c27a5ee9",
+      "selftest/bad_configs.py": "5b1ebc5a04897a4b35855aac0fe7e1c9627401d1ee0137322bac379856c0a862",
+      "selftest/known_good.py": "915cac47553ac4c0606d36e4f131673642f175b61cd0a5657c9ee28b7e869192"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "dishwasher_standing_in"
+        ],
+        "e60c03d2419d82c1504bb44cc5dda87ad15b603bcb3f8d7fc9454e23af3315e4",
+        14.5
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C7": "3a985e9f8a2de9f4700331f588f1f9f1d2d9a69b8a65acd0e02f9243bb464a4e",
+      "acceptance:C7": "aeb0de9a0ae1fc1480956a145219a25565c73b4f3a4efba4529b84079b46ce5f"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "dishwasher_standing_in"
+          ],
+          "1868dc08bbc8017c21e129c03dfa94c253b28982d838ef87252609673de31136",
+          22.5
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C7": "3a985e9f8a2de9f4700331f588f1f9f1d2d9a69b8a65acd0e02f9243bb464a4e",
+        "acceptance:C7": "aeb0de9a0ae1fc1480956a145219a25565c73b4f3a4efba4529b84079b46ce5f"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 22.5,
+    "limit": 21.0,
+    "units": "in",
+    "detail": "open dishwasher door to the island: 22.5 in (limit >= 21 in)",
+    "goalpost": [
+      {
+        "key": "C7",
+        "measured": 22.5,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 2.1,
+            "outcome": "pass",
+            "measured": 22.5,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 10.5,
+            "outcome": "pass",
+            "measured": 22.5,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 42.0,
+            "outcome": "fail",
+            "measured": 22.5,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 210.0,
+            "outcome": "fail",
+            "measured": 22.5,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 21,
+    "boundary": "",
+    "results": [
+      {
+        "key": [
+          "dishwasher_standing_in"
+        ],
+        "before": 22.5,
+        "after": 17.8,
+        "outcome": "fail",
+        "measured": 17.8,
+        "limit": 21.0
+      }
+    ],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:island_crowds_sink (the island moved to 40 in from the sink run): open dishwasher door to the island: 14.5 in (limit >= 21 in)",
+  "measured": 14.5,
+  "limit": 21.0,
+  "units": "in",
+  "digest": "cb37cbcce22353c5ea18443f3b22307563b65d878822f4e45f2992684c97276b"
+}

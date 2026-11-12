@@ -1,0 +1,13 @@
+{
+  "statement": "The room is as the floor plan and the contractor's drawing say: 141 in from the long wall to the posts, 1,257 sq ft of floor, refrigerator 34 in deep",
+  "kind": "assumption",
+  "rationale": "the 141 in and the floor area are scaled from a consumer floor-plan app; the refrigerator's depth is a standard, not its datasheet",
+  "mechanism": {
+    "how": "Tape the kitchen from the long wall to the post line, each room for floor area, and the refrigerator wall to door face"
+  },
+  "requirements": [
+    "R6",
+    "R8"
+  ],
+  "owner": "Eric"
+}

@@ -1,0 +1,24 @@
+{
+  "statement": "Each island seat has 15 in of knee room",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "island knee room",
+    "comparator": ">=",
+    "limit": 15.0,
+    "units": "in"
+  },
+  "rationale": "NKBA: 15 in clear at a 36 in counter. Less and an adult sits sideways; the children will be adult size inside this kitchen's life",
+  "tags": [
+    "island-knee"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Island top depth less the 24 in base and its 1 in front overhang",
+    "evaluators": [
+      "kitchen.island_knee"
+    ]
+  },
+  "requirements": [
+    "R4"
+  ]
+}

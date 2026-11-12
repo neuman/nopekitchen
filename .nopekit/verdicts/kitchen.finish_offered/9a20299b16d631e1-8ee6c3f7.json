@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "gate": "kitchen.finish_offered",
+  "rho": "9a20299b16d631e12bc6938fdd38b5b783547cd1b9960b8e387fd819b5677ccf",
+  "code": {
+    "digest": "e2a974c5b70200f7e33e5419c7e214e67c755d087e69f99c6b8ebf6c6fafe96e",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "finish_unmet"
+        ],
+        "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+      ],
+      [
+        [
+          "finish_unmet_count"
+        ],
+        "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+        0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C11": "d50629b1c913653ae5c1b7366c5ae1ff576e711514fb7f887a683aa1e5978196",
+      "acceptance:C11": "d7a8a7c94e519d075fb275974f77579951443a3321d3229bcf3b330d07063039"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "requirements",
+    "comparator": "<=",
+    "settles": "finish requirements not offered",
+    "detail": "gloss, both colours and two tones are offered; unmet: 0 requirements (limit <= 0 requirements)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "finish-offered"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "cc2f937be3ac233bd4fbae7a88ee356ddc22435e6065cd38dff1901e2356068c"
+}

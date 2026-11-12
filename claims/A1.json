@@ -1,0 +1,12 @@
+{
+  "statement": "The old refrigerator alcove is 40 in wide and 34 in deep",
+  "kind": "assumption",
+  "rationale": "nobody measured it; the sizes are read from a photo of a 36 in refrigerator standing in it. Under 36 in wide it will not take pantry cabinets; under 30 in deep it is a reach-in, not a walk-in",
+  "mechanism": {
+    "how": "Measure the alcove wall to wall and front to back with a tape, at the floor and at 6 ft"
+  },
+  "requirements": [
+    "R7"
+  ],
+  "owner": "Eric"
+}

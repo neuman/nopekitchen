@@ -1,0 +1,12 @@
+{
+  "statement": "A drain, a vent and supply lines can reach the island through the floor",
+  "kind": "assumption",
+  "rationale": "the kitchen is on the upper storey, so the pipes run in the joists over a finished room; nobody has looked at which way the joists run or what is below",
+  "mechanism": {
+    "how": "Have a plumber look at the ceiling below the island and price the run"
+  },
+  "requirements": [
+    "R2"
+  ],
+  "owner": "Eric"
+}

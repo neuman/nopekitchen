@@ -1,0 +1,24 @@
+{
+  "statement": "No leg of the cook's triangle (refrigerator, range, and the sink the cook preps at) is longer than 9 ft",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "longest triangle leg",
+    "comparator": "<=",
+    "limit": 9.0,
+    "units": "ft"
+  },
+  "rationale": "NKBA Kitchen Planning Guidelines, distance between work centres: no leg over 9 ft. Past that a cook carries food across the room for every step. With an island sink the cook preps there; the window sink is then the clean-up sink, and its distance from the refrigerator is reported, not judged",
+  "tags": [
+    "triangle-leg"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Straight lines between the centre fronts of the refrigerator, the range and the prep sink, from the cabinet positions in the model",
+    "evaluators": [
+      "kitchen.triangle_leg"
+    ]
+  },
+  "requirements": [
+    "R2"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/photo-dining-fireplace.jpg",
+  "kind": "reference",
+  "description": "Dining table, brick fireplace, gable windows",
+  "sha256": "1a59cabd708330ca555a0f0d1db13124b5cf924a7b15d1064149a648d9b734a1",
+  "added": "2026-11-12T18:57:50Z",
+  "extractions": [
+    {
+      "what": "Dining table runs north-south in the east part of the room below the office wall; fireplace on the east wall",
+      "grounds": [
+        "living_east_w"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

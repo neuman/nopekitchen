@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.aisle_two_cooks",
+  "rho": "757ade61903167dbf450b6accdca3f5fb71aceeb79531b8f0292e4795aa1a80b",
+  "static": "d44f3e1a5c108413105714159e77430b2e4d5980a56080f06aa0ef5de0424904",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "345c73f5345178f185f62339ae6224cf73122e3275f9fd5dbeb3e093ece8c314",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "8d0732087e23ffbd574b49e0523e381603c490f1c14d20f505a42d2d8377b910",
+      "files": {
+        "selftest/bad_configs.py": "5b1ebc5a04897a4b35855aac0fe7e1c9627401d1ee0137322bac379856c0a862",
+        "selftest/known_good.py": "915cac47553ac4c0606d36e4f131673642f175b61cd0a5657c9ee28b7e869192"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:one_cook_aisle",
+      "expect": "fail",
+      "note": "the island at 42 in: right for one cook, short for two",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "883ed06080489d2ae0df559815c46b7a2752997a44d02640bc6eee79c07b093f",
+    "files": {
+      "model/kitchen.py": "61f01c7d6a6eb5f97d7357551fa719a29ef5852e43a99281eea31561c27a5ee9",
+      "selftest/bad_configs.py": "5b1ebc5a04897a4b35855aac0fe7e1c9627401d1ee0137322bac379856c0a862",
+      "selftest/known_good.py": "915cac47553ac4c0606d36e4f131673642f175b61cd0a5657c9ee28b7e869192"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "work_aisle_in"
+        ],
+        "7d0c5abdb137f2559a8590c1e263f2cd5740bb5751e26f4c9e7257da2464c629",
+        42.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C6": "144c7ecbe6b3875acf4861516e371cedc1fb6fef5de649a05069135fa51a3a7d",
+      "acceptance:C6": "001f0eb7b1ab634c8776c1d10acbde239d58a29328a6704b86c67db7c21d1082"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "work_aisle_in"
+          ],
+          "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+          48.0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C6": "144c7ecbe6b3875acf4861516e371cedc1fb6fef5de649a05069135fa51a3a7d",
+        "acceptance:C6": "001f0eb7b1ab634c8776c1d10acbde239d58a29328a6704b86c67db7c21d1082"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 48.0,
+    "limit": 48.0,
+    "units": "in",
+    "detail": "long run to island: 48 in (limit >= 48 in)",
+    "goalpost": [
+      {
+        "key": "C6",
+        "measured": 48.0,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 4.800000000000001,
+            "outcome": "pass",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 24.0,
+            "outcome": "pass",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 96.0,
+            "outcome": "fail",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 480.0,
+            "outcome": "fail",
+            "measured": 48.0,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:one_cook_aisle (the island at 42 in: right for one cook, short for two): long run to island: 42 in (limit >= 48 in)",
+  "measured": 42.0,
+  "limit": 48.0,
+  "units": "in",
+  "digest": "7111e51e1c84d5f470daebebcb0d8210b5c7ba71401a24e890962ab1396f36a4"
+}
