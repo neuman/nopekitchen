@@ -191,6 +191,27 @@
       "vendor_pn": "faucet"
     },
     {
+      "description": "Magnetic knife strip: on the backsplash, just south of the range",
+      "extended": 20.0,
+      "id": "knife_strip",
+      "lead_time_weeks": null,
+      "lifecycle": "unknown",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "quoted_lead_weeks": null,
+      "ref": "knife_strip",
+      "risk": "single source (counted by supplier — no manufacturer recorded); no ship date",
+      "source_basis": "supplier",
+      "source_names": [
+        "IKEA Renton (KUNGSFORS magnetic knife rack)"
+      ],
+      "sources": 1,
+      "stock": null,
+      "unit_price": 20.0,
+      "vendor": "IKEA Renton (KUNGSFORS magnetic knife rack)",
+      "vendor_pn": "knife_strip"
+    },
+    {
       "description": "Demolition and disposal of the old kitchen",
       "extended": 1800.0,
       "id": "demo",

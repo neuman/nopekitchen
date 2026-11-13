@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.island_knee",
+  "rho": "e61d886f0ef89443d3649596e39c9faed8a3052e0a082cb90513f50209708a57",
+  "static": "47bcbf540c3da80301dc0a23b66a726a3348411201c255bb156ddb9912eed085",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "ce3a5979d17e8cdcdbf3a592cd8866e1eff39244791ed3d2af9fc3428c5197c3",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "265372455a97673cbde4f0740de8279b9ed42f237c12df4376e08993cab22930",
+      "files": {
+        "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+        "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:shallow_island",
+      "expect": "fail",
+      "note": "the island top at 36 in, as the contractor's plan suggests",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5d71e2699688f0cc0e95189271e9fb895e7686c3217e223bda2874e098b02911",
+    "files": {
+      "model/kitchen.py": "2437370b3b88c6d100251f891bb6aa534d39b9fc09d8da016cd93921fb51fc41",
+      "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+      "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "island_knee_in"
+        ],
+        "3e95130d6b30a8e8dde07c16066004bb88e7cb30ba08262a39fad98c24bbeb5b",
+        11.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C9": "d50a64d921c7feb2a4ae2ca0327e4b0ea391bf36202a824698c6256ae83d0f1e",
+      "acceptance:C9": "c9e9cbd9022bbff2f57d5aebe895bc1e538e719cdee938cae5426a6163903bee"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "island_knee_in"
+          ],
+          "b34f99646d287db0e67fa4f3d5b7715260045d9c6226d860a653be73642ea84f",
+          15.0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C9": "d50a64d921c7feb2a4ae2ca0327e4b0ea391bf36202a824698c6256ae83d0f1e",
+        "acceptance:C9": "c9e9cbd9022bbff2f57d5aebe895bc1e538e719cdee938cae5426a6163903bee"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 15.0,
+    "limit": 15.0,
+    "units": "in",
+    "detail": "overhang past the island bases: 15 in (limit >= 15 in)",
+    "goalpost": [
+      {
+        "key": "C9",
+        "measured": 15.0,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 1.5,
+            "outcome": "pass",
+            "measured": 15.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 7.5,
+            "outcome": "pass",
+            "measured": 15.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 30.0,
+            "outcome": "fail",
+            "measured": 15.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 150.0,
+            "outcome": "fail",
+            "measured": 15.0,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:shallow_island (the island top at 36 in, as the contractor's plan suggests): overhang past the island bases: 11 in (limit >= 15 in)",
+  "measured": 11.0,
+  "limit": 15.0,
+  "units": "in",
+  "digest": "cfeba3324d944056beab7d90bb3c69393927862262c62e47613ff3f19e8520b0"
+}

@@ -49,6 +49,14 @@
       ]
     },
     {
+      "ref": "knife_strip",
+      "source": "IKEA Renton (KUNGSFORS magnetic knife rack)",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton (KUNGSFORS magnetic knife rack)"
+      ]
+    },
+    {
       "ref": "demo",
       "source": "a demolition crew",
       "basis": "supplier",
@@ -259,6 +267,15 @@
       "why": "no qualified alternate and no written acceptance"
     },
     {
+      "ref": "knife_strip",
+      "source": "IKEA Renton (KUNGSFORS magnetic knife rack)",
+      "basis": "supplier",
+      "suppliers": [
+        "IKEA Renton (KUNGSFORS magnetic knife rack)"
+      ],
+      "why": "no qualified alternate and no written acceptance"
+    },
+    {
       "ref": "demo",
       "source": "a demolition crew",
       "basis": "supplier",
@@ -430,6 +447,6 @@
       "why": "no qualified alternate and no written acceptance"
     }
   ],
-  "lines_with_no_manufacturer_recorded": 25,
+  "lines_with_no_manufacturer_recorded": 26,
   "limit": 0.0
 }

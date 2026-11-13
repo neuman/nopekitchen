@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.walkways",
+  "rho": "1a6069b2a8be8178b61232dd98f6ba8bdaaeacf04e9024744031a829e3c459ca",
+  "static": "3a9891e5aaa07b5e76c494213f0444d0d417124d45416a6b890b46853fd32b61",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "4a45bc5b7703fee38ea8c3fb39de541c5364ab675155b71892781dd9eca40a1e",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "265372455a97673cbde4f0740de8279b9ed42f237c12df4376e08993cab22930",
+      "files": {
+        "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+        "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:island_30_from_sink_run",
+      "expect": "fail",
+      "note": "the island 30 in from the sink run",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5d71e2699688f0cc0e95189271e9fb895e7686c3217e223bda2874e098b02911",
+    "files": {
+      "model/kitchen.py": "2437370b3b88c6d100251f891bb6aa534d39b9fc09d8da016cd93921fb51fc41",
+      "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+      "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "walkway_min_in"
+        ],
+        "d0e35b9266aca01c047a1e495b17bb81d3d1a9cd99f5d2c005ade53c5a8b2f71",
+        24.0
+      ],
+      [
+        [
+          "walkways",
+          "east"
+        ],
+        "d0e35b9266aca01c047a1e495b17bb81d3d1a9cd99f5d2c005ade53c5a8b2f71",
+        24.0
+      ],
+      [
+        [
+          "walkways",
+          "north"
+        ],
+        "3d654dca2bf8e623024ab053b3736a76d0b08ccb25bfec37922cf05ebc30cdfe",
+        30.0
+      ],
+      [
+        [
+          "walkways",
+          "south"
+        ],
+        "5ac51587ffb8f5f75f93ad0f7b39e166c5df58f3d3081483feb70799b6be7b90",
+        178.5
+      ],
+      [
+        [
+          "walkways",
+          "west"
+        ],
+        "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+        48.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C17": "2f5f5ff77a158c6117b27ec18e6c81ea59ea6878ab6c8299c737590ff9a00107",
+      "acceptance:C17": "7618f370456c6f7406b90a8423a4441ac4d578261da190303c251ab04fb500ff"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "fail",
+    "reads": {
+      "params": [
+        [
+          [
+            "walkway_min_in"
+          ],
+          "d0e35b9266aca01c047a1e495b17bb81d3d1a9cd99f5d2c005ade53c5a8b2f71",
+          24.0
+        ],
+        [
+          [
+            "walkways",
+            "east"
+          ],
+          "d0e35b9266aca01c047a1e495b17bb81d3d1a9cd99f5d2c005ade53c5a8b2f71",
+          24.0
+        ],
+        [
+          [
+            "walkways",
+            "north"
+          ],
+          "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+          48.0
+        ],
+        [
+          [
+            "walkways",
+            "south"
+          ],
+          "b6b2523f3400207fdd55068161c8c4df3626be7736ec120a6555ad2b4391f501",
+          160.5
+        ],
+        [
+          [
+            "walkways",
+            "west"
+          ],
+          "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+          48.0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C17": "2f5f5ff77a158c6117b27ec18e6c81ea59ea6878ab6c8299c737590ff9a00107",
+        "acceptance:C17": "7618f370456c6f7406b90a8423a4441ac4d578261da190303c251ab04fb500ff"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 24.0,
+    "limit": 36.0,
+    "units": "in",
+    "detail": "west 48, north 48, south 160.5, east 24; narrowest: 24 in (limit >= 36 in)",
+    "goalpost": []
+  },
+  "mutation": null,
+  "admitted": "no",
+  "detail": "correctly failed on selftest/bad_configs.py:island_30_from_sink_run (the island 30 in from the sink run): west 48, north 30, south 178.5, east 24; narrowest: 24 in (limit >= 36 in)",
+  "measured": 24.0,
+  "limit": 36.0,
+  "units": "in",
+  "digest": "bd8092c0548c3e384216dce993f7f08065254f8100b44f7488e83c68fb8d9788"
+}

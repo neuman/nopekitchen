@@ -39,7 +39,7 @@ LOOK = {
     "dishwasher": ("#B9BDC2", 1, 0.9, 0.35), "hood": ("#B9BDC2", 1, 0.9, 0.35),
     "microwave": ("#2B2D30", 1, 0.5, 0.4), "sink": ("#9EA3A8", 1, 0.9, 0.3),
     "window": ("#CFE6F2", 0.5, 0.0, 0.1), "shelf": ("#E8E2D4", 1, 0.0, 0.8),
-    "door": ("#EFEBE2", 1, 0.0, 0.8), "stool": ("#6E7479", 1, 0.6, 0.4), "faucet": ("#C9CBCD", 1, 0.9, 0.3),
+    "door": ("#EFEBE2", 1, 0.0, 0.8), "stool": ("#6E7479", 1, 0.6, 0.4), "faucet": ("#C9CBCD", 1, 0.9, 0.3), "knife_strip": ("#2B2D30", 1, 0.6, 0.4),
     "sofa": ("#B4532A", 1, 0.0, 0.95), "firebox": ("#6E5A40", 1, 0.0, 0.95), "wallshelf": ("#9A5A2E", 1, 0.0, 0.7),
 }
 
@@ -232,6 +232,9 @@ def configurator(ctx, k) -> dict:
         "recorded": cfg, "recorded_key": layout_key(k.CONFIG),
         "recorded_total": round(rec["total_usd"], 2),
         "room": rec["room"], "vault": [list(p) for p in k.VAULT], "wall_h": k.WALL_H, "soffit": {"x0": -5.0, "x1": k.CONFIG.wall2_len, "y": k.soffit_y(k.CONFIG), "t": 5.0, "z": k.WALL_H},
+        "table_y": k.TABLE_Y,
+        "knife_strips": {key: (lambda b: b and {n: b[n] for n in ("x", "y", "z", "dx", "dy", "dz", "face")})(
+            k.knife_strip(dataclasses.replace(k.CONFIG, knife_strip=key, fridge_at="hall"))) for key in k.CATALOG["knife_strip"]},
         "sconces": [list(q) for q in k.SCONCES], "boxes": table, "layouts": layouts,
         "catalog": k.CATALOG, "colors": k.COLORS, "claims": acceptances,
         "money": {"budget": k.CONFIG.budget_usd, "tax": k.CONFIG.sales_tax, "contingency": k.CONFIG.contingency,

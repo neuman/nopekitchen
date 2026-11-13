@@ -122,6 +122,12 @@ class Config:
     counter: str = ""
     sink: str = ""
     faucet: str = ""
+    knife_strip: str = "backsplash"
+    """Where the magnetic knife strip hangs. Today it is on the backsplash beside
+    the microwave, in the corner. 'backsplash' puts it on the long wall just south
+    of the range, over the counter the cook preps on, on the range-to-refrigerator
+    leg of the triangle; 'fridge_panel' on the side of the new refrigerator housing,
+    facing that same counter; 'none' leaves the knives in a drawer."""
     backsplash: str = ""
     floor: str = ""
     handles: str = "integrated"
@@ -173,6 +179,21 @@ PARAMS = [
                                   "proud of the counter, so the aisle at the range was 47.5 in"}]},
 ]
 
+# Which assumption each choice rests on (rule 3: a number nobody measured names
+# the claim that owns it). The grounding map joins each assumption to these.
+for _name, _aid in (("alcove_w", "A1"), ("alcove_d", "A1"),
+                    ("kitchen_w", "A3"), ("floor_area_sqft", "A3"), ("fridge_d", "A3"),
+                    ("kid_small_h", "A6"), ("kid_big_h", "A6"),
+                    ("cab_line", "A2"), ("counter", "A2"), ("floor", "A2"), ("sink", "A2"),
+                    ("faucet", "A2"), ("backsplash", "A2"), ("cab_install", "A2"), ("floor_removal", "A2"),
+                    ("handles", "A4"), ("lower_color", "A4"), ("upper_color", "A4")):
+    _row = next((r for r in PARAMS if r["name"] == _name), None)
+    if _row is None:
+        _row = {"name": _name}
+        PARAMS.append(_row)
+    _row.setdefault("grounded_by", []).append(_aid)
+next(r for r in PARAMS if r["name"] == "prep_sink").setdefault("grounded_by", []).append("A5")
+
 # Fixed sizes of the things that are kept (the range, dishwasher and refrigerator
 # stay; requirement of the budget) and of the contractor's boxes.
 RANGE_W, DW_W, FRIDGE_W = 30.0, 24.0, 36.0
@@ -192,6 +213,7 @@ PANTRY_SIDE_D = 10.0     # in, the shelves down each side; 40 in of alcove leave
 WALL_H = 96.0            # in, the wall plate. Above it the ceiling is vaulted
 NICHE_Y0 = 30.0          # in from the sink wall: the old refrigerator recess starts where return wall 3 ends
 NICHE_HEAD = 82.0        # in, the underside of the header over the recess's opening. By eye from the photo
+TABLE_Y = 118.0          # in from the sink wall: the dining table's north end. By eye from the photos
 PILLAR_W = 20.0          # in, the pillar south of the recess, as wide as it looks in the photos
 # Three cube sconces on the triangular wall over the kitchen, (x, z, colour), by eye from the photo.
 # They hang in one level line, a little above the flat ceiling's edge.
@@ -354,6 +376,21 @@ def alcove(c: Config) -> list[dict]:
     return out
 
 
+KNIFE_LEN, KNIFE_Z = 18.0, 46.25     # in: the strip's length, and its underside above the floor
+
+
+def knife_strip(c: Config) -> dict | None:
+    """The magnetic knife strip, or None. Both homes are on the cook's side of the
+    range-to-refrigerator leg, over the 63 in of counter south of the range."""
+    range_end = CORNER + 24 + RANGE_W
+    if c.knife_strip == "backsplash":
+        return _box("knife_strip", "knife_strip", "knife_strip", 0.35, range_end + 4, KNIFE_Z, 0.75, KNIFE_LEN, 1.5, "E", "", "magnetic knife strip, backsplash")
+    if c.knife_strip == "fridge_panel" and c.fridge_at == "hall":
+        panel_y = range_end + 30 + 33
+        return _box("knife_strip", "knife_strip", "knife_strip", 5.0, panel_y - 0.75, KNIFE_Z, KNIFE_LEN, 0.75, 1.5, "N", "", "magnetic knife strip, refrigerator housing")
+    return None
+
+
 def counters(c: Config) -> list[dict]:
     """The countertop slabs on the two walls (the island's is in island())."""
     z, t, d = c.base_h, c.counter_t, c.counter_d
@@ -371,6 +408,9 @@ def counters(c: Config) -> list[dict]:
     out.append(_box("faucet", "faucet", "faucet", CORNER + 2 + 24 + 16.5 - 1, 1.0, z + t, 2, 2, f["h_in"], "", "", f["label"]))
     if c.microwave_at == "counter":
         out.append(_box("microwave", "appliance", "microwave", 2, 4, z + t, 16, 20, 12, "E", "", "microwave on the counter"))
+    ks = knife_strip(c)
+    if ks:
+        out.append(ks)
     return out
 
 
@@ -438,8 +478,10 @@ def room(c: Config) -> list[dict]:
     add("stair_well", "stair", 0, 300, -0.5, 85, S - 300, 1, "stair opening")
     add("stair_rail_n", "rail", 0, 298, 0, 87, 2, 38, "stair rail")
     add("stair_rail_e", "rail", 85, 298, 0, 2, S - 298, 38, "stair rail")
-    add("f_table", "furniture", 196, 94, 28.5, 40, 108, 1.5, "dining table")
-    for i, (lx, ly) in enumerate(((198, 96), (232, 96), (198, 198), (232, 198))):
+    # the dining table: its north end 43 in clear of the office's front wall and
+    # its sliding door, as in the photographs (it was drawn 3 in from that wall)
+    add("f_table", "furniture", 196, TABLE_Y, 28.5, 40, 108, 1.5, "dining table")
+    for i, (lx, ly) in enumerate(((198, TABLE_Y + 2), (232, TABLE_Y + 2), (198, TABLE_Y + 104), (232, TABLE_Y + 104))):
         add(f"f_table_leg{i}", "furniture", lx, ly, 0, 3, 3, 28.5, "table leg")
     # the new couch: larger and squarer than the grey one in the photos, in a spice
     # colour. Its size is not measured: 94 x 40 in is a deep three-seater.
@@ -885,6 +927,16 @@ CATALOG = {
                        "style": "gooseneck", "h_in": 15.5, "reach_in": 7.875, "hex": "#C6C8CA", "body": "round", "arm": False,
                        "url": "https://www.homedepot.com/p/203399674"},
     },
+    "knife_strip": {
+        # An 18 in magnetic strip, its centre 47 in off the floor: 10 in over the
+        # counter, 6 in under the uppers, above both children's shoulders (34 and
+        # 40 in). Not behind the range: steam and grease, and a reach over a burner.
+        "backsplash": {"label": "On the backsplash, just south of the range", "usd": 20.0, "v": "estimate", "vendor": "IKEA Renton (KUNGSFORS magnetic knife rack)",
+                       "url": "https://www.ikea.com/us/en/p/kungsfors-magnetic-knife-rack-stainless-steel-40334921/"},
+        "fridge_panel": {"label": "On the side of the refrigerator housing", "usd": 20.0, "v": "estimate", "vendor": "IKEA Renton (KUNGSFORS magnetic knife rack)",
+                         "url": "https://www.ikea.com/us/en/p/kungsfors-magnetic-knife-rack-stainless-steel-40334921/"},
+        "none": {"label": "No strip: knives in a drawer", "usd": 0.0, "v": "estimate", "vendor": "none", "url": ""},
+    },
     "backsplash": {
         "tile": {"label": "Tile", "usd_sqft": 40.0, "v": "estimate", "hex": "#EDEBE6", "vendor": "a tile setter",
                  "url": "https://www.homeadvisor.com/cost/kitchens/tile-backsplash-install"},
@@ -1046,6 +1098,9 @@ def bom_lines(c: Config, q: dict) -> list[dict]:
     L.append(_line("sink", k["label"], 1, "each", k["usd"], k["vendor"], k["url"], k["v"], "sink"))
     f = cat["faucet"][c.faucet]
     L.append(_line("faucet", f["label"], 1, "each", f["usd"], f["vendor"], f["url"], f["v"], "faucet"))
+    ks = cat["knife_strip"][c.knife_strip]
+    if ks["usd"] > 0 and knife_strip(c):
+        L.append(_line("knife_strip", "Magnetic knife strip: " + ks["label"].lower(), 1, "each", ks["usd"], ks["vendor"], ks["url"], ks["v"], "knife_strip"))
     for ref, (d, usd, ven, url) in FIXED.items():
         L.append(_line(ref, d, 1, "job", usd, ven, url, "estimate", "fixed"))
     if c.fridge_at == "hall":
@@ -1082,10 +1137,12 @@ def money(c: Config, lines: list[dict]) -> dict:
 def build(config: Config | None = None) -> dict:
     """Resolve every derived quantity. Pure, deterministic, no I/O."""
     c = config or CONFIG
-    for g in ("cab_line", "counter", "sink", "faucet", "backsplash", "floor", "handles",
+    for g in ("cab_line", "counter", "sink", "faucet", "knife_strip", "backsplash", "floor", "handles",
               "cab_install", "floor_removal", "managed_by", "pantry", "microwave_at", "fridge_at"):
         if getattr(c, g) not in CATALOG[g]:
             raise ValueError(f"{g}={getattr(c, g)!r} is not in CATALOG[{g!r}]: {sorted(CATALOG[g])}")
+    if c.knife_strip == "fridge_panel" and c.fridge_at != "hall":
+        raise ValueError("knife_strip='fridge_panel' needs the refrigerator housing at the hall end")
     if c.microwave_at == "island" and c.island_len <= 0:
         raise ValueError("microwave_at='island' needs an island")
     boxes = wall1(c) + wall2(c) + island(c) + alcove(c) + counters(c)
@@ -1153,6 +1210,7 @@ def build(config: Config | None = None) -> dict:
         "finish_unmet_count": len(finish_unmet),
         "handle_integrated": line["integrated"],
         "floor_wear_mil": fl["wear"],
+        "knife_strip_to_range_in": (lambda b: (b["y"] - (CORNER + 24 + RANGE_W)) if b else -1.0)(knife_strip(c)),
         "faucet_h_in": CATALOG["faucet"][c.faucet]["h_in"],
         "faucet_style": CATALOG["faucet"][c.faucet]["style"],
         "faucet_under_window_head_in": win["z"] + win["dz"] - (c.base_h + c.counter_t + CATALOG["faucet"][c.faucet]["h_in"]),

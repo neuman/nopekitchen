@@ -1,0 +1,257 @@
+{
+  "schema": 1,
+  "gate": "bom.availability",
+  "rho": "4967b980e77f1316c72db8bd28fbfe0bed2d5176c9056e3010ce5c940f3ad710",
+  "code": {
+    "digest": "e5c2a051b112c506378fdd84ec03d3085f770254426ac8559f34bfb5a8f0cb2f",
+    "files": [
+      "<pack:sourcing>/bomlib.py",
+      "<pack:sourcing>/gates/sourcing.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "bom",
+          "bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "budget_total"
+        ],
+        "49a591d1ff2417b0fe97251a4a19e8f753b1c54d9f4b931f5a5a5525b0d58f4b",
+        60000.0
+      ],
+      [
+        [
+          "bom",
+          "build_quantity"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ],
+      [
+        [
+          "bom",
+          "charges"
+        ],
+        "fd053ada4e24522a78b3fa3842f44f969cd0ded16e1866650055e4d13cd47c81"
+      ],
+      [
+        [
+          "bom",
+          "currency"
+        ],
+        "80d78a1fa9b71501a051a47776aa3278e6e0fa97b83a72e02141ddfe0d4b486c",
+        "USD"
+      ],
+      [
+        [
+          "bom",
+          "lead_time_budget_weeks"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "lines"
+        ],
+        "d5869d6495a1be2f69ad08bc6ac604d088ef69cd1b7049f8edae4a714281ceed"
+      ],
+      [
+        [
+          "bom",
+          "schema"
+        ],
+        "ec05e2e7609cd37cc85a36007a2adfeb4a5c9daabccdd9a40d8e63996acd2dc4",
+        "nopekit.bom/1"
+      ],
+      [
+        [
+          "bom"
+        ],
+        "6470277797e9757c0a5d03bcd17856066c824b454fcf749d849c2c4dca676b4e"
+      ],
+      [
+        [
+          "bom.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom.lead_time_budget_weeks"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "lead_time_budget_weeks"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.lead_time_budget_weeks"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {},
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": false,
+    "measured": null,
+    "limit": null,
+    "units": "weeks",
+    "comparator": "<=",
+    "settles": "longest lead time",
+    "detail": "longest lead unknown wk (-); no lead-time budget set (nothing to compare against); 26 unknown, 0 EOL, 0 flagged; no ship date: cabinets(no lead_time_weeks), cab_install(no lead_time_weeks), counter(no lead_time_weeks), backsplash(no lead_time_weeks)",
+    "evidence": [
+      "<out>/bom_availability.json"
+    ],
+    "locators": [
+      {
+        "view": "bom",
+        "target": "cabinets",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "cab_install",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "counter",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "backsplash",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "sink",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "faucet",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "knife_strip",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "demo",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "plumb_reconnect",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "undercab_labor",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "undercab_lights",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "drywall_paint",
+        "kind": "row",
+        "label": "no ship date: no lead_time_weeks",
+        "severity": "",
+        "position": null,
+        "value": null
+      }
+    ],
+    "claims": [
+      "availability",
+      "lead-time",
+      "ship-date",
+      "stock"
+    ],
+    "tier": 0,
+    "pack": "sourcing"
+  },
+  "digest": "3ed4a416d09b45f91a2c446c7462b162374d6a79ca558b0a1e94a011e3c13d35"
+}

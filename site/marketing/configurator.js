@@ -31,9 +31,9 @@ const usd = (n) => "$" + Math.round(n).toLocaleString("en-US");
 const signed = (n) => (Math.abs(n) < 0.5 ? "same" : (n > 0 ? "+" : "−") + usd(Math.abs(n)));
 const STORE = "edmonds-kitchen-config-v2";
 const PRICE_KEY = { cab_line: "usd_lf", cab_install: "usd_lf", handles: "usd_each", counter: "usd_sqft",
-  backsplash: "usd_sqft", sink: "usd", faucet: "usd", floor: "usd_sqft", floor_removal: "usd_sqft" };
+  backsplash: "usd_sqft", sink: "usd", faucet: "usd", knife_strip: "usd", floor: "usd_sqft", floor_removal: "usd_sqft" };
 const UNIT = { cab_line: "linear ft", cab_install: "linear ft", handles: "each", counter: "sq ft",
-  backsplash: "sq ft", sink: "each", faucet: "each", floor: "sq ft", floor_removal: "sq ft" };
+  backsplash: "sq ft", sink: "each", faucet: "each", knife_strip: "each", floor: "sq ft", floor_removal: "sq ft" };
 const BEGRIPA = { white: "#F4F4F0", yellow: "#F5D33B", "light blue": "#9CC4E4", "light red": "#EF6B6B", lilac: "#B79CE0" };
 const BEGRIPA_MIX = ["yellow", "light blue", "light red", "lilac", "white"];     // "mixed": one colour after another along each run
 const BEGRIPA_MIX_SW = "conic-gradient(" + BEGRIPA_MIX.map((n, i) => BEGRIPA[n] + " " + i * 72 + "deg " + (i + 1) * 72 + "deg").join(", ") + ")";
@@ -41,7 +41,7 @@ const BASIS = { seen: "seen online", tag: "store tag", estimate: "estimate" };
 
 let T = null;          // twin.json
 let S = null;          // the selection
-let view = { people: "none", flow: false, doors: false, furniture: true, cam: "overview", begripa: "yellow" };
+let view = { people: "none", flow: false, doors: false, furniture: true, clutter: true, cam: "overview", begripa: "yellow" };
 
 // ---------------------------------------------------------------- state
 function recorded() {
@@ -49,12 +49,14 @@ function recorded() {
   return { fridge_at: r.fridge_at, pantry: r.pantry, island_len: r.island_len, island_top_d: r.island_top_d,
     island_aisle: r.island_aisle, prep_sink: r.prep_sink, microwave_at: r.microwave_at,
     cab_line: r.cab_line, lower_color: r.lower_color, upper_color: r.upper_color, handles: r.handles,
-    cab_install: r.cab_install, counter: r.counter, backsplash: r.backsplash, sink: r.sink, faucet: r.faucet,
+    cab_install: r.cab_install, counter: r.counter, backsplash: r.backsplash, sink: r.sink, faucet: r.faucet, knife_strip: r.knife_strip,
     floor: r.floor, floor_removal: r.floor_removal, managed_by: r.managed_by };
 }
 function normalise(s) {
   // keep a selection inside what the model offers
   if (s.island_len === 0) { s.prep_sink = false; s.island_top_d = 40; s.island_aisle = 48; if (s.microwave_at === "island") s.microwave_at = "counter"; }
+  if (!T.catalog.knife_strip[s.knife_strip]) s.knife_strip = T.recorded.knife_strip;
+  if (s.fridge_at === "alcove" && s.knife_strip === "fridge_panel") s.knife_strip = "backsplash";     // no housing to hang it on
   if (s.fridge_at === "alcove") { s.pantry = "open"; if (s.microwave_at === "pantry") s.microwave_at = "counter"; }
   const line = T.catalog.cab_line[s.cab_line];
   if (!line.lower.includes(s.lower_color)) s.lower_color = line.lower[0];
@@ -79,7 +81,7 @@ function bill(s) {
   add("handles", L.qty.handles);
   add("counter", L.qty.counter, "Countertop, installed: " + cat.counter[s.counter].label);
   add("backsplash", L.qty.backsplash, "Backsplash, installed: " + cat.backsplash[s.backsplash].label);
-  add("sink", 1); add("faucet", 1);
+  add("sink", 1); add("faucet", 1); add("knife_strip", 1, "Magnetic knife strip: " + cat.knife_strip[s.knife_strip].label.toLowerCase());
   for (const [ref, label, ext, vendor, url, basis] of L.fixed) if (!ref.startsWith("floor") && ref !== "baseboard") lines.push({ group: "work", label, ext, vendor, url, basis });
   add("floor", m.floor_order, "LVP: " + cat.floor[s.floor].label);
   for (const [ref, label, ext, vendor, url, basis] of L.fixed) if (ref.startsWith("floor") || ref === "baseboard") lines.push({ group: "floor_work", label, ext, vendor, url, basis });
@@ -595,6 +597,59 @@ function person(parent, x, y, h, color, name) {
   g.position.copy(M(x, y, 0)); const tag = label(name, "#222"); tag.position.set(0, h + 7, 0); tag.scale.multiplyScalar(0.8); g.add(tag); parent.add(g);
 }
 
+// The house as it is lived in, from the five photographs (inputs/references/photo-*.jpg):
+// what stands on the counters, the table and the floor on an ordinary day. A layer,
+// not a measurement: nothing here is in the model and no check reads it. Counter
+// things stay on the wall runs, which every layout keeps.
+function drawClutter(root, s, byId, mats) {
+  const c = (hex, o) => std(hex, { roughness: 0.75, ...o }), Z = 36;
+  const pot = (x, y, z, r, h, hex = "#6f7479") => cyl(root, x, y, z + h / 2, r, h, "z", c(hex), { r2: r * 0.8 });
+  const leaves = (x, y, z, n, h, spread, hex = "#3f7d48") => { for (let i = 0; i < n; i++) { const a = i * 2.4, m = cyl(root, x + Math.cos(a) * spread * 0.4, y + Math.sin(a) * spread * 0.4, z + h / 2, 0.15, h * (0.7 + 0.3 * ((i * 7) % 5) / 5), "z", c(hex), { r2: 1.3, cast: false }); m.rotation.z += Math.cos(a) * 0.22; m.rotation.x += Math.sin(a) * 0.22; } };
+  const bush = (x, y, z, r, hex = "#3f8a4f") => { for (const [dx, dy, dz, k] of [[0, 0, 0, 1], [r * 0.6, 0.2 * r, 0.3 * r, 0.7], [-r * 0.5, 0.4 * r, 0.2 * r, 0.75], [0.1 * r, -r * 0.6, 0.4 * r, 0.65]]) { const m = new THREE.Mesh(new THREE.SphereGeometry(r * k, 10, 8), c(hex)); m.position.copy(M(x + dx, y + dy, z + r + dz)); m.castShadow = true; root.add(m); } };
+  // ---- the long wall's counter, north of the range: the stand mixer and a mug
+  if (s.microwave_at !== "counter") { box(root, 5, 30, Z, 9, 13, 3, c("#eeeeea"), { r: 0.8 }); box(root, 6, 39, Z + 3, 6, 4, 11, c("#eeeeea"), { r: 1 }); box(root, 6, 30, Z + 11, 6, 13, 4.5, c("#eeeeea"), { r: 1.6 }); cyl(root, 10, 34, Z + 6, 3.6, 5.5, "z", mats.steel, { r2: 2.6 }); }
+  cyl(root, 14, 52, Z + 2.2, 1.7, 4.4, "z", c("#2f4a46"));
+  // ---- south of the range: papers, a child's craft, the toaster oven
+  box(root, 6, 116, Z, 9, 11, 1.6, c("#f1efe6")); box(root, 7, 117, Z + 1.6, 8, 9, 1.2, c("#d9c7a0")); box(root, 13, 100, Z, 10, 12, 0.15, c("#f08fc0"), { cast: false });
+  if (s.fridge_at === "hall") { box(root, 4, 131, Z, 14, 17, 9.5, mats.steelDark, { r: 0.5 }); box(root, 18, 133, Z + 2, 0.15, 11, 6, mats.blackGlass, { cast: false }); }
+  // ---- the sink wall: coffee maker, soap, the dish rack over the dishwasher, the blue shopping bag
+  box(root, 42, 4, Z, 8, 9, 13, c("#1d1d1f", { roughness: 0.4 }), { r: 0.6 }); cyl(root, 46, 15, Z + 3, 2.2, 6, "z", c("#3b2a20", { roughness: 0.2 }));
+  cyl(root, 58, 4.5, Z + 3.4, 1.2, 6.8, "z", c("#3a2a1c")); cyl(root, 98.5, 4.5, Z + 3, 1.2, 6, "z", c("#e9e4d2"));
+  box(root, 99, 8, Z, 17, 13, 0.6, c("#dcdcd8")); for (let i = 0; i < 5; i++) cyl(root, 102 + i * 2.6, 14.5, Z + 4.6, 4, 0.35, "x", c("#f4f2ec"), { cast: false });
+  box(root, 121, 6, Z, 13, 7, 14, c("#2a63b8", { roughness: 0.9 }), { r: 0.8 });
+  const win = byId.window; if (win) { cyl(root, win.x + win.dx * 0.3, 3.5, 75, 0.06, 14, "z", c("#444"), { cast: false }); pot(win.x + win.dx * 0.3, 3.5, 62, 3, 5, "#b9643c"); bush(win.x + win.dx * 0.3, 3.5, 64, 4.2); }
+  for (const [x, y, z] of [[6, 12, 84], [6, 40, 84], [40, 6, 84], [122, 6, 84]]) { pot(x, y, z, 1.8, 3, "#f3f1ea"); bush(x, y, z + 2, 2.2, "#5a9a52"); }
+  // ---- the island, if there is one: the mail and a fruit bowl at the seats' end
+  const isl = byId.isl_top; if (isl) { box(root, isl.x + isl.dx - 14, isl.y + 6, isl.z + isl.dz, 9, 11, 0.5, c("#f3f1ea")); cyl(root, isl.x + isl.dx - 12, isl.y + isl.dy - 12, isl.z + isl.dz + 1.6, 5.5, 3.2, "z", c("#d9d3c3"), { r2: 3 }); for (const [dx, dy, hex] of [[-1.5, 0, "#e0a22a"], [1.6, 0.8, "#c5402c"], [0, -1.8, "#e98a1f"]]) { const m = new THREE.Mesh(new THREE.SphereGeometry(1.6, 10, 8), c(hex)); m.position.copy(M(isl.x + isl.dx - 12 + dx, isl.y + isl.dy - 12 + dy, isl.z + isl.dz + 3.4)); root.add(m); } }
+  // ---- by the pillar and the office wall: the two steel bins, a shoebox on a carton
+  cyl(root, 167, 84, 13, 6.5, 26, "z", mats.steel); box(root, 176, 77, 0, 17, 13, 26, mats.steel, { r: 1 }); box(root, 147, 79, 0, 11, 9, 9, c("#b58a5a")); box(root, 148, 80, 9, 9, 6, 3.5, c("#c8302c"));
+  if (!view.furniture) return;                          // the rest sits on, or beside, the furniture
+  // ---- the dining table: flowers, tissues, napkins, glasses, the post
+  const ty = T.table_y ?? 118, tz = 30.25;
+  cyl(root, 216, ty + 70, tz + 4, 2.4, 8, "z", c("#e4c33a")); bush(216, ty + 70, tz + 7, 4.5, "#c7463a"); leaves(216, ty + 70, tz + 6, 5, 9, 5, "#3f7d48");
+  box(root, 210, ty + 40, tz, 4.5, 4.5, 5, c("#e7ded0"), { r: 0.4 }); box(root, 222, ty + 52, tz, 6, 5, 1.6, c("#b3202c"), { r: 0.7 }); box(root, 206, ty + 84, tz, 6, 5, 1.6, c("#b3202c"), { r: 0.7 });
+  for (const [x, y] of [[204, ty + 22], [208, ty + 25]]) cyl(root, x, y, tz + 2.6, 1.4, 5.2, "z", mats.glass, { cast: false });
+  box(root, 220, ty + 92, tz, 9, 11, 0.6, c("#f3f1ea")); box(root, 221, ty + 93, tz + 0.6, 8, 10, 0.3, c("#d7dde6"));
+  // ---- the east wall: the children's pictures between the shelves and the brick, things on the shelves, the monstera
+  for (const [y, z, w, h, hex] of [[128, 62, 9, 8, "#3c6fb0"], [139, 63, 9, 7, "#d9a13a"], [128, 51, 9, 8, "#4a8f6a"], [139, 51, 8, 9, "#d4552c"]]) { box(root, 271.2, y, z, 0.8, w, h, c("#1b1b1d")); box(root, 271, y + 1, z + 1, 0.3, w - 2, h - 2, c(hex), { cast: false }); }
+  for (const b of T.room.filter((r) => r.kind === "wallshelf")) { for (let i = 0; i < Math.max(1, Math.floor(b.dy / 9)); i++) { const y = b.y + 3 + i * 9; if (i % 3 === 1) { pot(b.x + 4, y, b.z + b.dz, 1.6, 2.6, "#e9e4d2"); leaves(b.x + 4, y, b.z + b.dz + 2, 4, 6, 3, "#5a9a52"); } else box(root, b.x + 2, y - 1.5, b.z + b.dz, 3.5, 3, 3 + (i % 2) * 2, c(["#7a4a2c", "#d9c7a0", "#3c6fb0"][i % 3]), { r: 0.3 }); } }
+  pot(262, 100, 0, 6, 9, "#b9643c"); bush(262, 100, 9, 8, "#2f7a45"); leaves(262, 100, 8, 6, 16, 9, "#2f7a45");
+  // ---- the couch and the rug: a blanket, two cushions, toys, an open carton, things on the coffee table
+  const sb = T.room.find((b) => b.id === "f_sofa_seat");
+  if (sb) { box(root, sb.x + sb.dx - 24, sb.y - 0.5, 14, 20, sb.dy * 0.8, 19.5, c("#efe8d8", { roughness: 1 }), { r: 2 }); box(root, sb.x + 14, sb.y + 12, 18, 13, 5, 12, c("#f2f2ee"), { r: 2 }); box(root, sb.x + 30, sb.y + 13, 18, 12, 5, 11, c("#22262c"), { r: 2 }); }
+  const toys = ["#e23b3b", "#2f7fd6", "#f2b430", "#3aa860", "#8a4fc0", "#f08fc0"];
+  [[156, 334, 3], [171, 344, 2], [188, 331, 4], [204, 348, 2.4], [221, 338, 3], [196, 352, 2], [163, 352, 2.6], [230, 326, 2]].forEach(([x, y, k], i) => { if (i % 2) { const m = new THREE.Mesh(new THREE.SphereGeometry(k * 0.8, 10, 8), c(toys[i % 6])); m.position.copy(M(x, y, 0.5 + k * 0.8)); m.castShadow = true; root.add(m); } else box(root, x, y, 0.5, k * 1.6, k * 1.2, k, c(toys[i % 6]), { r: 0.3 }); });
+  box(root, 206, 328, 0.5, 14, 11, 0.4, c("#b58a5a")); box(root, 206, 327.4, 0.5, 14, 0.6, 5, c("#b58a5a")); box(root, 205.4, 328, 0.5, 0.6, 11, 5, c("#b58a5a"));
+  box(root, 156, 304, 15.2, 9, 7, 0.5, c("#f3f1ea")); box(root, 170, 309, 15.2, 5, 2, 1, c("#e9e9e4"), { r: 0.3 }); cyl(root, 182, 306, 17.2, 1.2, 4, "x", c("#f08fc0"));
+  // ---- at the stair rail: the snake plant in its grey pot, and a carton with two cushions on it
+  pot(98, 286, 0, 8, 13, "#70757a"); leaves(98, 286, 12, 9, 34, 8, "#3c6b3a");
+  box(root, 92, 256, 0, 22, 15, 7, c("#b58a5a")); box(root, 93, 257, 7, 12, 9, 3.5, c("#6a55b5"), { r: 1.2 }); box(root, 104, 259, 7, 10, 11, 4.5, c("#2e3f5c"), { r: 1.6 });
+  // ---- by the south windows: the low bookshelf; a pumpkin on the hearth side; the guitar painting over the stairs
+  box(root, 100, 360, 0, 34, 12, 20, woodMat("#d8b97a"), { r: 0.3 }); for (let i = 0; i < 9; i++) box(root, 102 + i * 3.3, 361, 2, 2.6, 9, 9 + (i % 3) * 2, c(toys[i % 6]), { cast: false });
+  { const m = new THREE.Mesh(new THREE.SphereGeometry(4, 12, 8), c("#e07a1f")); m.scale.y = 0.75; m.position.copy(M(256, 210, 3)); m.castShadow = true; root.add(m); }
+  box(root, 0.1, 318, 44, 0.6, 26, 26, c("#f2efe8")); for (const [dy, dz, w, h, hex] of [[2, 2, 10, 22, "#2f7fd6"], [12, 2, 12, 12, "#e2852a"], [12, 14, 12, 10, "#c5402c"], [24, 2, 0.1, 0.1, "#fff"]]) box(root, 0.05, 318 + dy, 44 + dz, 0.75, w, h, c(hex), { cast: false });
+}
+
 function initScene(host) {
   G.host = host;
   const r = (G.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true, powerPreference: "high-performance" }));
@@ -661,9 +716,10 @@ function resize() {
 const CAMS = {
   overview: { label: "Overview", pos: [380, 400, 270], look: [100, 115, 15], fov: 38 },
   plan: { label: "Plan", pos: [120, 150.5, 640], look: [120, 150, 0], fov: 38 },
-  living: { label: "From the living room", pos: [222, 246, 60], look: [56, 92, 42], fov: 60 },
+  living: { label: "From the living room", pos: [168, 248, 62], look: [56, 92, 42], fov: 60 },
   hall: { label: "From the hallway", pos: [84, 214, 61], look: [72, 30, 40], fov: 66 },
   cook: { label: "At the range", pos: [118, 150, 62], look: [14, 66, 44], fov: 62 },
+  prep: { label: "At the prep counter", pos: [70, 126, 60], look: [2, 108, 46], fov: 52 },
   sink: { label: "At the sink", pos: [112, 78, 56], look: [78, 4, 44], fov: 42 },
   pantry: { label: "Facing the alcove", pos: [84, 56, 60], look: [170, 49, 46], fov: 58 },
   child: { label: "5-year-old's eyes", pos: [150, 150, 39], look: [20, 80, 34], fov: 66 },
@@ -773,10 +829,11 @@ function rebuild() {
   // furniture, as it stands in the photographs
   if (view.furniture) {
     const top = woodMat("#c98f52"), teal = std("#1f7f8a", { roughness: 0.5 }), tolix = steelMat(false);
-    box(root, 196, 78, 28.5, 40, 108, 1.75, top, { r: 0.3 });
-    for (const [lx, ly] of [[199, 82], [230, 82], [199, 179], [230, 179]]) box(root, lx, ly, 0, 3.5, 3.5, 28.5, teal);
-    box(root, 199, 84, 22, 3, 96, 3.5, teal); box(root, 230.5, 84, 22, 3, 96, 3.5, teal);
-    for (const y of [98, 132, 166]) { chair(root, 186, y, -Math.PI / 2, tolix); chair(root, 246, y, Math.PI / 2, tolix); }
+    const ty = T.table_y ?? 118;          // the table's north end, from the model: clear of the office's sliding door
+    box(root, 196, ty, 28.5, 40, 108, 1.75, top, { r: 0.3 });
+    for (const [lx, ly] of [[199, ty + 4], [230, ty + 4], [199, ty + 101], [230, ty + 101]]) box(root, lx, ly, 0, 3.5, 3.5, 28.5, teal);
+    box(root, 199, ty + 6, 22, 3, 96, 3.5, teal); box(root, 230.5, ty + 6, 22, 3, 96, 3.5, teal);
+    for (const dy of [20, 54, 88]) { chair(root, 186, ty + dy, -Math.PI / 2, tolix); chair(root, 246, ty + dy, Math.PI / 2, tolix); }
     const sb = T.room.find((b) => b.id === "f_sofa_seat"), bb = T.room.find((b) => b.id === "f_sofa_back");
     if (sb && bb) {     // the new couch: square arms, a low square back, block cushions, in a spice colour. It faces south
       const spice = std("#B4532A", { roughness: 0.96 }), cushion = std("#BC5B30", { roughness: 0.98 }), arm = 10, top = bb.z + bb.dz, seat = sb.z + sb.dz;
@@ -823,6 +880,19 @@ function rebuild() {
       faucet(root, b.x + b.dx / 2, wall ? b.y - 1.4 : b.y + b.dy + 1.6, 36, wall ? 1 : -1, mats, wall ? cat.faucet[s.faucet] : cat.faucet.macksjon);
     }
   }
+  // the magnetic knife strip, where the model puts it, with five knives on it
+  const ks = (T.knife_strips || {})[s.knife_strip];
+  if (ks && !(s.knife_strip === "fridge_panel" && s.fridge_at !== "hall")) {
+    box(root, ks.x, ks.y, ks.z, ks.dx, ks.dy, ks.dz, std("#1c1c1e", { roughness: 0.5, metalness: 0.4 }), { r: 0.12 });
+    const alongY = ks.face === "E", len = alongY ? ks.dy : ks.dx, handle = std("#2a2420", { roughness: 0.7 });
+    [[2.2, 8, 1.7], [5.6, 6.5, 1.3], [9, 7.5, 1.9], [12.4, 5, 1.0], [15.4, 3.6, 0.8]].forEach(([u, blade, w]) => {
+      if (u > len - 1) return;
+      const top = ks.z + ks.dz + 3.6, bz = ks.z + ks.dz - blade;       // handle above the strip, blade hanging below it
+      if (alongY) { box(root, ks.x + ks.dx, ks.y + u - w / 2, bz, 0.08, w, blade, mats.steel, { cast: false }); box(root, ks.x + ks.dx - 0.1, ks.y + u - 0.45, ks.z + ks.dz, 0.7, 0.9, top - ks.z - ks.dz, handle, { r: 0.2 }); }
+      else { box(root, ks.x + u - w / 2, ks.y - 0.08, bz, w, 0.08, blade, mats.steel, { cast: false }); box(root, ks.x + u - 0.45, ks.y - 0.6, ks.z + ks.dz, 0.9, 0.7, top - ks.z - ks.dz, handle, { r: 0.2 }); }
+    });
+  }
+  if (view.clutter) drawClutter(root, s, byId, mats);
   // backsplash and the light strips under the uppers
   const w1End = s.fridge_at === "hall" ? 153 : 189;
   if (splash.usd_sqft > 0) {
@@ -941,6 +1011,8 @@ function renderControls() {
     group("Backsplash", null, choice("backsplash", catOpts("backsplash"))),
     group("Sink and faucet", null, choice("sink", catOpts("sink"), { sub: (k) => usd(cat.sink[k].usd) }), choice("faucet", catOpts("faucet"), { sub: (k) => { const f = cat.faucet[k]; return usd(f.usd) + " · " + (f.style === "spring" ? "spring coil" : "gooseneck") + " · " + Math.round(f.h_in) + " in tall"; } }),
       el("p", { class: "cfg-note", text: cat.faucet[S.faucet].note || "" })),
+    group("Magnetic knife strip", "Today it hangs by the microwave in the corner. Both new homes are over the counter south of the range, on the range-to-refrigerator leg of the cook's triangle, 47 in up: above both children's shoulders.",
+      choice("knife_strip", [["backsplash", cat.knife_strip.backsplash.label], ["fridge_panel", cat.knife_strip.fridge_panel.label, alcove], ["none", cat.knife_strip.none.label]])),
     group("Upstairs floor", T.money.floor_area.toLocaleString() + " sq ft of floor, " + T.money.floor_order.toLocaleString() + " sq ft ordered with waste.",
       choice("floor", catOpts("floor"), { sub: (k) => { const f = cat.floor[k]; return "$" + f.usd_sqft.toFixed(2) + " / sq ft · " + f.wear + " mil · " + f.plank[0] + " x " + f.plank[1] + " in · " + f.vendor.split(",")[0]; } })),
     group("Who does the work", null,
@@ -1004,7 +1076,7 @@ function renderView() {
   $("#cfg-viewbar").replaceChildren(
     seg("Camera", Object.entries(CAMS).map(([k, c]) => [k, c.label]), view.cam, (v) => { setCamera(v); renderView(); }),
     seg("People", [["none", "Empty"], ["weeknight", "Weeknight"], ["holiday", "Holiday"]], view.people, (v) => { view.people = v; save(); render(); }),
-    seg("Overlays", [["flow", (view.flow ? "✓ " : "") + "Cook's triangle"], ["doors", (view.doors ? "✓ " : "") + "Doors open"], ["furniture", (view.furniture ? "✓ " : "") + "Furniture"]], null, (v) => { view[v] = !view[v]; save(); render(); }));
+    seg("Overlays", [["flow", (view.flow ? "✓ " : "") + "Cook's triangle"], ["doors", (view.doors ? "✓ " : "") + "Doors open"], ["furniture", (view.furniture ? "✓ " : "") + "Furniture"], ["clutter", (view.clutter ? "✓ " : "") + "Everyday clutter"]], null, (v) => { view[v] = !view[v]; save(); render(); }));
 }
 function render() { renderControls(); renderSummary(); renderView(); rebuild(); }
 
@@ -1015,7 +1087,7 @@ function summaryText() {
     "Handles: " + cat.handles[S.handles].label + (S.handles === "begripa" ? " (" + (view.begripa === "mixed" ? "mixed colours" : view.begripa) + ")" : ""), "Refrigerator: " + cat.fridge_at[S.fridge_at].label,
     "Island: " + (S.island_len ? S.island_len + " x " + S.island_top_d + " in, " + S.island_aisle + " in aisle, prep sink " + (S.prep_sink ? "yes" : "no") : "none"),
     "Alcove: " + cat.pantry[S.pantry].label, "Microwave: " + cat.microwave_at[S.microwave_at].label,
-    "Counter: " + cat.counter[S.counter].label, "Backsplash: " + cat.backsplash[S.backsplash].label, "Sink: " + cat.sink[S.sink].label, "Faucet: " + cat.faucet[S.faucet].label,
+    "Counter: " + cat.counter[S.counter].label, "Backsplash: " + cat.backsplash[S.backsplash].label, "Sink: " + cat.sink[S.sink].label, "Faucet: " + cat.faucet[S.faucet].label, "Knife strip: " + cat.knife_strip[S.knife_strip].label,
     "Floor: " + cat.floor[S.floor].label, "Cabinet assembly: " + cat.cab_install[S.cab_install].label, "Old floor: " + cat.floor_removal[S.floor_removal].label, "Managed by: " + cat.managed_by[S.managed_by].label,
     "Failing answers: " + (c.rows.filter((r) => !r.ok).map((r) => r.id).join(", ") || "none"), "", "model fields: " + JSON.stringify(S)].join("\n");
 }

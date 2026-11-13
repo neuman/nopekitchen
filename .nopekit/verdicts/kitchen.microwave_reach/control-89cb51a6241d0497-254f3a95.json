@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.microwave_reach",
+  "rho": "89cb51a6241d04972b487c0ca9adf4a7051b13c07672111df804c6b45e4d0984",
+  "static": "7421270b3527d80e35ec43ce9895263c087c5d3e5469ceb8a5bdc99df6f8d345",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "1e6c37e1960377ab8a3fa69f16b390ec711877f0674905ed19054986e35592ce",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "265372455a97673cbde4f0740de8279b9ed42f237c12df4376e08993cab22930",
+      "files": {
+        "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+        "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:microwave_on_counter",
+      "expect": "fail",
+      "note": "the microwave back on the 36 in counter",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5d71e2699688f0cc0e95189271e9fb895e7686c3217e223bda2874e098b02911",
+    "files": {
+      "model/kitchen.py": "2437370b3b88c6d100251f891bb6aa534d39b9fc09d8da016cd93921fb51fc41",
+      "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+      "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "kid_small_shoulder_in"
+        ],
+        "79f81904284648ba1b427e828852e5fc5652e8f5819aebc4ecb777adf4009f0d",
+        34.4
+      ],
+      [
+        [
+          "microwave_bottom_in"
+        ],
+        "e1eb701b19836be49edd8c775a9e2b9f7b22605d316157f1bf921da257049803",
+        36.0
+      ],
+      [
+        [
+          "microwave_over_reach_in"
+        ],
+        "c4c6480dd578f4326ce4adbf740524d27959938239c6b5888c58d931e436f975",
+        4.600000000000001
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C10": "7bc45a9d08b9618f717f6890197de60d4425e9242932b7fed413bc975b3c2e9f",
+      "acceptance:C10": "ef051523b8991d603995106d8de800aa921bf9a75a1a5f0c5fff47b7a0a69341"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "kid_small_shoulder_in"
+          ],
+          "79f81904284648ba1b427e828852e5fc5652e8f5819aebc4ecb777adf4009f0d",
+          34.4
+        ],
+        [
+          [
+            "microwave_bottom_in"
+          ],
+          "e51de7ee83bc6a42a56a26c8a2c37ee771ea112eba456de79d853f6e93944057",
+          31
+        ],
+        [
+          [
+            "microwave_over_reach_in"
+          ],
+          "0077927acee0df9e8d5e268637b6b4f5cc2001ec0a770dfedb6096b55aad9477",
+          -0.3999999999999986
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C10": "7bc45a9d08b9618f717f6890197de60d4425e9242932b7fed413bc975b3c2e9f",
+        "acceptance:C10": "ef051523b8991d603995106d8de800aa921bf9a75a1a5f0c5fff47b7a0a69341"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": -0.4,
+    "limit": 0.0,
+    "units": "in",
+    "detail": "microwave bottom at 31 in, child's shoulder at 34.4 in; bottom above shoulder less 3 in by: -0.4 in (limit <= 0 in)",
+    "goalpost": [
+      {
+        "key": "C10",
+        "measured": -0.4,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": -0.9,
+            "outcome": "fail",
+            "measured": -0.4,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": -0.5,
+            "outcome": "fail",
+            "measured": -0.4,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": -0.4,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 9.0,
+            "outcome": "pass",
+            "measured": -0.4,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 53,
+    "boundary": "",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": [
+      {
+        "key": [
+          "kid_small_shoulder_in"
+        ],
+        "why": "never-lands"
+      },
+      {
+        "key": [
+          "microwave_bottom_in"
+        ],
+        "why": "never-lands"
+      },
+      {
+        "key": [
+          "microwave_over_reach_in"
+        ],
+        "why": "never-lands"
+      }
+    ]
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:microwave_on_counter (the microwave back on the 36 in counter): microwave bottom at 36 in, child's shoulder at 34.4 in; bottom above shoulder less 3 in by: 4.6 in (limit <= 0 in)",
+  "measured": 4.6,
+  "limit": 0.0,
+  "units": "in",
+  "digest": "992af3df5debca324edfd1eedcf03a65fb941801130d5ca961ce3ff38cb25fb7"
+}

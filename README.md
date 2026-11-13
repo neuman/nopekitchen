@@ -25,6 +25,16 @@ draws the chosen one to those numbers over the sink. Seven spring-coil faucets
 (IKEA MAJSJÖN and TAKSJÖN, Kraus Bolden, Delta Antoni and Trinsic Pro, Moen Align,
 Kohler Tournant) and three goosenecks are in it; add one by adding a catalog entry.
 
+Build the site with `tools/build_site.sh`, not a bare `nopekit site build`: it runs the
+build and then `tools/ground_map.py`, which finishes the grounding map (columns CHOICES,
+IMPLICATIONS, CLAIMS; every catalog and yes/no choice swapped through its options so it
+has lines; every claim joined to the choices it is about) and fails if anything on the map
+is joined to nothing. The map stays a drawing on a phone (`site/engineering/index.html`).
+
+The configurator also has a magnetic knife strip option (`CATALOG["knife_strip"]`), an
+"Everyday clutter" layer drawn from the reference photographs, and cameras "At the sink"
+and "At the prep counter" (`marketing/#cam=sink`, `#cam=prep`).
+
 To record a combination from the configurator as the design: press *Copy my configuration*,
 put those fields in `CONFIG` at the bottom of `model/kitchen.py` (and in
 `selftest/known_good.py` if it should become the reference), and run `nopekit check`.

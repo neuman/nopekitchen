@@ -49,6 +49,14 @@
       "lifecycle": "unknown"
     },
     {
+      "ref": "knife_strip",
+      "purchase_qty": 1.0,
+      "stock": null,
+      "lead_time_weeks": null,
+      "effective_weeks": null,
+      "lifecycle": "unknown"
+    },
+    {
       "ref": "demo",
       "purchase_qty": 1.0,
       "stock": null,
@@ -208,6 +216,7 @@
     "backsplash(no lead_time_weeks)",
     "sink(no lead_time_weeks)",
     "faucet(no lead_time_weeks)",
+    "knife_strip(no lead_time_weeks)",
     "demo(no lead_time_weeks)",
     "plumb_reconnect(no lead_time_weeks)",
     "undercab_labor(no lead_time_weeks)",

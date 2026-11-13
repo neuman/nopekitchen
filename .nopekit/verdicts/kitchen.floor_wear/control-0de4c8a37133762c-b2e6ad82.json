@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.floor_wear",
+  "rho": "0de4c8a37133762cc1959674c538fee727fc735a5e5e4970a7915efc3c7a0763",
+  "static": "74a884fd32970f4b9247e46208b6881538b9be647d466a47353ffe33c002cca5",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "8c033cfc23c5ef907168b73672f079900d3998f82b27b0f6460fd8946bef1eb0",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "265372455a97673cbde4f0740de8279b9ed42f237c12df4376e08993cab22930",
+      "files": {
+        "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+        "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:thin_wear_layer",
+      "expect": "fail",
+      "note": "a 12 mil builder-grade plank",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5d71e2699688f0cc0e95189271e9fb895e7686c3217e223bda2874e098b02911",
+    "files": {
+      "model/kitchen.py": "2437370b3b88c6d100251f891bb6aa534d39b9fc09d8da016cd93921fb51fc41",
+      "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+      "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "floor_wear_mil"
+        ],
+        "6c94e9ac58912c80e87504c8c48069b79153bc91b2b850af26229e516d9f996c",
+        12
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C14": "a5e49976ef2da5d87a789b0b2c8be0d8ea9aee1b78ce9fc6c6a49538df185042",
+      "acceptance:C14": "a1ba292772ce6fc8417c2c3b688f8ed01c9aa745e2abc718dbf802b215a3a4e7"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "floor_wear_mil"
+          ],
+          "7bf4b34af2d4dc12ba874040cf9f3be4ab0b3ac63d997285de71f95d4a1501d7",
+          22
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C14": "a5e49976ef2da5d87a789b0b2c8be0d8ea9aee1b78ce9fc6c6a49538df185042",
+        "acceptance:C14": "a1ba292772ce6fc8417c2c3b688f8ed01c9aa745e2abc718dbf802b215a3a4e7"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 22.0,
+    "limit": 20.0,
+    "units": "mil",
+    "detail": "stated wear layer: 22 mil (limit >= 20 mil)",
+    "goalpost": [
+      {
+        "key": "C14",
+        "measured": 22.0,
+        "units": "mil",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 2.0,
+            "outcome": "pass",
+            "measured": 22.0,
+            "units": "mil"
+          },
+          {
+            "end": "limit",
+            "limit": 10.0,
+            "outcome": "pass",
+            "measured": 22.0,
+            "units": "mil"
+          },
+          {
+            "end": "limit",
+            "limit": 40.0,
+            "outcome": "fail",
+            "measured": 22.0,
+            "units": "mil"
+          },
+          {
+            "end": "limit",
+            "limit": 200.0,
+            "outcome": "fail",
+            "measured": 22.0,
+            "units": "mil"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 6,
+    "boundary": "",
+    "results": [
+      {
+        "key": [
+          "floor_wear_mil"
+        ],
+        "before": 22,
+        "after": 17,
+        "outcome": "fail",
+        "measured": 17.0,
+        "limit": 20.0
+      }
+    ],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:thin_wear_layer (a 12 mil builder-grade plank): stated wear layer: 12 mil (limit >= 20 mil)",
+  "measured": 12.0,
+  "limit": 20.0,
+  "units": "mil",
+  "digest": "31b1f566b2745c277aa710b6fbea9c9ab8364d7c6a1c0e8b9e584a9e56b55d79"
+}

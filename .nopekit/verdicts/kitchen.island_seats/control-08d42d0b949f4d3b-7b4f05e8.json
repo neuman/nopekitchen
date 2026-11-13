@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.island_seats",
+  "rho": "08d42d0b949f4d3b77afde4d2793c288641c1780b0b9f7942223db53a20fb37d",
+  "static": "04e9730df800654f5a9f4cd8e73a28d91446343d9bd94943fb90719d412fcdb4",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "12f1edbd5082be4b20bc217a4419466d5080ce521ee89e5df43805cf58709f3f",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "265372455a97673cbde4f0740de8279b9ed42f237c12df4376e08993cab22930",
+      "files": {
+        "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+        "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:short_island",
+      "expect": "fail",
+      "note": "the island cut to 40 in: one 24 in seat",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5d71e2699688f0cc0e95189271e9fb895e7686c3217e223bda2874e098b02911",
+    "files": {
+      "model/kitchen.py": "2437370b3b88c6d100251f891bb6aa534d39b9fc09d8da016cd93921fb51fc41",
+      "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+      "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "island_seats"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C8": "4ed5c7d69a8a897a3a5f3b114b42d9b75a82e249698fa572e89d947700ff84ad",
+      "acceptance:C8": "d6f8dbf4fe696a663e5880c9b8c998cf76e7f30d45b4a94e6f5e2279f9d03aeb"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "island_seats"
+          ],
+          "772c51c318a4bea2d58dec86dbdafe096cb75369a5638c345acaa0fe5ce8aa82",
+          2
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C8": "4ed5c7d69a8a897a3a5f3b114b42d9b75a82e249698fa572e89d947700ff84ad",
+        "acceptance:C8": "d6f8dbf4fe696a663e5880c9b8c998cf76e7f30d45b4a94e6f5e2279f9d03aeb"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 2.0,
+    "limit": 2.0,
+    "units": "seats",
+    "detail": "24 in seats along the island: 2 seats (limit >= 2 seats)",
+    "goalpost": [
+      {
+        "key": "C8",
+        "measured": 2.0,
+        "units": "seats",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 0.2,
+            "outcome": "pass",
+            "measured": 2.0,
+            "units": "seats"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": 2.0,
+            "units": "seats"
+          },
+          {
+            "end": "limit",
+            "limit": 4.0,
+            "outcome": "fail",
+            "measured": 2.0,
+            "units": "seats"
+          },
+          {
+            "end": "limit",
+            "limit": 20.0,
+            "outcome": "fail",
+            "measured": 2.0,
+            "units": "seats"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:short_island (the island cut to 40 in: one 24 in seat): 24 in seats along the island: 1 seats (limit >= 2 seats)",
+  "measured": 1.0,
+  "limit": 2.0,
+  "units": "seats",
+  "digest": "1d7d905e4520b8127fc17644b2e0fc2fc463560851b58fc6ec6c8cb8e8cb7785"
+}

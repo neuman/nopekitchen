@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.finish_offered",
+  "rho": "212a7c8f7725ff736dda2c4bbef77cbc1a24b3915bcc61c775f8f8831ffeb641",
+  "static": "bd2ad8bf499c77a1cd3d621b2b0a216493eff2b9787b7d8bf7081d72f5cb4262",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "c2656adf65dcf4851d3b3f539971fa707d39a9d477ccab738b5f184f1fb0c07c",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "265372455a97673cbde4f0740de8279b9ed42f237c12df4376e08993cab22930",
+      "files": {
+        "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+        "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:shaker_line",
+      "expect": "fail",
+      "note": "the contractor's painted shaker line: no gloss",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5d71e2699688f0cc0e95189271e9fb895e7686c3217e223bda2874e098b02911",
+    "files": {
+      "model/kitchen.py": "2437370b3b88c6d100251f891bb6aa534d39b9fc09d8da016cd93921fb51fc41",
+      "selftest/bad_configs.py": "7554e424800b79fc75d19a976cdf694d29811c7ed1accdfade2b43ad53c1336a",
+      "selftest/known_good.py": "c517ce77b11dfa890369778abbb5bc0287f5d85e1330c7ce65efb0d19b86d81a"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "finish_unmet"
+        ],
+        "dff104ff348b8eb713c5ac54edc1489dcc32fa438612cf50700afe4757e072db"
+      ],
+      [
+        [
+          "finish_unmet_count"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C11": "d50629b1c913653ae5c1b7366c5ae1ff576e711514fb7f887a683aa1e5978196",
+      "acceptance:C11": "d7a8a7c94e519d075fb275974f77579951443a3321d3229bcf3b330d07063039"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "finish_unmet"
+          ],
+          "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+        ],
+        [
+          [
+            "finish_unmet_count"
+          ],
+          "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+          0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C11": "d50629b1c913653ae5c1b7366c5ae1ff576e711514fb7f887a683aa1e5978196",
+        "acceptance:C11": "d7a8a7c94e519d075fb275974f77579951443a3321d3229bcf3b330d07063039"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "requirements",
+    "detail": "gloss, both colours and two tones are offered; unmet: 0 requirements (limit <= 0 requirements)",
+    "goalpost": [
+      {
+        "key": "C11",
+        "measured": 0.0,
+        "units": "requirements",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": -0.9,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "requirements"
+          },
+          {
+            "end": "limit",
+            "limit": -0.5,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "requirements"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "requirements"
+          },
+          {
+            "end": "limit",
+            "limit": 9.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:shaker_line (the contractor's painted shaker line: no gloss): not offered: high gloss: 1 requirements (limit <= 0 requirements)",
+  "measured": 1.0,
+  "limit": 0.0,
+  "units": "requirements",
+  "digest": "5d2300048dffb252e295436258db2a0da2d8e4e6ce5d08c9361f773a12a1f529"
+}

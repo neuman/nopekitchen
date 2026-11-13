@@ -63,6 +63,16 @@
       "extended": 199.0
     },
     {
+      "ref": "knife_strip",
+      "vendor": "IKEA Renton (KUNGSFORS magnetic knife rack)",
+      "vendor_pn": "knife_strip",
+      "qty_per_unit": 1,
+      "needed": 1.0,
+      "purchased": 1.0,
+      "unit_price": 20.0,
+      "extended": 20.0
+    },
+    {
       "ref": "demo",
       "vendor": "a demolition crew",
       "vendor_pn": "demo",
@@ -254,10 +264,11 @@
     }
   ],
   "unpriced": [],
-  "parts_total": 46639.06,
+  "parts_total": 46659.06,
   "vendor_subtotals": {
     "Home Depot, 2901 184th St SW, Lynnwood": 5102.16,
     "IKEA Renton": 4426.8,
+    "IKEA Renton (KUNGSFORS magnetic knife rack)": 20.0,
     "IKEA Renton + 27estore (online)": 11028.2,
     "IKEA-kitchen installer": 3292.0,
     "Ruvati (online)": 250.0,
@@ -283,13 +294,13 @@
     {
       "id": "contingency",
       "vendor": "",
-      "amount": 5596.69,
+      "amount": 5599.09,
       "description": "contingency, 12% of the subtotal"
     },
     {
       "id": "sales-tax",
       "vendor": "",
-      "amount": 5589.22,
+      "amount": 5591.62,
       "description": "Edmonds sales tax, 10.7%, on labour and materials"
     },
     {
@@ -299,8 +310,8 @@
       "description": "electrical and plumbing permits"
     }
   ],
-  "charge_total": 11385.91,
-  "nre_per_unit": 11385.91,
-  "run_total": 58024.97,
-  "per_unit": 58024.973
+  "charge_total": 11390.71,
+  "nre_per_unit": 11390.71,
+  "run_total": 58049.77,
+  "per_unit": 58049.773
 }

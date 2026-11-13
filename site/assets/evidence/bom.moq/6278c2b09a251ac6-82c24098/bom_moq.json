@@ -1,9 +1,9 @@
 {
   "ratio_limit": 3.0,
   "excess_limit": 50.0,
-  "idle_capital_limit": 4663.91,
-  "idle_capital_limit_from": "10% of the 46,639.06 parts spend",
-  "parts_total": 46639.06,
+  "idle_capital_limit": 4665.91,
+  "idle_capital_limit_from": "10% of the 46,659.06 parts spend",
+  "parts_total": 46659.06,
   "idle_capital_total": 0.0,
   "lines": [
     {
@@ -72,6 +72,18 @@
       "purchased": 1.0,
       "ratio": 1.0,
       "unit_price": 199.0,
+      "excess_pieces": 0.0,
+      "excess_spend": 0.0,
+      "past_ratio_filter": false,
+      "moq": null,
+      "order_multiple": null
+    },
+    {
+      "ref": "knife_strip",
+      "needed": 1.0,
+      "purchased": 1.0,
+      "ratio": 1.0,
+      "unit_price": 20.0,
       "excess_pieces": 0.0,
       "excess_spend": 0.0,
       "past_ratio_filter": false,

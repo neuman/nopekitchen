@@ -29,7 +29,7 @@ CONFIG: dict = {
     "island_aisle": 48.0, "island_north_aisle": 48.0, "prep_sink": True,
     "pantry": "open", "microwave_at": "pantry",
     "cab_line": "sektion_27e_gloss", "lower_color": "gentian", "upper_color": "oyster",
-    "counter": "ikea_kasker", "sink": "ruvati_32", "faucet": "majsjon",
+    "counter": "ikea_kasker", "sink": "ruvati_32", "faucet": "majsjon", "knife_strip": "backsplash",
     "backsplash": "tile", "floor": "lifeproof_sterling", "handles": "integrated",
     "managed_by": "self", "cab_install": "self_assemble", "floor_removal": "pro",
     "budget_usd": 60000.0, "sales_tax": 0.107, "contingency": 0.12,

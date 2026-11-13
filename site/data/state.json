@@ -1,5 +1,12 @@
 {
-  "amber": {},
+  "amber": {
+    "C1": "holds",
+    "C10": "flips",
+    "C16": "holds",
+    "C2": "holds",
+    "C3": "holds",
+    "C4": "holds"
+  },
   "claims": [
     {
       "acceptance": {
@@ -402,7 +409,7 @@
       "owner": "",
       "physical_result": null,
       "rationale": "NKBA Kitchen Planning Guidelines: a walkway is at least 36 in. The island stands between the hallway and the dining table, so people walk round it all day",
-      "reason": "unqualified: kitchen.walkways : two control outcomes recorded for identical inputs (control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b)",
+      "reason": "unqualified: kitchen.walkways : known-good fail",
       "requirements": [
         "R2",
         "R3"
@@ -421,157 +428,13 @@
       "unproven": [
         {
           "gate": "kitchen.walkways",
-          "why": "unqualified: two control outcomes recorded for identical inputs (control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b)"
+          "why": "unqualified: known-good fail"
         }
       ],
       "verdicts": [
         "kitchen.walkways"
       ],
       "word": "gap"
-    },
-    {
-      "acceptance": {
-        "comparator": "<=",
-        "limit": 60000.0,
-        "limit_hi": null,
-        "quantity": "build cost per unit",
-        "units": "USD/run"
-      },
-      "acceptance_render": "build cost per unit <= 60000.0 USD/run",
-      "article": "",
-      "authority": "",
-      "board": "budget",
-      "cause": "invalidated",
-      "compared": [
-        "bom.cost"
-      ],
-      "contradicts": [],
-      "critical": true,
-      "disagree": false,
-      "errored": false,
-      "evidence": [
-        "<out>/bom_cost.json"
-      ],
-      "expected_latency": {},
-      "fallback": "",
-      "gates": [
-        "bom.cost"
-      ],
-      "grounded_by": [],
-      "id": "C1",
-      "key": "stale",
-      "kind": "measurable",
-      "latency": {
-        "article": "",
-        "seconds": null,
-        "source": "none"
-      },
-      "limit_text": "60000 USD/run",
-      "mechanism": {
-        "by": "datasheet",
-        "evaluators": [
-          "bom.cost"
-        ],
-        "how": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget"
-      },
-      "not_compared": [],
-      "note": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget",
-      "owner": "",
-      "physical_result": null,
-      "rationale": "$60k is the person's number for everything; the model's budget_usd is the same number and check warns if they part",
-      "reason": "invalidated: bom.cost : bom.lines changed, bom changed",
-      "requirements": [
-        "R1",
-        "R9"
-      ],
-      "resolves": [],
-      "source": "",
-      "standing": "",
-      "statement": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
-      "status": "stale",
-      "superseded": [],
-      "tags": [
-        "budget"
-      ],
-      "terminal": "datasheet",
-      "terminal_word": "automated",
-      "unproven": [],
-      "verdicts": [
-        "bom.cost"
-      ],
-      "word": "stale"
-    },
-    {
-      "acceptance": {
-        "comparator": "<=",
-        "limit": 0.0,
-        "limit_hi": null,
-        "quantity": "bill of materials completeness",
-        "units": "lines"
-      },
-      "acceptance_render": "bill of materials completeness <= 0.0 lines",
-      "article": "",
-      "authority": "",
-      "board": "budget",
-      "cause": "invalidated",
-      "compared": [
-        "bom.complete"
-      ],
-      "contradicts": [],
-      "critical": true,
-      "disagree": false,
-      "errored": false,
-      "evidence": [
-        "<out>/bom_complete.json"
-      ],
-      "expected_latency": {},
-      "fallback": "",
-      "gates": [
-        "bom.complete"
-      ],
-      "grounded_by": [],
-      "id": "C2",
-      "key": "stale",
-      "kind": "measurable",
-      "latency": {
-        "article": "",
-        "seconds": null,
-        "source": "none"
-      },
-      "limit_text": "0 lines",
-      "mechanism": {
-        "by": "datasheet",
-        "evaluators": [
-          "bom.complete"
-        ],
-        "how": "Each line of the bill is read for a supplier, a quantity and a usable price"
-      },
-      "not_compared": [],
-      "note": "Each line of the bill is read for a supplier, a quantity and a usable price",
-      "owner": "",
-      "physical_result": null,
-      "rationale": "a line with no price is an unknown, not a zero; the total means nothing while one exists",
-      "reason": "invalidated: bom.complete : bom.lines changed, bom changed",
-      "requirements": [
-        "R1",
-        "R9"
-      ],
-      "resolves": [],
-      "source": "",
-      "standing": "",
-      "statement": "Every line of the job has a supplier, a quantity and a price",
-      "status": "stale",
-      "superseded": [],
-      "tags": [
-        "bom"
-      ],
-      "terminal": "datasheet",
-      "terminal_word": "automated",
-      "unproven": [],
-      "verdicts": [
-        "bom.complete"
-      ],
-      "word": "stale"
     },
     {
       "acceptance": {
@@ -808,6 +671,150 @@
       "unproven": [],
       "verdicts": [],
       "word": "pending build"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 60000.0,
+        "limit_hi": null,
+        "quantity": "build cost per unit",
+        "units": "USD/run"
+      },
+      "acceptance_render": "build cost per unit <= 60000.0 USD/run",
+      "article": "",
+      "authority": "",
+      "board": "budget",
+      "cause": "checked",
+      "compared": [
+        "bom.cost"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [
+        "<out>/bom_cost.json"
+      ],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "bom.cost"
+      ],
+      "grounded_by": [],
+      "id": "C1",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "60000 USD/run",
+      "mechanism": {
+        "by": "datasheet",
+        "evaluators": [
+          "bom.cost"
+        ],
+        "how": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget"
+      },
+      "not_compared": [],
+      "note": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "$60k is the person's number for everything; the model's budget_usd is the same number and check warns if they part",
+      "reason": "—",
+      "requirements": [
+        "R1",
+        "R9"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "budget"
+      ],
+      "terminal": "datasheet",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "bom.cost"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "bill of materials completeness",
+        "units": "lines"
+      },
+      "acceptance_render": "bill of materials completeness <= 0.0 lines",
+      "article": "",
+      "authority": "",
+      "board": "budget",
+      "cause": "checked",
+      "compared": [
+        "bom.complete"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [
+        "<out>/bom_complete.json"
+      ],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "bom.complete"
+      ],
+      "grounded_by": [],
+      "id": "C2",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 lines",
+      "mechanism": {
+        "by": "datasheet",
+        "evaluators": [
+          "bom.complete"
+        ],
+        "how": "Each line of the bill is read for a supplier, a quantity and a usable price"
+      },
+      "not_compared": [],
+      "note": "Each line of the bill is read for a supplier, a quantity and a usable price",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a line with no price is an unknown, not a zero; the total means nothing while one exists",
+      "reason": "—",
+      "requirements": [
+        "R1",
+        "R9"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Every line of the job has a supplier, a quantity and a price",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "bom"
+      ],
+      "terminal": "datasheet",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "bom.complete"
+      ],
+      "word": "checked"
     },
     {
       "acceptance": {
@@ -2510,13 +2517,13 @@
     "packs": [
       "sourcing"
     ],
-    "records_digest": "0f865054f7fffbc7d3610b356965b37b00c3edf528da909bbacf11ac61393a78",
-    "resolution_digest": "3c7dfa5de1579508617d79f58b5ffc0398847e63fdd41f9cb770eaef42121a7a",
+    "records_digest": "176dfd6b5903c02f1bb663c0b3912b5998750b0c818c5ae2c969beed0c7c7d7e",
+    "resolution_digest": "05fa8507b85e2d524e9792a803f70752f6db26435392183de42c89a2fb89c89f",
     "revision": "v0.1",
     "spine_version": "0.1.0",
-    "stale": true,
-    "stale_check": "nopekit check",
-    "stale_reason": "bom.complete: bom.lines changed, bom changed; bom.cost: bom.lines changed, bom changed; bom.availability: bom.lines changed, bom changed (+3 more)",
+    "stale": false,
+    "stale_check": "",
+    "stale_reason": "",
     "stale_unseen": false,
     "summary": "Kitchen, living room and upstairs floors: gloss two-tone cabinets, refrigerator to the hall end, island with a prep sink, inside $60k"
   },
@@ -2605,7 +2612,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A3"
+      ],
       "home": "model/kitchen.py Config.kitchen_w",
       "model_error": "",
       "name": "kitchen_w",
@@ -2614,7 +2623,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A3"
+      ],
       "tags": [],
       "units": "",
       "value": 141.0
@@ -2625,7 +2636,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A1"
+      ],
       "home": "model/kitchen.py Config.alcove_w",
       "model_error": "",
       "name": "alcove_w",
@@ -2635,6 +2648,7 @@
       "rejected": [],
       "source": "",
       "sourced_from": [
+        "claim:A1",
         "input:photo-fridge-alcove-office"
       ],
       "tags": [],
@@ -2647,7 +2661,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A1"
+      ],
       "home": "model/kitchen.py Config.alcove_d",
       "model_error": "",
       "name": "alcove_d",
@@ -2657,6 +2673,7 @@
       "rejected": [],
       "source": "",
       "sourced_from": [
+        "claim:A1",
         "input:photo-fridge-alcove-office"
       ],
       "tags": [],
@@ -2669,7 +2686,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A3"
+      ],
       "home": "model/kitchen.py Config.floor_area_sqft",
       "model_error": "",
       "name": "floor_area_sqft",
@@ -2679,6 +2698,7 @@
       "rejected": [],
       "source": "",
       "sourced_from": [
+        "claim:A3",
         "input:floorplan-upstairs"
       ],
       "tags": [],
@@ -2815,7 +2835,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A3"
+      ],
       "home": "model/kitchen.py Config.fridge_d",
       "model_error": "",
       "name": "fridge_d",
@@ -2824,7 +2846,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A3"
+      ],
       "tags": [],
       "units": "",
       "value": 34.0
@@ -2964,7 +2988,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A5"
+      ],
       "home": "model/kitchen.py Config.prep_sink",
       "model_error": "",
       "name": "prep_sink",
@@ -2980,7 +3006,9 @@
         }
       ],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A5"
+      ],
       "tags": [],
       "units": "",
       "value": true
@@ -3031,7 +3059,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A2"
+      ],
       "home": "model/kitchen.py Config.cab_line",
       "model_error": "",
       "name": "cab_line",
@@ -3040,7 +3070,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A2"
+      ],
       "tags": [],
       "units": "",
       "value": "sektion_27e_gloss"
@@ -3051,7 +3083,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A4"
+      ],
       "home": "model/kitchen.py Config.lower_color",
       "model_error": "",
       "name": "lower_color",
@@ -3060,7 +3094,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A4"
+      ],
       "tags": [],
       "units": "",
       "value": "gentian"
@@ -3071,7 +3107,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A4"
+      ],
       "home": "model/kitchen.py Config.upper_color",
       "model_error": "",
       "name": "upper_color",
@@ -3080,7 +3118,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A4"
+      ],
       "tags": [],
       "units": "",
       "value": "oyster"
@@ -3091,7 +3131,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A2"
+      ],
       "home": "model/kitchen.py Config.counter",
       "model_error": "",
       "name": "counter",
@@ -3100,7 +3142,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A2"
+      ],
       "tags": [],
       "units": "",
       "value": "ikea_kasker"
@@ -3111,7 +3155,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A2"
+      ],
       "home": "model/kitchen.py Config.sink",
       "model_error": "",
       "name": "sink",
@@ -3120,7 +3166,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A2"
+      ],
       "tags": [],
       "units": "",
       "value": "ruvati_32"
@@ -3131,7 +3179,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A2"
+      ],
       "home": "model/kitchen.py Config.faucet",
       "model_error": "",
       "name": "faucet",
@@ -3140,10 +3190,32 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A2"
+      ],
       "tags": [],
       "units": "",
       "value": "majsjon"
+    },
+    {
+      "changed_in": "",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [],
+      "home": "model/kitchen.py Config.knife_strip",
+      "model_error": "",
+      "name": "knife_strip",
+      "rationale": "Where the magnetic knife strip hangs. Today it is on the backsplash beside the microwave, in the corner. 'backsplash' puts it on the long wall just south of the range, over the counter the cook preps on, on the range-to-refrigerator leg of the triangle; 'fridge_panel' on the side of the new refrigerator housing, facing that same counter; 'none' leaves the knives in a drawer.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [],
+      "tags": [],
+      "units": "",
+      "value": "backsplash"
     },
     {
       "changed_in": "",
@@ -3151,7 +3223,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A2"
+      ],
       "home": "model/kitchen.py Config.backsplash",
       "model_error": "",
       "name": "backsplash",
@@ -3160,7 +3234,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A2"
+      ],
       "tags": [],
       "units": "",
       "value": "tile"
@@ -3171,7 +3247,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A2"
+      ],
       "home": "model/kitchen.py Config.floor",
       "model_error": "",
       "name": "floor",
@@ -3180,7 +3258,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A2"
+      ],
       "tags": [],
       "units": "",
       "value": "lifeproof_sterling"
@@ -3191,7 +3271,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A4"
+      ],
       "home": "model/kitchen.py Config.handles",
       "model_error": "",
       "name": "handles",
@@ -3200,7 +3282,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A4"
+      ],
       "tags": [],
       "units": "",
       "value": "integrated"
@@ -3231,7 +3315,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A2"
+      ],
       "home": "model/kitchen.py Config.cab_install",
       "model_error": "",
       "name": "cab_install",
@@ -3240,7 +3326,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A2"
+      ],
       "tags": [],
       "units": "",
       "value": "self_assemble"
@@ -3251,7 +3339,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A2"
+      ],
       "home": "model/kitchen.py Config.floor_removal",
       "model_error": "",
       "name": "floor_removal",
@@ -3260,7 +3350,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A2"
+      ],
       "tags": [],
       "units": "",
       "value": "pro"
@@ -3331,7 +3423,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A6"
+      ],
       "home": "model/kitchen.py Config.kid_small_h",
       "model_error": "",
       "name": "kid_small_h",
@@ -3340,7 +3434,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A6"
+      ],
       "tags": [],
       "units": "",
       "value": 43.0
@@ -3351,7 +3447,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A6"
+      ],
       "home": "model/kitchen.py Config.kid_big_h",
       "model_error": "",
       "name": "kid_big_h",
@@ -3360,7 +3458,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A6"
+      ],
       "tags": [],
       "units": "",
       "value": 50.5
@@ -3402,28 +3502,26 @@
       "A4",
       "A5",
       "A6",
-      "C1",
-      "C2",
       "C17"
     ],
     "by_key": {
       "assumed": 0,
-      "checked": 14,
+      "checked": 16,
       "failing": 0,
       "gap": 7,
       "open": 0,
       "pending_build": 4,
       "skipped": 0,
-      "stale": 2
+      "stale": 0
     },
     "counts": {
       "asserted": 0,
       "blocked": 0,
       "fail": 0,
-      "pass": 14,
+      "pass": 16,
       "pending": 0,
       "refuted": 0,
-      "stale": 2,
+      "stale": 0,
       "unclaimed": 7,
       "unverified": 4,
       "verified": 0
@@ -3444,8 +3542,8 @@
       {
         "errored": 0,
         "key": "checked",
-        "label": "14 checked",
-        "n": 14,
+        "label": "16 checked",
+        "n": 16,
         "status": "pass"
       },
       {
@@ -3454,13 +3552,6 @@
         "label": "7 gaps",
         "n": 7,
         "status": "unclaimed"
-      },
-      {
-        "errored": 0,
-        "key": "stale",
-        "label": "2 stale",
-        "n": 2,
-        "status": "stale"
       },
       {
         "errored": 0,
@@ -3477,15 +3568,13 @@
       "A4",
       "A5",
       "A6",
-      "C1",
-      "C2",
       "C17",
       "P1",
       "P2",
       "P3",
       "P4"
     ],
-    "verdict": "v0.1 is NOT ready: 13 of 27 required claims are unresolved — 7 gaps (A1, A2, A3, A4, +3 more); 2 stale (C1, C2); 4 pending build (P1, P2, P3, P4). 14 of 27 claims are checked against the current inputs. Pending build: 4 claims need an article (P1, P2, P3, P4). No claim is checked on any article."
+    "verdict": "v0.1 is NOT ready: 11 of 27 required claims are unresolved — 7 gaps (A1, A2, A3, A4, +3 more); 4 pending build (P1, P2, P3, P4). 16 of 27 claims are checked against the current inputs. Pending build: 4 claims need an article (P1, P2, P3, P4). No claim is checked on any article."
   },
   "rebuild": [],
   "rejections": [
@@ -3498,11 +3587,11 @@
       "returns": {
         "claim": "C1",
         "detail": "",
-        "gate": "",
-        "observed": null,
-        "state": "cannot-evaluate",
-        "status": "stale",
-        "why": "status"
+        "gate": "bom.cost",
+        "observed": 0.032503833333333385,
+        "state": "does-not-hold",
+        "status": "",
+        "why": ""
       },
       "returns_if": {
         "claim": "C1",
@@ -3522,11 +3611,11 @@
       "returns": {
         "claim": "C1",
         "detail": "",
-        "gate": "",
-        "observed": null,
-        "state": "cannot-evaluate",
-        "status": "stale",
-        "why": "status"
+        "gate": "bom.cost",
+        "observed": 0.032503833333333385,
+        "state": "does-not-hold",
+        "status": "",
+        "why": ""
       },
       "returns_if": {
         "claim": "C1",
@@ -3668,11 +3757,11 @@
       "returns": {
         "claim": "C1",
         "detail": "",
-        "gate": "",
-        "observed": null,
-        "state": "cannot-evaluate",
-        "status": "stale",
-        "why": "status"
+        "gate": "bom.cost",
+        "observed": 0.032503833333333385,
+        "state": "does-not-hold",
+        "status": "",
+        "why": ""
       },
       "returns_if": {
         "claim": "C1",
@@ -4032,21 +4121,22 @@
       "disagree": [],
       "errored": false,
       "id": "R9",
-      "key": "stale",
+      "key": "checked",
       "source": "interview",
       "statement": "Cabinets and floors I can actually buy, from Seattle-area providers where that makes sense, custom or national where it does not",
-      "status": "stale",
-      "word": "stale",
+      "status": "pass",
+      "word": "checked",
       "worst": [
         "C1",
-        "C2"
+        "C2",
+        "C11"
       ]
     }
   ],
   "trace": {
-    "key": null,
-    "round": null,
-    "state": "untraced"
+    "key": "adc169ec828a",
+    "round": 2,
+    "state": "traced"
   },
   "verdicts": [
     {
@@ -4064,16 +4154,16 @@
       ],
       "comparator": "<=",
       "cpu_s": 0.0,
-      "detail": "0 of 25 lines not orderable (limit 0) — every line has a part number, a quantity and a usable price",
+      "detail": "0 of 26 lines not orderable (limit 0) — every line has a part number, a quantity and a usable price",
       "duration_s": 0.0,
       "error": "",
       "evidence": [
         "<out>/bom_complete.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.complete/ca4c61e544b55638-024b1ea8/bom_complete.json"
+        "assets/evidence/bom.complete/b6118c667b9ac071-024b1ea8/bom_complete.json"
       ],
-      "fresh": false,
+      "fresh": true,
       "gate": "bom.complete",
       "limit": 0.0,
       "locators": [],
@@ -4084,11 +4174,11 @@
       "order": 4,
       "pack": "sourcing",
       "passed": true,
-      "rho": "ca4c61e544b5563890cc5b7171751c12ed85dac63772e519f5efc9e93f3502ab",
+      "rho": "b6118c667b9ac071d5de875670cff975778ee949348d65c22b903ef7be1bb446",
       "settles": "bill of materials completeness",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "bom.lines changed, bom changed",
+      "stale_reason": "",
       "status": "pass",
       "tier": 0,
       "units": "lines",
@@ -4109,31 +4199,31 @@
       ],
       "comparator": "<=",
       "cpu_s": 0.0,
-      "detail": "58,024.97 USD for the run of 1 vs 60,000.00 USD budget; parts 46,639.06 USD + minimums 0.00 USD + one-time 11,385.91 USD (11,385.91 USD/unit amortised) = 58,024.97 USD run",
+      "detail": "58,049.77 USD for the run of 1 vs 60,000.00 USD budget; parts 46,659.06 USD + minimums 0.00 USD + one-time 11,390.71 USD (11,390.71 USD/unit amortised) = 58,049.77 USD run",
       "duration_s": 0.0,
       "error": "",
       "evidence": [
         "<out>/bom_cost.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.cost/41f5ecb46b51b1b1-c5960d34/bom_cost.json"
+        "assets/evidence/bom.cost/c001fba6539b0717-02be3366/bom_cost.json"
       ],
-      "fresh": false,
+      "fresh": true,
       "gate": "bom.cost",
       "limit": 60000.0,
       "locators": [],
-      "margin": 0.0329172,
+      "margin": 0.0325038,
       "margin_why": "",
-      "measured": 58024.97,
+      "measured": 58049.77,
       "ok": true,
       "order": 5,
       "pack": "sourcing",
       "passed": true,
-      "rho": "41f5ecb46b51b1b13216c4f8f7281726fff7d3e0bb114fb5fb4121e1ec383ee5",
+      "rho": "c001fba6539b0717e32a42b3d4de72c905e75af41af3020cacc8774395a80586",
       "settles": "build cost per unit",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "bom.lines changed, bom changed",
+      "stale_reason": "",
       "status": "pass",
       "tier": 0,
       "units": "USD/run",
@@ -4154,16 +4244,16 @@
       ],
       "comparator": "<=",
       "cpu_s": 0.0,
-      "detail": "longest lead unknown wk (-); no lead-time budget set (nothing to compare against); 25 unknown, 0 EOL, 0 flagged; no ship date: cabinets(no lead_time_weeks), cab_install(no lead_time_weeks), counter(no lead_time_weeks), backsplash(no lead_time_weeks)",
+      "detail": "longest lead unknown wk (-); no lead-time budget set (nothing to compare against); 26 unknown, 0 EOL, 0 flagged; no ship date: cabinets(no lead_time_weeks), cab_install(no lead_time_weeks), counter(no lead_time_weeks), backsplash(no lead_time_weeks)",
       "duration_s": 0.0,
       "error": "",
       "evidence": [
         "<out>/bom_availability.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.availability/2e0930ecf487cb2e-999dcf7f/bom_availability.json"
+        "assets/evidence/bom.availability/4967b980e77f1316-999dcf7f/bom_availability.json"
       ],
-      "fresh": false,
+      "fresh": true,
       "gate": "bom.availability",
       "limit": null,
       "locators": [
@@ -4226,6 +4316,15 @@
           "label": "no ship date: no lead_time_weeks",
           "position": null,
           "severity": "",
+          "target": "knife_strip",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
+          "label": "no ship date: no lead_time_weeks",
+          "position": null,
+          "severity": "",
           "target": "demo",
           "value": null,
           "view": "bom"
@@ -4265,15 +4364,6 @@
           "target": "drywall_paint",
           "value": null,
           "view": "bom"
-        },
-        {
-          "kind": "row",
-          "label": "no ship date: no lead_time_weeks",
-          "position": null,
-          "severity": "",
-          "target": "fridge_circuit",
-          "value": null,
-          "view": "bom"
         }
       ],
       "margin": null,
@@ -4283,11 +4373,11 @@
       "order": 0,
       "pack": "sourcing",
       "passed": false,
-      "rho": "2e0930ecf487cb2eed3f65b60f0e64b819941abecfbb659fdd02a03ffd3ef12c",
+      "rho": "4967b980e77f1316c72db8bd28fbfe0bed2d5176c9056e3010ce5c940f3ad710",
       "settles": "longest lead time",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "bom.lines changed, bom changed",
+      "stale_reason": "",
       "status": "fail",
       "tier": 0,
       "units": "weeks",
@@ -4310,18 +4400,18 @@
       ],
       "comparator": "<=",
       "cpu_s": 0.0,
-      "detail": "idle capital 0.00 USD vs 4,663.91 USD (10% of the 46,639.06 parts spend); no line buys more than the build consumes; 0 line(s) past 3x",
+      "detail": "idle capital 0.00 USD vs 4,665.91 USD (10% of the 46,659.06 parts spend); no line buys more than the build consumes; 0 line(s) past 3x",
       "duration_s": 0.0,
       "error": "",
       "evidence": [
         "<out>/bom_moq.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.moq/364d2b253184272b-c1c15d5d/bom_moq.json"
+        "assets/evidence/bom.moq/6278c2b09a251ac6-82c24098/bom_moq.json"
       ],
-      "fresh": false,
+      "fresh": true,
       "gate": "bom.moq",
-      "limit": 4663.91,
+      "limit": 4665.91,
       "locators": [],
       "margin": 1.0,
       "margin_why": "",
@@ -4330,11 +4420,11 @@
       "order": 7,
       "pack": "sourcing",
       "passed": true,
-      "rho": "364d2b253184272b91a42913da3ce311b5548651a61dea5d44b6b98028a2a005",
+      "rho": "6278c2b09a251ac69bb608ddfe5c28058efc35358b3881f66ae8c91df67120c6",
       "settles": "minimum order quantity overbuy",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "bom.lines changed, bom changed",
+      "stale_reason": "",
       "status": "pass",
       "tier": 0,
       "units": "USD",
@@ -4356,7 +4446,7 @@
       "comparator": "",
       "cpu_s": 0.0,
       "detail": "",
-      "duration_s": 0.001663,
+      "duration_s": 0.000801,
       "error": "",
       "evidence": [],
       "evidence_assets": [],
@@ -4371,7 +4461,7 @@
       "order": 3,
       "pack": "sourcing",
       "passed": false,
-      "rho": "bd2e49485c3d014f97241bbe198f65739d6a331885630778c451ca776b4714b8",
+      "rho": "2a32178fbbae1442863425d19fc7220c6f1d789afacb905c87e403f4441c6631",
       "settles": "vendor process capability",
       "skip_reason": "no 'process_rules' in the BOM document — the vendor's capability set is project data (ask for it in writing with the quote); nothing to check the design against",
       "skipped": true,
@@ -4397,16 +4487,16 @@
       ],
       "comparator": "<=",
       "cpu_s": 0.0,
-      "detail": "25 unrecorded single-source line(s) vs limit 0 (25 behind one source in total, 0 with a qualified alternate, 0 accepted in writing): cabinets (supplier IKEA Renton + 27estore (online)), cab_install (supplier IKEA-kitchen installer), counter (supplier IKEA Renton), backsplash (supplier a tile setter); 25 line(s) record no manufacturer, so their sources are counted by supplier — two distributors of one factory's part would read as two there",
+      "detail": "26 unrecorded single-source line(s) vs limit 0 (26 behind one source in total, 0 with a qualified alternate, 0 accepted in writing): cabinets (supplier IKEA Renton + 27estore (online)), cab_install (supplier IKEA-kitchen installer), counter (supplier IKEA Renton), backsplash (supplier a tile setter); 26 line(s) record no manufacturer, so their sources are counted by supplier — two distributors of one factory's part would read as two there",
       "duration_s": 0.0,
       "error": "",
       "evidence": [
         "<out>/bom_single_source.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.single_source/0c130cd2a5b0fd4b-88f62b19/bom_single_source.json"
+        "assets/evidence/bom.single_source/215616002e63c0e0-eade9217/bom_single_source.json"
       ],
-      "fresh": false,
+      "fresh": true,
       "gate": "bom.single_source",
       "limit": 0.0,
       "locators": [
@@ -4466,6 +4556,15 @@
         },
         {
           "kind": "row",
+          "label": "single source (supplier IKEA Renton (KUNGSFORS magnetic knife rack)) — no qualified alternate and no written acceptance",
+          "position": null,
+          "severity": "",
+          "target": "knife_strip",
+          "value": null,
+          "view": "bom"
+        },
+        {
+          "kind": "row",
           "label": "single source (supplier a demolition crew) — no qualified alternate and no written acceptance",
           "position": null,
           "severity": "",
@@ -4508,29 +4607,20 @@
           "target": "drywall_paint",
           "value": null,
           "view": "bom"
-        },
-        {
-          "kind": "row",
-          "label": "single source (supplier an electrician) — no qualified alternate and no written acceptance",
-          "position": null,
-          "severity": "",
-          "target": "fridge_circuit",
-          "value": null,
-          "view": "bom"
         }
       ],
       "margin": null,
       "margin_why": "zero-limit",
-      "measured": 25.0,
+      "measured": 26.0,
       "ok": false,
       "order": 1,
       "pack": "sourcing",
       "passed": false,
-      "rho": "0c130cd2a5b0fd4bede247028e12d70954e3683a95480bd37014bc77fbec218d",
+      "rho": "215616002e63c0e07c418ef339f5608a0d0e9cddd3b7a7c36caf4e9d99fb4efb",
       "settles": "single source count",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "bom.lines changed, bom changed",
+      "stale_reason": "",
       "status": "fail",
       "tier": 0,
       "units": "lines",
@@ -4553,16 +4643,16 @@
       ],
       "comparator": "<=",
       "cpu_s": 0.0,
-      "detail": "0 of 25 line(s) priced in a currency this document cannot convert (limit 0) — base USD (the document's 'currency'), every line quoted in the base currency",
+      "detail": "0 of 26 line(s) priced in a currency this document cannot convert (limit 0) — base USD (the document's 'currency'), every line quoted in the base currency",
       "duration_s": 0.0,
       "error": "",
       "evidence": [
         "<out>/bom_currency.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.currency/966b884a797c8122-024b1ea8/bom_currency.json"
+        "assets/evidence/bom.currency/9fa95f25e909125c-024b1ea8/bom_currency.json"
       ],
-      "fresh": false,
+      "fresh": true,
       "gate": "bom.currency",
       "limit": 0.0,
       "locators": [],
@@ -4573,11 +4663,11 @@
       "order": 6,
       "pack": "sourcing",
       "passed": true,
-      "rho": "966b884a797c8122696d5441ded652b20eee6aa4273adf3b04cf49e082de731b",
+      "rho": "9fa95f25e909125c45dfc9c3f00bb3dafe1e11efe1b96697766792f3e162e907",
       "settles": "price currency coherence",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "bom.lines changed, bom changed",
+      "stale_reason": "",
       "status": "pass",
       "tier": 0,
       "units": "lines",
@@ -5129,7 +5219,7 @@
       "cpu_s": 0.0,
       "detail": "",
       "duration_s": 0.0,
-      "error": "unqualified: control:two-outcomes|control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b",
+      "error": "unqualified: known-good:fail",
       "evidence": [],
       "evidence_assets": [],
       "fresh": false,
@@ -5144,9 +5234,9 @@
       "pack": "",
       "passed": false,
       "qualification": {
-        "reason": "two control outcomes recorded for identical inputs (control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b)",
-        "text": "unqualified: two control outcomes recorded for identical inputs (control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b)",
-        "token": "control:two-outcomes|control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b"
+        "reason": "known-good fail",
+        "text": "unqualified: known-good fail",
+        "token": "known-good:fail"
       },
       "rho": "22265f23181b8e9f26a81c8c16768152eb07a5710839db62cfca57d7a184ef0c",
       "settles": "narrowest passage",
@@ -5157,7 +5247,7 @@
       "tier": 0,
       "unanchored": true,
       "units": "",
-      "unqualified": "control:two-outcomes|control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b",
+      "unqualified": "known-good:fail",
       "unseen": false,
       "views": []
     }
@@ -5277,12 +5367,12 @@
         "row_id": "the BOM line's `ref` — the string a buyer types on a purchase order, and what every locator in this pack targets",
         "source": "params['bom']",
         "totals": {
-          "charge_total": 11385.91,
-          "nre_per_unit": 11385.91,
+          "charge_total": 11390.71,
+          "nre_per_unit": 11390.71,
           "order_minimum_total": 0,
-          "parts_total": 46639.06,
-          "per_unit": 58024.973,
-          "run_total": 58024.97,
+          "parts_total": 46659.06,
+          "per_unit": 58049.773,
+          "run_total": 58049.77,
           "unpriced_lines": []
         },
         "totals_note": "run_total is parts + per-order minimum shortfalls + one-time charges, so it is larger than the Extended column adds to. per_unit amortises the charges over the run, which is why a per-unit price quoted from one build quantity is fiction at another"

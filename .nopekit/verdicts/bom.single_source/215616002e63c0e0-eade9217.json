@@ -1,0 +1,257 @@
+{
+  "schema": 1,
+  "gate": "bom.single_source",
+  "rho": "215616002e63c0e07c418ef339f5608a0d0e9cddd3b7a7c36caf4e9d99fb4efb",
+  "code": {
+    "digest": "7e48158689e6eba948b2375a4af12cab1346b0079a78b87e60d8e3d6c38c9f3a",
+    "files": [
+      "<pack:sourcing>/bomlib.py",
+      "<pack:sourcing>/gates/sourcing.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "bom",
+          "bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "budget_total"
+        ],
+        "49a591d1ff2417b0fe97251a4a19e8f753b1c54d9f4b931f5a5a5525b0d58f4b",
+        60000.0
+      ],
+      [
+        [
+          "bom",
+          "build_quantity"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ],
+      [
+        [
+          "bom",
+          "charges"
+        ],
+        "fd053ada4e24522a78b3fa3842f44f969cd0ded16e1866650055e4d13cd47c81"
+      ],
+      [
+        [
+          "bom",
+          "currency"
+        ],
+        "80d78a1fa9b71501a051a47776aa3278e6e0fa97b83a72e02141ddfe0d4b486c",
+        "USD"
+      ],
+      [
+        [
+          "bom",
+          "lines"
+        ],
+        "d5869d6495a1be2f69ad08bc6ac604d088ef69cd1b7049f8edae4a714281ceed"
+      ],
+      [
+        [
+          "bom",
+          "schema"
+        ],
+        "ec05e2e7609cd37cc85a36007a2adfeb4a5c9daabccdd9a40d8e63996acd2dc4",
+        "nopekit.bom/1"
+      ],
+      [
+        [
+          "bom",
+          "single_source_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom"
+        ],
+        "6470277797e9757c0a5d03bcd17856066c824b454fcf749d849c2c4dca676b4e"
+      ],
+      [
+        [
+          "bom.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom.single_source_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "single_source_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.single_source_limit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {},
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": false,
+    "measured": 26.0,
+    "limit": 0.0,
+    "units": "lines",
+    "comparator": "<=",
+    "settles": "single source count",
+    "detail": "26 unrecorded single-source line(s) vs limit 0 (26 behind one source in total, 0 with a qualified alternate, 0 accepted in writing): cabinets (supplier IKEA Renton + 27estore (online)), cab_install (supplier IKEA-kitchen installer), counter (supplier IKEA Renton), backsplash (supplier a tile setter); 26 line(s) record no manufacturer, so their sources are counted by supplier — two distributors of one factory's part would read as two there",
+    "evidence": [
+      "<out>/bom_single_source.json"
+    ],
+    "locators": [
+      {
+        "view": "bom",
+        "target": "cabinets",
+        "kind": "row",
+        "label": "single source (supplier IKEA Renton + 27estore (online)) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "cab_install",
+        "kind": "row",
+        "label": "single source (supplier IKEA-kitchen installer) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "counter",
+        "kind": "row",
+        "label": "single source (supplier IKEA Renton) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "backsplash",
+        "kind": "row",
+        "label": "single source (supplier a tile setter) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "sink",
+        "kind": "row",
+        "label": "single source (supplier The Sink Boutique (online)) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "faucet",
+        "kind": "row",
+        "label": "single source (supplier IKEA Renton) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "knife_strip",
+        "kind": "row",
+        "label": "single source (supplier IKEA Renton (KUNGSFORS magnetic knife rack)) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "demo",
+        "kind": "row",
+        "label": "single source (supplier a demolition crew) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "plumb_reconnect",
+        "kind": "row",
+        "label": "single source (supplier a plumber) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "undercab_labor",
+        "kind": "row",
+        "label": "single source (supplier an electrician) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "undercab_lights",
+        "kind": "row",
+        "label": "single source (supplier IKEA Renton) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      },
+      {
+        "view": "bom",
+        "target": "drywall_paint",
+        "kind": "row",
+        "label": "single source (supplier a painter) — no qualified alternate and no written acceptance",
+        "severity": "",
+        "position": null,
+        "value": null
+      }
+    ],
+    "claims": [
+      "single-source",
+      "supply-risk",
+      "second-source",
+      "supply-chain-risk"
+    ],
+    "tier": 0,
+    "pack": "sourcing"
+  },
+  "digest": "cee23be6413ad06edf96586fb7876b6087c88eca7af640d1c6011ff30c1aafc7"
+}
