@@ -93,3 +93,18 @@
 .cfg-fold summary .cfg-fold-sub { font-weight: 400; }
 .cfg > *, .cfg-below > *, .cfg-fold > * { min-width: 0; }
 .cfg-lenses { grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); }
+
+/* The answers and the bill: their own block under the configurator grid. */
+.cfg-after { display: block; padding-top: 12px; }
+/* The pinned column never grows past the window: it scrolls inside itself. */
+@media (min-width: 980px) {
+  .cfg-left { max-height: calc(100svh - var(--viewnav-h, 52px) - 24px); overflow-y: auto; scrollbar-width: thin; }
+}
+/* The 3D view and its full screen button. */
+.cfg-view { position: relative; }
+.cfg-full { position: absolute; top: 10px; right: 10px; z-index: 2; font: inherit; font-size: 0.82rem; padding: 6px 10px; border-radius: 9px;
+  border: 1px solid var(--grid); background: var(--surface); color: var(--ink); cursor: pointer; }
+.cfg-full:hover { border-color: var(--ink); }
+.cfg-view:fullscreen { background: var(--page); display: flex; flex-direction: column; padding: 0; }
+.cfg-view:fullscreen .cfg-stage { flex: 1 1 auto; height: auto; min-height: 0; border: 0; border-radius: 0; }
+.cfg-view:fullscreen .cfg-viewbar { margin: 0; padding: 10px 12px; justify-content: center; }

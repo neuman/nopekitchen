@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "gate": "bom.cost",
+  "rho": "41f5ecb46b51b1b13216c4f8f7281726fff7d3e0bb114fb5fb4121e1ec383ee5",
+  "code": {
+    "digest": "623bb0823046ad7846396a93c34f0e838bd5783016cc0b84892c77274d9256ae",
+    "files": [
+      "<pack:sourcing>/bomlib.py",
+      "<pack:sourcing>/gates/sourcing.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "bom",
+          "bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "budget_per_unit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom",
+          "budget_total"
+        ],
+        "49a591d1ff2417b0fe97251a4a19e8f753b1c54d9f4b931f5a5a5525b0d58f4b",
+        60000.0
+      ],
+      [
+        [
+          "bom",
+          "build_quantity"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ],
+      [
+        [
+          "bom",
+          "charges"
+        ],
+        "295c597415af145a8dd663c0b8ec55386e144b2d88fdc1b6e4b330029d3ceb99"
+      ],
+      [
+        [
+          "bom",
+          "currency"
+        ],
+        "80d78a1fa9b71501a051a47776aa3278e6e0fa97b83a72e02141ddfe0d4b486c",
+        "USD"
+      ],
+      [
+        [
+          "bom",
+          "lines"
+        ],
+        "bb233b40166655103a2158899bb7a85934d01cbaf324825a2027db9fffd48a06"
+      ],
+      [
+        [
+          "bom",
+          "schema"
+        ],
+        "ec05e2e7609cd37cc85a36007a2adfeb4a5c9daabccdd9a40d8e63996acd2dc4",
+        "nopekit.bom/1"
+      ],
+      [
+        [
+          "bom"
+        ],
+        "5e3db0d05cf1efb43f81237dfb065f7947d03a0a240f5a3601c84fa7296e83d3"
+      ],
+      [
+        [
+          "bom.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "bom.budget_per_unit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "budget_per_unit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.bom"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ],
+      [
+        [
+          "sourcing.budget_per_unit"
+        ],
+        "f90507c9e202c31d8d48c448437daae103814dd74a4ef526b3fc2d1d1b998fcb"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {},
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 58024.97,
+    "limit": 60000.0,
+    "units": "USD/run",
+    "comparator": "<=",
+    "settles": "build cost per unit",
+    "detail": "58,024.97 USD for the run of 1 vs 60,000.00 USD budget; parts 46,639.06 USD + minimums 0.00 USD + one-time 11,385.91 USD (11,385.91 USD/unit amortised) = 58,024.97 USD run",
+    "evidence": [
+      "<out>/bom_cost.json"
+    ],
+    "locators": [],
+    "claims": [
+      "cost",
+      "build-cost",
+      "budget",
+      "unit-cost"
+    ],
+    "tier": 0,
+    "pack": "sourcing"
+  },
+  "digest": "14890bf9e09c1f0bf71ede709f1f57efa9990449ce44140af7fef1aaac74504e"
+}

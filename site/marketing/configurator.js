@@ -35,6 +35,8 @@ const PRICE_KEY = { cab_line: "usd_lf", cab_install: "usd_lf", handles: "usd_eac
 const UNIT = { cab_line: "linear ft", cab_install: "linear ft", handles: "each", counter: "sq ft",
   backsplash: "sq ft", sink: "each", faucet: "each", floor: "sq ft", floor_removal: "sq ft" };
 const BEGRIPA = { white: "#F4F4F0", yellow: "#F5D33B", "light blue": "#9CC4E4", "light red": "#EF6B6B", lilac: "#B79CE0" };
+const BEGRIPA_MIX = ["yellow", "light blue", "light red", "lilac", "white"];     // "mixed": one colour after another along each run
+const BEGRIPA_MIX_SW = "conic-gradient(" + BEGRIPA_MIX.map((n, i) => BEGRIPA[n] + " " + i * 72 + "deg " + (i + 1) * 72 + "deg").join(", ") + ")";
 const BASIS = { seen: "seen online", tag: "store tag", estimate: "estimate" };
 
 let T = null;          // twin.json
@@ -125,6 +127,7 @@ function checks(s) {
   if (s.prep_sink) notes.push("The island sink needs a drain through the floor. A plumber must confirm it (claim A5).");
   if (!s.prep_sink && s.fridge_at === "hall") notes.push("Without an island sink the cook walks " + L.cleanup_ft + " ft from the refrigerator to the sink.");
   if (s.island_len > 0) notes.push("The island's seat edge is " + L.east_in + " in inside the post line. Check the dining table leaves 44 in behind the stools (claim P3).");
+  { const f = T.catalog.faucet[s.faucet], top = 36 + f.h_in; if (top > 54) notes.push("The " + f.label.split(",")[0] + " stands " + f.h_in.toFixed(1) + " in tall, so its top is " + (top - 54).toFixed(1) + " in above the window sill and in front of the glass; " + (84 - top).toFixed(1) + " in under the window head."); }
   if (s.fridge_at === "hall" && s.pantry === "cabinets") notes.push("Pantry cabinets need the alcove to be at least 36 in wide. It has not been measured (claim A1).");
   return { rows: out, notes };
 }
@@ -197,29 +200,57 @@ function floorMats(floor, W, D) {
   m.userData.world = true; return m;
 }
 function stoneMat(c, key) {
+  // look: veined (the marble-look quartzes), concrete, soapstone, butcher, laminate
+  const look = key === "butcher" || key === "laminate" ? key : c.look || "veined";
   const t = cached("stone:" + key, () => {
     const r = rng(11);
     return canvasTex(1024, 1024, (g, w, h) => {
       g.fillStyle = c.hex; g.fillRect(0, 0, w, h);
-      if (key === "butcher") {
+      if (look === "butcher") {
         for (let i = 0; i < 28; i++) { g.fillStyle = shade(c.hex, 0.85 + r() * 0.3); g.fillRect(0, i * h / 28, w, h / 28 + 1); }
         for (let i = 0; i < 500; i++) { g.strokeStyle = "rgba(80,50,20," + (0.04 + r() * 0.06) + ")"; const y = r() * h; g.beginPath(); g.moveTo(0, y); g.lineTo(w, y + (r() - 0.5) * 8); g.stroke(); }
         return;
       }
-      for (let i = 0; i < 2600; i++) { g.fillStyle = "rgba(" + (r() > 0.5 ? "255,255,255" : "120,110,95") + "," + (0.02 + r() * 0.04) + ")"; g.fillRect(r() * w, r() * h, 1 + r() * 3, 1 + r() * 3); }
-      for (let i = 0; i < 7; i++) {             // veins: one bold stroke with feathered branches
-        let x = r() * w * 0.4 - 60, y = r() * h; const pts = [[x, y]];
-        for (let k = 0; k < 9; k++) { x += 70 + r() * 110; y += (r() - 0.42) * 120; pts.push([x, y]); }
-        for (const [lw, a] of [[9, 0.05], [3.5, 0.14], [1.1, 0.5]]) {
-          g.strokeStyle = c.vein; g.globalAlpha = a * (0.6 + r() * 0.6); g.lineWidth = lw; g.lineJoin = "round"; g.beginPath(); g.moveTo(pts[0][0], pts[0][1]);
-          for (let k = 1; k < pts.length; k++) g.quadraticCurveTo((pts[k - 1][0] + pts[k][0]) / 2, pts[k - 1][1] + (r() - 0.5) * 30, pts[k][0], pts[k][1]);
-          g.stroke();
+      const clouds = (n, light, dark, a0, a1) => {           // soft blotches, wrapped so the slab tiles without a seam
+        for (let i = 0; i < n; i++) {
+          const cx = r() * w, cy = r() * h, rad = 40 + r() * 170, col = r() > 0.5 ? light : dark, a = a0 + r() * a1;
+          for (const ox of [-w, 0, w]) for (const oy of [-h, 0, h]) {
+            const x = cx + ox, y = cy + oy; if (x + rad < 0 || x - rad > w || y + rad < 0 || y - rad > h) continue;
+            const gr = g.createRadialGradient(x, y, 0, x, y, rad); gr.addColorStop(0, "rgba(" + col + "," + a + ")"); gr.addColorStop(1, "rgba(" + col + ",0)");
+            g.fillStyle = gr; g.fillRect(x - rad, y - rad, 2 * rad, 2 * rad);
+          }
         }
-        g.globalAlpha = 1;
+      };
+      const veins = (n, widths) => {                         // one bold stroke with feathered branches
+        for (let i = 0; i < n; i++) {
+          let x = r() * w * 0.4 - 60, y = r() * h; const pts = [[x, y]];
+          for (let k = 0; k < 9; k++) { x += 70 + r() * 110; y += (r() - 0.42) * 120; pts.push([x, y]); }
+          for (const [lw, a] of widths) {
+            g.strokeStyle = c.vein; g.globalAlpha = a * (0.6 + r() * 0.6); g.lineWidth = lw; g.lineJoin = "round"; g.beginPath(); g.moveTo(pts[0][0], pts[0][1]);
+            for (let k = 1; k < pts.length; k++) g.quadraticCurveTo((pts[k - 1][0] + pts[k][0]) / 2, pts[k - 1][1] + (r() - 0.5) * 30, pts[k][0], pts[k][1]);
+            g.stroke();
+          }
+          g.globalAlpha = 1;
+        }
+      };
+      if (look === "concrete") {                             // trowelled grey: clouds, fine sand, a few pinholes, no veins
+        clouds(240, "255,255,255", "45,45,42", 0.04, 0.07);
+        for (let i = 0; i < 9000; i++) { g.fillStyle = "rgba(" + (r() > 0.5 ? "255,255,255" : "30,30,28") + "," + (0.03 + r() * 0.07) + ")"; g.fillRect(r() * w, r() * h, 1 + r() * 2, 1 + r() * 2); }
+        for (let i = 0; i < 90; i++) { g.fillStyle = "rgba(40,40,38," + (0.12 + r() * 0.2) + ")"; g.beginPath(); g.arc(r() * w, r() * h, 0.8 + r() * 1.8, 0, 7); g.fill(); }
+        return;
       }
+      if (look === "soapstone") {                            // dark and soft, with a few thin pale veins
+        clouds(160, "190,205,198", "0,0,0", 0.03, 0.05);
+        for (let i = 0; i < 2600; i++) { g.fillStyle = "rgba(" + (r() > 0.6 ? "210,220,215" : "0,0,0") + "," + (0.02 + r() * 0.05) + ")"; g.fillRect(r() * w, r() * h, 1 + r() * 2, 1 + r() * 2); }
+        veins(5, [[6, 0.04], [1.8, 0.16], [0.8, 0.45]]);
+        return;
+      }
+      for (let i = 0; i < 2600; i++) { g.fillStyle = "rgba(" + (r() > 0.5 ? "255,255,255" : "120,110,95") + "," + (0.02 + r() * 0.04) + ")"; g.fillRect(r() * w, r() * h, 1 + r() * 3, 1 + r() * 3); }
+      veins(7, [[9, 0.05], [3.5, 0.14], [1.1, 0.5]]);
     }, { repeat: [1 / 96, 1 / 96] });
   });
-  const m = new THREE.MeshPhysicalMaterial({ map: t, roughness: key === "butcher" ? 0.55 : key === "laminate" ? 0.4 : 0.16, clearcoat: key === "butcher" ? 0 : 0.35, clearcoatRoughness: 0.1, envMapIntensity: 0.9 });
+  const [rough, coat] = { butcher: [0.55, 0], laminate: [0.4, 0.35], concrete: [0.48, 0.08], soapstone: [0.6, 0.05] }[look] || [0.16, 0.35];
+  const m = new THREE.MeshPhysicalMaterial({ map: t, roughness: rough, clearcoat: coat, clearcoatRoughness: 0.1, envMapIntensity: 0.9 });
   m.userData.world = true; return m;
 }
 function brickMat() {
@@ -248,6 +279,60 @@ function tileMat(hex) {
     return { color, bump };
   });
   const mm = new THREE.MeshPhysicalMaterial({ map: m.color, bumpMap: m.bump, bumpScale: 0.5, roughness: 0.14, clearcoat: 0.6, clearcoatRoughness: 0.05 });
+  mm.userData.world = true; return mm;
+}
+// Hand-painted Spanish (Talavera) tile, 4 in square. Each tile is drawn from a few
+// motifs in the usual glazes: cobalt, cream, terracotta, yellow, green and sky blue.
+const TAL = { cobalt: "#1F3F9A", navy: "#16235A", cream: "#F4EFE0", terra: "#C9502B", yellow: "#F2B233", green: "#3F8F6C", sky: "#6DB3DE" };
+function talaveraTile(g, x, y, s, r) {
+  const u = s / 2, pal = [TAL.cobalt, TAL.cream, TAL.terra, TAL.yellow, TAL.green, TAL.sky], int = (n) => Math.floor(r() * n);
+  const bg = [TAL.cream, TAL.cream, TAL.cream, TAL.cobalt, TAL.cobalt, TAL.cobalt, TAL.cobalt, TAL.yellow, TAL.terra, TAL.green][int(10)];
+  const pick = (...not) => { let c; do c = pal[int(pal.length)]; while (c === bg || not.includes(c)); return c; };
+  const c1 = pick(), c2 = pick(c1), c3 = pick(c1, c2);
+  g.save(); g.beginPath(); g.roundRect(x, y, s, s, s * 0.035); g.clip(); g.translate(x + u, y + u);
+  g.fillStyle = bg; g.fillRect(-u, -u, s, s);
+  g.lineJoin = "round"; g.lineCap = "round"; g.strokeStyle = TAL.navy; g.lineWidth = s * 0.013;
+  const paint = (fill) => { g.fillStyle = fill; g.fill(); g.stroke(); };
+  const each = (n, draw, a0 = 0) => { for (let i = 0; i < n; i++) { g.save(); g.rotate(a0 + i * 2 * Math.PI / n); draw(); g.restore(); } };
+  const petal = (len, wid, from = 0) => { g.beginPath(); g.moveTo(from, 0); g.bezierCurveTo(from + len * 0.3, -wid, from + len * 0.8, -wid, from + len, 0); g.bezierCurveTo(from + len * 0.8, wid, from + len * 0.3, wid, from, 0); };
+  const corner = int(5);                                     // what sits in the four corners
+  if (corner === 0) each(4, () => { g.beginPath(); g.arc(u, u, u * 0.62, 0, 7); paint(c2); g.beginPath(); g.arc(u, u, u * 0.34, 0, 7); paint(c3); }, 0);
+  else if (corner === 1) each(4, () => { g.beginPath(); g.moveTo(u, u); g.lineTo(u, u * 0.3); g.lineTo(u * 0.3, u); g.closePath(); paint(c2); });
+  else if (corner === 2) each(4, () => { petal(u * 0.78, u * 0.2, u * 0.55); paint(c2); }, Math.PI / 4);
+  else if (corner === 3) each(4, () => { g.beginPath(); g.arc(u * 0.72, u * 0.72, u * 0.13, 0, 7); paint(c2); });
+  const motif = int(6);                                      // and what sits in the middle
+  if (motif === 0) { const n = r() > 0.5 ? 8 : 4; each(n, () => { petal(u * 0.74, u * (n === 8 ? 0.17 : 0.3), u * 0.08); paint(c1); }, n === 4 && corner === 2 ? 0 : Math.PI / n); }
+  else if (motif === 1) { each(4, () => { g.beginPath(); g.arc(u * 0.36, 0, u * 0.36, 0, 7); paint(c1); }); g.beginPath(); g.moveTo(u * 0.34, 0); g.lineTo(0, u * 0.34); g.lineTo(-u * 0.34, 0); g.lineTo(0, -u * 0.34); g.closePath(); paint(c3); }
+  else if (motif === 2) { each(12, () => { g.beginPath(); g.moveTo(u * 0.36, -u * 0.11); g.lineTo(u * 0.74, 0); g.lineTo(u * 0.36, u * 0.11); g.closePath(); paint(c1 === TAL.cobalt ? TAL.terra : c1); }); g.beginPath(); g.arc(0, 0, u * 0.42, 0, 7); paint(TAL.yellow === bg ? TAL.terra : TAL.yellow); }
+  else if (motif === 3) { g.beginPath(); for (let i = 0; i < 16; i++) { const a = i * Math.PI / 8, rad = u * (i % 2 ? 0.42 : 0.8); g.lineTo(Math.cos(a) * rad, Math.sin(a) * rad); } g.closePath(); paint(c1); each(4, () => { petal(u * 0.4, u * 0.13, 0); paint(c3); }, Math.PI / 4); }
+  else if (motif === 4) { g.beginPath(); g.moveTo(u * 0.74, 0); g.lineTo(0, u * 0.74); g.lineTo(-u * 0.74, 0); g.lineTo(0, -u * 0.74); g.closePath(); paint(c1); g.beginPath(); g.rect(-u * 0.27, -u * 0.27, u * 0.54, u * 0.54); paint(c3); each(4, () => { g.beginPath(); g.arc(u * 0.5, 0, u * 0.07, 0, 7); paint(c2); }); }
+  else { each(4, () => { g.beginPath(); g.moveTo(u * 0.1, 0); g.bezierCurveTo(u * 0.25, -u * 0.5, u * 0.8, -u * 0.42, u * 0.62, -u * 0.05); g.lineTo(u * 0.5, 0); g.lineTo(u * 0.62, u * 0.05); g.bezierCurveTo(u * 0.8, u * 0.42, u * 0.25, u * 0.5, u * 0.1, 0); paint(c1); }); each(4, () => { petal(u * 0.5, u * 0.09, u * 0.1); paint(c3); }, Math.PI / 4); }
+  g.beginPath(); g.arc(0, 0, u * 0.17, 0, 7); paint(c3 === c1 ? c2 : c3); g.beginPath(); g.arc(0, 0, u * 0.07, 0, 7); paint(c2);
+  const gl = g.createLinearGradient(-u, -u, u, u); gl.addColorStop(0, "rgba(255,255,255,0.10)"); gl.addColorStop(0.5, "rgba(255,255,255,0)"); gl.addColorStop(1, "rgba(0,0,20,0.08)");
+  g.fillStyle = gl; g.fillRect(-u, -u, s, s);                // the glaze pools toward one edge
+  g.restore();
+}
+function talaveraMat(sparse) {
+  // every tile painted, every other tile painted ("half": a checkerboard with white), or a white field with a painted tile here and there, never two side by side
+  const m = cached("talavera:" + sparse, () => {
+    const n = sparse ? 12 : 10, px = 2040 / n, r = rng(sparse ? 31 : 17), cells = [];
+    for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+      const near = [[i - 1, j], [i, j - 1], [i - 1, j - 1], [i + 1, j - 1]].some(([a, b]) => cells[((b + n) % n) * n + ((a + n) % n)] === true);
+      cells.push(!sparse || (sparse === "half" ? (i + j) % 2 === 0 : r() < 0.2 && !near && !(j === n - 1 && cells[i]) && !(i === n - 1 && cells[j * n])));
+    }
+    const color = canvasTex(2040, 2040, (g) => {
+      g.fillStyle = "#e9e5db"; g.fillRect(0, 0, 2040, 2040);
+      cells.forEach((painted, k) => {
+        const x = (k % n) * px + 2.5, y = Math.floor(k / n) * px + 2.5, s = px - 5;
+        if (painted) talaveraTile(g, x, y, s, r);
+        else { g.fillStyle = shade("#F4F2EC", 0.965 + r() * 0.04); g.beginPath(); g.roundRect(x, y, s, s, s * 0.035); g.fill(); }
+      });
+    });
+    const bump = canvasTex(1020, 1020, (g) => { g.fillStyle = "#404040"; g.fillRect(0, 0, 1020, 1020); g.fillStyle = "#d0d0d0"; for (let k = 0; k < n * n; k++) { g.beginPath(); g.roundRect((k % n) * px / 2 + 1.5, Math.floor(k / n) * px / 2 + 1.5, px / 2 - 3, px / 2 - 3, 3); g.fill(); } }, { srgb: false });
+    for (const t of [color, bump]) t.repeat.set(1 / (n * 4), 1 / (n * 4));
+    return { color, bump };
+  });
+  const mm = new THREE.MeshPhysicalMaterial({ map: m.color, bumpMap: m.bump, bumpScale: 0.5, roughness: 0.16, clearcoat: 0.6, clearcoatRoughness: 0.06 });
   mm.userData.world = true; return mm;
 }
 function woodMat(hex) {
@@ -345,6 +430,7 @@ function drawCabinet(parent, b, mats, s, line) {
   }
   for (const [u0, u1, z0, z1, kind] of b.rects || []) {
     if (kind === "mw") { panel(parent, b, u0, u1, z0, z1, 0.8, mats.blackGlass); panel(parent, b, u0 + 2, u1 - 2, z1 - 2.2, z1 - 1.4, 1.5, mats.steelDark, { off: 0.8, gap: 0, r: 0.3 }); continue; }
+    const lowerish = b.role !== "upper" && !(b.kind === "tall" && z0 > 50);   // the upper door of a tall cabinet is handled at its bottom edge
     const jpull = s.handles === "integrated" && line.door !== "shaker", lip = jpull ? 1.25 : 0;
     const [pz0, pz1] = lowerish ? [z0, z1 - lip] : [z0 + lip, z1];
     if (line.door === "shaker") {
@@ -358,10 +444,27 @@ function drawCabinet(parent, b, mats, s, line) {
     if (kind === "false") continue;
     const mid = (u0 + u1) / 2, ax = alongAxis(b);
     if (s.handles === "begripa") {
-      const h = new THREE.Mesh(new THREE.CylinderGeometry(2.56, 2.56, 0.45, 32, 1, false, 0, Math.PI), mats.begripa);
+      const h = new THREE.Mesh(new THREE.CylinderGeometry(2.56, 2.56, 0.45, 32, 1, false, 0, Math.PI), mats.begripa());
       h.position.copy(M(...onFace(b, mid, lowerish ? z1 - 0.5 : z0 + 0.5, 1.05)));
-      if (ax === "y") { h.rotation.z = Math.PI / 2; h.rotation.x = lowerish ? Math.PI : 0; } else { h.rotation.x = Math.PI / 2; h.rotation.z = lowerish ? -Math.PI / 2 : Math.PI / 2; }
+      // the half disc lies flat on the front, straight edge along the door's edge, round side toward the door's middle
+      if (ax === "y") { h.rotation.z = Math.PI / 2; h.rotation.x = lowerish ? Math.PI : 0; } else h.rotation.set(0, -Math.PI / 2, lowerish ? -Math.PI / 2 : Math.PI / 2);
       h.castShadow = true; parent.add(h);
+    } else if (s.handles === "cup_black") {
+      // a 3.5 in crescent, 1 in tall, standing 0.8 in off the front: flat edge toward the door's edge
+      const h = new THREE.Mesh(new THREE.CylinderGeometry(1.75, 1.75, 0.8, 32, 1, false, 0, Math.PI), mats.pullBlack);
+      h.scale.x = 0.57;
+      const drawer = kind === "drawer" && z1 - z0 < 14;
+      h.position.copy(M(...onFace(b, mid, drawer ? (z0 + z1) / 2 + 0.5 : (lowerish ? z1 - 2 : z0 + 2), 1.2)));
+      const up = drawer || lowerish;
+      if (ax === "y") { h.rotation.z = Math.PI / 2; h.rotation.x = up ? Math.PI : 0; } else h.rotation.set(0, -Math.PI / 2, up ? -Math.PI / 2 : Math.PI / 2);
+      h.castShadow = true; parent.add(h);
+    } else if (s.handles === "bar_black") {
+      // 160 mm centres, about 6.9 in over all, square section; shortened on a front too narrow for it
+      const horiz = kind === "drawer", len = horiz ? Math.min(6.9, (u1 - u0) - 3) : Math.min(6.9, (z1 - z0) - 3);
+      const hu = horiz ? mid : (u0 < 0.5 && u1 < faceW(b) - 0.5 ? u1 - 2 : u0 + 2), hz = horiz ? (z0 + z1) / 2 : (lowerish ? z1 - 2.5 - len / 2 : z0 + 2.5 + len / 2);
+      const box = (u, z, d, lu, lz, ld) => { const m = new THREE.Mesh(ax === "y" ? new THREE.BoxGeometry(ld, lz, lu) : new THREE.BoxGeometry(lu, lz, ld), mats.pullBlack); m.position.copy(M(...onFace(b, u, z, d))); m.castShadow = true; parent.add(m); };
+      box(hu, hz, 1.75, horiz ? len : 0.5, horiz ? 0.5 : len, 0.4);
+      for (const e of [-1, 1]) box(horiz ? hu + e * (len / 2 - 0.25) : hu, horiz ? hz : hz + e * (len / 2 - 0.25), 1.2, 0.5, 0.5, 0.8);
     } else if (s.handles === "bar") {
       const horiz = kind === "drawer", len = horiz ? Math.min(7, (u1 - u0) * 0.45) : 6;
       const hu = horiz ? mid : (u0 < 0.5 && u1 < faceW(b) - 0.5 ? u1 - 2 : u0 + 2), hz = horiz ? (z0 + z1) / 2 : (lowerish ? z1 - 6 : z0 + 6);
@@ -375,7 +478,7 @@ function drawAppliance(parent, b, mats) {
   const w = faceW(b), ax = alongAxis(b);
   const bar = (u, z, len, axis, d = 2.2) => { cyl(parent, ...onFace(b, u, z, d), 0.36, len, axis, mats.steelDark); for (const e of [-1, 1]) cyl(parent, ...onFace(b, axis === "z" ? u : u + e * (len / 2 - 1), axis === "z" ? z + e * (len / 2 - 1) : z, d - 0.7), 0.26, 1.4, ax === "y" ? "x" : "y", mats.steelDark); };
   if (b.role === "fridge") {
-    const body = { ...b, ...(b.face === "E" ? { dx: b.dx - 3 } : { dy: b.dy - 3 }) };
+    const body = { ...b, ...(b.face === "E" ? { dx: b.dx - 3 } : b.face === "W" ? { x: b.x + 3, dx: b.dx - 3 } : b.face === "N" ? { y: b.y + 3, dy: b.dy - 3 } : { dy: b.dy - 3 }) };
     box(parent, body.x, body.y, body.z + 0.5, body.dx, body.dy, body.dz - 0.5, mats.fridgeSide, { r: 0.3 });
     panel(parent, body, 0, w / 2, 29, 70, 3, mats.steel, { r: 0.5, gap: 0.12 }); panel(parent, body, w / 2, w, 29, 70, 3, mats.steel, { r: 0.5, gap: 0.12 });
     panel(parent, body, 0, w, 2, 29, 3, mats.steel, { r: 0.5, gap: 0.12 });
@@ -424,12 +527,56 @@ function slabWithSink(parent, b, sk, mats, apron) {
   box(parent, sk.x, sk.y - t, top - d, sk.dx, t, d, bowl, { cast: false }); box(parent, sk.x, sk.y + sk.dy, top - d, sk.dx, t, d, bowl, { cast: false });
   cyl(parent, sk.x + sk.dx / 2, sk.y + sk.dy / 2, top - d + t + 0.05, 1.7, 0.1, "z", std("#55585c", { metalness: 1, roughness: 0.3 }), { cast: false });
 }
-function faucet(parent, x, y, z, dirY, mats) {
-  // a gooseneck: up, over and down toward the bowl
-  const pts = [[0, 0, 0], [0, 0, 11], [0, dirY * 1.5, 14.5], [0, dirY * 5, 15.6], [0, dirY * 8, 14], [0, dirY * 8.6, 11]].map(([a, b2, c]) => M(x + a, y + b2, z + c));
-  const tube = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 48, 0.55, 16), mats.steel); tube.castShadow = true; parent.add(tube);
-  cyl(parent, x, y, z + 1.2, 0.95, 2.4, "z", mats.steel); cyl(parent, x + 1.6, y, z + 2.2, 0.28, 3.2, "x", mats.steel);
-  cyl(parent, x, y + dirY * 8.6, z + 10.4, 0.7, 1.6, "z", mats.steelDark);
+// A faucet to the maker's stated height and reach (catalog.faucet: style, h_in,
+// reach_in, body, arm). "gooseneck": a plain high arc with a pull-down head.
+// "spring": a riser, an exposed coil over the arc, the hose inside it, and the
+// spray head docked at the end of a side arm, the commercial look.
+class HelixCurve extends THREE.Curve {
+  constructor(path, radius, turns, axis) { super(); this.path = path; this.radius = radius; this.turns = turns; this.axis = axis; }
+  getPoint(t, target = new THREE.Vector3()) {
+    const p = this.path.getPoint(t), tan = this.path.getTangent(t).normalize();
+    const n = new THREE.Vector3().crossVectors(this.axis, tan).normalize(), a = 2 * Math.PI * this.turns * t;
+    return target.copy(p).addScaledVector(n, Math.cos(a) * this.radius).addScaledVector(this.axis, Math.sin(a) * this.radius);
+  }
+}
+function faucet(parent, x, y, z, dirY, mats, spec) {
+  const f = spec || { style: "gooseneck", h_in: 15.6, reach_in: 8.6, body: "round", arm: false };
+  const h = f.h_in, reach = f.reach_in, P = (a, b2, c) => M(x + a, y + b2, z + c);
+  const lever = (lz, len) => { cyl(parent, x + 1.6, y, z + lz, 0.28, len, "x", mats.steel); cyl(parent, x + 1.6 + len / 2, y, z + lz, 0.34, 0.6, "x", mats.steel); };
+  if (f.style !== "spring") {
+    const k = h / 15.6, r = reach / 8.6;
+    const pts = [[0, 0, 0], [0, 0, 11 * k], [0, dirY * 1.5 * r, 14.5 * k], [0, dirY * 5 * r, 15.6 * k], [0, dirY * 8 * r, 14 * k], [0, dirY * 8.6 * r, 11 * k]].map(([a, b2, c]) => P(a, b2, c));
+    const tube = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 48, 0.55, 16), mats.steel); tube.castShadow = true; parent.add(tube);
+    cyl(parent, x, y, z + 1.2, 0.95, 2.4, "z", mats.steel); lever(2.2, 3.2);
+    cyl(parent, x, y + dirY * 8.6 * r, z + 10.4 * k, 0.7, 1.6, "z", mats.steelDark);
+    return;
+  }
+  // the riser: a round or square body to a little over half the height, on a flange
+  const riserH = 0.52 * h, bodyR = 0.95;
+  if (f.body === "square") { box(parent, x - 0.9, y - 0.9, z, 1.8, 1.8, riserH, mats.steel, { r: 0.15 }); box(parent, x - 1.5, y - 1.5, z, 3, 3, 0.4, mats.steel, { r: 0.2 }); }
+  else { cyl(parent, x, y, z + riserH / 2, bodyR, riserH, "z", mats.steel); cyl(parent, x, y, z + 0.2, 1.5, 0.4, "z", mats.steel); }
+  lever(riserH - 1.8, 3.4);
+  // the arc the coil follows: from the riser's top, up to the stated height, over and down to the dock
+  const dock = riserH - 1.5, apex = h - 0.9;
+  const arc = new THREE.CatmullRomCurve3([P(0, 0, riserH - 0.5), P(0, 0, riserH + 0.3 * (apex - riserH)), P(0, dirY * reach * 0.12, apex - 0.6), P(0, dirY * reach * 0.5, apex),
+    P(0, dirY * reach * 0.9, apex - 0.35 * (apex - dock)), P(0, dirY * reach, dock + 1.6)]);
+  const hose = new THREE.Mesh(new THREE.TubeGeometry(arc, 64, 0.42, 12), mats.hose); hose.castShadow = true; parent.add(hose);
+  const coilLen = arc.getLength(), turns = Math.round(coilLen / 0.42);      // about 0.42 in of pitch, like the real coils
+  const coil = new THREE.Mesh(new THREE.TubeGeometry(new HelixCurve(arc, 0.78, turns, new THREE.Vector3(1, 0, 0)), Math.min(2400, turns * 14), 0.1, 6), mats.steel);
+  coil.castShadow = true; parent.add(coil);
+  cyl(parent, x, y, z + riserH - 0.3, 1.0, 0.7, "z", mats.steel);
+  // the spray head, docked at the arc's end, and the side arm that holds it
+  const hx = x, hy = y + dirY * reach;
+  cyl(parent, hx, hy, z + dock + 0.9, 0.78, 1.8, "z", mats.steel);
+  cyl(parent, hx, hy, z + dock - 1.1, 0.8, 2.2, "z", mats.steelDark);
+  if (f.body === "square") cyl(parent, hx, hy, z + dock - 2.9, 0.5, 1.6, "z", mats.steel, { r2: 1.5 });
+  else cyl(parent, hx, hy, z + dock - 2.7, 0.75, 1.2, "z", mats.steel, { r2: 1.0 });
+  if (f.arm) {
+    const armZ = z + dock - 0.3;
+    const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, reach - 1.6, 10), mats.steel);
+    arm.rotation.x = Math.PI / 2; arm.position.copy(M(x, y + dirY * (reach - 1.6) / 2 + dirY * 0.8, armZ)); arm.castShadow = true; parent.add(arm);
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.95, 0.16, 8, 24), mats.steel); ring.rotation.x = Math.PI / 2; ring.position.copy(M(hx, hy, armZ)); parent.add(ring);
+  }
 }
 function chair(parent, x, y, rot, m) {
   const g = new THREE.Group(); g.position.copy(M(x, y, 0)); g.rotation.y = rot; parent.add(g);
@@ -476,8 +623,8 @@ function initScene(host) {
   const area = (color, intensity, w, h, pos, look) => { const l = new THREE.RectAreaLight(color, intensity, w, h); l.position.copy(M(...pos)); l.lookAt(M(...look)); G.scene.add(l); };
   area(0xe8f1ff, 2.2, 180, 100, [176, 374, 75], [176, 0, 40]);     // south gable windows
   area(0xeaf2ff, 2.4, 49, 40, [78.5, 1, 64], [78.5, 100, 40]);     // sink window
-  area(0xffffff, 2.6, 44, 44, [80, 60, 122], [80, 60, 0]);         // skylight over the sink run
-  area(0xfff3e2, 0.8, 52, 80, [228, 66, 40], [228, 200, 40]);      // office slider
+  area(0xffffff, 2.6, 32, 36, [82, 38, 95], [82, 38, 0]);         // skylight over the sink run
+  area(0xfff3e2, 0.8, 52, 80, [228, 78, 40], [228, 200, 40]);      // office slider
   for (const [x, y] of [[9, 40], [9, 105], [9, 137], [38, 9], [122, 9]]) { const p = new THREE.PointLight(0xffe2b8, 140, 60, 2); p.position.copy(M(x, y, 52.5)); G.scene.add(p); }
   try {
     const rt = new THREE.WebGLRenderTarget(4, 4, { samples: 4, type: THREE.HalfFloatType });
@@ -517,6 +664,8 @@ const CAMS = {
   living: { label: "From the living room", pos: [222, 246, 60], look: [56, 92, 42], fov: 60 },
   hall: { label: "From the hallway", pos: [84, 214, 61], look: [72, 30, 40], fov: 66 },
   cook: { label: "At the range", pos: [118, 150, 62], look: [14, 66, 44], fov: 62 },
+  sink: { label: "At the sink", pos: [112, 78, 56], look: [78, 4, 44], fov: 42 },
+  pantry: { label: "Facing the alcove", pos: [84, 56, 60], look: [170, 49, 46], fov: 58 },
   child: { label: "5-year-old's eyes", pos: [150, 150, 39], look: [20, 80, 34], fov: 66 },
 };
 const inside = () => { const p = G.cam.position; return p.y < 150 && p.x > -5 && p.x < 277 && p.z > -5 && p.z < 381; };
@@ -532,14 +681,17 @@ function fadeWalls() {
   if (G.shell) G.shell.visible = !out;
   for (const w of G.walls) {
     const hide = out && G.cam.position.clone().sub(w.center).dot(w.out) > 0;
-    w.mesh.material.opacity = hide ? 0.06 : 1; w.mesh.material.transparent = hide; w.mesh.material.depthWrite = !hide; w.mesh.castShadow = !hide;
+    if (w.hidden === hide) continue;
+    // `transparent` is compiled into the wall's shader: without needsUpdate a wall that was solid when the scene
+    // was built stays solid when it should fade, and walls come and go with the order things were clicked in
+    w.hidden = hide; w.mesh.material.opacity = hide ? 0.06 : 1; w.mesh.material.transparent = hide; w.mesh.material.depthWrite = !hide; w.mesh.material.needsUpdate = true; w.mesh.castShadow = !hide;
   }
 }
 function captureEnv() {
   // the gloss fronts reflect THIS room: its windows, its floor, its brick
   try {
     G.over.visible = false; if (G.shell) G.shell.visible = true;
-    for (const w of G.walls) { w.mesh.material.opacity = 1; w.mesh.material.transparent = false; }
+    for (const w of G.walls) { w.hidden = null; w.mesh.material.opacity = 1; w.mesh.material.transparent = false; w.mesh.material.depthWrite = true; w.mesh.material.needsUpdate = true; w.mesh.castShadow = true; }
     G.scene.environment = G.roomEnv; G.scene.environmentIntensity = 0.3;
     G.cube.update(G.renderer, G.scene);
     if (G.env) G.env.dispose();
@@ -557,26 +709,32 @@ function rebuild() {
   G.scene.add(root, over); root.add(shell); G.walls = [];
   const lowerHex = T.colors[s.lower_color].hex, upperHex = T.colors[s.upper_color].hex;
   const counter = cat.counter[s.counter], floor = cat.floor[s.floor], splash = cat.backsplash[s.backsplash];
+  const begripaMats = Object.fromEntries(Object.entries(BEGRIPA).map(([n, hex]) => [n, std(hex, { roughness: 0.45 })]));
+  let begripaN = 0;
+  if (view.begripa !== "mixed" && !BEGRIPA[view.begripa]) view.begripa = "yellow";
   const mats = {
     lower: lacquer(lowerHex, line.sheen), upper: lacquer(upperHex, line.sheen),
     carcass: std(shade(lowerHex, 0.92), { roughness: 0.5 }), carcassUp: std(shade(upperHex, 0.97), { roughness: 0.5 }),
     toe: std("#1c1c1c", { roughness: 0.7 }), recess: std(shade(lowerHex, 0.3), { roughness: 0.9 }), recessUp: std(shade(upperHex, 0.5), { roughness: 0.9 }),
-    steel: steelMat(false), steelDark: steelMat(true), fridgeSide: std("#5e6165", { metalness: 0.6, roughness: 0.5 }),
+    pipe: std("#1d1d1f", { metalness: 0.6, roughness: 0.4 }),     hose: std("#2a2b2e", { roughness: 0.55, metalness: 0.15 }),     pullBlack: std("#1b1b1d", { roughness: 0.6 }),     steel: steelMat(false), steelDark: steelMat(true), fridgeSide: std("#5e6165", { metalness: 0.6, roughness: 0.5 }),
     blackGlass: new THREE.MeshPhysicalMaterial({ color: 0x0b0c0e, roughness: 0.06, clearcoat: 1, clearcoatRoughness: 0.02 }),
-    counter: stoneMat(counter, s.counter), begripa: std(BEGRIPA[view.begripa], { roughness: 0.45 }),
+    counter: stoneMat(counter, s.counter), begripa: () => begripaMats[view.begripa === "mixed" ? BEGRIPA_MIX[begripaN++ % BEGRIPA_MIX.length] : view.begripa],
     wall: () => std("#f3f0e9", { roughness: 0.93 }), trim: std("#f7f5f0", { roughness: 0.6 }),
     glass: new THREE.MeshPhysicalMaterial({ color: 0xdfeef6, transparent: true, opacity: 0.16, roughness: 0.02, metalness: 0, envMapIntensity: 1.4 }),
   };
   // ---- the room
+  const V = T.vault || [[-5, 96], [185, 150], [277, 120]], WH = T.wall_h || 96;
+  const zc = (x) => (x <= V[1][0] ? V[0][1] + (x - V[0][0]) * (V[1][1] - V[0][1]) / (V[1][0] - V[0][0]) : V[1][1] + (x - V[1][0]) * (V[2][1] - V[1][1]) / (V[2][0] - V[1][0]));
+  const beamX = V[1][0], beamZ = V[1][1] - 9;              // the ridge beam's centre line and underside
   const center = M(136, 188, 48);
   for (const b of T.room) {
-    if (b.kind === "furniture" || b.kind === "rug") continue;
+    if (b.kind === "furniture" || b.kind === "rug" || b.kind === "sofa") continue;
     if (b.kind === "floor") { box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, floorMats(floor, b.dx, b.dy), { cast: false }); continue; }
     if (b.kind === "wall") {
       const m = box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, mats.wall());
       const c = M(b.x + b.dx / 2, b.y + b.dy / 2, 48), out = c.clone().sub(center);
       if (b.dx < b.dy) out.set(Math.sign(out.x) || 1, 0, 0); else out.set(0, 0, Math.sign(out.z) || 1);
-      G.walls.push({ mesh: m, center: c, out });
+      if (!b.inner) G.walls.push({ mesh: m, center: c, out });   // a wall inside the room is never faded away
       continue;
     }
     if (b.kind === "glass") {
@@ -593,8 +751,20 @@ function rebuild() {
       for (let k = 1; k < 7; k++) cyl(root, b.x + b.dx / 2, b.y + b.dy / 2, k * 4.8, 0.09, len, horiz ? "x" : "y", mats.steelDark, { cast: false });
       continue;
     }
-    const look = { post: mats.wall(), brick: brickMat(), stair: std("#2c2622", { roughness: 0.95 }) }[b.kind];
-    box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, look, { r: b.kind === "post" ? 0.15 : 0 });
+    if (b.kind === "post") {
+      // floor to the vaulted ceiling. What stands above the wall plate comes off with the ceiling when the room is seen from outside
+      const top = Math.min(b.z + b.dz, b.x < beamX + 4 && b.x + b.dx > beamX - 4 ? beamZ : 1e9);
+      box(root, b.x, b.y, b.z, b.dx, b.dy, Math.min(top, WH) - b.z, mats.wall(), { r: 0.15 });
+      if (top > WH) box(shell, b.x, b.y, WH, b.dx, b.dy, top - WH, mats.wall(), { r: 0.15 });
+      continue;
+    }
+    if (b.kind === "wallshelf") {
+      box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, woodMat("#9a5a2e"), { r: 0.1 });
+      for (const y of [b.y + 3, b.y + b.dy - 3]) { cyl(root, b.x + b.dx / 2, y, b.z - 0.4, 0.4, b.dx - 1, "x", mats.pipe, { cast: false }); cyl(root, b.x + b.dx - 0.6, y, b.z - 2, 0.4, 3.2, "z", mats.pipe, { cast: false }); }
+      continue;
+    }
+    const look = { brick: brickMat(), stair: std("#2c2622", { roughness: 0.95 }), firebox: std("#6e5a40", { roughness: 0.95 }) }[b.kind];
+    box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, look);
   }
   // backdrops seen through the windows
   const sky = new THREE.MeshBasicMaterial({ map: skyTex(), toneMapped: false });
@@ -607,10 +777,19 @@ function rebuild() {
     for (const [lx, ly] of [[199, 82], [230, 82], [199, 179], [230, 179]]) box(root, lx, ly, 0, 3.5, 3.5, 28.5, teal);
     box(root, 199, 84, 22, 3, 96, 3.5, teal); box(root, 230.5, 84, 22, 3, 96, 3.5, teal);
     for (const y of [98, 132, 166]) { chair(root, 186, y, -Math.PI / 2, tolix); chair(root, 246, y, Math.PI / 2, tolix); }
-    const sofa = std("#5d5a66", { roughness: 0.95 });
-    box(root, 150, 262, 4, 84, 34, 13, sofa, { r: 3 }); box(root, 150, 262, 15, 84, 9, 17, sofa, { r: 3 });
-    box(root, 150, 262, 8, 7, 34, 16, sofa, { r: 2.5 }); box(root, 227, 262, 8, 7, 34, 16, sofa, { r: 2.5 });
-    for (const x of [166, 196]) box(root, x, 272, 16.5, 24, 22, 4.5, std("#66636f", { roughness: 0.95 }), { r: 2 });
+    const sb = T.room.find((b) => b.id === "f_sofa_seat"), bb = T.room.find((b) => b.id === "f_sofa_back");
+    if (sb && bb) {     // the new couch: square arms, a low square back, block cushions, in a spice colour. It faces south
+      const spice = std("#B4532A", { roughness: 0.96 }), cushion = std("#BC5B30", { roughness: 0.98 }), arm = 10, top = bb.z + bb.dz, seat = sb.z + sb.dz;
+      const inW = sb.dx - 2 * arm, half = inW / 2;
+      for (const [lx, ly] of [[1.5, 1.5], [sb.dx - 4.5, 1.5], [1.5, sb.dy - 4.5], [sb.dx - 4.5, sb.dy - 4.5]]) box(root, sb.x + lx, sb.y + ly, 0, 3, 3, 2.5, std("#2a211c", { roughness: 0.6 }));
+      box(root, sb.x, sb.y, 2.5, sb.dx, sb.dy, 9, spice, { r: 0.8 });                                   // the base
+      box(root, sb.x, sb.y, 2.5, sb.dx, bb.dy, top - 2.5, spice, { r: 1 });                              // the back
+      for (const x of [sb.x, sb.x + sb.dx - arm]) box(root, x, sb.y, 2.5, arm, sb.dy, seat + 6.5, spice, { r: 1 });   // square arms
+      for (const i of [0, 1]) {
+        box(root, sb.x + arm + i * half + 0.2, sb.y + bb.dy, 11.5, half - 0.4, sb.dy - bb.dy + 0.5, seat - 11.5 + 1, cushion, { r: 1.2 });       // seat cushions
+        box(root, sb.x + arm + i * half + 0.2, sb.y + bb.dy - 0.5, seat + 1, half - 0.4, 7.5, top - seat - 1.5, cushion, { r: 1.4 });           // back cushions
+      }
+    }
     const rug = cached("rug", () => { const r = rng(4); return canvasTex(256, 256, (g, w, h) => { g.fillStyle = "#a7adb0"; g.fillRect(0, 0, w, h); for (let i = 0; i < 26; i++) { g.fillStyle = ["#d8d6cf", "#7f878c", "#c9b24a", "#8f959a"][Math.floor(r() * 4)]; g.fillRect(Math.floor(r() * 8) * 32, Math.floor(r() * 8) * 32, 32 + Math.floor(r() * 3) * 32, 32); } }); });
     box(root, 140, 290, 0, 100, 70, 0.5, std("#ffffff", { map: rug, roughness: 1 }), { cast: false });
     for (const x of [150, 200]) { const arm = std("#5a3d66", { roughness: 0.95 }); box(root, x, 338, 4, 30, 28, 12, arm, { r: 3 }); box(root, x, 358, 12, 30, 8, 16, arm, { r: 3 }); }
@@ -632,7 +811,7 @@ function rebuild() {
       box(root, b.x - 2.5, 0, b.z, 2.5, 1.2, b.dz, mats.trim); box(root, b.x + b.dx, 0, b.z, 2.5, 1.2, b.dz, mats.trim); box(root, b.x + b.dx / 2 - 0.75, 0, b.z, 1.5, 1.0, b.dz, mats.trim);
       const pane = new THREE.Mesh(new THREE.PlaneGeometry(b.dx, b.dz), new THREE.MeshBasicMaterial({ map: skyTex(), toneMapped: false })); pane.position.copy(M(b.x + b.dx / 2, 0.25, b.z + b.dz / 2)); root.add(pane);
     } else if (b.kind === "shelf") box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, woodMat("#d8c7a6"), { r: 0.1 });
-    else if (b.kind === "door") { box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, mats.trim, { r: 0.1 }); cyl(root, b.x + 3, b.y + b.dy + 1.2, 36, 0.5, 4, "x", mats.steel); }
+    else if (b.kind === "door") { box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, mats.trim, { r: 0.1 }); if (b.face === "W") cyl(root, b.x - 1.2, b.y + 3, 36, 0.5, 4, "y", mats.steel); else cyl(root, b.x + 3, b.y + b.dy + 1.2, 36, 0.5, 4, "x", mats.steel); }
     else if (b.kind === "stool") {
       const cx = b.x + 7.5, cy = b.y + 7.5, m = steelMat(true);
       box(root, cx - 6.5, cy - 6.5, 24.2, 13, 13, 0.9, m, { r: 0.4 });
@@ -641,19 +820,21 @@ function rebuild() {
     } else if (b.kind === "sink") {
       const wall = b.id === "sink";
       if (wall && cat.sink[s.sink].style === "apron") box(root, b.x - 0.5, 23.3, 26.5, b.dx + 1, 2.9, 9.4, std("#f6f6f2", { roughness: 0.12 }), { r: 0.6 });
-      faucet(root, b.x + b.dx / 2, wall ? b.y - 1.4 : b.y + b.dy + 1.6, 36, wall ? 1 : -1, mats);
+      faucet(root, b.x + b.dx / 2, wall ? b.y - 1.4 : b.y + b.dy + 1.6, 36, wall ? 1 : -1, mats, wall ? cat.faucet[s.faucet] : cat.faucet.macksjon);
     }
   }
   // backsplash and the light strips under the uppers
   const w1End = s.fridge_at === "hall" ? 153 : 189;
   if (splash.usd_sqft > 0) {
-    const sm = s.backsplash === "quartz_slab" ? mats.counter : tileMat(splash.hex);
-    box(root, 0, 0, 36, 0.35, w1End, 18, sm, { cast: false }); box(root, 0, 0, 36, 138, 0.35, 18, sm, { cast: false });
+    const sm = s.backsplash === "quartz_slab" ? mats.counter : splash.look === "talavera" ? talaveraMat(false) : splash.look === "talavera_half" ? talaveraMat("half") : splash.look === "talavera_sparse" ? talaveraMat(true) : tileMat(splash.hex);
+    box(root, 0, 0, 36, 0.35, w1End, 18, sm, { cast: false });
+    const win = byId.window, sill = win ? Math.min(54, win.z - 2.5) : 54;      // on the sink wall the tile runs under the window and up each side of it, not across it
+    box(root, 0, 0, 36, 138, 0.35, sill - 36, sm, { cast: false });
+    if (win && sill < 54) { box(root, 0, 0, sill, win.x - 2.5, 0.35, 54 - sill, sm, { cast: false }); box(root, win.x + win.dx + 2.5, 0, sill, 138 - (win.x + win.dx + 2.5), 0.35, 54 - sill, sm, { cast: false }); }
   }
   const glow = new THREE.MeshBasicMaterial({ color: 0xfff0d8, toneMapped: false });
   for (const i of L.boxes) { const b = T.boxes[i]; if (b.kind === "upper" && b.z < 60 && b.id !== "w1_u_hood") { if (b.face === "E") box(root, 2, b.y + 1.5, b.z - 0.25, 0.8, b.dy - 3, 0.2, glow, { cast: false }); else box(root, b.x + 1.5, 2, b.z - 0.25, b.dx - 3, 0.8, 0.2, glow, { cast: false }); } }
   // ---- the ceiling: a vault rising from the long wall to a ridge beam, with the skylight. Indoors only.
-  const zc = (x) => (x <= 185 ? 96 + (x + 5) * (54 / 190) : 150 - (x - 185) * (30 / 92));
   const ceil = std("#f5f2eb", { roughness: 0.95, side: THREE.DoubleSide });
   const quad = (pts, material) => { const g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.Float32BufferAttribute(pts.flatMap((p) => M(...p).toArray()), 3)); g.setIndex([0, 1, 2, 0, 2, 3]); g.computeVertexNormals(); const m = new THREE.Mesh(g, material); m.receiveShadow = true; shell.add(m); return m; };
   quad([[-5, -5, zc(-5)], [185, -5, 150], [185, 381, 150], [-5, 381, zc(-5)]], ceil); quad([[185, -5, 150], [277, -5, zc(277)], [277, 381, zc(277)], [185, 381, 150]], ceil);
@@ -664,7 +845,20 @@ function rebuild() {
   const gable = new THREE.Shape(); gable.moveTo(95, 100); gable.lineTo(95, zc(95) - 4); gable.lineTo(185, 144); gable.lineTo(262, zc(262) - 4); gable.lineTo(262, 100); gable.closePath();
   const gm = new THREE.Mesh(new THREE.ShapeGeometry(gable), new THREE.MeshBasicMaterial({ map: skyTex(), toneMapped: false, side: THREE.DoubleSide })); gm.position.set(0, 0, 375.6); shell.add(gm);
   for (const x of [95, 140, 185, 224, 262]) box(shell, x - 1.5, 374.5, 100, 3, 1.6, zc(x) - 104, mats.trim, { cast: false });
-  quad([[58, 38, zc(58) - 0.3], [102, 38, zc(102) - 0.3], [102, 82, zc(102) - 0.3], [58, 82, zc(58) - 0.3]], new THREE.MeshBasicMaterial({ color: 0xf4f9ff, toneMapped: false, side: THREE.DoubleSide }));
+  // ---- over the sink run the ceiling is flat, with the skylight in it. Where it stops, a wall parallel to the sink wall
+  // rises to the vault: a triangle over the kitchen, with three cube sconces, and the office's front wall east of the pillar.
+  const SF = T.soffit, skyMat = new THREE.MeshBasicMaterial({ color: 0xf4f9ff, toneMapped: false, side: THREE.DoubleSide });
+  if (SF) {
+    box(shell, SF.x0, -5, SF.z, SF.x1 + 5 - SF.x0, SF.y + 5, 1, ceil, { cast: false });
+    quad([[66, 20, SF.z - 0.2], [98, 20, SF.z - 0.2], [98, 56, SF.z - 0.2], [66, 56, SF.z - 0.2]], skyMat);
+    const sh = new THREE.Shape(); sh.moveTo(SF.x0, SF.z); sh.lineTo(SF.x0, zc(SF.x0)); sh.lineTo(V[1][0], V[1][1]); sh.lineTo(277, zc(277)); sh.lineTo(277, SF.z); sh.closePath();
+    const tw = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: SF.t, bevelEnabled: false }), mats.wall()); tw.position.set(0, 0, SF.y); tw.receiveShadow = true; shell.add(tw);
+    const glow = new THREE.MeshBasicMaterial({ color: 0xffe9b0, toneMapped: false });
+    for (const [x, z, hex] of T.sconces || []) {
+      box(shell, x - 2.5, SF.y + SF.t, z - 2.5, 5, 4, 5, std(hex, { roughness: 0.5, emissive: new THREE.Color(hex), emissiveIntensity: 0.25 }), { cast: false });
+      box(shell, x - 2, SF.y + SF.t + 0.4, z + 2.5, 4, 3.2, 0.2, glow, { cast: false }); box(shell, x - 2, SF.y + SF.t + 0.4, z - 2.7, 4, 3.2, 0.2, glow, { cast: false });
+    }
+  } else quad([[58, 38, zc(58) - 0.3], [102, 38, zc(102) - 0.3], [102, 82, zc(102) - 0.3], [58, 82, zc(58) - 0.3]], skyMat);
   // ---- overlays: never in the reflections
   if (view.doors) {
     const hit = new Set(L.blocked.map((p) => p[0]));
@@ -684,9 +878,9 @@ function rebuild() {
       person(over, wet[0] - 13, wet[1], 67, "#3f6fae", "cook"); person(over, east, isl ? isl[1] + 20 : 100, k.kid_big, "#d07a3a", "8 yr"); person(over, east, isl ? isl[3] - 20 : 130, k.kid_small, "#c7559a", "5 yr");
     } else {
       person(over, f.pt_range[0] + 13, f.pt_range[1], 70, "#3f6fae", "cook"); person(over, wet[0] - 13, f.pt_prep ? wet[1] : wet[1] + 13, 64, "#3d8f6b", "prep");
-      person(over, f.pt_sink[0] + 28, f.pt_sink[1] + 13, 66, "#8a63b5", "dishes"); person(over, f.pt_fridge[0] + (hall ? 14 : 0), f.pt_fridge[1] + (hall ? 0 : 14), 68, "#b0503f", "guest");
+      person(over, f.pt_sink[0] + 28, f.pt_sink[1] + 13, 66, "#8a63b5", "dishes"); person(over, f.pt_fridge[0] + (hall ? 14 : -16), f.pt_fridge[1], 68, "#b0503f", "guest");
       person(over, east, isl ? isl[1] + 20 : 100, k.kid_big, "#d07a3a", "8 yr");
-      const p = s.microwave_at === "pantry" && hall; person(over, p ? 163 : east, p ? 50 : (isl ? isl[3] - 20 : 130), k.kid_small, "#c7559a", "5 yr");
+      const p = s.microwave_at === "pantry" && hall; person(over, p ? 128 : east, p ? 52 : (isl ? isl[3] - 20 : 130), k.kid_small, "#c7559a", "5 yr");
     }
   }
   captureEnv();
@@ -730,8 +924,9 @@ function renderControls() {
       el("p", { class: "cfg-note", text: line.note })),
     group("Lower colour", lc.name + (lc.ral ? " · " + lc.ral : ""), swatches("lower_color", line.lower)),
     group("Upper colour", uc.name + (uc.ral ? " · " + uc.ral : ""), swatches("upper_color", line.upper)),
-    group("Handles", null, choice("handles", line.handles.map((h) => [h, cat.handles[h].label])),
-      S.handles === "begripa" ? el("div", { class: "cfg-swatches" }, Object.entries(BEGRIPA).map(([n, hex]) => el("button", { class: "cfg-swatch" + (view.begripa === n ? " is-on" : ""), type: "button", title: "BEGRIPA " + n, "aria-label": "BEGRIPA " + n, style: "--sw:" + hex, onclick: () => { view.begripa = n; save(); render(); } }))) : null),
+    group("Handles", S.handles === "begripa" ? "BEGRIPA colour: " + (view.begripa === "mixed" ? "mixed, all five" : view.begripa) : null,
+      choice("handles", line.handles.map((h) => [h, cat.handles[h].label])),
+      S.handles === "begripa" ? el("div", { class: "cfg-swatches" }, [["mixed", BEGRIPA_MIX_SW], ...Object.entries(BEGRIPA)].map(([n, sw]) => el("button", { class: "cfg-swatch" + (view.begripa === n ? " is-on" : ""), type: "button", title: "BEGRIPA " + (n === "mixed" ? "mixed colours" : n), "aria-label": "BEGRIPA " + (n === "mixed" ? "mixed colours" : n), "aria-pressed": String(view.begripa === n), style: "--sw:" + sw, onclick: () => { view.begripa = n; save(); render(); } }))) : null),
     group("Refrigerator", null, choice("fridge_at", catOpts("fridge_at"))),
     group("Island", "64 in is the contractor's. 40 in deep gives the seats knee room; 48 in of aisle lets two cooks pass.",
       choice("island_len", [[64, "64 in, two seats"], [76, "76 in, three seats"], [0, "No island"]]),
@@ -739,12 +934,13 @@ function renderControls() {
         el("div", {}, el("h4", { text: "Top depth" }), choice("island_top_d", [[40, "40 in", noIsland], [36, "36 in", noIsland]], { delta: false })),
         el("div", {}, el("h4", { text: "Aisle to the range" }), choice("island_aisle", [[48, "48 in", noIsland], [42, "42 in", noIsland]], { delta: false }))),
       el("h4", { text: "Island prep sink" }), choice("prep_sink", [[true, "Yes", noIsland], [false, "No"]])),
-    group("Old refrigerator alcove", alcove ? "The refrigerator is still in it." : "Assumed 40 in wide and 34 in deep. Measure it.",
+    group("Old refrigerator alcove", alcove ? "The refrigerator is still in it." : "No wall comes down: the alcove stays the size of the refrigerator. Assumed 40 in wide and 34 in deep. Measure it.",
       choice("pantry", [["open", cat.pantry.open.label, alcove], ["door", cat.pantry.door.label, alcove], ["cabinets", cat.pantry.cabinets.label, alcove]])),
     group("Microwave", null, choice("microwave_at", [["pantry", cat.microwave_at.pantry.label, alcove], ["island", cat.microwave_at.island.label, noIsland], ["counter", cat.microwave_at.counter.label]])),
     group("Countertop", null, choice("counter", catOpts("counter"), { sub: (k) => "$" + cat.counter[k].usd_sqft + " / sq ft installed" })),
     group("Backsplash", null, choice("backsplash", catOpts("backsplash"))),
-    group("Sink and faucet", null, choice("sink", catOpts("sink"), { sub: (k) => usd(cat.sink[k].usd) }), choice("faucet", catOpts("faucet"), { sub: (k) => usd(cat.faucet[k].usd) })),
+    group("Sink and faucet", null, choice("sink", catOpts("sink"), { sub: (k) => usd(cat.sink[k].usd) }), choice("faucet", catOpts("faucet"), { sub: (k) => { const f = cat.faucet[k]; return usd(f.usd) + " · " + (f.style === "spring" ? "spring coil" : "gooseneck") + " · " + Math.round(f.h_in) + " in tall"; } }),
+      el("p", { class: "cfg-note", text: cat.faucet[S.faucet].note || "" })),
     group("Upstairs floor", T.money.floor_area.toLocaleString() + " sq ft of floor, " + T.money.floor_order.toLocaleString() + " sq ft ordered with waste.",
       choice("floor", catOpts("floor"), { sub: (k) => { const f = cat.floor[k]; return "$" + f.usd_sqft.toFixed(2) + " / sq ft · " + f.wear + " mil · " + f.plank[0] + " x " + f.plank[1] + " in · " + f.vendor.split(",")[0]; } })),
     group("Who does the work", null,
@@ -816,7 +1012,7 @@ function summaryText() {
   const b = bill(S), cat = T.catalog, c = checks(S);
   return ["Edmonds kitchen: my configuration", "Total " + usd(b.total) + " of " + usd(T.money.budget),
     "Cabinets: " + cat.cab_line[S.cab_line].label, "Lower: " + T.colors[S.lower_color].name + " " + (T.colors[S.lower_color].ral || ""), "Upper: " + T.colors[S.upper_color].name + " " + (T.colors[S.upper_color].ral || ""),
-    "Handles: " + cat.handles[S.handles].label, "Refrigerator: " + cat.fridge_at[S.fridge_at].label,
+    "Handles: " + cat.handles[S.handles].label + (S.handles === "begripa" ? " (" + (view.begripa === "mixed" ? "mixed colours" : view.begripa) + ")" : ""), "Refrigerator: " + cat.fridge_at[S.fridge_at].label,
     "Island: " + (S.island_len ? S.island_len + " x " + S.island_top_d + " in, " + S.island_aisle + " in aisle, prep sink " + (S.prep_sink ? "yes" : "no") : "none"),
     "Alcove: " + cat.pantry[S.pantry].label, "Microwave: " + cat.microwave_at[S.microwave_at].label,
     "Counter: " + cat.counter[S.counter].label, "Backsplash: " + cat.backsplash[S.backsplash].label, "Sink: " + cat.sink[S.sink].label, "Faucet: " + cat.faucet[S.faucet].label,
@@ -835,10 +1031,21 @@ async function main() {
   S = recorded();
   try { const saved = JSON.parse(localStorage.getItem(STORE) || "null"); if (saved && saved.S && T.layouts[keyOf(saved.S)] && T.catalog.cab_line[saved.S.cab_line]) { S = { ...S, ...saved.S }; view = { ...view, ...saved.view }; } } catch (e) { /* ignore */ }
   S = normalise(S);
+  const camHash = (location.hash.match(/cam=([a-z]+)/) || [])[1];      // marketing/#cam=sink opens on that camera
+  if (camHash && CAMS[camHash]) view.cam = camHash;
   try { initScene($("#cfg-stage")); } catch (e) { $("#cfg-stage").textContent = "This browser could not start WebGL, so the room is not drawn. The options, the bill and the answers below still work."; G.scene = null; }
   $("#cfg-reset").addEventListener("click", () => { S = normalise(recorded()); save(); render(); });
+  const fullBtn = $("#cfg-full"), fullBox = $("#cfg-view");
+  if (fullBtn && fullBox && document.fullscreenEnabled && fullBox.requestFullscreen) {
+    fullBtn.hidden = false;
+    fullBtn.addEventListener("click", () => { if (document.fullscreenElement) document.exitFullscreen(); else fullBox.requestFullscreen().catch(() => {}); });
+    document.addEventListener("fullscreenchange", () => {
+      const on = document.fullscreenElement === fullBox;
+      fullBtn.setAttribute("aria-pressed", String(on)); fullBtn.textContent = on ? "Exit full screen" : "Full screen";
+    });
+  }
   $("#cfg-copy").addEventListener("click", async (e) => { try { await navigator.clipboard.writeText(summaryText()); e.target.textContent = "Copied"; } catch (err) { prompt("Copy your configuration:", summaryText()); } setTimeout(() => (e.target.textContent = "Copy my configuration"), 1600); });
   render();
-  window.__cfg = { get total() { return bill(S).total; }, recordedTotal: T.recorded_total, set, get S() { return S; }, setCamera, checks: () => checks(S) };
+  window.__cfg = { get total() { return bill(S).total; }, recordedTotal: T.recorded_total, set, get S() { return S; }, setCamera, lookFrom: (pos, look, fov = 50) => { G.cam.position.copy(M(...pos)); G.ctl.target.copy(M(...look)); G.cam.fov = fov; G.cam.updateProjectionMatrix(); G.ctl.update(); G.dirty = true; }, checks: () => checks(S) };
 }
 main();

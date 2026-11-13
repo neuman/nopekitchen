@@ -258,8 +258,8 @@
       "amber": null,
       "binding_text": "",
       "board": "budget",
-      "cause": "checked",
-      "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "cause": "invalidated",
+      "cause_text": "The design changed after the result.",
       "claim_kind": "measurable",
       "critical": true,
       "errored": false,
@@ -267,25 +267,25 @@
         {
           "basis": "model-only",
           "basis_word": "A model wrote the logic. It has no outside source.",
-          "current": true,
+          "current": false,
           "detail": "58,024.97 USD for the run of 1 vs 60,000.00 USD budget; parts 46,639.06 USD + minimums 0.00 USD + one-time 11,385.91 USD (11,385.91 USD/unit amortised) = 58,024.97 USD run",
           "evidence": [
             {
-              "href": "assets/evidence/bom.cost/a4de84defde1e299-c5960d34/bom_cost.json",
+              "href": "assets/evidence/bom.cost/41f5ecb46b51b1b1-c5960d34/bom_cost.json",
               "missing": "",
               "name": "bom_cost.json",
               "source": "<out>/bom_cost.json"
             }
           ],
           "id": "bom.cost",
-          "order": 4,
+          "order": 5,
           "outcome": "pass",
           "outcome_word": "pass",
-          "stale_reason": ""
+          "stale_reason": "bom.lines changed, bom changed"
         }
       ],
       "figures": [],
-      "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "hint": "The design changed after the result, or nopekit cannot see if the result is current.",
       "id": "C1",
       "kind_word": "Automated",
       "limit_text": "60000 USD/run",
@@ -308,11 +308,13 @@
       "resolves": [],
       "rests_on": [],
       "settle": {
-        "commands": [],
-        "text": ""
+        "commands": [
+          "nopekit check"
+        ],
+        "text": "Run the check. It runs the evaluators and shows that each one can fail."
       },
       "statement": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
-      "token": "checked",
+      "token": "stale",
       "values": [
         {
           "binding": true,
@@ -328,7 +330,7 @@
           "value_text": "58025 USD/run against a limit of 60000 USD/run, 3% inside the limit"
         }
       ],
-      "word": "checked"
+      "word": "stale"
     },
     "C10": {
       "acceptance": "microwave height over the small child's reach <= 0.0 in",
@@ -348,7 +350,7 @@
           "detail": "microwave bottom at 31 in, child's shoulder at 34.4 in; bottom above shoulder less 3 in by: -0.4 in (limit <= 0 in)",
           "evidence": [],
           "id": "kitchen.microwave_reach",
-          "order": 16,
+          "order": 17,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -417,7 +419,7 @@
           "detail": "gloss, both colours and two tones are offered; unmet: 0 requirements (limit <= 0 requirements)",
           "evidence": [],
           "id": "kitchen.finish_offered",
-          "order": 12,
+          "order": 13,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -487,7 +489,7 @@
           "detail": "wall 1 off by 0, wall 2 by 0; worst: 0 in (limit <= 0.25 in)",
           "evidence": [],
           "id": "kitchen.run_fill",
-          "order": 17,
+          "order": 18,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -625,7 +627,7 @@
           "detail": "stated wear layer: 22 mil (limit >= 20 mil)",
           "evidence": [],
           "id": "kitchen.floor_wear",
-          "order": 13,
+          "order": 14,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -694,7 +696,7 @@
           "detail": "no box overlaps another; interfering: 0 pairs (limit <= 0 pairs)",
           "evidence": [],
           "id": "kitchen.collisions",
-          "order": 9,
+          "order": 10,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -763,7 +765,7 @@
           "detail": "41 doors and drawers swept; blocked: 0 doors (limit <= 0 doors)",
           "evidence": [],
           "id": "kitchen.doors_open",
-          "order": 11,
+          "order": 12,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -820,8 +822,8 @@
       "amber": null,
       "binding_text": "",
       "board": "holiday",
-      "cause": "checked",
-      "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "cause": "unqualified",
+      "cause_text": "An evaluator did not show that it can fail, so its result does not count.",
       "claim_kind": "measurable",
       "critical": true,
       "errored": false,
@@ -829,18 +831,18 @@
         {
           "basis": "sourced",
           "basis_word": "The logic follows a cited outside source.",
-          "current": true,
-          "detail": "west 48, north 48, south 160.5, east 158; narrowest: 48 in (limit >= 36 in)",
+          "current": false,
+          "detail": "",
           "evidence": [],
           "id": "kitchen.walkways",
-          "order": 20,
-          "outcome": "pass",
-          "outcome_word": "pass",
+          "order": 2,
+          "outcome": "unqualified",
+          "outcome_word": "does not count",
           "stale_reason": ""
         }
       ],
       "figures": [],
-      "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "hint": "Nothing can settle this claim yet.",
       "id": "C17",
       "kind_word": "Automated",
       "limit_text": "36 in",
@@ -863,35 +865,23 @@
       "resolves": [],
       "rests_on": [],
       "settle": {
-        "commands": [],
-        "text": ""
+        "commands": [
+          "nopekit check"
+        ],
+        "text": "Run the check. It runs the evaluators and shows that each one can fail."
       },
       "statement": "There is at least 36 in of passage on each side of the island",
-      "token": "checked",
-      "values": [
-        {
-          "binding": true,
-          "comparator": ">=",
-          "compared": true,
-          "gate": "kitchen.walkways",
-          "limit": 36.0,
-          "limit_hi": null,
-          "margin": 0.333333,
-          "margin_text": "33% inside the limit",
-          "measured": 48.0,
-          "units": "in",
-          "value_text": "48 in against a limit of 36 in, 33% inside the limit"
-        }
-      ],
-      "word": "checked"
+      "token": "gap",
+      "values": [],
+      "word": "gap"
     },
     "C2": {
       "acceptance": "bill of materials completeness <= 0.0 lines",
       "amber": null,
       "binding_text": "",
       "board": "budget",
-      "cause": "checked",
-      "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "cause": "invalidated",
+      "cause_text": "The design changed after the result.",
       "claim_kind": "measurable",
       "critical": true,
       "errored": false,
@@ -899,25 +889,25 @@
         {
           "basis": "model-only",
           "basis_word": "A model wrote the logic. It has no outside source.",
-          "current": true,
+          "current": false,
           "detail": "0 of 25 lines not orderable (limit 0) — every line has a part number, a quantity and a usable price",
           "evidence": [
             {
-              "href": "assets/evidence/bom.complete/dfb35551dc1c05c4-024b1ea8/bom_complete.json",
+              "href": "assets/evidence/bom.complete/ca4c61e544b55638-024b1ea8/bom_complete.json",
               "missing": "",
               "name": "bom_complete.json",
               "source": "<out>/bom_complete.json"
             }
           ],
           "id": "bom.complete",
-          "order": 3,
+          "order": 4,
           "outcome": "pass",
           "outcome_word": "pass",
-          "stale_reason": ""
+          "stale_reason": "bom.lines changed, bom changed"
         }
       ],
       "figures": [],
-      "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+      "hint": "The design changed after the result, or nopekit cannot see if the result is current.",
       "id": "C2",
       "kind_word": "Automated",
       "limit_text": "0 lines",
@@ -940,11 +930,13 @@
       "resolves": [],
       "rests_on": [],
       "settle": {
-        "commands": [],
-        "text": ""
+        "commands": [
+          "nopekit check"
+        ],
+        "text": "Run the check. It runs the evaluators and shows that each one can fail."
       },
       "statement": "Every line of the job has a supplier, a quantity and a price",
-      "token": "checked",
+      "token": "stale",
       "values": [
         {
           "binding": true,
@@ -960,7 +952,7 @@
           "value_text": "0 lines against a limit of 0 lines"
         }
       ],
-      "word": "checked"
+      "word": "stale"
     },
     "C3": {
       "acceptance": "longest triangle leg <= 9.0 ft",
@@ -980,7 +972,7 @@
           "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.5; longest: 8.14 ft (limit <= 9 ft)",
           "evidence": [],
           "id": "kitchen.triangle_leg",
-          "order": 18,
+          "order": 19,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1049,7 +1041,7 @@
           "detail": "the three legs sum to: 19.13 ft (limit <= 26 ft)",
           "evidence": [],
           "id": "kitchen.triangle_total",
-          "order": 19,
+          "order": 20,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1118,7 +1110,7 @@
           "detail": "long run to island: 48 in (limit >= 42 in)",
           "evidence": [],
           "id": "kitchen.aisle_one_cook",
-          "order": 7,
+          "order": 8,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1187,7 +1179,7 @@
           "detail": "long run to island: 48 in (limit >= 48 in)",
           "evidence": [],
           "id": "kitchen.aisle_two_cooks",
-          "order": 8,
+          "order": 9,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1256,7 +1248,7 @@
           "detail": "open dishwasher door to the island: 22.5 in (limit >= 21 in)",
           "evidence": [],
           "id": "kitchen.dishwasher_room",
-          "order": 10,
+          "order": 11,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1326,7 +1318,7 @@
           "detail": "24 in seats along the island: 2 seats (limit >= 2 seats)",
           "evidence": [],
           "id": "kitchen.island_seats",
-          "order": 15,
+          "order": 16,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1395,7 +1387,7 @@
           "detail": "overhang past the island bases: 15 in (limit >= 15 in)",
           "evidence": [],
           "id": "kitchen.island_knee",
-          "order": 14,
+          "order": 15,
           "outcome": "pass",
           "outcome_word": "pass",
           "stale_reason": ""
@@ -1622,8 +1614,8 @@
           "claim": "C1",
           "errored": false,
           "marks": [],
-          "token": "checked",
-          "word": "checked"
+          "token": "stale",
+          "word": "stale"
         },
         {
           "claim": "C14",
@@ -1648,9 +1640,9 @@
           "input": null,
           "preference": null,
           "reason": "the better plank, but 2,160 USD more: the job is then 60,183 USD",
-          "returns": "does-not-hold",
+          "returns": "cannot-evaluate",
           "returns_text": "C1 margin > 0.04",
-          "returns_word": "The return condition does not hold: C1 margin > 0.04, now 0.0329172.",
+          "returns_word": "The return condition cannot be evaluated: C1 is stale.",
           "type": "infeasible",
           "type_word": "Not possible",
           "value": "Flooret Modin Signature Soho, 40 mil"
@@ -1659,9 +1651,9 @@
           "input": null,
           "preference": null,
           "reason": "3,265 USD more: the job is then 61,288 USD",
-          "returns": "does-not-hold",
+          "returns": "cannot-evaluate",
           "returns_text": "C1 margin > 0.06",
-          "returns_word": "The return condition does not hold: C1 margin > 0.06, now 0.0329172.",
+          "returns_word": "The return condition cannot be evaluated: C1 is stale.",
           "type": "infeasible",
           "type_word": "Not possible",
           "value": "installer assembles the cabinets"
@@ -1792,7 +1784,7 @@
         {
           "lost": [
             {
-              "reason": "refrigerator to range is 12.0 ft, over 9 ft, and the alcove cannot become a pantry; the person asked for the move (R6)",
+              "reason": "refrigerator to range is 10.0 ft, over 9 ft, and the alcove cannot become a pantry; the person asked for the move (R6)",
               "value_text": "alcove (where it is today)"
             }
           ],
@@ -1816,8 +1808,8 @@
           "claim": "C1",
           "errored": false,
           "marks": [],
-          "token": "checked",
-          "word": "checked"
+          "token": "stale",
+          "word": "stale"
         }
       ],
       "featured": true,
@@ -1855,9 +1847,9 @@
           "input": null,
           "preference": null,
           "reason": "kitchens from about 25,000 USD: the job passes 80,000 USD",
-          "returns": "does-not-hold",
+          "returns": "cannot-evaluate",
           "returns_text": "C1 margin > 0.3",
-          "returns_word": "The return condition does not hold: C1 margin > 0.3, now 0.0329172.",
+          "returns_word": "The return condition cannot be evaluated: C1 is stale.",
           "type": "infeasible",
           "type_word": "Not possible",
           "value": "Bauformat Seattle handleless gloss lacquer"
@@ -2107,7 +2099,7 @@
         {
           "lost": [],
           "name": "pantry",
-          "rationale": "What the old alcove becomes when the refrigerator leaves it: 'open' (shelves on three sides, no door), 'door' (the same behind a hinged door) or 'cabinets' (tall cabinets with fronts in the lower colour).",
+          "rationale": "What the old alcove becomes when the refrigerator leaves it. No wall is removed for any of them: 'open' (the recess lined with shelves on its back and both sides, no door), 'door' (the same behind a hinged door) or 'cabinets' (tall cabinets with fronts in the lower colour).",
           "value_text": "open"
         },
         {
@@ -2146,12 +2138,12 @@
         "type": "p"
       }
     ],
-    "current_as_of": "06e5545f52d7adcc",
+    "current_as_of": "37bcca9fd427bbb0",
     "file": "content/intro.md",
-    "notice": "",
+    "notice": "This text was written before the latest results. The data below shows the results now.",
     "problems": [],
     "register": [],
-    "stamp": "current",
+    "stamp": "stale",
     "subject": "intro",
     "unmatched": []
   },
@@ -2160,12 +2152,12 @@
     "content_digest": "f1fdc6a3ea200510350b47fecd6ee4af611e5ddf438fa2c1705adfcafe8d38f4",
     "name": "Edmonds kitchen",
     "records_digest": "0f865054f7fffbc7d3610b356965b37b00c3edf528da909bbacf11ac61393a78",
-    "resolution_digest": "cfbdf8638c76d93ea9bdfe4644a72dfb067d2822a234c601f613f6c0c86a53c8",
+    "resolution_digest": "3c7dfa5de1579508617d79f58b5ffc0398847e63fdd41f9cb770eaef42121a7a",
     "revision": "v0.1",
     "summary": "Kitchen, living room and upstairs floors: gloss two-tone cabinets, refrigerator to the hall end, island with a prep sink, inside $60k",
     "views": {
-      "bom": "d700766d0461140f274ac864cacf3b06fc6ac7aa355487683853aff552144d83",
-      "twin": "9b6d35f994af2113003a0139bdb506347f1ad0633990e96e9cdf7fca834500fb"
+      "bom": "c375890242b4daedf1f1f2ccb54fdf7bca663015f51a0b70fa61da89b8a242e5",
+      "twin": "2fa7ff8eeb36ca864ef089219770c25da24f812df4dfc68ee2197af39af90f5f"
     }
   },
   "next": {
@@ -2177,7 +2169,7 @@
       "missing": [],
       "next": true,
       "ready": false,
-      "sentence": "v0.1 is NOT ready. 10 of 27 required claims are unresolved: 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 17 of 27 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
+      "sentence": "v0.1 is NOT ready. 13 of 27 required claims are unresolved: 7 gaps (A1, A2, A3, A4, +3 more); 2 stale (C1, C2); 4 pending build (P1, P2, P3, P4). 14 of 27 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
       "steps": [
         {
           "claim": "A1",
@@ -2256,6 +2248,45 @@
           "text": "A6 is an assumption. Its owner records it in their own shell.",
           "token": "gap",
           "word": "gap"
+        },
+        {
+          "claim": "C17",
+          "commands": [
+            "nopekit check"
+          ],
+          "errored": false,
+          "how": "Each side of the island to the nearest fixed thing in the model; furniture is not counted",
+          "marks": [],
+          "statement": "There is at least 36 in of passage on each side of the island",
+          "text": "Run the check. It runs the evaluators and shows that each one can fail.",
+          "token": "gap",
+          "word": "gap"
+        },
+        {
+          "claim": "C1",
+          "commands": [
+            "nopekit check"
+          ],
+          "errored": false,
+          "how": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget",
+          "marks": [],
+          "statement": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
+          "text": "Run the check. It runs the evaluators and shows that each one can fail.",
+          "token": "stale",
+          "word": "stale"
+        },
+        {
+          "claim": "C2",
+          "commands": [
+            "nopekit check"
+          ],
+          "errored": false,
+          "how": "Each line of the bill is read for a supplier, a quantity and a usable price",
+          "marks": [],
+          "statement": "Every line of the job has a supplier, a quantity and a price",
+          "text": "Run the check. It runs the evaluators and shows that each one can fail.",
+          "token": "stale",
+          "word": "stale"
         },
         {
           "claim": "P1",
@@ -2348,12 +2379,12 @@
           "type": "p"
         }
       ],
-      "current_as_of": "493761d3f67b79db",
+      "current_as_of": "d231b1b7f149c425",
       "file": "content/next.md",
-      "notice": "",
+      "notice": "This text was written before the latest results. The data below shows the results now.",
       "problems": [],
       "register": [],
-      "stamp": "current",
+      "stamp": "stale",
       "subject": "next",
       "unmatched": []
     },
@@ -2364,7 +2395,7 @@
   "representation": {
     "alternates": [
       {
-        "bytes": 14224,
+        "bytes": 16732,
         "title": "The kitchen in its room",
         "view": "twin"
       }
@@ -2418,8 +2449,8 @@
       "id": "R3",
       "marks": [],
       "statement": "Movement through the space works for several people cooking at a time on a holiday",
-      "token": "pending_build",
-      "word": "pending build"
+      "token": "gap",
+      "word": "gap"
     },
     {
       "claims": [
@@ -2498,8 +2529,8 @@
       "id": "R9",
       "marks": [],
       "statement": "Cabinets and floors I can actually buy, from Seattle-area providers where that makes sense, custom or national where it does not",
-      "token": "checked",
-      "word": "checked"
+      "token": "stale",
+      "word": "stale"
     }
   ],
   "schema": 1,
@@ -2535,29 +2566,29 @@
             "type": "p"
           }
         ],
-        "current_as_of": "181d19fd22998529",
+        "current_as_of": "da94dc3f3bcfe09b",
         "file": "content/budget.md",
-        "notice": "",
+        "notice": "This text was written before the latest results. The data below shows the results now.",
         "problems": [],
         "register": [],
-        "stamp": "current",
+        "stamp": "stale",
         "subject": "budget",
         "unmatched": []
       },
       "tally": [
         {
           "errored": 0,
-          "key": "checked",
-          "label": "2 checked",
-          "n": 2,
-          "status": "pass"
-        },
-        {
-          "errored": 0,
           "key": "gap",
           "label": "1 gap",
           "n": 1,
           "status": "unclaimed"
+        },
+        {
+          "errored": 0,
+          "key": "stale",
+          "label": "2 stale",
+          "n": 2,
+          "status": "stale"
         }
       ],
       "title": "Fits $60k",
@@ -2657,12 +2688,12 @@
             "type": "p"
           }
         ],
-        "current_as_of": "f1ed56f4349be80d",
+        "current_as_of": "b9e74c075772f950",
         "file": "content/holiday.md",
-        "notice": "",
+        "notice": "This text was written before the latest results. The data below shows the results now.",
         "problems": [],
         "register": [],
-        "stamp": "current",
+        "stamp": "stale",
         "subject": "holiday",
         "unmatched": []
       },
@@ -2670,9 +2701,16 @@
         {
           "errored": 0,
           "key": "checked",
-          "label": "2 checked",
-          "n": 2,
+          "label": "1 checked",
+          "n": 1,
           "status": "pass"
+        },
+        {
+          "errored": 0,
+          "key": "gap",
+          "label": "1 gap",
+          "n": 1,
+          "status": "unclaimed"
         },
         {
           "errored": 0,
@@ -2683,8 +2721,8 @@
         }
       ],
       "title": "Several cooks, a holiday",
-      "token": "pending_build",
-      "word": "pending build"
+      "token": "gap",
+      "word": "gap"
     },
     {
       "board": "family",
@@ -2937,7 +2975,7 @@
       "word": "checked"
     }
   ],
-  "self": "0da5ffdd94b998baa32ce387f6b1d5734b790a5adbde51a02ab6d6f1fa840143",
+  "self": "7b7bef12cab937a6d7d650d2c2392428a46f14eb1c9d0032158193e008106d77",
   "story": {
     "as_of": "78a2f55e3e604edd",
     "blocks": [
@@ -3000,37 +3038,44 @@
         "type": "p"
       }
     ],
-    "current_as_of": "78a2f55e3e604edd",
+    "current_as_of": "8ff5597d88731d25",
     "file": "content/story.md",
-    "notice": "",
+    "notice": "This text was written before the latest results. The data below shows the results now.",
     "problems": [],
     "register": [],
-    "stamp": "current",
+    "stamp": "stale",
     "subject": "story",
     "unmatched": []
   },
   "verdict": {
     "headline": "v0.1 is NOT ready.",
     "limits": "Checked does not mean true. Its evaluators have shown that they can fail. They have not shown that they are correct or sufficient. Nothing outside the 27 claims on this page is evaluated.",
-    "notice": "",
-    "notice_public": "",
+    "notice": "Some results are older than the design. Run nopekit check, then build the site again.",
+    "notice_public": "Some results are older than the design.",
     "ready": false,
-    "sentence": "v0.1 is NOT ready. 10 of 27 required claims are unresolved: 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 17 of 27 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
-    "stale": false,
+    "sentence": "v0.1 is NOT ready. 13 of 27 required claims are unresolved: 7 gaps (A1, A2, A3, A4, +3 more); 2 stale (C1, C2); 4 pending build (P1, P2, P3, P4). 14 of 27 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
+    "stale": true,
     "tally": [
       {
         "errored": 0,
         "key": "checked",
-        "label": "17 checked",
-        "n": 17,
+        "label": "14 checked",
+        "n": 14,
         "status": "pass"
       },
       {
         "errored": 0,
         "key": "gap",
-        "label": "6 gaps",
-        "n": 6,
+        "label": "7 gaps",
+        "n": 7,
         "status": "unclaimed"
+      },
+      {
+        "errored": 0,
+        "key": "stale",
+        "label": "2 stale",
+        "n": 2,
+        "status": "stale"
       },
       {
         "errored": 0,

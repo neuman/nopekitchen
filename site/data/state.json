@@ -358,6 +358,223 @@
     },
     {
       "acceptance": {
+        "comparator": ">=",
+        "limit": 36.0,
+        "limit_hi": null,
+        "quantity": "narrowest passage",
+        "units": "in"
+      },
+      "acceptance_render": "narrowest passage >= 36.0 in",
+      "article": "",
+      "authority": "",
+      "board": "holiday",
+      "cause": "unqualified",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.walkways"
+      ],
+      "grounded_by": [],
+      "id": "C17",
+      "key": "gap",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "36 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.walkways"
+        ],
+        "how": "Each side of the island to the nearest fixed thing in the model; furniture is not counted"
+      },
+      "not_compared": [],
+      "note": "Each side of the island to the nearest fixed thing in the model; furniture is not counted",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "NKBA Kitchen Planning Guidelines: a walkway is at least 36 in. The island stands between the hallway and the dining table, so people walk round it all day",
+      "reason": "unqualified: kitchen.walkways : two control outcomes recorded for identical inputs (control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b)",
+      "requirements": [
+        "R2",
+        "R3"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "There is at least 36 in of passage on each side of the island",
+      "status": "unclaimed",
+      "superseded": [],
+      "tags": [
+        "walkways"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [
+        {
+          "gate": "kitchen.walkways",
+          "why": "unqualified: two control outcomes recorded for identical inputs (control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b)"
+        }
+      ],
+      "verdicts": [
+        "kitchen.walkways"
+      ],
+      "word": "gap"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 60000.0,
+        "limit_hi": null,
+        "quantity": "build cost per unit",
+        "units": "USD/run"
+      },
+      "acceptance_render": "build cost per unit <= 60000.0 USD/run",
+      "article": "",
+      "authority": "",
+      "board": "budget",
+      "cause": "invalidated",
+      "compared": [
+        "bom.cost"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [
+        "<out>/bom_cost.json"
+      ],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "bom.cost"
+      ],
+      "grounded_by": [],
+      "id": "C1",
+      "key": "stale",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "60000 USD/run",
+      "mechanism": {
+        "by": "datasheet",
+        "evaluators": [
+          "bom.cost"
+        ],
+        "how": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget"
+      },
+      "not_compared": [],
+      "note": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "$60k is the person's number for everything; the model's budget_usd is the same number and check warns if they part",
+      "reason": "invalidated: bom.cost : bom.lines changed, bom changed",
+      "requirements": [
+        "R1",
+        "R9"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
+      "status": "stale",
+      "superseded": [],
+      "tags": [
+        "budget"
+      ],
+      "terminal": "datasheet",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "bom.cost"
+      ],
+      "word": "stale"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "bill of materials completeness",
+        "units": "lines"
+      },
+      "acceptance_render": "bill of materials completeness <= 0.0 lines",
+      "article": "",
+      "authority": "",
+      "board": "budget",
+      "cause": "invalidated",
+      "compared": [
+        "bom.complete"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [
+        "<out>/bom_complete.json"
+      ],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "bom.complete"
+      ],
+      "grounded_by": [],
+      "id": "C2",
+      "key": "stale",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 lines",
+      "mechanism": {
+        "by": "datasheet",
+        "evaluators": [
+          "bom.complete"
+        ],
+        "how": "Each line of the bill is read for a supplier, a quantity and a usable price"
+      },
+      "not_compared": [],
+      "note": "Each line of the bill is read for a supplier, a quantity and a usable price",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a line with no price is an unknown, not a zero; the total means nothing while one exists",
+      "reason": "invalidated: bom.complete : bom.lines changed, bom changed",
+      "requirements": [
+        "R1",
+        "R9"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Every line of the job has a supplier, a quantity and a price",
+      "status": "stale",
+      "superseded": [],
+      "tags": [
+        "bom"
+      ],
+      "terminal": "datasheet",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "bom.complete"
+      ],
+      "word": "stale"
+    },
+    {
+      "acceptance": {
         "comparator": "<=",
         "limit": null,
         "limit_hi": null,
@@ -591,150 +808,6 @@
       "unproven": [],
       "verdicts": [],
       "word": "pending build"
-    },
-    {
-      "acceptance": {
-        "comparator": "<=",
-        "limit": 60000.0,
-        "limit_hi": null,
-        "quantity": "build cost per unit",
-        "units": "USD/run"
-      },
-      "acceptance_render": "build cost per unit <= 60000.0 USD/run",
-      "article": "",
-      "authority": "",
-      "board": "budget",
-      "cause": "checked",
-      "compared": [
-        "bom.cost"
-      ],
-      "contradicts": [],
-      "critical": true,
-      "disagree": false,
-      "errored": false,
-      "evidence": [
-        "<out>/bom_cost.json"
-      ],
-      "expected_latency": {},
-      "fallback": "",
-      "gates": [
-        "bom.cost"
-      ],
-      "grounded_by": [],
-      "id": "C1",
-      "key": "checked",
-      "kind": "measurable",
-      "latency": {
-        "article": "",
-        "seconds": null,
-        "source": "none"
-      },
-      "limit_text": "60000 USD/run",
-      "mechanism": {
-        "by": "datasheet",
-        "evaluators": [
-          "bom.cost"
-        ],
-        "how": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget"
-      },
-      "not_compared": [],
-      "note": "The bill of materials the model emits for the recorded selections, each line at its web or store-tag price, plus contingency, Edmonds sales tax on labour and materials, and permits, summed against the budget",
-      "owner": "",
-      "physical_result": null,
-      "rationale": "$60k is the person's number for everything; the model's budget_usd is the same number and check warns if they part",
-      "reason": "—",
-      "requirements": [
-        "R1",
-        "R9"
-      ],
-      "resolves": [],
-      "source": "",
-      "standing": "",
-      "statement": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
-      "status": "pass",
-      "superseded": [],
-      "tags": [
-        "budget"
-      ],
-      "terminal": "datasheet",
-      "terminal_word": "automated",
-      "unproven": [],
-      "verdicts": [
-        "bom.cost"
-      ],
-      "word": "checked"
-    },
-    {
-      "acceptance": {
-        "comparator": "<=",
-        "limit": 0.0,
-        "limit_hi": null,
-        "quantity": "bill of materials completeness",
-        "units": "lines"
-      },
-      "acceptance_render": "bill of materials completeness <= 0.0 lines",
-      "article": "",
-      "authority": "",
-      "board": "budget",
-      "cause": "checked",
-      "compared": [
-        "bom.complete"
-      ],
-      "contradicts": [],
-      "critical": true,
-      "disagree": false,
-      "errored": false,
-      "evidence": [
-        "<out>/bom_complete.json"
-      ],
-      "expected_latency": {},
-      "fallback": "",
-      "gates": [
-        "bom.complete"
-      ],
-      "grounded_by": [],
-      "id": "C2",
-      "key": "checked",
-      "kind": "measurable",
-      "latency": {
-        "article": "",
-        "seconds": null,
-        "source": "none"
-      },
-      "limit_text": "0 lines",
-      "mechanism": {
-        "by": "datasheet",
-        "evaluators": [
-          "bom.complete"
-        ],
-        "how": "Each line of the bill is read for a supplier, a quantity and a usable price"
-      },
-      "not_compared": [],
-      "note": "Each line of the bill is read for a supplier, a quantity and a usable price",
-      "owner": "",
-      "physical_result": null,
-      "rationale": "a line with no price is an unknown, not a zero; the total means nothing while one exists",
-      "reason": "—",
-      "requirements": [
-        "R1",
-        "R9"
-      ],
-      "resolves": [],
-      "source": "",
-      "standing": "",
-      "statement": "Every line of the job has a supplier, a quantity and a price",
-      "status": "pass",
-      "superseded": [],
-      "tags": [
-        "bom"
-      ],
-      "terminal": "datasheet",
-      "terminal_word": "automated",
-      "unproven": [],
-      "verdicts": [
-        "bom.complete"
-      ],
-      "word": "checked"
     },
     {
       "acceptance": {
@@ -1704,76 +1777,6 @@
         "kitchen.doors_open"
       ],
       "word": "checked"
-    },
-    {
-      "acceptance": {
-        "comparator": ">=",
-        "limit": 36.0,
-        "limit_hi": null,
-        "quantity": "narrowest passage",
-        "units": "in"
-      },
-      "acceptance_render": "narrowest passage >= 36.0 in",
-      "article": "",
-      "authority": "",
-      "board": "holiday",
-      "cause": "checked",
-      "compared": [
-        "kitchen.walkways"
-      ],
-      "contradicts": [],
-      "critical": true,
-      "disagree": false,
-      "errored": false,
-      "evidence": [],
-      "expected_latency": {},
-      "fallback": "",
-      "gates": [
-        "kitchen.walkways"
-      ],
-      "grounded_by": [],
-      "id": "C17",
-      "key": "checked",
-      "kind": "measurable",
-      "latency": {
-        "article": "",
-        "seconds": null,
-        "source": "none"
-      },
-      "limit_text": "36 in",
-      "mechanism": {
-        "by": "closed_form",
-        "evaluators": [
-          "kitchen.walkways"
-        ],
-        "how": "Each side of the island to the nearest fixed thing in the model; furniture is not counted"
-      },
-      "not_compared": [],
-      "note": "Each side of the island to the nearest fixed thing in the model; furniture is not counted",
-      "owner": "",
-      "physical_result": null,
-      "rationale": "NKBA Kitchen Planning Guidelines: a walkway is at least 36 in. The island stands between the hallway and the dining table, so people walk round it all day",
-      "reason": "—",
-      "requirements": [
-        "R2",
-        "R3"
-      ],
-      "resolves": [],
-      "source": "",
-      "standing": "",
-      "statement": "There is at least 36 in of passage on each side of the island",
-      "status": "pass",
-      "superseded": [],
-      "tags": [
-        "walkways"
-      ],
-      "terminal": "closed_form",
-      "terminal_word": "automated",
-      "unproven": [],
-      "verdicts": [
-        "kitchen.walkways"
-      ],
-      "word": "checked"
     }
   ],
   "decisions": [
@@ -2508,12 +2511,12 @@
       "sourcing"
     ],
     "records_digest": "0f865054f7fffbc7d3610b356965b37b00c3edf528da909bbacf11ac61393a78",
-    "resolution_digest": "cfbdf8638c76d93ea9bdfe4644a72dfb067d2822a234c601f613f6c0c86a53c8",
+    "resolution_digest": "3c7dfa5de1579508617d79f58b5ffc0398847e63fdd41f9cb770eaef42121a7a",
     "revision": "v0.1",
     "spine_version": "0.1.0",
-    "stale": false,
-    "stale_check": "",
-    "stale_reason": "",
+    "stale": true,
+    "stale_check": "nopekit check",
+    "stale_reason": "bom.complete: bom.lines changed, bom changed; bom.cost: bom.lines changed, bom changed; bom.availability: bom.lines changed, bom changed (+3 more)",
     "stale_unseen": false,
     "summary": "Kitchen, living room and upstairs floors: gloss two-tone cabinets, refrigerator to the hall end, island with a prep sink, inside $60k"
   },
@@ -2626,7 +2629,7 @@
       "home": "model/kitchen.py Config.alcove_w",
       "model_error": "",
       "name": "alcove_w",
-      "rationale": "in, the old refrigerator recess, wall to wall. ASSUMED from a 36 in refrigerator with trim; claim A1 owns it. 36 would not take two 18 in pantry cabinets with fillers; measure before ordering anything for it.",
+      "rationale": "in, the old refrigerator recess, wall to wall, north to south: it opens west, toward the kitchen, behind the pillar. ASSUMED from a 36 in refrigerator with trim; claim A1 owns it. 36 would not take two 18 in pantry cabinets with fillers; measure before ordering anything for it.",
       "read_by": [],
       "record": "",
       "rejected": [],
@@ -2648,7 +2651,7 @@
       "home": "model/kitchen.py Config.alcove_d",
       "model_error": "",
       "name": "alcove_d",
-      "rationale": "in, front to back of the recess. ASSUMED (a standard-depth refrigerator sits nearly flush in it in the photo). Under 30 it is a reach-in, not a walk-in.",
+      "rationale": "in, front to back of the recess, running east from its opening. ASSUMED (a standard-depth refrigerator sits nearly flush in it in the photo). The recess keeps its walls: it is the size of a refrigerator and is reached into, not walked into.",
       "read_by": [],
       "record": "",
       "rejected": [],
@@ -2844,7 +2847,7 @@
           "evidence": "",
           "origin": "model/kitchen.py PARAMS",
           "value": "alcove (where it is today)",
-          "why": "refrigerator to range is 12.0 ft, over 9 ft, and the alcove cannot become a pantry; the person asked for the move (R6)"
+          "why": "refrigerator to range is 10.0 ft, over 9 ft, and the alcove cannot become a pantry; the person asked for the move (R6)"
         }
       ],
       "source": "",
@@ -2992,7 +2995,7 @@
       "home": "model/kitchen.py Config.pantry",
       "model_error": "",
       "name": "pantry",
-      "rationale": "What the old alcove becomes when the refrigerator leaves it: 'open' (shelves on three sides, no door), 'door' (the same behind a hinged door) or 'cabinets' (tall cabinets with fronts in the lower colour).",
+      "rationale": "What the old alcove becomes when the refrigerator leaves it. No wall is removed for any of them: 'open' (the recess lined with shelves on its back and both sides, no door), 'door' (the same behind a hinged door) or 'cabinets' (tall cabinets with fronts in the lower colour).",
       "read_by": [],
       "record": "",
       "rejected": [],
@@ -3398,27 +3401,30 @@
       "A3",
       "A4",
       "A5",
-      "A6"
+      "A6",
+      "C1",
+      "C2",
+      "C17"
     ],
     "by_key": {
       "assumed": 0,
-      "checked": 17,
+      "checked": 14,
       "failing": 0,
-      "gap": 6,
+      "gap": 7,
       "open": 0,
       "pending_build": 4,
       "skipped": 0,
-      "stale": 0
+      "stale": 2
     },
     "counts": {
       "asserted": 0,
       "blocked": 0,
       "fail": 0,
-      "pass": 17,
+      "pass": 14,
       "pending": 0,
       "refuted": 0,
-      "stale": 0,
-      "unclaimed": 6,
+      "stale": 2,
+      "unclaimed": 7,
       "unverified": 4,
       "verified": 0
     },
@@ -3438,16 +3444,23 @@
       {
         "errored": 0,
         "key": "checked",
-        "label": "17 checked",
-        "n": 17,
+        "label": "14 checked",
+        "n": 14,
         "status": "pass"
       },
       {
         "errored": 0,
         "key": "gap",
-        "label": "6 gaps",
-        "n": 6,
+        "label": "7 gaps",
+        "n": 7,
         "status": "unclaimed"
+      },
+      {
+        "errored": 0,
+        "key": "stale",
+        "label": "2 stale",
+        "n": 2,
+        "status": "stale"
       },
       {
         "errored": 0,
@@ -3464,12 +3477,15 @@
       "A4",
       "A5",
       "A6",
+      "C1",
+      "C2",
+      "C17",
       "P1",
       "P2",
       "P3",
       "P4"
     ],
-    "verdict": "v0.1 is NOT ready: 10 of 27 required claims are unresolved — 6 gaps (A1, A2, A3, A4, +2 more); 4 pending build (P1, P2, P3, P4). 17 of 27 claims are checked against the current inputs. Pending build: 4 claims need an article (P1, P2, P3, P4). No claim is checked on any article."
+    "verdict": "v0.1 is NOT ready: 13 of 27 required claims are unresolved — 7 gaps (A1, A2, A3, A4, +3 more); 2 stale (C1, C2); 4 pending build (P1, P2, P3, P4). 14 of 27 claims are checked against the current inputs. Pending build: 4 claims need an article (P1, P2, P3, P4). No claim is checked on any article."
   },
   "rebuild": [],
   "rejections": [
@@ -3482,11 +3498,11 @@
       "returns": {
         "claim": "C1",
         "detail": "",
-        "gate": "bom.cost",
-        "observed": 0.03291716666666665,
-        "state": "does-not-hold",
-        "status": "",
-        "why": ""
+        "gate": "",
+        "observed": null,
+        "state": "cannot-evaluate",
+        "status": "stale",
+        "why": "status"
       },
       "returns_if": {
         "claim": "C1",
@@ -3506,11 +3522,11 @@
       "returns": {
         "claim": "C1",
         "detail": "",
-        "gate": "bom.cost",
-        "observed": 0.03291716666666665,
-        "state": "does-not-hold",
-        "status": "",
-        "why": ""
+        "gate": "",
+        "observed": null,
+        "state": "cannot-evaluate",
+        "status": "stale",
+        "why": "status"
       },
       "returns_if": {
         "claim": "C1",
@@ -3652,11 +3668,11 @@
       "returns": {
         "claim": "C1",
         "detail": "",
-        "gate": "bom.cost",
-        "observed": 0.03291716666666665,
-        "state": "does-not-hold",
-        "status": "",
-        "why": ""
+        "gate": "",
+        "observed": null,
+        "state": "cannot-evaluate",
+        "status": "stale",
+        "why": "status"
       },
       "returns_if": {
         "claim": "C1",
@@ -3892,7 +3908,8 @@
       "status": "unclaimed",
       "word": "gap",
       "worst": [
-        "A5"
+        "A5",
+        "C17"
       ]
     },
     {
@@ -3905,13 +3922,13 @@
       "disagree": [],
       "errored": false,
       "id": "R3",
-      "key": "pending_build",
+      "key": "gap",
       "source": "interview",
       "statement": "Movement through the space works for several people cooking at a time on a holiday",
-      "status": "unverified",
-      "word": "pending build",
+      "status": "unclaimed",
+      "word": "gap",
       "worst": [
-        "P3"
+        "C17"
       ]
     },
     {
@@ -4015,22 +4032,21 @@
       "disagree": [],
       "errored": false,
       "id": "R9",
-      "key": "checked",
+      "key": "stale",
       "source": "interview",
       "statement": "Cabinets and floors I can actually buy, from Seattle-area providers where that makes sense, custom or national where it does not",
-      "status": "pass",
-      "word": "checked",
+      "status": "stale",
+      "word": "stale",
       "worst": [
         "C1",
-        "C2",
-        "C11"
+        "C2"
       ]
     }
   ],
   "trace": {
-    "key": "1dfbd3e19159",
-    "round": 1,
-    "state": "traced"
+    "key": null,
+    "round": null,
+    "state": "untraced"
   },
   "verdicts": [
     {
@@ -4055,9 +4071,9 @@
         "<out>/bom_complete.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.complete/dfb35551dc1c05c4-024b1ea8/bom_complete.json"
+        "assets/evidence/bom.complete/ca4c61e544b55638-024b1ea8/bom_complete.json"
       ],
-      "fresh": true,
+      "fresh": false,
       "gate": "bom.complete",
       "limit": 0.0,
       "locators": [],
@@ -4065,14 +4081,14 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 3,
+      "order": 4,
       "pack": "sourcing",
       "passed": true,
-      "rho": "dfb35551dc1c05c43889396293437ccce0027f2c8e673992be3af86fa99c8b20",
+      "rho": "ca4c61e544b5563890cc5b7171751c12ed85dac63772e519f5efc9e93f3502ab",
       "settles": "bill of materials completeness",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "",
+      "stale_reason": "bom.lines changed, bom changed",
       "status": "pass",
       "tier": 0,
       "units": "lines",
@@ -4100,9 +4116,9 @@
         "<out>/bom_cost.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.cost/a4de84defde1e299-c5960d34/bom_cost.json"
+        "assets/evidence/bom.cost/41f5ecb46b51b1b1-c5960d34/bom_cost.json"
       ],
-      "fresh": true,
+      "fresh": false,
       "gate": "bom.cost",
       "limit": 60000.0,
       "locators": [],
@@ -4110,14 +4126,14 @@
       "margin_why": "",
       "measured": 58024.97,
       "ok": true,
-      "order": 4,
+      "order": 5,
       "pack": "sourcing",
       "passed": true,
-      "rho": "a4de84defde1e29945da535149839c9f7de0d638843a9936321ec5637a20bd8e",
+      "rho": "41f5ecb46b51b1b13216c4f8f7281726fff7d3e0bb114fb5fb4121e1ec383ee5",
       "settles": "build cost per unit",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "",
+      "stale_reason": "bom.lines changed, bom changed",
       "status": "pass",
       "tier": 0,
       "units": "USD/run",
@@ -4145,9 +4161,9 @@
         "<out>/bom_availability.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.availability/caf85f814049749f-999dcf7f/bom_availability.json"
+        "assets/evidence/bom.availability/2e0930ecf487cb2e-999dcf7f/bom_availability.json"
       ],
-      "fresh": true,
+      "fresh": false,
       "gate": "bom.availability",
       "limit": null,
       "locators": [
@@ -4267,11 +4283,11 @@
       "order": 0,
       "pack": "sourcing",
       "passed": false,
-      "rho": "caf85f814049749f33103e0d85eb074b8e9ace7ebe874148ed8ea1dccae38a53",
+      "rho": "2e0930ecf487cb2eed3f65b60f0e64b819941abecfbb659fdd02a03ffd3ef12c",
       "settles": "longest lead time",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "",
+      "stale_reason": "bom.lines changed, bom changed",
       "status": "fail",
       "tier": 0,
       "units": "weeks",
@@ -4301,9 +4317,9 @@
         "<out>/bom_moq.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.moq/e327303e38162801-c1c15d5d/bom_moq.json"
+        "assets/evidence/bom.moq/364d2b253184272b-c1c15d5d/bom_moq.json"
       ],
-      "fresh": true,
+      "fresh": false,
       "gate": "bom.moq",
       "limit": 4663.91,
       "locators": [],
@@ -4311,14 +4327,14 @@
       "margin_why": "",
       "measured": 0.0,
       "ok": true,
-      "order": 6,
+      "order": 7,
       "pack": "sourcing",
       "passed": true,
-      "rho": "e327303e381628016de5100b200d90878bd7daf6e2c429e96d4f64f07683e2f7",
+      "rho": "364d2b253184272b91a42913da3ce311b5548651a61dea5d44b6b98028a2a005",
       "settles": "minimum order quantity overbuy",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "",
+      "stale_reason": "bom.lines changed, bom changed",
       "status": "pass",
       "tier": 0,
       "units": "USD",
@@ -4340,7 +4356,7 @@
       "comparator": "",
       "cpu_s": 0.0,
       "detail": "",
-      "duration_s": 0.002457,
+      "duration_s": 0.001663,
       "error": "",
       "evidence": [],
       "evidence_assets": [],
@@ -4352,10 +4368,10 @@
       "margin_why": "no-verdict",
       "measured": null,
       "ok": false,
-      "order": 2,
+      "order": 3,
       "pack": "sourcing",
       "passed": false,
-      "rho": "6a521ecd0c6836513793b2f0dcec494af2fc9ca82bcfdefc4ab56410dbacb5cb",
+      "rho": "bd2e49485c3d014f97241bbe198f65739d6a331885630778c451ca776b4714b8",
       "settles": "vendor process capability",
       "skip_reason": "no 'process_rules' in the BOM document — the vendor's capability set is project data (ask for it in writing with the quote); nothing to check the design against",
       "skipped": true,
@@ -4388,9 +4404,9 @@
         "<out>/bom_single_source.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.single_source/ada3e704d7376681-88f62b19/bom_single_source.json"
+        "assets/evidence/bom.single_source/0c130cd2a5b0fd4b-88f62b19/bom_single_source.json"
       ],
-      "fresh": true,
+      "fresh": false,
       "gate": "bom.single_source",
       "limit": 0.0,
       "locators": [
@@ -4510,11 +4526,11 @@
       "order": 1,
       "pack": "sourcing",
       "passed": false,
-      "rho": "ada3e704d7376681fddf9c2e1bb06ef9dbd12ccdec1867183ce06fca62dd91cd",
+      "rho": "0c130cd2a5b0fd4bede247028e12d70954e3683a95480bd37014bc77fbec218d",
       "settles": "single source count",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "",
+      "stale_reason": "bom.lines changed, bom changed",
       "status": "fail",
       "tier": 0,
       "units": "lines",
@@ -4544,9 +4560,9 @@
         "<out>/bom_currency.json"
       ],
       "evidence_assets": [
-        "assets/evidence/bom.currency/ccfb5cac68f1cda7-024b1ea8/bom_currency.json"
+        "assets/evidence/bom.currency/966b884a797c8122-024b1ea8/bom_currency.json"
       ],
-      "fresh": true,
+      "fresh": false,
       "gate": "bom.currency",
       "limit": 0.0,
       "locators": [],
@@ -4554,14 +4570,14 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 5,
+      "order": 6,
       "pack": "sourcing",
       "passed": true,
-      "rho": "ccfb5cac68f1cda7e0bb69548d985fa23557adaab426096f05954ab088f32543",
+      "rho": "966b884a797c8122696d5441ded652b20eee6aa4273adf3b04cf49e082de731b",
       "settles": "price currency coherence",
       "skip_reason": "",
       "skipped": false,
-      "stale_reason": "",
+      "stale_reason": "bom.lines changed, bom changed",
       "status": "pass",
       "tier": 0,
       "units": "lines",
@@ -4592,7 +4608,7 @@
       "margin_why": "",
       "measured": 8.14,
       "ok": true,
-      "order": 18,
+      "order": 19,
       "pack": "",
       "passed": true,
       "rho": "27c54a6f2d55cbb01f8c5af550a745824003ffc794aa0830aba52be3532b30ac",
@@ -4630,7 +4646,7 @@
       "margin_why": "",
       "measured": 19.13,
       "ok": true,
-      "order": 19,
+      "order": 20,
       "pack": "",
       "passed": true,
       "rho": "c3604d554ed8a38b60205e8fbecd87c6066cfcc7c7e433571d043dc0181d3c22",
@@ -4668,7 +4684,7 @@
       "margin_why": "",
       "measured": 48.0,
       "ok": true,
-      "order": 7,
+      "order": 8,
       "pack": "",
       "passed": true,
       "rho": "0bcba119b2105b2bb893ea9d2dc083960db69b4ff0a83f327acd4f7afce17d19",
@@ -4706,7 +4722,7 @@
       "margin_why": "",
       "measured": 48.0,
       "ok": true,
-      "order": 8,
+      "order": 9,
       "pack": "",
       "passed": true,
       "rho": "7d34e8bfcf909cef736ff39c769e290ba9e0ed4f188fc2bd86c45c44e0bdd4ed",
@@ -4744,7 +4760,7 @@
       "margin_why": "",
       "measured": 22.5,
       "ok": true,
-      "order": 10,
+      "order": 11,
       "pack": "",
       "passed": true,
       "rho": "c581b23596bdfbe55b8a960c2f23cb8f41436a2a5eb745c175062cd79463cac9",
@@ -4782,7 +4798,7 @@
       "margin_why": "",
       "measured": 2.0,
       "ok": true,
-      "order": 15,
+      "order": 16,
       "pack": "",
       "passed": true,
       "rho": "3cb692d3645b35d594efecec189ae96ae5d6313184480c07fee4e0357bdc9173",
@@ -4820,7 +4836,7 @@
       "margin_why": "",
       "measured": 15.0,
       "ok": true,
-      "order": 14,
+      "order": 15,
       "pack": "",
       "passed": true,
       "rho": "e1a62efbd952b55fb0bb795128780cfc955bb40f81844e3ec2286f0075b650b1",
@@ -4858,7 +4874,7 @@
       "margin_why": "zero-limit",
       "measured": -0.4,
       "ok": true,
-      "order": 16,
+      "order": 17,
       "pack": "",
       "passed": true,
       "rho": "6940125b21009833a61d44b8780d95b0eaf4273c5c07e981342af0a890a973f0",
@@ -4896,7 +4912,7 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 12,
+      "order": 13,
       "pack": "",
       "passed": true,
       "rho": "b2cb003e3a0e68c34397798ff41cd4d690c46e3839190befd67e38970b20259f",
@@ -4934,7 +4950,7 @@
       "margin_why": "",
       "measured": 0.0,
       "ok": true,
-      "order": 17,
+      "order": 18,
       "pack": "",
       "passed": true,
       "rho": "de63c98a5f6128a84e5dea6c6a77b6a52db8a6e346f85be49f8e1002d663f76c",
@@ -5010,7 +5026,7 @@
       "margin_why": "",
       "measured": 22.0,
       "ok": true,
-      "order": 13,
+      "order": 14,
       "pack": "",
       "passed": true,
       "rho": "4ea1b64d60ac4ab1d229b33db80923381358cde917c1c6faab9f3862ac9c3eda",
@@ -5048,7 +5064,7 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 9,
+      "order": 10,
       "pack": "",
       "passed": true,
       "rho": "c6a85fe62d9dc5547f2f1f3e0bd0135990ccfd53c17e529f54ea49bd0370ea25",
@@ -5086,7 +5102,7 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 11,
+      "order": 12,
       "pack": "",
       "passed": true,
       "rho": "d5a4b0f070111edece508e074790cb13518b2abd1374343177e46740743270f1",
@@ -5105,37 +5121,43 @@
       "basis": "sourced",
       "blocked_by": [],
       "blocked_kind": "",
-      "cached": true,
+      "cached": false,
       "claims": [
         "walkways"
       ],
-      "comparator": ">=",
+      "comparator": "",
       "cpu_s": 0.0,
-      "detail": "west 48, north 48, south 160.5, east 158; narrowest: 48 in (limit >= 36 in)",
+      "detail": "",
       "duration_s": 0.0,
-      "error": "",
+      "error": "unqualified: control:two-outcomes|control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b",
       "evidence": [],
       "evidence_assets": [],
-      "fresh": true,
+      "fresh": false,
       "gate": "kitchen.walkways",
-      "limit": 36.0,
+      "limit": null,
       "locators": [],
-      "margin": 0.333333,
-      "margin_why": "",
-      "measured": 48.0,
-      "ok": true,
-      "order": 20,
+      "margin": null,
+      "margin_why": "no-verdict",
+      "measured": null,
+      "ok": false,
+      "order": 2,
       "pack": "",
-      "passed": true,
+      "passed": false,
+      "qualification": {
+        "reason": "two control outcomes recorded for identical inputs (control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b)",
+        "text": "unqualified: two control outcomes recorded for identical inputs (control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b)",
+        "token": "control:two-outcomes|control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b"
+      },
       "rho": "22265f23181b8e9f26a81c8c16768152eb07a5710839db62cfca57d7a184ef0c",
       "settles": "narrowest passage",
       "skip_reason": "",
       "skipped": false,
       "stale_reason": "",
-      "status": "pass",
+      "status": "unqualified",
       "tier": 0,
-      "units": "in",
-      "unqualified": "",
+      "unanchored": true,
+      "units": "",
+      "unqualified": "control:two-outcomes|control-a22b7ce138768e7f-25804600, control-be996d74bfe7ee2e-ad6fbb7b",
       "unseen": false,
       "views": []
     }
@@ -5155,11 +5177,18 @@
             "top_w1_south",
             "top_w2"
           ],
+          "Fireplace": [
+            "fireplace_box",
+            "fireplace_hearth"
+          ],
           "Floor": [
             "floor_main",
             "floor_hall"
           ],
           "Furniture": [
+            "wall_shelf0",
+            "wall_shelf1",
+            "wall_shelf2",
             "f_table",
             "f_table_leg0",
             "f_table_leg1",
@@ -5205,7 +5234,9 @@
             "wall_n",
             "wall_stub3",
             "wall_stub4",
-            "wall_alcove_e",
+            "wall_niche_n",
+            "wall_niche_e",
+            "wall_niche_head",
             "wall_office_s1",
             "wall_office_s2",
             "wall_office_head",

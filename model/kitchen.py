@@ -48,13 +48,14 @@ class Config:
     area. Scaled from the floor plan (11 ft 9 in), not measured."""
 
     alcove_w: float = 40.0
-    """in, the old refrigerator recess, wall to wall. ASSUMED from a 36 in
-    refrigerator with trim; claim A1 owns it. 36 would not take two 18 in pantry
+    """in, the old refrigerator recess, wall to wall, north to south: it opens west,
+    toward the kitchen, behind the pillar. ASSUMED from a 36 in refrigerator with trim; claim A1 owns it. 36 would not take two 18 in pantry
     cabinets with fillers; measure before ordering anything for it."""
 
     alcove_d: float = 34.0
-    """in, front to back of the recess. ASSUMED (a standard-depth refrigerator sits
-    nearly flush in it in the photo). Under 30 it is a reach-in, not a walk-in."""
+    """in, front to back of the recess, running east from its opening. ASSUMED (a standard-depth refrigerator sits
+    nearly flush in it in the photo). The recess keeps its walls: it is the size of
+    a refrigerator and is reached into, not walked into."""
 
     floor_area_sqft: float = 1257.0
     """sq ft of new floor: kitchen 193, living and dining 507, office 52, bedrooms
@@ -105,9 +106,10 @@ class Config:
     from the refrigerator to the only sink is 12.7 ft. See PARAMS."""
 
     pantry: str = "open"
-    """What the old alcove becomes when the refrigerator leaves it: 'open'
-    (shelves on three sides, no door), 'door' (the same behind a hinged door) or
-    'cabinets' (tall cabinets with fronts in the lower colour)."""
+    """What the old alcove becomes when the refrigerator leaves it. No wall is
+    removed for any of them: 'open' (the recess lined with shelves on its back and
+    both sides, no door), 'door' (the same behind a hinged door) or 'cabinets'
+    (tall cabinets with fronts in the lower colour)."""
 
     microwave_at: str = "pantry"
     """'counter' (as today), 'pantry' (a shelf at 30 in in the alcove) or
@@ -159,7 +161,7 @@ PARAMS = [
                 "the triangle is 26.9 ft against 26"}]},
     {"name": "fridge_at", "rejected": [
         {"value": "alcove (where it is today)",
-         "why": "refrigerator to range is 12.0 ft, over 9 ft, and the alcove "
+         "why": "refrigerator to range is 10.0 ft, over 9 ft, and the alcove "
                 "cannot become a pantry; the person asked for the move (R6)"}]},
     {"name": "island_top_d", "units": "in", "rejected": [
         {"value": "36 in", "why": "11 in of knee room, 4 in short of the 15 in "
@@ -185,6 +187,33 @@ KNEE_36 = 15.0           # NKBA knee depth at a 36 in counter
 DRAWER_MW_BOTTOM = 19.0  # in above the floor, a 24 in drawer microwave under a 36 in counter
 REACH_DROP = 3.0         # NKBA: a microwave's bottom sits 3 in below the user's shoulder, or lower
 SHOULDER = 0.80          # shoulder height over stature, children 5 to 9
+PANTRY_BACK_D = 12.0     # in, the shelves across the back of the alcove
+PANTRY_SIDE_D = 10.0     # in, the shelves down each side; 40 in of alcove leaves 20 in to reach through
+WALL_H = 96.0            # in, the wall plate. Above it the ceiling is vaulted
+NICHE_Y0 = 30.0          # in from the sink wall: the old refrigerator recess starts where return wall 3 ends
+NICHE_HEAD = 82.0        # in, the underside of the header over the recess's opening. By eye from the photo
+PILLAR_W = 20.0          # in, the pillar south of the recess, as wide as it looks in the photos
+# Three cube sconces on the triangular wall over the kitchen, (x, z, colour), by eye from the photo.
+# They hang in one level line, a little above the flat ceiling's edge.
+SCONCES = ((60.0, 104.0, "#3B49B8"), (91.0, 104.0, "#E3D21F"), (123.0, 104.0, "#D8203F"))
+# The vault, as (x, z): the west eave over the long wall, the ridge beam, the east
+# eave. By eye from the photos, like the rest of the room (claim A3).
+VAULT = ((-5.0, 96.0), (185.0, 150.0), (277.0, 120.0))
+
+
+def soffit_y(c: "Config") -> float:
+    """in from the sink wall: the plane of the pillar's back, the office's front wall
+    and the triangular wall over the kitchen. North of it, over the sink run, the
+    ceiling is flat at the wall plate; south of it the room is vaulted."""
+    return NICHE_Y0 + c.alcove_w
+
+
+def ceiling_z(x: float) -> float:
+    """in, the height of the vaulted ceiling over a point x in from the long wall."""
+    (x0, z0), (x1, z1), (x2, z2) = VAULT
+    if x <= x1:
+        return z0 + (x - x0) * (z1 - z0) / (x1 - x0)
+    return z1 + (x - x1) * (z2 - z1) / (x2 - x1)
 
 
 def _box(id, kind, role, x, y, z, dx, dy, dz, face="", fronts="", label=""):
@@ -296,27 +325,32 @@ def island(c: Config) -> list[dict]:
 
 
 def alcove(c: Config) -> list[dict]:
-    """What stands in the recess at the east end of the sink wall."""
-    x0 = c.wall2_len + 5.0          # the stub wall beside the 18 in drawers is ~5 in thick
+    """What stands in the old refrigerator recess. The recess is east of return
+    wall 3 and behind the pillar; its opening faces west, into the kitchen."""
+    x0 = c.wall2_len + 5.0          # the inside of the opening: return wall 3 is ~5 in thick
+    y0, w, d = NICHE_Y0, c.alcove_w, c.alcove_d
     out = []
     if c.fridge_at == "alcove":
-        out.append(_box("fridge", "appliance", "fridge", x0 + (c.alcove_w - FRIDGE_W) / 2, 0, 0, FRIDGE_W, c.fridge_d, 70, "S", "", "refrigerator 36 (kept, stays)"))
+        out.append(_box("fridge", "appliance", "fridge", x0, y0 + (w - FRIDGE_W) / 2, 0, c.fridge_d, FRIDGE_W, 70, "W", "", "refrigerator 36 (kept, stays)"))
         return out
     if c.pantry == "cabinets":
-        w = (c.alcove_w - 4) / 2
+        cw = (w - 4) / 2
+        cx = x0 + d - c.base_d
         for i in range(2):
-            out.append(_box(f"pantry_tall{i}", "tall", "lower", x0 + 2 + i * w, 0, 0, w, c.base_d, 90, "S", "door1tall", f"pantry cabinet {w:.0f}x90"))
+            out.append(_box(f"pantry_tall{i}", "tall", "lower", cx, y0 + 2 + i * cw, 0, c.base_d, cw, 80, "W", "door1tall", f"pantry cabinet {cw:.0f}x80"))
         if c.microwave_at == "pantry":
-            out.append(_box("microwave", "appliance", "microwave", x0 + 2, c.base_d - 16, 30, 20, 16, 12, "S", "", "microwave in pantry niche"))
+            out.append(_box("microwave", "appliance", "microwave", cx, y0 + 2, 30, 16, 20, 12, "W", "", "microwave in pantry niche"))
         return out
-    sd = 12.0
+    # the recess as it stands, lined with shelves: across the back and down both sides
+    bd, sd = PANTRY_BACK_D, PANTRY_SIDE_D
     for i, z in enumerate((16, 30, 44, 58, 72)):
-        out.append(_box(f"pantry_shelf_back{i}", "shelf", "shelf", x0, 0, z, c.alcove_w, sd, 1, "S", "", "pantry shelf"))
-        out.append(_box(f"pantry_shelf_side{i}", "shelf", "shelf", x0, sd, z, sd, c.alcove_d - sd - 2, 1, "E", "", "pantry shelf"))
+        out.append(_box(f"pantry_shelf_back{i}", "shelf", "shelf", x0 + d - bd, y0, z, bd, w, 1, "W", "", "pantry shelf, back"))
+        out.append(_box(f"pantry_shelf_north{i}", "shelf", "shelf", x0 + 2, y0, z, d - bd - 2, sd, 1, "S", "", "pantry shelf, north side"))
+        out.append(_box(f"pantry_shelf_south{i}", "shelf", "shelf", x0 + 2, y0 + w - sd, z, d - bd - 2, sd, 1, "N", "", "pantry shelf, south side"))
     if c.microwave_at == "pantry":
-        out.append(_box("microwave", "appliance", "microwave", x0 + c.alcove_w - 21, 0, 31, 20, 14, 12, "S", "", "microwave on the 30 in shelf"))
+        out.append(_box("microwave", "appliance", "microwave", x0 + d - 14, y0 + w - 21, 31, 14, 20, 12, "W", "", "microwave on the 30 in shelf"))
     if c.pantry == "door":
-        out.append(_box("pantry_door", "door", "door", x0 + 2, c.alcove_d, 0, c.alcove_w - 4, 1.5, 80, "S", "", "pantry door"))
+        out.append(_box("pantry_door", "door", "door", x0 - 3.5, y0 + 2, 0, 1.5, w - 4, 80, "W", "", "pantry door"))
     return out
 
 
@@ -331,6 +365,10 @@ def counters(c: Config) -> list[dict]:
         _box("top_w2", "counter", "counter", d, 0, z, c.wall2_len - d, d, t, "", "", "counter, sink wall"),
         _box("sink", "sink", "sink", CORNER + 2 + 24 + 1.5, 3, z + t - 9, 30, 18, 9.05, "", "", "sink"),
     ]
+    f = CATALOG["faucet"][c.faucet]
+    # the faucet stands 1.5 in off the wall behind the sink's centre; the box is its
+    # footprint and its stated height, so the twin shows it and nothing else reads it
+    out.append(_box("faucet", "faucet", "faucet", CORNER + 2 + 24 + 16.5 - 1, 1.0, z + t, 2, 2, f["h_in"], "", "", f["label"]))
     if c.microwave_at == "counter":
         out.append(_box("microwave", "appliance", "microwave", 2, 4, z + t, 16, 20, 12, "E", "", "microwave on the counter"))
     return out
@@ -344,15 +382,23 @@ def room(c: Config) -> list[dict]:
     scaled from the Homestyler floor plan and placed by eye from five photos. It
     is drawn so the kitchen can be seen in its room; no gate reads it. Claim A3.
     """
-    H, T = 96.0, 5.0
-    ax0 = c.wall2_len + T                 # alcove west face
-    ax1 = ax0 + c.alcove_w                # alcove east face
+    H, T = WALL_H, 5.0
+    nx0 = c.wall2_len                     # the west face of return wall 3 and of the pillar
+    nx1 = nx0 + T + c.alcove_d            # the back (east) wall of the old refrigerator recess
+    ny0, ny1 = NICHE_Y0, soffit_y(c)      # the recess, north to south; ny1 is the pillar's back
+    px1 = nx0 + PILLAR_W                  # the pillar's east edge
     E, S = 272.0, 376.0                   # inside faces of the east and south walls
     hall0, hall1 = 209.0, 258.0           # the hallway's mouth in the west wall
     out = []
 
-    def add(id, kind, x, y, z, dx, dy, dz, label=""):
+    def add(id, kind, x, y, z, dx, dy, dz, label="", inner=False):
         out.append(_box(id, kind, kind, x, y, z, dx, dy, dz, "", "", label or id))
+        if inner:       # a wall that stands inside the room: a viewer never hides it to see in
+            out[-1]["inner"] = True
+
+    def post(id, x, y, dx=6.0, dy=6.0, label="post, floor to the vaulted ceiling"):
+        # a post carries the roof: it runs from the floor to the vaulted ceiling
+        add(id, "post", x, y, 0, dx, dy, max(ceiling_z(x), ceiling_z(x + dx)), label)
 
     add("floor_main", "floor", -T, -T, -1, E + 2 * T, S + 2 * T, 1, "floor")
     add("floor_hall", "floor", -70, hall0, -1, 70 - T, hall1 - hall0, 1, "hallway floor")
@@ -362,29 +408,43 @@ def room(c: Config) -> list[dict]:
     add("wall_hall_end", "wall", -70 - T, hall0 - T, 0, T, hall1 - hall0 + 2 * T, H, "hallway end")
     add("wall_w_south", "wall", -T, hall1, 0, T, S - hall1 + T, H, "west wall")
     add("wall_n", "wall", 0, -T, 0, E + T, T, H, "wall 2 (sink wall)")
-    add("wall_stub3", "wall", c.wall2_len, 0, 0, T, 30, H, "return wall 3")
-    add("wall_stub4", "wall", 0, c.wall1_len, 0, 30, T, H, "return wall 4")
-    add("wall_alcove_e", "wall", ax1, 0, 0, T, 66, H, "alcove east wall")
-    add("wall_office_s1", "wall", ax1 + T, 60, 0, 14, 6, H, "office wall")
-    add("office_slider", "glass", ax1 + T + 14, 62, 0, 52, 2, 80, "office sliding door")
-    add("wall_office_s2", "wall", ax1 + T + 66, 60, 0, E - (ax1 + T + 66), 6, H, "office wall")
-    add("wall_office_head", "wall", ax1 + T + 14, 60, 80, 52, 6, H - 80, "office door header")
+    add("wall_stub3", "wall", nx0, 0, 0, T, ny0, H, "return wall 3", inner=True)
+    add("wall_stub4", "wall", 0, c.wall1_len, 0, 30, T, H, "return wall 4", inner=True)
+    # the old refrigerator recess: behind the pillar, open to the west under a header
+    add("wall_niche_n", "wall", nx0 + T, ny0 - T, 0, nx1 - nx0, T, H, "recess north wall", inner=True)
+    add("wall_niche_e", "wall", nx1, ny0, 0, T, ny1 - ny0, H, "recess back wall", inner=True)
+    add("wall_niche_head", "wall", nx0, ny0, NICHE_HEAD, T, ny1 - ny0, H - NICHE_HEAD, "header over the recess", inner=True)
+    # the office's front wall, in the plane of the pillar's back
+    add("wall_office_s1", "wall", px1, ny1, 0, 197 - px1, T, H, "office front wall")
+    add("office_slider", "glass", 197, ny1 + 1.5, 0, 52, 2, 80, "office sliding door")
+    add("wall_office_s2", "wall", 249, ny1, 0, E - 249, T, H, "office front wall")
+    add("wall_office_head", "wall", 197, ny1, 80, 52, T, H - 80, "office door header")
     add("wall_e", "wall", E, -T, 0, T, S + 2 * T, H, "east wall")
     add("wall_s_sill", "wall", -T, S, 0, E + 2 * T, T, 30, "south wall below the windows")
     add("win_south", "glass", 86, S + 1.5, 30, 180, 2, 66, "gable windows")
     add("wall_s_w", "wall", -T, S, 30, 91, T, H - 30, "south wall")
     add("wall_s_e", "wall", 266, S, 30, E + T - 266, T, H - 30, "south wall")
-    add("post_se", "post", c.kitchen_w, 195, 0, 6, 6, H, "post")
-    add("post_ne", "post", ax1, 60, 0, 6, 6, H, "post")
-    add("fireplace", "brick", E - 10, 150, 0, 10, 52, H, "brick fireplace")
+    post("post_se", c.kitchen_w, 195)
+    post("post_ne", nx0, ny1, PILLAR_W, 7.0, "pillar south of the recess, floor to the vaulted ceiling")
+    # the brick fireplace, with its firebox open at the floor: 30 in wide, 26 in high
+    add("fireplace_n", "brick", E - 10, 150, 0, 10, 11, H, "brick fireplace")
+    add("fireplace_s", "brick", E - 10, 191, 0, 10, 11, H, "brick fireplace")
+    add("fireplace_top", "brick", E - 10, 161, 26, 10, 30, H - 26, "brick fireplace")
+    add("fireplace_box", "firebox", E - 2, 161, 0, 2, 30, 26, "firebox")
+    add("fireplace_hearth", "firebox", E - 10, 161, 0, 8, 30, 0.5, "firebox floor")
+    # three wood shelves on pipe brackets, on the east wall between the office's sliding door and the fireplace
+    for i, (y, ln, z) in enumerate(((ny1 + T + 2, 17.0, 46.0), (ny1 + T + 1, 48.0, 58.0), (ny1 + T + 16, 16.0, 70.0))):
+        add(f"wall_shelf{i}", "wallshelf", E - 8, y, z, 8, ln, 1.5, "wall shelf")
     add("stair_well", "stair", 0, 300, -0.5, 85, S - 300, 1, "stair opening")
     add("stair_rail_n", "rail", 0, 298, 0, 87, 2, 38, "stair rail")
     add("stair_rail_e", "rail", 85, 298, 0, 2, S - 298, 38, "stair rail")
-    add("f_table", "furniture", 196, 78, 28.5, 40, 108, 1.5, "dining table")
-    for i, (lx, ly) in enumerate(((198, 80), (232, 80), (198, 182), (232, 182))):
+    add("f_table", "furniture", 196, 94, 28.5, 40, 108, 1.5, "dining table")
+    for i, (lx, ly) in enumerate(((198, 96), (232, 96), (198, 198), (232, 198))):
         add(f"f_table_leg{i}", "furniture", lx, ly, 0, 3, 3, 28.5, "table leg")
-    add("f_sofa_seat", "furniture", 150, 262, 0, 84, 34, 17, "sofa")
-    add("f_sofa_back", "furniture", 150, 262, 17, 84, 8, 15, "sofa back")
+    # the new couch: larger and squarer than the grey one in the photos, in a spice
+    # colour. Its size is not measured: 94 x 40 in is a deep three-seater.
+    add("f_sofa_seat", "sofa", 145, 254, 0, 94, 40, 17, "couch (new: larger, square, spice)")
+    add("f_sofa_back", "sofa", 145, 254, 17, 94, 9, 15, "couch back")
     add("f_rug", "rug", 140, 290, 0, 100, 70, 0.4, "rug")
     return out
 
@@ -480,8 +540,8 @@ def open_volumes(c: Config, boxes: list[dict]) -> list[dict]:
             add(b, "door_b", w / 2, w, 30, 70, w / 2, "door")
             add(b, "freezer", 0, w, 3, 30, FREEZER_TRAVEL, "drawer")
         elif b["kind"] == "door":      # the pantry door, swinging out into the kitchen
-            out.append({"id": f"{b['id']}:swing", "of": b["id"], "kind": "door", "x": b["x"], "y": b["y"] + b["dy"],
-                        "z": 0, "dx": b["dx"], "dy": b["dx"], "dz": b["dz"]})
+            out.append({"id": f"{b['id']}:swing", "of": b["id"], "kind": "door", "x": b["x"] - b["dy"], "y": b["y"],
+                        "z": 0, "dx": b["dy"], "dy": b["dy"], "dz": b["dz"]})
     return out
 
 
@@ -568,7 +628,7 @@ def flow(c: Config) -> dict:
         fy = range_y + RANGE_W + 30 + 33 + 1.25
         fridge = (c.fridge_d, fy + FRIDGE_W / 2)
     else:
-        fridge = (c.wall2_len + 5 + c.alcove_w / 2, c.fridge_d)
+        fridge = (c.wall2_len + 5.0, NICHE_Y0 + c.alcove_w / 2)   # its door faces west
     has_island = c.island_len > 0
     ix0 = RANGE_D + c.island_aisle
     iy0 = c.counter_d + c.island_north_aisle
@@ -663,7 +723,7 @@ CATALOG = {
             "vendor": "IKEA Renton + 27estore (online)", "usd_lf": 335.0, "v": "estimate",
             "range": "8,500 to 13,000 USD for this kitchen",
             "gloss": True, "integrated": "ask", "sheen": "gloss", "door": "slab",
-            "lower": _RAL_LOW + ["bordo", "cobalt"], "upper": _RAL_UP, "handles": ["integrated", "push", "begripa"],
+            "lower": _RAL_LOW + ["bordo", "cobalt"], "upper": _RAL_UP, "handles": ["integrated", "push", "begripa", "cup_black", "bar_black"],
             "note": "The only route found with true high gloss, any RAL colour and a published price "
                     "(32 to 36 USD per sq ft of front). One product image shows a routed integrated handle; "
                     "no spec for it was found, so ask before ordering. About 6 to 7 weeks.",
@@ -673,8 +733,8 @@ CATALOG = {
             "vendor": "IKEA Renton + 27estore (online)", "usd_lf": 270.0, "v": "estimate",
             "range": "7,000 to 10,500 USD for this kitchen",
             "gloss": True, "integrated": "ask", "sheen": "gloss", "door": "slab",
-            "lower": _RAL_LOW + ["bordo", "cobalt"], "upper": ["ikea_gloss_white"], "handles": ["integrated", "push", "begripa"],
-            "note": "Cheapest gloss two-tone. Uppers are white only and open by push latch; "
+            "lower": _RAL_LOW + ["bordo", "cobalt"], "upper": ["ikea_gloss_white"], "handles": ["integrated", "push", "begripa", "cup_black", "bar_black"],
+            "note": "Cheapest gloss two-tone when the uppers are IKEA's own white, which open by push latch; "
                     "the two gloss surfaces come from two makers and will not match exactly.",
             "url": "https://www.ikea.com/us/en/cat/ringhult-high-gloss-white-fronts-700370/"},
         "voxtorp_gloss": {
@@ -682,7 +742,7 @@ CATALOG = {
             "vendor": "IKEA Renton", "usd_lf": 225.0, "v": "tag",
             "range": "7,000 to 9,500 USD for this kitchen",
             "gloss": True, "integrated": True, "sheen": "gloss", "door": "slab-jpull",
-            "lower": ["ikea_graybrown"], "upper": ["ikea_graybrown", "ikea_matt_white"], "handles": ["integrated"],
+            "lower": ["ikea_graybrown"], "upper": ["ikea_graybrown", "ikea_matt_white"], "handles": ["integrated", "begripa", "cup_black", "bar_black"],
             "note": "In stock, integrated handle, high gloss, but one colour in the US: dark gray-brown. "
                     "225 USD per linear ft on the tag in your photo.",
             "url": "https://www.ikea.com/us/en/cat/voxtorp-fronts-700359/"},
@@ -691,7 +751,7 @@ CATALOG = {
             "vendor": "IKEA Renton", "usd_lf": 215.0, "v": "estimate",
             "range": "7,000 to 9,500 USD for this kitchen",
             "gloss": False, "integrated": True, "sheen": "matt", "door": "slab-jpull",
-            "lower": ["ikea_dark_gray"], "upper": ["ikea_matt_white"], "handles": ["integrated"],
+            "lower": ["ikea_dark_gray"], "upper": ["ikea_matt_white"], "handles": ["integrated", "begripa", "cup_black", "bar_black"],
             "note": "Integrated handle and two tones from stock, but matt and not bright.",
             "url": "https://www.ikea.com/us/en/cat/voxtorp-fronts-700359/"},
         "sektion_bofronts": {
@@ -699,7 +759,7 @@ CATALOG = {
             "vendor": "IKEA Renton + Bofronts (online)", "usd_lf": 520.0, "v": "estimate",
             "range": "14,000 to 20,000 USD for this kitchen",
             "gloss": False, "integrated": True, "sheen": "satin", "door": "slab-jpull",
-            "lower": _BM, "upper": _BM, "handles": ["integrated"],
+            "lower": _BM, "upper": _BM, "handles": ["integrated", "begripa", "cup_black", "bar_black"],
             "note": "A recessed integrated pull and any Benjamin Moore colour at no extra cost, with a "
                     "published price (15x30 door 277 USD). The sheen is not stated and is probably satin.",
             "url": "https://bofronts.com/en-us/collections/lacquer-2"},
@@ -709,7 +769,7 @@ CATALOG = {
             "range": "put your contractor's quote here",
             "gloss": False, "integrated": False, "sheen": "matt", "door": "shaker",
             "lower": ["fairy_green", "navy_blue", "gs_black", "timber"], "upper": ["swan_white", "artisanal_ash", "fairy_green", "timber"],
-            "handles": ["bar", "begripa"],
+            "handles": ["bar", "begripa", "cup_black", "bar_black"],
             "note": "The line in your showroom photo. No public price; a like line sells online at about "
                     "2,540 USD per 10x10, so this figure is a guess. Painted shaker with pulls.",
             "url": "https://www.checkbook.org/wa/seattle/cabinet-suppliers/gs-building-supply/ob7qf"},
@@ -718,7 +778,7 @@ CATALOG = {
             "vendor": "a Seattle-area cabinet shop", "usd_lf": 650.0, "v": "estimate",
             "range": "15,000 to 28,000 USD for this kitchen; quotes needed",
             "gloss": True, "integrated": True, "sheen": "gloss", "door": "slab-jpull",
-            "lower": ["azul_marino"], "upper": ["luxe_blanco"], "handles": ["integrated"],
+            "lower": ["azul_marino"], "upper": ["luxe_blanco"], "handles": ["integrated", "begripa", "cup_black", "bar_black"],
             "note": "A routed finger-pull edge in high gloss, navy over white only. No list price found.",
             "url": "https://lioher.com/doors/fingerpull/"},
         "bauformat": {
@@ -726,7 +786,7 @@ CATALOG = {
             "vendor": "Bauformat, 2605 Western Ave, Seattle", "usd_lf": 900.0, "v": "estimate",
             "range": "25,000 USD and up per kitchen",
             "gloss": True, "integrated": True, "sheen": "gloss", "door": "slab-channel",
-            "lower": _RAL_LOW, "upper": _RAL_UP, "handles": ["integrated"],
+            "lower": _RAL_LOW, "upper": _RAL_UP, "handles": ["integrated", "begripa", "cup_black", "bar_black"],
             "note": "German handleless cabinets with lacquered channels, exactly the look, at a showroom "
                     "20 minutes away. Another dealer puts kitchens at 25,000 USD and up.",
             "url": "https://bauformatseattle.com/showroom"},
@@ -734,8 +794,12 @@ CATALOG = {
     "handles": {
         "integrated": {"label": "Integrated (no hardware)", "usd_each": 0.0, "v": "seen", "vendor": "the front maker", "url": ""},
         "push": {"label": "Push-to-open latches", "usd_each": 7.0, "v": "estimate", "vendor": "IKEA UTRUSTA or Blum", "url": ""},
-        "begripa": {"label": "IKEA BEGRIPA half-round, coloured", "usd_each": 4.0, "v": "tag", "vendor": "IKEA Renton",
+        "begripa": {"label": "IKEA BEGRIPA half-round, one colour or mixed", "usd_each": 4.0, "v": "tag", "vendor": "IKEA Renton",
                     "url": "https://www.ikea.com/us/en/p/begripa-handle-yellow-half-round-50572600/"},
+        "cup_black": {"label": "Matte black cup pull, 3.5 in", "usd_each": 6.5, "v": "seen", "vendor": "LynnsGraceland on Amazon",
+                      "url": "https://www.amazon.com/dp/B09NLR9YR8?th=1"},
+        "bar_black": {"label": "Matte black square bar pull, 160 mm centres", "usd_each": 2.2, "v": "seen", "vendor": "Rergy on Amazon, 10 for $21.95",
+                      "url": "https://www.amazon.com/dp/B07RZRNTRR?th=1"},
         "bar": {"label": "Bar pulls", "usd_each": 6.0, "v": "estimate", "vendor": "the cabinet supplier", "url": ""},
     },
     "cab_install": {
@@ -753,6 +817,15 @@ CATALOG = {
                            "vendor": "Granite & Marble Specialties, Lynnwood", "url": "https://fixr.com/costs/install-quartz-countertop"},
         "porcelain": {"label": "Sintered stone / porcelain", "usd_sqft": 90.0, "v": "seen", "hex": "#EDEAE4", "vein": "#BDB6A8",
                       "vendor": "a Lynnwood fabricator", "url": "https://www.fixr.com/costs/install-stone-slab-countertops"},
+        # Concrete greys and soapstone. `look` tells the drawing how to paint the slab.
+        "quartz_concrete_light": {"label": "Quartz, pale concrete (Caesarstone Fresh or Raw Concrete)", "usd_sqft": 100.0, "v": "estimate", "hex": "#D3D0C9", "vein": "#B9B5AC", "look": "concrete",
+                                  "vendor": "a Lynnwood fabricator", "url": "https://angi.com/articles/how-much-do-caesarstone-countertops-cost.htm"},
+        "quartz_concrete": {"label": "Quartz, concrete grey (Caesarstone Sleek or Rugged Concrete)", "usd_sqft": 100.0, "v": "estimate", "hex": "#9C9B96", "vein": "#7F7E79", "look": "concrete",
+                            "vendor": "a Lynnwood fabricator", "url": "https://angi.com/articles/how-much-do-caesarstone-countertops-cost.htm"},
+        "soapstone": {"label": "Soapstone, honed (natural stone; soft, darkens when oiled)", "usd_sqft": 95.0, "v": "estimate", "hex": "#454B49", "vein": "#C3CAC6", "look": "soapstone",
+                      "vendor": "a Seattle-area stone yard", "url": "https://www.fixr.com/costs/soapstone-countertop-installation"},
+        "quartz_soapstone": {"label": "Quartz, soapstone look (Silestone Charcoal Soapstone)", "usd_sqft": 95.0, "v": "estimate", "hex": "#3D4144", "vein": "#B4B9BB", "look": "soapstone",
+                             "vendor": "a Lynnwood fabricator", "url": "https://slabwise.com/guides/cost-per-sq-ft-quartz-countertop"},
         "butcher": {"label": "Butcher block, edge grain", "usd_sqft": 55.0, "v": "seen", "hex": "#C99B66", "vein": "#B5854F",
                     "vendor": "a Lynnwood fabricator", "url": "https://slabwise.com/guides/countertop-cost"},
         "laminate": {"label": "High-pressure laminate", "usd_sqft": 35.0, "v": "seen", "hex": "#E9E7E2", "vein": "#E0DDD6",
@@ -769,18 +842,60 @@ CATALOG = {
                       "vendor": "IKEA Renton", "url": "https://www.ikea.com/us/en/p/hillesjoen-double-bowl-dual-mount-sink-stainless-steel-30324890"},
     },
     "faucet": {
-        "majsjon": {"label": "IKEA MAJSJON pull-down, stainless", "usd": 199.0, "v": "tag", "vendor": "IKEA Renton",
+        # `style` tells the drawing what to build: a "spring" (an exposed coil with
+        # the spray head docked on a side arm, the commercial look) or a "gooseneck"
+        # (a plain high arc with a pull-down head). `h_in` is the maker's overall
+        # height, deck to top; `reach_in` the spout reach. Both are for the drawing
+        # and for clearance under the window header, not for any gate.
+        "majsjon": {"label": "IKEA MAJSJON pull-down, spring, stainless", "usd": 199.0, "v": "tag", "vendor": "IKEA Renton",
+                    "style": "spring", "h_in": 22.375, "reach_in": 9.0, "hex": "#C9CBCD", "body": "square", "arm": True,
+                    "note": "The faucet on the showroom display: boxy body, cone spray head, coil with a side arm. 199 USD on the store tag; 229 on ikea.com.",
                     "url": "https://www.ikea.com/us/en/p/majsjoen-pull-down-kitchen-faucet-with-spray-stainless-steel-90610619/"},
+        "taksjon": {"label": "IKEA TAKSJON pull-down, spring, stainless", "usd": 179.0, "v": "seen", "vendor": "IKEA Renton",
+                    "style": "spring", "h_in": 18.875, "reach_in": 8.0, "hex": "#C9CBCD", "body": "round", "arm": True,
+                    "note": "The same spring-and-arm idea as MAJSJON, 3.5 in shorter, round body, curved lever.",
+                    "url": "https://www.ikea.com/us/en/p/taksjoen-pull-down-kitchen-faucet-with-spray-stainless-steel-10610500/"},
+        "kraus_bolden": {"label": "Kraus Bolden KPF-1610SFS, spring, spot-free stainless", "usd": 215.0, "v": "seen", "vendor": "Kraus (online); Home Depot sells it for less",
+                         "style": "spring", "h_in": 18.0, "reach_in": 8.75, "hex": "#C4C6C8", "body": "round", "arm": True,
+                         "note": "The most-bought faucet of this kind: brass body, open coil, two-function head with a flow toggle, 180 degree swivel, 1.8 gpm. 214.95 at Kraus; 143 to 192 seen at Home Depot and Riverbend Home.",
+                         "url": "https://www.kraususa.com/kitchen/kitchen-faucet-collections/bolden.html"},
+        "delta_antoni": {"label": "Delta Antoni 18803-SP-DST, spring, Spotshield stainless", "usd": 613.0, "v": "seen", "vendor": "Delta (list; out of stock at deltafaucet.com)",
+                         "style": "spring", "h_in": 19.75, "reach_in": 9.25, "hex": "#C8CACB", "body": "round", "arm": True,
+                         "note": "Delta's pro-style spring with a magnetic docking head and a braided hose; closest in proportion to the IKEA one.",
+                         "url": "https://www.deltafaucet.com/kitchen/product/18803-SP-DST"},
+        "moen_align": {"label": "Moen Align 5923SRS, pre-rinse spring, Spot Resist stainless", "usd": 793.0, "v": "seen", "vendor": "Moen (online); 672 to 743 at supply houses",
+                       "style": "spring", "h_in": 21.75, "reach_in": 10.0, "hex": "#C6C8CA", "body": "round", "arm": True,
+                       "note": "Pre-rinse spring with the Power Boost button, a 68 in hose and a lifetime warranty. 793.28 web price against a 991.60 list.",
+                       "url": "https://www.moen.com/products/Align/Align-Spot-Resist-Stainless-One-Handle-Pre-Rinse-Spring-Pulldown-Kitchen-Faucet/5923SRS"},
+        "delta_trinsic_pro": {"label": "Delta Trinsic Pro 9659-AR-DST, spring, Arctic stainless", "usd": 629.0, "v": "seen", "vendor": "Splashes (online; chrome); Arctic Stainless lists at 970",
+                              "style": "spring", "h_in": 18.375, "reach_in": 9.0, "hex": "#C8CACB", "body": "round", "arm": True,
+                              "note": "A 360 degree spring spout with a magnetic docking head, 1.8 gpm; a Touch2O version exists. 535 to 629 seen for the chrome 9659-DST.",
+                              "url": "https://www.deltafaucet.com/kitchen/product/9659-AR-DST"},
+        "kohler_tournant": {"label": "Kohler Tournant K-77515-VS, semi-pro spring, Vibrant stainless", "usd": 984.0, "v": "seen", "vendor": "SupplyHouse / GN Kitchen & Bath (online); discontinued by Kohler",
+                            "style": "spring", "h_in": 24.5625, "reach_in": 10.0, "hex": "#C2C4C6", "body": "round", "arm": False,
+                            "note": "The tallest: 24 9/16 in with a removable coil and a three-function head, 1.5 gpm. Kohler has discontinued it; 750 to 985 while retailers have stock.",
+                            "url": "https://www.supplyhouse.com/Kohler-K-77515-VS-Tournant-Semi-Professional-1-Handle-Pull-Out-Kitchen-Faucet-with-Spray-Stainless-Steel"},
         "macksjon": {"label": "IKEA MACKSJON pull-down", "usd": 109.0, "v": "seen", "vendor": "IKEA Renton",
+                     "style": "gooseneck", "h_in": 16.5, "reach_in": 8.5, "hex": "#C9CBCD", "body": "round", "arm": False,
                      "url": "https://www.ikea.com/us/en/p/macksjoen-pull-down-kitchen-faucet-with-spray-stainless-steel-80600833/"},
         "delta_leland": {"label": "Delta Leland pull-down", "usd": 320.0, "v": "seen", "vendor": "Home Depot Lynnwood",
+                         "style": "gooseneck", "h_in": 14.875, "reach_in": 9.5, "hex": "#C8CACB", "body": "round", "arm": False,
                          "url": "https://www.homedepot.com/p/204184513"},
         "moen_arbor": {"label": "Moen Arbor pull-down", "usd": 338.0, "v": "seen", "vendor": "Home Depot Lynnwood",
+                       "style": "gooseneck", "h_in": 15.5, "reach_in": 7.875, "hex": "#C6C8CA", "body": "round", "arm": False,
                        "url": "https://www.homedepot.com/p/203399674"},
     },
     "backsplash": {
         "tile": {"label": "Tile", "usd_sqft": 40.0, "v": "estimate", "hex": "#EDEBE6", "vendor": "a tile setter",
                  "url": "https://www.homeadvisor.com/cost/kitchens/tile-backsplash-install"},
+        # Hand-painted 4 in tile is 8 to 20 USD per sq ft and a setter 12 to 22; small
+        # patterned tile sets slowly. The white field with accents is mostly plain tile.
+        "talavera": {"label": "Spanish (Talavera) patterned tile, assorted 4 in", "usd_sqft": 55.0, "v": "estimate", "hex": "#2C4FA3", "look": "talavera",
+                     "vendor": "a tile setter; tile from a Talavera importer (online)", "url": "https://dgfloors.com/talavera-tile-backsplash/"},
+        "half_talavera": {"label": "Spanish tiles alternating with white 4 in tile", "usd_sqft": 50.0, "v": "estimate", "hex": "#8FA0C8", "look": "talavera_half",
+                          "vendor": "a tile setter; tile from a Talavera importer (online)", "url": "https://dgfloors.com/talavera-tile-backsplash/"},
+        "white_talavera": {"label": "White 4 in tile with Spanish tiles scattered through it", "usd_sqft": 45.0, "v": "estimate", "hex": "#F2F0EA", "look": "talavera_sparse",
+                           "vendor": "a tile setter; tile from a Talavera importer (online)", "url": "https://dgfloors.com/mexican-tile-backsplash/"},
         "quartz_slab": {"label": "Full-height quartz slab, matching the counter", "usd_sqft": 100.0, "v": "seen", "hex": "#F1EEE8",
                         "vendor": "the counter fabricator", "url": "https://slabwise.com/guides/how-to-price-a-full-height-stone-backsplash-vs-a-tile-backsplash"},
         "paint": {"label": "Painted wall for now", "usd_sqft": 0.0, "v": "estimate", "hex": "#F3F0E8", "vendor": "none", "url": ""},
@@ -819,8 +934,8 @@ CATALOG = {
                "url": "https://construction2style.com/contractor-markup-30-percent-normal-what-it-covers/"},
     },
     "pantry": {
-        "open": {"label": "Open walk-in shelves", "v": "estimate"},
-        "door": {"label": "Shelves behind a hinged door", "v": "estimate"},
+        "open": {"label": "Lined with open shelves, walls as they are", "v": "estimate"},
+        "door": {"label": "The same shelves behind a hinged door", "v": "estimate"},
         "cabinets": {"label": "Tall pantry cabinets, lower colour", "v": "estimate"},
     },
     "microwave_at": {
@@ -833,6 +948,13 @@ CATALOG = {
         "alcove": {"label": "Stays in the alcove"},
     },
 }
+
+# Every colour a line's maker offers can go on the lowers or on the uppers: each
+# list is the maker's whole palette, with the colours meant for that position first.
+for _line_ in CATALOG["cab_line"].values():
+    _lo, _up = _line_["lower"], _line_["upper"]
+    _line_["lower"] = _lo + [k for k in _up if k not in _lo]
+    _line_["upper"] = _up + [k for k in _lo if k not in _up]
 
 # Fixed work that no selection moves. usd is the typical figure from the trades
 # search; all are estimates built from national guides with Seattle labour rates.
@@ -854,8 +976,8 @@ PREP_SINK = {
     "prep_cutout": ("Second sink cut-out in the island top", 250.0, "the counter fabricator", ""),
 }
 PANTRY = {
-    "open": [("pantry_shelves", "Pantry shelving on three walls (IKEA BOAXEL or site-built)", 300.0, "IKEA Renton", "https://www.ikea.com/us/en/p/boaxel-shelving-unit-white-s09392616")],
-    "door": [("pantry_shelves", "Pantry shelving on three walls (IKEA BOAXEL or site-built)", 300.0, "IKEA Renton", "https://www.ikea.com/us/en/p/boaxel-shelving-unit-white-s09392616"),
+    "open": [("pantry_shelves", "Shelving lining the alcove: back and both sides (IKEA BOAXEL or site-built)", 300.0, "IKEA Renton", "https://www.ikea.com/us/en/p/boaxel-shelving-unit-white-s09392616")],
+    "door": [("pantry_shelves", "Shelving lining the alcove: back and both sides (IKEA BOAXEL or site-built)", 300.0, "IKEA Renton", "https://www.ikea.com/us/en/p/boaxel-shelving-unit-white-s09392616"),
              ("pantry_door", "Hinged door: frame the opening to 36 in, prehung door, casing, paint", 1000.0, "a carpenter", "https://www.homeadvisor.com/cost/doors-and-windows/interior-door")],
     "cabinets": [],     # priced as 3 linear ft more of the chosen cabinet line
 }
@@ -1031,6 +1153,9 @@ def build(config: Config | None = None) -> dict:
         "finish_unmet_count": len(finish_unmet),
         "handle_integrated": line["integrated"],
         "floor_wear_mil": fl["wear"],
+        "faucet_h_in": CATALOG["faucet"][c.faucet]["h_in"],
+        "faucet_style": CATALOG["faucet"][c.faucet]["style"],
+        "faucet_under_window_head_in": win["z"] + win["dz"] - (c.base_h + c.counter_t + CATALOG["faucet"][c.faucet]["h_in"]),
         "floor_cover": q["floor_order_sqft"] / c.floor_area_sqft,
         "bom": {
             "schema": "nopekit.bom/1", "currency": "USD", "build_quantity": 1,

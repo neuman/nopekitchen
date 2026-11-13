@@ -89,8 +89,11 @@
           <h1 class="cfg-title">Configure the kitchen</h1>
           <p class="cfg-lede">Turn the room and change any option. The budget and the answers follow. Prices are web prices of November 2026, not quotes.</p>
         </div>
-        <div class="cfg-stage" id="cfg-stage"></div>
-        <div class="cfg-viewbar" id="cfg-viewbar"></div>
+        <div class="cfg-view" id="cfg-view">
+          <div class="cfg-stage" id="cfg-stage"></div>
+          <button type="button" class="cfg-full" id="cfg-full" aria-pressed="false" hidden>Full screen</button>
+          <div class="cfg-viewbar" id="cfg-viewbar"></div>
+        </div>
         <div class="cfg-budget" id="cfg-budget"></div>
         <div class="cfg-chips" id="cfg-chips"></div>
         <div id="cfg-state"></div>
@@ -100,6 +103,10 @@
         </div>
       </div>
       <div class="cfg-controls" id="cfg-controls" aria-label="Options"></div>
+    </section>
+    <!-- The answers and the bill sit outside the grid above, so the pinned
+         left column lets go where the options end and never covers them. -->
+    <section class="cfg cfg-after" aria-label="Answers and bill">
       <div class="cfg-below">
         <details class="cfg-fold" id="cfg-checks" open>
           <summary><span class="cfg-fold-title">What the model says about this combination</span> <span class="cfg-fold-sub" id="cfg-checks-head"></span></summary>

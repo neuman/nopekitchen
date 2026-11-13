@@ -170,7 +170,7 @@
       "vendor_pn": "sink"
     },
     {
-      "description": "IKEA MAJSJON pull-down, stainless",
+      "description": "IKEA MAJSJON pull-down, spring, stainless",
       "extended": 199.0,
       "id": "faucet",
       "lead_time_weeks": null,
@@ -338,7 +338,7 @@
       "vendor_pn": "ice_line"
     },
     {
-      "description": "Pantry shelving on three walls (IKEA BOAXEL or site-built)",
+      "description": "Shelving lining the alcove: back and both sides (IKEA BOAXEL or site-built)",
       "extended": 300.0,
       "id": "pantry_shelves",
       "lead_time_weeks": null,

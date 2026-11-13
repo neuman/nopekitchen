@@ -344,7 +344,7 @@
     "bom.availability": {
       "basis": "model-only",
       "claims": [],
-      "current": true,
+      "current": false,
       "outcome": "fail",
       "outcome_word": "fail",
       "pack": "sourcing",
@@ -356,7 +356,7 @@
       "claims": [
         "C2"
       ],
-      "current": true,
+      "current": false,
       "outcome": "pass",
       "outcome_word": "pass",
       "pack": "sourcing",
@@ -368,7 +368,7 @@
       "claims": [
         "C1"
       ],
-      "current": true,
+      "current": false,
       "outcome": "pass",
       "outcome_word": "pass",
       "pack": "sourcing",
@@ -378,7 +378,7 @@
     "bom.currency": {
       "basis": "model-only",
       "claims": [],
-      "current": true,
+      "current": false,
       "outcome": "pass",
       "outcome_word": "pass",
       "pack": "sourcing",
@@ -388,7 +388,7 @@
     "bom.moq": {
       "basis": "model-only",
       "claims": [],
-      "current": true,
+      "current": false,
       "outcome": "pass",
       "outcome_word": "pass",
       "pack": "sourcing",
@@ -408,7 +408,7 @@
     "bom.single_source": {
       "basis": "model-only",
       "claims": [],
-      "current": true,
+      "current": false,
       "outcome": "fail",
       "outcome_word": "fail",
       "pack": "sourcing",
@@ -576,9 +576,9 @@
       "claims": [
         "C17"
       ],
-      "current": true,
-      "outcome": "pass",
-      "outcome_word": "pass",
+      "current": false,
+      "outcome": "unqualified",
+      "outcome_word": "does not count",
       "pack": "",
       "registered": true,
       "tier": 0
@@ -596,78 +596,7 @@
       "tier": 0
     }
   },
-  "feeds": [
-    {
-      "choices": [
-        "island_top_d",
-        "island_aisle",
-        "island_north_aisle"
-      ],
-      "estimate": [],
-      "to": "station:s_island",
-      "zone": "zone:z_layout"
-    },
-    {
-      "choices": [
-        "island_len",
-        "island_aisle",
-        "island_north_aisle"
-      ],
-      "estimate": [],
-      "to": "station:s_triangle",
-      "zone": "zone:z_layout"
-    },
-    {
-      "choices": [
-        "sales_tax",
-        "contingency"
-      ],
-      "estimate": [],
-      "to": "station:s_total",
-      "zone": "zone:z_money"
-    },
-    {
-      "choices": [
-        "budget_usd"
-      ],
-      "estimate": [],
-      "to": "station:@bom",
-      "zone": "zone:z_money"
-    },
-    {
-      "choices": [
-        "floor_area_sqft"
-      ],
-      "estimate": [],
-      "to": "station:s_total",
-      "zone": "zone:z_room"
-    },
-    {
-      "choices": [
-        "fridge_d"
-      ],
-      "estimate": [],
-      "to": "station:s_triangle",
-      "zone": "zone:z_room"
-    },
-    {
-      "choices": [
-        "base_d",
-        "counter_d"
-      ],
-      "estimate": [],
-      "to": "station:s_island",
-      "zone": "zone:z_std"
-    },
-    {
-      "choices": [
-        "counter_d"
-      ],
-      "estimate": [],
-      "to": "station:s_triangle",
-      "zone": "zone:z_std"
-    }
-  ],
+  "feeds": [],
   "generated": "nopekit site build wrote this file from the records, the results in .nopekit/verdicts/ and site/content/. It is not a source. Change those, then build again.",
   "lanes": [
     "requirements",
@@ -676,21 +605,23 @@
     "boards"
   ],
   "layers": [
-    2,
-    1,
     1
   ],
   "legend": [
     {
-      "n": 6,
+      "n": 7,
       "token": "gap"
+    },
+    {
+      "n": 2,
+      "token": "stale"
     },
     {
       "n": 4,
       "token": "pending_build"
     },
     {
-      "n": 17,
+      "n": 14,
       "token": "checked"
     }
   ],
@@ -700,10 +631,7 @@
       "board": "budget",
       "claim": "C1",
       "errored": false,
-      "fed_by": [
-        "zone:z_money",
-        "zone:z_room"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 0,
       "reads_all": null,
@@ -713,16 +641,14 @@
       ],
       "sets": [],
       "stop_kind": {
-        "station:@bom": "read",
-        "station:s_total": "upstream"
+        "station:@bom": "read"
       },
       "stops": [
-        "station:s_total",
         "station:@bom",
         "claim:C1"
       ],
       "taps": [],
-      "token": "checked",
+      "token": "stale",
       "unseen": false,
       "values": [
         "bom",
@@ -736,12 +662,6 @@
       "via": {
         "station:@bom": [
           "bom"
-        ],
-        "station:s_total": [
-          "tax_usd",
-          "total_usd",
-          "contingency_usd",
-          "subtotal_usd"
         ]
       }
     },
@@ -750,10 +670,7 @@
       "board": "budget",
       "claim": "C2",
       "errored": false,
-      "fed_by": [
-        "zone:z_money",
-        "zone:z_room"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 1,
       "reads_all": null,
@@ -763,16 +680,14 @@
       ],
       "sets": [],
       "stop_kind": {
-        "station:@bom": "read",
-        "station:s_total": "upstream"
+        "station:@bom": "read"
       },
       "stops": [
-        "station:s_total",
         "station:@bom",
         "claim:C2"
       ],
       "taps": [],
-      "token": "checked",
+      "token": "stale",
       "unseen": false,
       "values": [
         "bom",
@@ -783,12 +698,6 @@
       "via": {
         "station:@bom": [
           "bom"
-        ],
-        "station:s_total": [
-          "tax_usd",
-          "total_usd",
-          "contingency_usd",
-          "subtotal_usd"
         ]
       }
     },
@@ -820,11 +729,7 @@
       "board": "weeknight",
       "claim": "C3",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_room",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 3,
       "reads_all": null,
@@ -862,11 +767,7 @@
       "board": "weeknight",
       "claim": "C4",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_room",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 4,
       "reads_all": null,
@@ -898,10 +799,7 @@
       "board": "weeknight",
       "claim": "C5",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 5,
       "reads_all": null,
@@ -933,10 +831,7 @@
       "board": "weeknight",
       "claim": "C7",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 6,
       "reads_all": null,
@@ -992,10 +887,7 @@
       "board": "holiday",
       "claim": "C6",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 8,
       "reads_all": null,
@@ -1027,11 +919,7 @@
       "board": "holiday",
       "claim": "C17",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_room",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 9,
       "reads_all": null,
@@ -1041,23 +929,14 @@
       ],
       "sets": [],
       "stop_kind": {
-        "station:s_island": "read",
-        "station:s_triangle": "upstream"
+        "station:s_island": "read"
       },
       "stops": [
-        "station:s_triangle",
         "station:s_island",
         "claim:C17"
       ],
-      "taps": [
-        {
-          "choices": [
-            "base_h"
-          ],
-          "zone": "zone:z_std"
-        }
-      ],
-      "token": "checked",
+      "taps": [],
+      "token": "gap",
       "unseen": false,
       "values": [
         "walkway_min_in",
@@ -1066,9 +945,6 @@
       "via": {
         "station:s_island": [
           "walkway_min_in"
-        ],
-        "station:s_triangle": [
-          "leg_wet_range_ft"
         ]
       }
     },
@@ -1100,10 +976,7 @@
       "board": "family",
       "claim": "C8",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 11,
       "reads_all": null,
@@ -1135,10 +1008,7 @@
       "board": "family",
       "claim": "C9",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 12,
       "reads_all": null,
@@ -1170,9 +1040,7 @@
       "board": "family",
       "claim": "C10",
       "errored": false,
-      "fed_by": [
-        "zone:z_people"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 13,
       "reads_all": null,
@@ -1184,14 +1052,7 @@
       "stops": [
         "claim:C10"
       ],
-      "taps": [
-        {
-          "choices": [
-            "kid_small_h"
-          ],
-          "zone": "zone:z_people"
-        }
-      ],
+      "taps": [],
       "token": "checked",
       "unseen": false,
       "values": [
@@ -1267,7 +1128,7 @@
       ],
       "taps": [],
       "token": "checked",
-      "unseen": true,
+      "unseen": false,
       "values": [
         "finish_unmet",
         "finish_unmet_count"
@@ -1325,9 +1186,7 @@
       "board": "fits",
       "claim": "C12",
       "errored": false,
-      "fed_by": [
-        "zone:z_room"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 19,
       "reads_all": null,
@@ -1339,15 +1198,7 @@
       "stops": [
         "claim:C12"
       ],
-      "taps": [
-        {
-          "choices": [
-            "wall1_len",
-            "wall2_len"
-          ],
-          "zone": "zone:z_room"
-        }
-      ],
+      "taps": [],
       "token": "checked",
       "unseen": false,
       "values": [
@@ -1362,9 +1213,7 @@
       "board": "fits",
       "claim": "C13",
       "errored": false,
-      "fed_by": [
-        "zone:z_room"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 20,
       "reads_all": null,
@@ -1376,14 +1225,7 @@
       "stops": [
         "claim:C13"
       ],
-      "taps": [
-        {
-          "choices": [
-            "window_w"
-          ],
-          "zone": "zone:z_room"
-        }
-      ],
+      "taps": [],
       "token": "checked",
       "unseen": false,
       "values": [
@@ -1396,9 +1238,7 @@
       "board": "fits",
       "claim": "C15",
       "errored": false,
-      "fed_by": [
-        "zone:z_room"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 21,
       "reads_all": null,
@@ -1410,15 +1250,7 @@
       "stops": [
         "claim:C15"
       ],
-      "taps": [
-        {
-          "choices": [
-            "wall1_len",
-            "wall2_len"
-          ],
-          "zone": "zone:z_room"
-        }
-      ],
+      "taps": [],
       "token": "checked",
       "unseen": false,
       "values": [
@@ -1432,11 +1264,7 @@
       "board": "fits",
       "claim": "C16",
       "errored": false,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_room",
-        "zone:z_std"
-      ],
+      "fed_by": [],
       "marks": [],
       "order": 22,
       "reads_all": null,
@@ -1445,31 +1273,11 @@
         "R6"
       ],
       "sets": [],
-      "stop_kind": {
-        "station:s_island": "upstream",
-        "station:s_triangle": "upstream"
-      },
+      "stop_kind": {},
       "stops": [
-        "station:s_triangle",
-        "station:s_island",
         "claim:C16"
       ],
-      "taps": [
-        {
-          "choices": [
-            "wall1_len",
-            "wall2_len"
-          ],
-          "zone": "zone:z_room"
-        },
-        {
-          "choices": [
-            "base_h",
-            "upper_d"
-          ],
-          "zone": "zone:z_std"
-        }
-      ],
+      "taps": [],
       "token": "checked",
       "unseen": false,
       "values": [
@@ -1477,20 +1285,7 @@
         "blocked_doors",
         "opens"
       ],
-      "via": {
-        "station:s_island": [
-          "walkway_min_in",
-          "dishwasher_standing_in",
-          "work_aisle_in"
-        ],
-        "station:s_triangle": [
-          "leg_fridge_wet_ft",
-          "triangle_total_ft",
-          "leg_range_fridge_ft",
-          "leg_wet_range_ft",
-          "triangle_longest_ft"
-        ]
-      }
+      "via": {}
     },
     {
       "amber": null,
@@ -1581,7 +1376,7 @@
       ],
       "taps": [],
       "token": "checked",
-      "unseen": true,
+      "unseen": false,
       "values": [
         "floor_wear_mil"
       ],
@@ -1591,7 +1386,7 @@
   "meta": {
     "name": "Edmonds kitchen",
     "records_digest": "0f865054f7fffbc7d3610b356965b37b00c3edf528da909bbacf11ac61393a78",
-    "resolution_digest": "cfbdf8638c76d93ea9bdfe4644a72dfb067d2822a234c601f613f6c0c86a53c8"
+    "resolution_digest": "3c7dfa5de1579508617d79f58b5ffc0398847e63fdd41f9cb770eaef42121a7a"
   },
   "nodes": [
     {
@@ -1650,8 +1445,8 @@
       "order": 2,
       "rank": 3,
       "title": "Movement through the space works for several people cooking at a time on a holiday",
-      "token": "pending_build",
-      "word": "pending build"
+      "token": "gap",
+      "word": "gap"
     },
     {
       "claims": [
@@ -1760,8 +1555,8 @@
       "order": 8,
       "rank": 1,
       "title": "Cabinets and floors I can actually buy, from Seattle-area providers where that makes sense, custom or national where it does not",
-      "token": "checked",
-      "word": "checked"
+      "token": "stale",
+      "word": "stale"
     },
     {
       "assumptions": [],
@@ -1790,7 +1585,7 @@
       ],
       "moved": [],
       "order": 0,
-      "rank": 5,
+      "rank": 0,
       "sources": {
         "assumption": 0,
         "chosen": 0,
@@ -1832,7 +1627,7 @@
       ],
       "moved": [],
       "order": 1,
-      "rank": 6,
+      "rank": 1,
       "sources": {
         "assumption": 0,
         "chosen": 0,
@@ -1849,23 +1644,10 @@
     },
     {
       "assumptions": [],
-      "claims": [
-        "C3",
-        "C4",
-        "C5",
-        "C7",
-        "C6",
-        "C17",
-        "C8",
-        "C9",
-        "C16"
-      ],
+      "claims": [],
       "count": 8,
       "estimate": [],
-      "feeds": [
-        "station:s_island",
-        "station:s_triangle"
-      ],
+      "feeds": [],
       "generated": false,
       "ground": {
         "assumption": 0,
@@ -1888,14 +1670,9 @@
         "pantry",
         "microwave_at"
       ],
-      "moved": [
-        "island_len",
-        "island_top_d",
-        "island_aisle",
-        "island_north_aisle"
-      ],
+      "moved": [],
       "order": 2,
-      "rank": 1,
+      "rank": 2,
       "sources": {
         "assumption": 0,
         "chosen": 4,
@@ -1905,20 +1682,23 @@
       },
       "taps": [],
       "title": "Layout",
-      "unmeasured": []
+      "unmeasured": [
+        "fridge_at",
+        "island_len",
+        "island_top_d",
+        "island_aisle",
+        "island_north_aisle",
+        "prep_sink",
+        "pantry",
+        "microwave_at"
+      ]
     },
     {
       "assumptions": [],
-      "claims": [
-        "C1",
-        "C2"
-      ],
+      "claims": [],
       "count": 4,
       "estimate": [],
-      "feeds": [
-        "station:s_total",
-        "station:@bom"
-      ],
+      "feeds": [],
       "generated": false,
       "ground": {
         "assumption": 0,
@@ -1937,13 +1717,9 @@
         "contingency",
         "managed_by"
       ],
-      "moved": [
-        "budget_usd",
-        "sales_tax",
-        "contingency"
-      ],
+      "moved": [],
       "order": 3,
-      "rank": 0,
+      "rank": 3,
       "sources": {
         "assumption": 0,
         "chosen": 0,
@@ -1953,13 +1729,16 @@
       },
       "taps": [],
       "title": "Money",
-      "unmeasured": []
+      "unmeasured": [
+        "budget_usd",
+        "sales_tax",
+        "contingency",
+        "managed_by"
+      ]
     },
     {
       "assumptions": [],
-      "claims": [
-        "C10"
-      ],
+      "claims": [],
       "count": 2,
       "estimate": [],
       "feeds": [],
@@ -1979,12 +1758,9 @@
         "kid_small_h",
         "kid_big_h"
       ],
-      "moved": [
-        "kid_small_h",
-        "kid_big_h"
-      ],
+      "moved": [],
       "order": 4,
-      "rank": 3,
+      "rank": 4,
       "sources": {
         "assumption": 0,
         "chosen": 0,
@@ -1992,31 +1768,19 @@
         "estimate": 0,
         "unrecorded": 2
       },
-      "taps": [
-        "C10"
-      ],
+      "taps": [],
       "title": "The children",
-      "unmeasured": []
+      "unmeasured": [
+        "kid_small_h",
+        "kid_big_h"
+      ]
     },
     {
       "assumptions": [],
-      "claims": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C17",
-        "C12",
-        "C13",
-        "C15",
-        "C16"
-      ],
+      "claims": [],
       "count": 8,
       "estimate": [],
-      "feeds": [
-        "station:s_total",
-        "station:s_triangle"
-      ],
+      "feeds": [],
       "generated": false,
       "ground": {
         "assumption": 0,
@@ -2039,7 +1803,19 @@
         "floor_area_sqft",
         "fridge_d"
       ],
-      "moved": [
+      "moved": [],
+      "order": 5,
+      "rank": 5,
+      "sources": {
+        "assumption": 0,
+        "chosen": 0,
+        "datasheet": 0,
+        "estimate": 6,
+        "unrecorded": 2
+      },
+      "taps": [],
+      "title": "The room as measured",
+      "unmeasured": [
         "wall1_len",
         "wall2_len",
         "window_w",
@@ -2048,44 +1824,14 @@
         "alcove_d",
         "floor_area_sqft",
         "fridge_d"
-      ],
-      "order": 5,
-      "rank": 4,
-      "sources": {
-        "assumption": 0,
-        "chosen": 0,
-        "datasheet": 0,
-        "estimate": 6,
-        "unrecorded": 2
-      },
-      "taps": [
-        "C12",
-        "C13",
-        "C15",
-        "C16"
-      ],
-      "title": "The room as measured",
-      "unmeasured": []
+      ]
     },
     {
       "assumptions": [],
-      "claims": [
-        "C3",
-        "C4",
-        "C5",
-        "C7",
-        "C6",
-        "C17",
-        "C8",
-        "C9",
-        "C16"
-      ],
+      "claims": [],
       "count": 6,
       "estimate": [],
-      "feeds": [
-        "station:s_island",
-        "station:s_triangle"
-      ],
+      "feeds": [],
       "generated": false,
       "ground": {
         "assumption": 0,
@@ -2106,16 +1852,9 @@
         "counter_d",
         "upper_d"
       ],
-      "moved": [
-        "base_h",
-        "counter_t",
-        "upper_gap",
-        "base_d",
-        "counter_d",
-        "upper_d"
-      ],
+      "moved": [],
       "order": 6,
-      "rank": 2,
+      "rank": 6,
       "sources": {
         "assumption": 0,
         "chosen": 0,
@@ -2123,12 +1862,16 @@
         "estimate": 2,
         "unrecorded": 4
       },
-      "taps": [
-        "C17",
-        "C16"
-      ],
+      "taps": [],
       "title": "Cabinet standards",
-      "unmeasured": []
+      "unmeasured": [
+        "base_h",
+        "counter_t",
+        "upper_gap",
+        "base_d",
+        "counter_d",
+        "upper_d"
+      ]
     },
     {
       "assumptions": [],
@@ -2180,15 +1923,11 @@
         "C6",
         "C17",
         "C8",
-        "C9",
-        "C16"
+        "C9"
       ],
-      "column": 1,
-      "depth": 0,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_std"
-      ],
+      "column": 0,
+      "depth": null,
+      "fed_by": [],
       "generated": false,
       "head": "work_aisle_in",
       "id": "station:s_island",
@@ -2205,9 +1944,8 @@
         "walkway_min_in"
       ],
       "order": 0,
-      "rank": 1,
+      "rank": 2,
       "stop_kinds": {
-        "C16": "upstream",
         "C17": "read",
         "C5": "read",
         "C6": "read",
@@ -2219,23 +1957,17 @@
       "value_text": "48 in"
     },
     {
-      "claims": [
-        "C1",
-        "C2"
-      ],
+      "claims": [],
       "column": 0,
-      "depth": 4,
-      "fed_by": [
-        "zone:z_money",
-        "zone:z_room"
-      ],
+      "depth": null,
+      "fed_by": [],
       "generated": false,
       "head": "total_usd",
       "id": "station:s_total",
       "key": "s_total",
       "kind": "station",
       "lane": "stations",
-      "layer": 1,
+      "layer": 0,
       "line": "Lines, contingency, tax and permits",
       "members": [
         "total_usd",
@@ -2244,28 +1976,19 @@
         "tax_usd"
       ],
       "order": 1,
-      "rank": 0,
-      "stop_kinds": {
-        "C1": "upstream",
-        "C2": "upstream"
-      },
+      "rank": 3,
+      "stop_kinds": {},
       "title": "Job total",
       "value_text": ""
     },
     {
       "claims": [
         "C3",
-        "C4",
-        "C17",
-        "C16"
+        "C4"
       ],
       "column": 0,
-      "depth": 0,
-      "fed_by": [
-        "zone:z_layout",
-        "zone:z_room",
-        "zone:z_std"
-      ],
+      "depth": null,
+      "fed_by": [],
       "generated": false,
       "head": "triangle_longest_ft",
       "id": "station:s_triangle",
@@ -2282,10 +2005,8 @@
         "leg_fridge_wet_ft"
       ],
       "order": 2,
-      "rank": 0,
+      "rank": 1,
       "stop_kinds": {
-        "C16": "upstream",
-        "C17": "upstream",
         "C3": "read",
         "C4": "read"
       },
@@ -2298,17 +2019,15 @@
         "C2"
       ],
       "column": 0,
-      "depth": 5,
-      "fed_by": [
-        "zone:z_money"
-      ],
+      "depth": null,
+      "fed_by": [],
       "generated": true,
       "head": "bom",
       "id": "station:@bom",
       "key": "@bom",
       "kind": "station",
       "lane": "stations",
-      "layer": 2,
+      "layer": 0,
       "line": "",
       "members": [
         "bom"
@@ -2340,17 +2059,17 @@
       "tally": [
         {
           "errored": 0,
-          "key": "checked",
-          "label": "2 checked",
-          "n": 2,
-          "status": "pass"
-        },
-        {
-          "errored": 0,
           "key": "gap",
           "label": "1 gap",
           "n": 1,
           "status": "unclaimed"
+        },
+        {
+          "errored": 0,
+          "key": "stale",
+          "label": "2 stale",
+          "n": 2,
+          "status": "stale"
         }
       ],
       "title": "Fits $60k",
@@ -2413,9 +2132,16 @@
         {
           "errored": 0,
           "key": "checked",
-          "label": "2 checked",
-          "n": 2,
+          "label": "1 checked",
+          "n": 1,
           "status": "pass"
+        },
+        {
+          "errored": 0,
+          "key": "gap",
+          "label": "1 gap",
+          "n": 1,
+          "status": "unclaimed"
         },
         {
           "errored": 0,
@@ -2426,8 +2152,8 @@
         }
       ],
       "title": "Several cooks, a holiday",
-      "token": "pending_build",
-      "word": "pending build"
+      "token": "gap",
+      "word": "gap"
     },
     {
       "claims": [
@@ -2600,11 +2326,11 @@
       "marks": [],
       "order": 0,
       "row": 0,
-      "severity": 8,
+      "severity": 5,
       "title": "The whole job, kitchen and upstairs floors, costs no more than $60,000 with sales tax and contingency",
-      "token": "checked",
+      "token": "stale",
       "value_text": "58025 USD/run against a limit of 60000 USD/run, 3% inside the limit",
-      "word": "checked"
+      "word": "stale"
     },
     {
       "amber": null,
@@ -2619,11 +2345,11 @@
       "marks": [],
       "order": 1,
       "row": 1,
-      "severity": 8,
+      "severity": 5,
       "title": "Every line of the job has a supplier, a quantity and a price",
-      "token": "checked",
+      "token": "stale",
       "value_text": "0 lines against a limit of 0 lines",
-      "word": "checked"
+      "word": "stale"
     },
     {
       "amber": null,
@@ -2771,11 +2497,11 @@
       "marks": [],
       "order": 9,
       "row": 1,
-      "severity": 8,
+      "severity": 3,
       "title": "There is at least 36 in of passage on each side of the island",
-      "token": "checked",
-      "value_text": "48 in against a limit of 36 in, 33% inside the limit",
-      "word": "checked"
+      "token": "gap",
+      "value_text": "",
+      "word": "gap"
     },
     {
       "amber": null,
@@ -3102,65 +2828,59 @@
     }
   ],
   "schema": 2,
-  "self": "ae779d963d782e1168d57e0f69987a70112a33fa82f948e270d1bae0c0cc39e2",
+  "self": "01b99db284798d3fafcddfdc2eea308f31a15130d628a2af2674660039dee003",
   "trace": {
     "amber": "none",
-    "key": "1dfbd3e19159",
-    "notice": "At round 1, the model was built again with each choice changed by 10%. A thin line joins a group of choices to each shared value that moved.",
-    "round": 1,
-    "singles": 10,
-    "skipped": {
-      "backsplash": "word",
-      "cab_install": "word",
-      "cab_line": "word",
-      "counter": "word",
-      "faucet": "word",
-      "floor": "word",
-      "floor_removal": "word",
-      "fridge_at": "word",
-      "handles": "word",
-      "lower_color": "word",
-      "managed_by": "word",
-      "microwave_at": "word",
-      "pantry": "word",
-      "prep_sink": "yes-no",
-      "sink": "word",
-      "upper_color": "word"
-    },
-    "state": "traced",
-    "text": "The test did not change 16 choices: backsplash, cab_install, cab_line, counter, faucet, floor, floor_removal, fridge_at, handles, lower_color, managed_by, microwave_at, pantry, prep_sink, sink, upper_color. The map cannot show what they change. The test did not see 11 shared values change: finish_unmet, finish_unmet_count, floor_cover, floor_wear_mil, fronts, handle_integrated, island_cut_in, island_seats, markup_usd, microwave_bottom_in, permits_usd. This does not show that no choice changes them.",
-    "ties": 8,
-    "unmoved": [
-      "finish_unmet",
-      "finish_unmet_count",
-      "floor_cover",
-      "floor_wear_mil",
-      "fronts",
-      "handle_integrated",
-      "island_cut_in",
-      "island_seats",
-      "markup_usd",
-      "microwave_bottom_in",
-      "permits_usd"
-    ]
+    "key": null,
+    "notice": "The links from the choices are not measured yet. Each line starts at the values that its evaluators read.",
+    "round": null,
+    "singles": 0,
+    "skipped": {},
+    "state": "untraced",
+    "text": "",
+    "ties": 0,
+    "unmoved": []
   },
   "unread": [
+    "alcove_d",
+    "alcove_w",
     "backsplash",
+    "base_d",
+    "base_h",
+    "budget_usd",
     "cab_install",
     "cab_line",
+    "contingency",
     "counter",
+    "counter_d",
+    "counter_t",
     "faucet",
     "floor",
+    "floor_area_sqft",
     "floor_removal",
     "fridge_at",
+    "fridge_d",
     "handles",
+    "island_aisle",
+    "island_len",
+    "island_north_aisle",
+    "island_top_d",
+    "kid_big_h",
+    "kid_small_h",
+    "kitchen_w",
     "lower_color",
     "managed_by",
     "microwave_at",
     "pantry",
     "prep_sink",
+    "sales_tax",
     "sink",
-    "upper_color"
+    "upper_color",
+    "upper_d",
+    "upper_gap",
+    "wall1_len",
+    "wall2_len",
+    "window_w"
   ],
   "values": {
     "alcove_d": {
@@ -3336,7 +3056,7 @@
     "contingency_usd": {
       "ground": "chosen",
       "read": false,
-      "role": "derived",
+      "role": "absent",
       "source": "unrecorded",
       "station": "station:s_total",
       "units": "",
@@ -3756,7 +3476,7 @@
     "subtotal_usd": {
       "ground": "chosen",
       "read": false,
-      "role": "derived",
+      "role": "absent",
       "source": "unrecorded",
       "station": "station:s_total",
       "units": "",
@@ -3766,7 +3486,7 @@
     "tax_usd": {
       "ground": "chosen",
       "read": false,
-      "role": "derived",
+      "role": "absent",
       "source": "unrecorded",
       "station": "station:s_total",
       "units": "",
@@ -3776,7 +3496,7 @@
     "total_usd": {
       "ground": "chosen",
       "read": false,
-      "role": "derived",
+      "role": "absent",
       "source": "unrecorded",
       "station": "station:s_total",
       "units": "",
@@ -3839,8 +3559,8 @@
       "role": "derived",
       "source": "unrecorded",
       "station": "station:s_island",
-      "units": "in",
-      "value_text": "48 in",
+      "units": "",
+      "value_text": "24",
       "zone": null
     },
     "walkways": {
