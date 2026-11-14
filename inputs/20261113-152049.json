@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152049.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: the corner lazy Susan: baking ingredients and oils",
+  "sha256": "1792c38ceca9469c90658acbfc3c80b3d5294c1a798d4426898c690db5a2d290",
+  "added": "2026-11-14T00:09:26Z",
+  "extractions": [
+    {
+      "what": "Corner lazy Susan: flour (two bags and a clear tub), sugar, brown sugar, baking soda, a white canister, corn starch, a black bag, yeast, vanilla, two jars of sprinkles, food colouring, cupcake liners, a tub with a black lid, two bottles at the back, an oats canister, avocado oil, Gatorade powder, a gallon of vegetable oil, parchment paper",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

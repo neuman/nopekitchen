@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_151940.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: the corner and the sink wall with the wall cabinets open; microwave, espresso machine and the sink with dishes",
+  "sha256": "d8736fb46acc4e69e2178c969953e814d8455dc9ef8f18de0d952e4317eb8247",
+  "added": "2026-11-14T00:09:24Z",
+  "extractions": [
+    {
+      "what": "Corner and sink wall: about 12 large and 14 small spice jars, tins, bags, Worcestershire; mason jars, 8 mugs, about 10 pint glasses; the snack cabinet (see 151942). Counter: microwave, DeLonghi espresso machine, bananas, agave syrup, paper towels, soap pump; in the sink a saucepan, bowls and plates; a lunch bag, a bag of rice or oats, shopping bags, a Halloween candy bucket",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

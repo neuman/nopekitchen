@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152012.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: middle drawer left of the range: nested mixing bowls and strainers",
+  "sha256": "a3bffca2c1a9c56b60c0ea5a87c8fefddf92dabc31dd92239b23c8e936250c4d",
+  "added": "2026-11-14T00:09:25Z",
+  "extractions": [
+    {
+      "what": "Middle drawer left of the range: glass mixing bowls nested in a green bowl over red and teal ones, steel mixing bowls, mesh strainers and a colander",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

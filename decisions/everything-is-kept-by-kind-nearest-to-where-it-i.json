@@ -1,0 +1,44 @@
+{
+  "title": "Everything is kept by kind, nearest to where it is first used",
+  "when": "2026-11-14T00:41:18Z",
+  "summary": "The 293 things read from photographs of the open cabinets each get a place by rule (stow in model/kitchen.py): cleaning chemicals only under the sink, the children's things at or below the 5-year-old's shoulder, alcohol and medicine above the 8-year-old's reach, heavy things below counter height, one kind in one cabinet, and each kind as near as it fits to the range, sink, dishwasher, refrigerator or prep sink it serves. Pots go left of the range, pans and the everything drawer right of it, mixing bowls and wraps in the island, dishes over the dishwasher, glasses left of the window, food in the pantry with the snacks on its two low shelves.",
+  "rejected": [
+    {
+      "value": "every thing where it is today",
+      "why": "the three base cabinets left of the range are where the refrigerator now stands, and the snack and dry-goods wall cabinets on the sink wall are gone; the pantry and the island did not exist",
+      "type": "infeasible",
+      "returns_if": {
+        "text": "if the refrigerator stays in the alcove"
+      }
+    },
+    {
+      "value": "silverware in the top drawer beside the range, as today",
+      "why": "9.5 ft from the dishwasher it comes out of; the drawer right of the dishwasher is 1.8 ft from it and on the way to the table",
+      "type": "dominated",
+      "returns_if": {
+        "text": "if nobody finds it there (P5)"
+      }
+    },
+    {
+      "value": "spices in the cabinet over the hood, nearest the range",
+      "why": "steam, grease and a reach over a burner; the wall cabinet beside the hood is one step away",
+      "type": "dominated"
+    },
+    {
+      "value": "pots and pans in the island, to leave the drawers by the range for tools",
+      "why": "the drawers beside the range are 2.5 ft from it and the island 4.4 ft; pots and pans are the heaviest things fetched every day",
+      "type": "dominated"
+    }
+  ],
+  "params_changed": [
+    "stow_pins"
+  ],
+  "claims_changed": [
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152017.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: top drawer left of the range: silverware in a bamboo organiser",
+  "sha256": "e78f6b0bbe8da83abd462f0c9c5aa3686ee8c02c3be1df9ac0a759a947c22b5f",
+  "added": "2026-11-14T00:09:25Z",
+  "extractions": [
+    {
+      "what": "Top drawer left of the range: a bamboo organiser of forks, salad forks, tablespoons, teaspoons, table knives and steak knives; chopsticks; ten ceramic soup spoons; reusable straws with brushes and children's cutlery",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

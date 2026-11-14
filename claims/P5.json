@@ -1,0 +1,12 @@
+{
+  "statement": "With the real things in the real cabinets, everything goes where the plan puts it and the family finds it there",
+  "kind": "physical",
+  "rationale": "a plan made from typical sizes is a drawing; a drawer that takes the pans on paper may not close on their handles, and a plan nobody follows is not a plan",
+  "mechanism": {
+    "how": "When the cabinets are in: load each one from the plan, close every door and drawer, then ask each of the four to fetch five named things without help"
+  },
+  "requirements": [
+    "R10",
+    "R11"
+  ]
+}

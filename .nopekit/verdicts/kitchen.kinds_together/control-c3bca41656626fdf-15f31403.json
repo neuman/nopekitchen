@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.kinds_together",
+  "rho": "c3bca41656626fdf3c66a59f8c1d5a9b2f02d34bead3d1cb16cfbb5241023530",
+  "static": "cfc96934bbfb5e5d2c7aaf434df4ca4f26488519a37de86c78dd9391799bacd9",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "1523226783128506900923eef654b7d3d3e17221b0318c957db21c76e00ee56d",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:one_spice_in_the_pantry",
+      "expect": "fail",
+      "note": "one spice jar pinned to a pantry shelf, away from the rest",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_split"
+        ],
+        "66711701f024f2d13893561ba6cda0632201cc671d77b327e906600ccf513e68"
+      ],
+      [
+        [
+          "stow_split_count"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C20": "cee76639371d584d69dc6209dae9b51a9767583613934e63853b351cd6fecd2a",
+      "acceptance:C20": "35d2df706855e20715c10afb74d9e27ee2503d523d43d6a0296490eacfb31b01"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "stow_split"
+          ],
+          "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+        ],
+        [
+          [
+            "stow_split_count"
+          ],
+          "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+          0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C20": "cee76639371d584d69dc6209dae9b51a9767583613934e63853b351cd6fecd2a",
+        "acceptance:C20": "35d2df706855e20715c10afb74d9e27ee2503d523d43d6a0296490eacfb31b01"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "kinds",
+    "detail": "every kind is in one place; split: 0 kinds (limit <= 0 kinds)",
+    "goalpost": [
+      {
+        "key": "C20",
+        "measured": 0.0,
+        "units": "kinds",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": -0.9,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "kinds"
+          },
+          {
+            "end": "limit",
+            "limit": -0.5,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "kinds"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "kinds"
+          },
+          {
+            "end": "limit",
+            "limit": 9.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "kinds"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:one_spice_in_the_pantry (one spice jar pinned to a pantry shelf, away from the rest): split between places: Spices: 1 kinds (limit <= 0 kinds)",
+  "measured": 1.0,
+  "limit": 0.0,
+  "units": "kinds",
+  "digest": "1b7c839db702b4bec1d9139d5c2ed5e62f7a4fa10508b4f99d27bd4173af5b03"
+}

@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "gate": "kitchen.doors_open",
+  "rho": "589f2e6255a9174e8a41bcd40ad6edff98adf43f40fb59277612445799c8a5b9",
+  "code": {
+    "digest": "71a4a4a0192f29ce696f7460bbe30eb9ac8c341510491fefaf5aab8fc793843a",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "blocked_door_count"
+        ],
+        "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+        0
+      ],
+      [
+        [
+          "blocked_doors"
+        ],
+        "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+      ],
+      [
+        [
+          "opens"
+        ],
+        "2ab9c996d5dc9c513449d490572c4dd441f082f78c9e522f76dcab89eedcf8da"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C16": "9a756f8890daf0c368fa9cc984ae45e528eec979f9957ddd7f6424e1bb594005",
+      "acceptance:C16": "d9c21ecd4f4a421a08138e2a2930c786cbf5612ba566f08f7f856e5c13ef44ff"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "doors",
+    "comparator": "<=",
+    "settles": "doors that cannot open",
+    "detail": "41 doors and drawers swept; blocked: 0 doors (limit <= 0 doors)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "doors-open"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "dfe410ab254c3de244f1a11a472b13f736bbb411a885155a2f49a4af8f371966"
+}

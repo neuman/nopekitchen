@@ -253,6 +253,48 @@
    "values": [],
    "word": "gap"
   },
+  "A7": {
+   "acceptance": "",
+   "amber": null,
+   "binding_text": "",
+   "board": "place",
+   "cause": "owner-unattributed",
+   "cause_text": "The owner of this assumption did not record it in their own shell.",
+   "claim_kind": "assumption",
+   "critical": true,
+   "errored": false,
+   "evaluators": [],
+   "figures": [],
+   "hint": "Nothing can settle this claim yet.",
+   "id": "A7",
+   "kind_word": "Assumption",
+   "limit_text": "",
+   "marks": [],
+   "mechanism": {
+    "by": "none",
+    "by_word": "Nothing settles it. It is accepted for now.",
+    "evaluators": [],
+    "how": "Read the list of things on the marketing page against the cabinets and correct it; measure the stock pot, the stand mixer, the food processor, the blender, the Instant Pot and the longest baking sheet"
+   },
+   "physical": null,
+   "reason": "",
+   "requirements": [
+    "R10"
+   ],
+   "resolved_by": [],
+   "resolves": [],
+   "rests_on": [],
+   "settle": {
+    "commands": [
+     "nopekit claim physical A7 assume"
+    ],
+    "text": "A7 is an assumption. Its owner records it in their own shell."
+   },
+   "statement": "The kitchen holds what thirteen photographs of 13 November 2026 show and the seven things the owner named, and each is about the usual size for its kind",
+   "token": "gap",
+   "values": [],
+   "word": "gap"
+  },
   "C1": {
    "acceptance": "build cost per unit <= 60000.0 USD/run",
    "amber": {
@@ -366,7 +408,7 @@
      "detail": "microwave bottom at 31 in, child's shoulder at 34.4 in; bottom above shoulder less 3 in by: -0.4 in (limit <= 0 in)",
      "evidence": [],
      "id": "kitchen.microwave_reach",
-     "order": 17,
+     "order": 21,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -439,7 +481,7 @@
      "detail": "gloss, both colours and two tones are offered; unmet: 0 requirements (limit <= 0 requirements)",
      "evidence": [],
      "id": "kitchen.finish_offered",
-     "order": 13,
+     "order": 15,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -509,7 +551,7 @@
      "detail": "wall 1 off by 0, wall 2 by 0; worst: 0 in (limit <= 0.25 in)",
      "evidence": [],
      "id": "kitchen.run_fill",
-     "order": 18,
+     "order": 23,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -578,7 +620,7 @@
      "detail": "nearest upper to the window: 2 in (limit >= 1 in)",
      "evidence": [],
      "id": "kitchen.window_gap",
-     "order": 21,
+     "order": 27,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -647,7 +689,7 @@
      "detail": "stated wear layer: 22 mil (limit >= 20 mil)",
      "evidence": [],
      "id": "kitchen.floor_wear",
-     "order": 14,
+     "order": 16,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -716,7 +758,7 @@
      "detail": "no box overlaps another; interfering: 0 pairs (limit <= 0 pairs)",
      "evidence": [],
      "id": "kitchen.collisions",
-     "order": 10,
+     "order": 12,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -789,7 +831,7 @@
      "detail": "41 doors and drawers swept; blocked: 0 doors (limit <= 0 doors)",
      "evidence": [],
      "id": "kitchen.doors_open",
-     "order": 12,
+     "order": 14,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -903,6 +945,144 @@
    "values": [],
    "word": "gap"
   },
+  "C18": {
+   "acceptance": "things with no place <= 0.0 things",
+   "amber": null,
+   "binding_text": "",
+   "board": "place",
+   "cause": "checked",
+   "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "evaluators": [
+    {
+     "basis": "model-only",
+     "basis_word": "A model wrote the logic. It has no outside source.",
+     "current": true,
+     "detail": "all 293 things have a place; left over: 0 things (limit <= 0 things)",
+     "evidence": [],
+     "id": "kitchen.stowed",
+     "order": 24,
+     "outcome": "pass",
+     "outcome_word": "pass",
+     "stale_reason": ""
+    }
+   ],
+   "figures": [],
+   "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "id": "C18",
+   "kind_word": "Automated",
+   "limit_text": "0 things",
+   "marks": [],
+   "mechanism": {
+    "by": "closed_form",
+    "by_word": "A formula settles it.",
+    "evaluators": [
+     "kitchen.stowed"
+    ],
+    "how": "Each thing in model/inventory.py is stood in a compartment by the placing rules; its footprint and height are checked against the inside of the drawer or shelf; the things left over are counted"
+   },
+   "physical": null,
+   "reason": "",
+   "requirements": [
+    "R10"
+   ],
+   "resolved_by": [],
+   "resolves": [],
+   "rests_on": [],
+   "settle": {
+    "commands": [],
+    "text": ""
+   },
+   "statement": "Every thing kept in the kitchen today has a place in the new one, and fits in it",
+   "token": "checked",
+   "values": [
+    {
+     "binding": true,
+     "comparator": "<=",
+     "compared": true,
+     "gate": "kitchen.stowed",
+     "limit": 0.0,
+     "limit_hi": null,
+     "margin": null,
+     "margin_text": "",
+     "measured": 0.0,
+     "units": "things",
+     "value_text": "0 things against a limit of 0 things"
+    }
+   ],
+   "word": "checked"
+  },
+  "C19": {
+   "acceptance": "cabinets holding both food and chemicals <= 0.0 cabinets",
+   "amber": null,
+   "binding_text": "",
+   "board": "place",
+   "cause": "checked",
+   "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "evaluators": [
+    {
+     "basis": "model-only",
+     "basis_word": "A model wrote the logic. It has no outside source.",
+     "current": true,
+     "detail": "no cabinet holds food and a chemical; holding both: 0 cabinets (limit <= 0 cabinets)",
+     "evidence": [],
+     "id": "kitchen.chemicals_apart",
+     "order": 11,
+     "outcome": "pass",
+     "outcome_word": "pass",
+     "stale_reason": ""
+    }
+   ],
+   "figures": [],
+   "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "id": "C19",
+   "kind_word": "Automated",
+   "limit_text": "0 cabinets",
+   "marks": [],
+   "mechanism": {
+    "by": "closed_form",
+    "by_word": "A formula settles it.",
+    "evaluators": [
+     "kitchen.chemicals_apart"
+    ],
+    "how": "Every cabinet, pantry and counter spot in the plan is read for what it holds; the ones holding a cleaning chemical and something eaten or drunk are counted"
+   },
+   "physical": null,
+   "reason": "",
+   "requirements": [
+    "R11"
+   ],
+   "resolved_by": [],
+   "resolves": [],
+   "rests_on": [],
+   "settle": {
+    "commands": [],
+    "text": ""
+   },
+   "statement": "No cabinet holds both a cleaning chemical and food",
+   "token": "checked",
+   "values": [
+    {
+     "binding": true,
+     "comparator": "<=",
+     "compared": true,
+     "gate": "kitchen.chemicals_apart",
+     "limit": 0.0,
+     "limit_hi": null,
+     "margin": null,
+     "margin_text": "",
+     "measured": 0.0,
+     "units": "cabinets",
+     "value_text": "0 cabinets against a limit of 0 cabinets"
+    }
+   ],
+   "word": "checked"
+  },
   "C2": {
    "acceptance": "bill of materials completeness <= 0.0 lines",
    "amber": {
@@ -986,6 +1166,296 @@
    ],
    "word": "checked"
   },
+  "C20": {
+   "acceptance": "kinds split between places <= 0.0 kinds",
+   "amber": null,
+   "binding_text": "",
+   "board": "place",
+   "cause": "checked",
+   "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "evaluators": [
+    {
+     "basis": "model-only",
+     "basis_word": "A model wrote the logic. It has no outside source.",
+     "current": true,
+     "detail": "every kind is in one place; split: 0 kinds (limit <= 0 kinds)",
+     "evidence": [],
+     "id": "kitchen.kinds_together",
+     "order": 20,
+     "outcome": "pass",
+     "outcome_word": "pass",
+     "stale_reason": ""
+    }
+   ],
+   "figures": [],
+   "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "id": "C20",
+   "kind_word": "Automated",
+   "limit_text": "0 kinds",
+   "marks": [],
+   "mechanism": {
+    "by": "closed_form",
+    "by_word": "A formula settles it.",
+    "evaluators": [
+     "kitchen.kinds_together"
+    ],
+    "how": "The kinds in model/inventory.py (plates and bowls, pots, spices, snacks and so on) are each read for the places their things were put; the kinds in more than one place are counted"
+   },
+   "physical": null,
+   "reason": "",
+   "requirements": [
+    "R10"
+   ],
+   "resolved_by": [],
+   "resolves": [],
+   "rests_on": [],
+   "settle": {
+    "commands": [],
+    "text": ""
+   },
+   "statement": "Each kind of thing is kept in one place",
+   "token": "checked",
+   "values": [
+    {
+     "binding": true,
+     "comparator": "<=",
+     "compared": true,
+     "gate": "kitchen.kinds_together",
+     "limit": 0.0,
+     "limit_hi": null,
+     "margin": null,
+     "margin_text": "",
+     "measured": 0.0,
+     "units": "kinds",
+     "value_text": "0 kinds against a limit of 0 kinds"
+    }
+   ],
+   "word": "checked"
+  },
+  "C21": {
+   "acceptance": "farthest daily thing from its place of use <= 5.0 ft",
+   "amber": null,
+   "binding_text": "",
+   "board": "place",
+   "cause": "checked",
+   "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "evaluators": [
+    {
+     "basis": "model-only",
+     "basis_word": "A model wrote the logic. It has no outside source.",
+     "current": true,
+     "detail": "farthest: Compost bin, in counter beside the range, prep side, from the prep: 4.6 ft (limit <= 5 ft)",
+     "evidence": [],
+     "id": "kitchen.near_use",
+     "order": 22,
+     "outcome": "pass",
+     "outcome_word": "pass",
+     "stale_reason": ""
+    }
+   ],
+   "figures": [],
+   "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "id": "C21",
+   "kind_word": "Automated",
+   "limit_text": "5 ft",
+   "marks": [],
+   "mechanism": {
+    "by": "closed_form",
+    "by_word": "A formula settles it.",
+    "evaluators": [
+     "kitchen.near_use"
+    ],
+    "how": "For each kind used every day, the straight line from where a person stands at its cabinet to the centre front of the range, sink, dishwasher, refrigerator or prep sink it serves; the longest is reported"
+   },
+   "physical": null,
+   "reason": "",
+   "requirements": [
+    "R10",
+    "R2"
+   ],
+   "resolved_by": [],
+   "resolves": [],
+   "rests_on": [],
+   "settle": {
+    "commands": [],
+    "text": ""
+   },
+   "statement": "Things used every day are kept within 5 ft of where they are first used",
+   "token": "checked",
+   "values": [
+    {
+     "binding": true,
+     "comparator": "<=",
+     "compared": true,
+     "gate": "kitchen.near_use",
+     "limit": 5.0,
+     "limit_hi": null,
+     "margin": 0.08,
+     "margin_text": "8% inside the limit",
+     "measured": 4.6,
+     "units": "ft",
+     "value_text": "4.6 ft against a limit of 5 ft, 8% inside the limit"
+    }
+   ],
+   "word": "checked"
+  },
+  "C22": {
+   "acceptance": "highest children's shelf over the small child's shoulder <= 0.0 in",
+   "amber": {
+    "items": [],
+    "state": "holds",
+    "word": "This pass stays a pass if an assumption is wrong by 10%."
+   },
+   "binding_text": "",
+   "board": "place",
+   "cause": "checked",
+   "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "evaluators": [
+    {
+     "basis": "sourced",
+     "basis_word": "The logic follows a cited outside source.",
+     "current": true,
+     "detail": "child's shoulder at 34.4 in; highest shelf of theirs above it by: -3.4 in (limit <= 0 in)",
+     "evidence": [],
+     "id": "kitchen.kid_reach",
+     "order": 19,
+     "outcome": "pass",
+     "outcome_word": "pass",
+     "stale_reason": ""
+    }
+   ],
+   "figures": [],
+   "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "id": "C22",
+   "kind_word": "Automated",
+   "limit_text": "0 in",
+   "marks": [],
+   "mechanism": {
+    "by": "closed_form",
+    "by_word": "A formula settles it.",
+    "evaluators": [
+     "kitchen.kid_reach"
+    ],
+    "how": "The floor of each compartment that holds the children's dishes, bottles or snacks, against 0.80 of the smaller child's assumed stature"
+   },
+   "physical": null,
+   "reason": "",
+   "requirements": [
+    "R4",
+    "R10"
+   ],
+   "resolved_by": [],
+   "resolves": [],
+   "rests_on": [
+    "A6"
+   ],
+   "settle": {
+    "commands": [],
+    "text": ""
+   },
+   "statement": "What the children fetch for themselves is no higher than the 5-year-old's shoulder",
+   "token": "checked",
+   "values": [
+    {
+     "binding": true,
+     "comparator": "<=",
+     "compared": true,
+     "gate": "kitchen.kid_reach",
+     "limit": 0.0,
+     "limit_hi": null,
+     "margin": null,
+     "margin_text": "",
+     "measured": -3.4,
+     "units": "in",
+     "value_text": "-3.4 in against a limit of 0 in"
+    }
+   ],
+   "word": "checked"
+  },
+  "C23": {
+   "acceptance": "lowest adults-only shelf over the taller child's reach >= 0.0 in",
+   "amber": {
+    "items": [],
+    "state": "holds",
+    "word": "This pass stays a pass if an assumption is wrong by 10%."
+   },
+   "binding_text": "",
+   "board": "place",
+   "cause": "checked",
+   "cause_text": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "evaluators": [
+    {
+     "basis": "model-only",
+     "basis_word": "A model wrote the logic. It has no outside source.",
+     "current": true,
+     "detail": "taller child reaches 63.1 in; lowest adults-only shelf above that by: 1.6 in (limit >= 0 in)",
+     "evidence": [],
+     "id": "kitchen.adult_only",
+     "order": 8,
+     "outcome": "pass",
+     "outcome_word": "pass",
+     "stale_reason": ""
+    }
+   ],
+   "figures": [],
+   "hint": "Every evaluator showed that it can fail, and each one passed on the current design.",
+   "id": "C23",
+   "kind_word": "Automated",
+   "limit_text": "0 in",
+   "marks": [],
+   "mechanism": {
+    "by": "closed_form",
+    "by_word": "A formula settles it.",
+    "evaluators": [
+     "kitchen.adult_only"
+    ],
+    "how": "The floor of each compartment that holds liquor, wine, vitamins or medicine, against 1.25 times the taller child's assumed stature"
+   },
+   "physical": null,
+   "reason": "",
+   "requirements": [
+    "R4"
+   ],
+   "resolved_by": [],
+   "resolves": [],
+   "rests_on": [
+    "A6"
+   ],
+   "settle": {
+    "commands": [],
+    "text": ""
+   },
+   "statement": "Alcohol and medicine are kept above the 8-year-old's reach",
+   "token": "checked",
+   "values": [
+    {
+     "binding": true,
+     "comparator": ">=",
+     "compared": true,
+     "gate": "kitchen.adult_only",
+     "limit": 0.0,
+     "limit_hi": null,
+     "margin": null,
+     "margin_text": "",
+     "measured": 1.6,
+     "units": "in",
+     "value_text": "1.6 in against a limit of 0 in"
+    }
+   ],
+   "word": "checked"
+  },
   "C3": {
    "acceptance": "longest triangle leg <= 9.0 ft",
    "amber": {
@@ -1008,7 +1478,7 @@
      "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.5; longest: 8.14 ft (limit <= 9 ft)",
      "evidence": [],
      "id": "kitchen.triangle_leg",
-     "order": 19,
+     "order": 25,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -1083,7 +1553,7 @@
      "detail": "the three legs sum to: 19.13 ft (limit <= 26 ft)",
      "evidence": [],
      "id": "kitchen.triangle_total",
-     "order": 20,
+     "order": 26,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -1154,7 +1624,7 @@
      "detail": "long run to island: 48 in (limit >= 42 in)",
      "evidence": [],
      "id": "kitchen.aisle_one_cook",
-     "order": 8,
+     "order": 9,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -1223,7 +1693,7 @@
      "detail": "long run to island: 48 in (limit >= 48 in)",
      "evidence": [],
      "id": "kitchen.aisle_two_cooks",
-     "order": 9,
+     "order": 10,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -1292,7 +1762,7 @@
      "detail": "open dishwasher door to the island: 22.5 in (limit >= 21 in)",
      "evidence": [],
      "id": "kitchen.dishwasher_room",
-     "order": 11,
+     "order": 13,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -1362,7 +1832,7 @@
      "detail": "24 in seats along the island: 2 seats (limit >= 2 seats)",
      "evidence": [],
      "id": "kitchen.island_seats",
-     "order": 16,
+     "order": 18,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -1431,7 +1901,7 @@
      "detail": "overhang past the island bases: 15 in (limit >= 15 in)",
      "evidence": [],
      "id": "kitchen.island_knee",
-     "order": 15,
+     "order": 17,
      "outcome": "pass",
      "outcome_word": "pass",
      "stale_reason": ""
@@ -1649,9 +2119,162 @@
    "token": "pending_build",
    "values": [],
    "word": "pending build"
+  },
+  "P5": {
+   "acceptance": "",
+   "amber": null,
+   "binding_text": "",
+   "board": "place",
+   "cause": "no-article",
+   "cause_text": "No test on a built part is recorded.",
+   "claim_kind": "physical",
+   "critical": true,
+   "errored": false,
+   "evaluators": [],
+   "figures": [],
+   "hint": "Only a test on a built part can settle this claim.",
+   "id": "P5",
+   "kind_word": "Test on a built part",
+   "limit_text": "",
+   "marks": [],
+   "mechanism": {
+    "by": "measurement",
+    "by_word": "A measurement on a built part settles it.",
+    "evaluators": [],
+    "how": "When the cabinets are in: load each one from the plan, close every door and drawer, then ask each of the four to fetch five named things without help"
+   },
+   "physical": null,
+   "reason": "",
+   "requirements": [
+    "R10",
+    "R11"
+   ],
+   "resolved_by": [],
+   "resolves": [],
+   "rests_on": [],
+   "settle": {
+    "commands": [
+     "nopekit claim physical P5 pass --evidence <file>"
+    ],
+    "text": "P5 needs a test on a built part. Build the part from the current design, test it and record the result in your own shell. To build it with nopekit export, name P5 in a milestone file."
+   },
+   "statement": "With the real things in the real cabinets, everything goes where the plan puts it and the family finds it there",
+   "token": "pending_build",
+   "values": [],
+   "word": "pending build"
   }
  },
  "decisions": [
+  {
+   "claims": [
+    {
+     "claim": "C18",
+     "errored": false,
+     "marks": [],
+     "token": "checked",
+     "word": "checked"
+    },
+    {
+     "claim": "C19",
+     "errored": false,
+     "marks": [],
+     "token": "checked",
+     "word": "checked"
+    },
+    {
+     "claim": "C20",
+     "errored": false,
+     "marks": [],
+     "token": "checked",
+     "word": "checked"
+    },
+    {
+     "claim": "C21",
+     "errored": false,
+     "marks": [],
+     "token": "checked",
+     "word": "checked"
+    },
+    {
+     "claim": "C22",
+     "errored": false,
+     "marks": [],
+     "token": "checked",
+     "word": "checked"
+    },
+    {
+     "claim": "C23",
+     "errored": false,
+     "marks": [],
+     "token": "checked",
+     "word": "checked"
+    }
+   ],
+   "featured": true,
+   "id": "everything-is-kept-by-kind-nearest-to-where-it-i",
+   "lost_label": "4 options lost",
+   "params": [
+    "stow_pins"
+   ],
+   "rejected": [
+    {
+     "input": null,
+     "preference": null,
+     "reason": "the three base cabinets left of the range are where the refrigerator now stands, and the snack and dry-goods wall cabinets on the sink wall are gone; the pantry and the island did not exist",
+     "returns": "not-machine-checkable",
+     "returns_text": "if the refrigerator stays in the alcove",
+     "returns_word": "A person evaluates the return condition.",
+     "type": "infeasible",
+     "type_word": "Not possible",
+     "value": "every thing where it is today"
+    },
+    {
+     "input": null,
+     "preference": null,
+     "reason": "9.5 ft from the dishwasher it comes out of; the drawer right of the dishwasher is 1.8 ft from it and on the way to the table",
+     "returns": "not-machine-checkable",
+     "returns_text": "if nobody finds it there (P5)",
+     "returns_word": "A person evaluates the return condition.",
+     "type": "dominated",
+     "type_word": "Another option is better on every count",
+     "value": "silverware in the top drawer beside the range, as today"
+    },
+    {
+     "input": null,
+     "preference": null,
+     "reason": "steam, grease and a reach over a burner; the wall cabinet beside the hood is one step away",
+     "returns": "none",
+     "returns_text": "",
+     "returns_word": "",
+     "type": "dominated",
+     "type_word": "Another option is better on every count",
+     "value": "spices in the cabinet over the hood, nearest the range"
+    },
+    {
+     "input": null,
+     "preference": null,
+     "reason": "the drawers beside the range are 2.5 ft from it and the island 4.4 ft; pots and pans are the heaviest things fetched every day",
+     "returns": "none",
+     "returns_text": "",
+     "returns_word": "",
+     "type": "dominated",
+     "type_word": "Another option is better on every count",
+     "value": "pots and pans in the island, to leave the drawers by the range for tools"
+    }
+   ],
+   "shown": true,
+   "summary": "The 293 things read from photographs of the open cabinets each get a place by rule (stow in model/kitchen.py): cleaning chemicals only under the sink, the children's things at or below the 5-year-old's shoulder, alcohol and medicine above the 8-year-old's reach, heavy things below counter height, one kind in one cabinet, and each kind as near as it fits to the range, sink, dishwasher, refrigerator or prep sink it serves. Pots go left of the range, pans and the everything drawer right of it, mixing bowls and wraps in the island, dishes over the dishwasher, glasses left of the window, food in the pantry with the snacks on its two low shelves.",
+   "title": "Everything is kept by kind, nearest to where it is first used",
+   "values": [
+    {
+     "lost": [],
+     "name": "stow_pins",
+     "rationale": "Things the owner wants in one particular place whatever the rules in `stow()` say, as 'thing=place; thing=place' with ids from model/inventory.py and from `bays()`. Empty: every thing goes where the rules put it. A pinned thing still has to fit, and the claims about where things are still judge it.",
+     "value_text": ""
+    }
+   ],
+   "when": "2026-11-14T00:41:18Z"
+  },
   {
    "claims": [
     {
@@ -2138,7 +2761,7 @@
      "value": "a drawer microwave in the island"
     }
    ],
-   "shown": true,
+   "shown": false,
    "summary": "Open shelves on three sides cost about 300 USD and keep the alcove one step from the dishwasher and the dining table. The microwave on a 30 in shelf there is the only place the 5-year-old reaches without lifting hot food down. A door can be added later for about 1,000 USD if the shelves look untidy from the table.",
    "title": "The alcove is an open walk-in pantry with the microwave on a 30 in shelf",
    "values": [
@@ -2158,14 +2781,14 @@
    "when": "2026-11-12T19:08:05Z"
   }
  ],
- "decisions_more": "",
+ "decisions_more": "1 more decision",
  "description": {
   "notice": "",
   "summary": "Kitchen, living room and upstairs floors: gloss two-tone cabinets, refrigerator to the hall end, island with a prep sink, inside $60k"
  },
  "generated": "nopekit site build wrote this file from the records, the results in .nopekit/verdicts/ and site/content/. It is not a source. Change those, then build again.",
  "intro": {
-  "as_of": "06e5545f52d7adcc",
+  "as_of": "37c5333c0d088b75",
   "blocks": [
    {
     "runs": [
@@ -2184,21 +2807,21 @@
     "type": "p"
    }
   ],
-  "current_as_of": "f5a20975de87168c",
+  "current_as_of": "37c5333c0d088b75",
   "file": "content/intro.md",
-  "notice": "This text was written before the latest results. The data below shows the results now.",
+  "notice": "",
   "problems": [],
   "register": [],
-  "stamp": "stale",
+  "stamp": "current",
   "subject": "intro",
   "unmatched": []
  },
  "losers": [],
  "meta": {
-  "content_digest": "f1fdc6a3ea200510350b47fecd6ee4af611e5ddf438fa2c1705adfcafe8d38f4",
+  "content_digest": "3e035825b96248c93ddff43a33da7aba212ec59844dc280f72db72cab38f21f9",
   "name": "Edmonds kitchen",
-  "records_digest": "176dfd6b5903c02f1bb663c0b3912b5998750b0c818c5ae2c969beed0c7c7d7e",
-  "resolution_digest": "05fa8507b85e2d524e9792a803f70752f6db26435392183de42c89a2fb89c89f",
+  "records_digest": "fdcdb1a40e4e33a5014d7de887ef7e7d034d4a448ae3135a175e588fd652a299",
+  "resolution_digest": "d4ad45bd0448aa1776049fb7665c099233996616ea8787d7834041674990e91a",
   "revision": "v0.1",
   "summary": "Kitchen, living room and upstairs floors: gloss two-tone cabinets, refrigerator to the hall end, island with a prep sink, inside $60k",
   "views": {
@@ -2215,7 +2838,7 @@
    "missing": [],
    "next": true,
    "ready": false,
-   "sentence": "v0.1 is NOT ready. 11 of 27 required claims are unresolved: 7 gaps (A1, A2, A3, A4, +3 more); 4 pending build (P1, P2, P3, P4). 16 of 27 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
+   "sentence": "v0.1 is NOT ready. 13 of 35 required claims are unresolved: 8 gaps (A1, A2, A3, A4, +4 more); 5 pending build (P1, P2, P3, P4, +1 more). 22 of 35 claims are checked on the current design. Pending build: 5 claims need a test on a built part (P1, P2, P3, P4, +1 more). No claim is checked on any built part.",
    "steps": [
     {
      "claim": "A1",
@@ -2296,6 +2919,19 @@
      "word": "gap"
     },
     {
+     "claim": "A7",
+     "commands": [
+      "nopekit claim physical A7 assume"
+     ],
+     "errored": false,
+     "how": "Read the list of things on the marketing page against the cabinets and correct it; measure the stock pot, the stand mixer, the food processor, the blender, the Instant Pot and the longest baking sheet",
+     "marks": [],
+     "statement": "The kitchen holds what thirteen photographs of 13 November 2026 show and the seven things the owner named, and each is about the usual size for its kind",
+     "text": "A7 is an assumption. Its owner records it in their own shell.",
+     "token": "gap",
+     "word": "gap"
+    },
+    {
      "claim": "C17",
      "commands": [
       "nopekit check"
@@ -2359,13 +2995,26 @@
      "text": "P4 needs a test on a built part. Build the part from the current design, test it and record the result in your own shell. To build it with nopekit export, name P4 in a milestone file.",
      "token": "pending_build",
      "word": "pending build"
+    },
+    {
+     "claim": "P5",
+     "commands": [
+      "nopekit claim physical P5 pass --evidence <file>"
+     ],
+     "errored": false,
+     "how": "When the cabinets are in: load each one from the plan, close every door and drawer, then ask each of the four to fetch five named things without help",
+     "marks": [],
+     "statement": "With the real things in the real cabinets, everything goes where the plan puts it and the family finds it there",
+     "text": "P5 needs a test on a built part. Build the part from the current design, test it and record the result in your own shell. To build it with nopekit export, name P5 in a milestone file.",
+     "token": "pending_build",
+     "word": "pending build"
     }
    ],
    "token": "not-ready",
    "word": "not ready"
   },
   "prose": {
-   "as_of": "493761d3f67b79db",
+   "as_of": "2519c3e29562d78d",
    "blocks": [
     {
      "runs": [
@@ -2393,18 +3042,33 @@
     {
      "runs": [
       {
+       "t": "Read the list under the configurator, \"Where everything goes\", against the cabinets. Correct "
+      },
+      {
+       "code": true,
+       "t": "model/inventory.py"
+      },
+      {
+       "t": " where a thing is wrong or is not there, and measure the large things: the stock pot, the stand mixer, the food processor, the blender and the Instant Pot."
+      }
+     ],
+     "type": "p"
+    },
+    {
+     "runs": [
+      {
        "t": "Order sample fronts in both colours and a box of the plank before any order."
       }
      ],
      "type": "p"
     }
    ],
-   "current_as_of": "516c7a0efe5bf9eb",
+   "current_as_of": "2519c3e29562d78d",
    "file": "content/next.md",
-   "notice": "This text was written before the latest results. The data below shows the results now.",
+   "notice": "",
    "problems": [],
    "register": [],
-   "stamp": "stale",
+   "stamp": "current",
    "subject": "next",
    "unmatched": []
   },
@@ -2449,7 +3113,8 @@
     "C7",
     "A5",
     "C17",
-    "C16"
+    "C16",
+    "C21"
    ],
    "errored": false,
    "id": "R2",
@@ -2478,7 +3143,9 @@
     "C9",
     "C10",
     "A6",
-    "P2"
+    "P2",
+    "C22",
+    "C23"
    ],
    "errored": false,
    "id": "R4",
@@ -2553,6 +3220,34 @@
    "statement": "Cabinets and floors I can actually buy, from Seattle-area providers where that makes sense, custom or national where it does not",
    "token": "checked",
    "word": "checked"
+  },
+  {
+   "claims": [
+    "C18",
+    "C20",
+    "C21",
+    "C22",
+    "A7",
+    "P5"
+   ],
+   "errored": false,
+   "id": "R10",
+   "marks": [],
+   "statement": "A place for everything we keep in the kitchen, with things of one kind or one use together, so it is easy to remember where they are",
+   "token": "gap",
+   "word": "gap"
+  },
+  {
+   "claims": [
+    "C19",
+    "P5"
+   ],
+   "errored": false,
+   "id": "R11",
+   "marks": [],
+   "statement": "Cleaning chemicals are kept apart from food",
+   "token": "pending_build",
+   "word": "pending build"
   }
  ],
  "schema": 1,
@@ -2691,12 +3386,21 @@
    "line": "Two people pass in the aisle and people walk behind the island seats.",
    "marks": [],
    "prose": {
-    "as_of": "f1ed56f4349be80d",
+    "as_of": "b9e74c075772f950",
     "blocks": [
      {
       "runs": [
        {
-        "t": "On a holiday one person stands at the range while another carries a dish past. The aisle between the range and the island is at the width for that. Each side of the island has more than the minimum passage."
+        "t": "On a holiday one person stands at the range while another carries a dish past. The aisle between the range and the island is at the width for that. The passage on each side of the island has no verdict now: the pillar beside the old refrigerator alcove was drawn by eye from a photograph, and in the drawing it stands "
+       },
+       {
+        "match": true,
+        "num": "24",
+        "t": "24 in",
+        "unit": "in"
+       },
+       {
+        "t": " from the island. Measure the pillar."
        }
       ],
       "type": "p"
@@ -2712,10 +3416,10 @@
     ],
     "current_as_of": "b9e74c075772f950",
     "file": "content/holiday.md",
-    "notice": "This text was written before the latest results. The data below shows the results now.",
+    "notice": "",
     "problems": [],
     "register": [],
-    "stamp": "stale",
+    "stamp": "current",
     "subject": "holiday",
     "unmatched": []
    },
@@ -2997,11 +3701,100 @@
    "title": "New upstairs floors",
    "token": "checked",
    "word": "checked"
+  },
+  {
+   "board": "place",
+   "claims": [
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "A7",
+    "P5"
+   ],
+   "errored": false,
+   "generated": false,
+   "line": "Everything the kitchen holds today has a place in the new one, by kind, near where it is used.",
+   "marks": [],
+   "prose": {
+    "as_of": "bda811070c359893",
+    "blocks": [
+     {
+      "runs": [
+       {
+        "t": "Everything the kitchen holds today has a place in the new one. The list is "
+       },
+       {
+        "match": true,
+        "num": "293",
+        "t": "293",
+        "unit": ""
+       },
+       {
+        "t": " things, read from thirteen photographs of the open cabinets, with seven things the owner named. A rule puts each kind in one cabinet, as near as it fits to where it is first used."
+       }
+      ],
+      "type": "p"
+     },
+     {
+      "runs": [
+       {
+        "t": "The pots are left of the range. The pans and the everything drawer are right of it. The dishes are over the dishwasher and the silverware is beside it. The food is in the pantry, with the snacks on its two low shelves for the children. The cleaning chemicals are under the sink and no food is there. The liquor is over the refrigerator and the medicine is on a high shelf."
+       }
+      ],
+      "type": "p"
+     },
+     {
+      "runs": [
+       {
+        "t": "The list is not complete: the photographs do not show what was in the dishwasher or behind other things. The sizes are typical sizes. Correct the list, and measure the large things. Whether the family finds each thing is a test for the built kitchen."
+       }
+      ],
+      "type": "p"
+     }
+    ],
+    "current_as_of": "bda811070c359893",
+    "file": "content/place.md",
+    "notice": "",
+    "problems": [],
+    "register": [],
+    "stamp": "current",
+    "subject": "place",
+    "unmatched": []
+   },
+   "tally": [
+    {
+     "errored": 0,
+     "key": "checked",
+     "label": "6 checked",
+     "n": 6,
+     "status": "pass"
+    },
+    {
+     "errored": 0,
+     "key": "gap",
+     "label": "1 gap",
+     "n": 1,
+     "status": "unclaimed"
+    },
+    {
+     "errored": 0,
+     "key": "pending_build",
+     "label": "1 pending build",
+     "n": 1,
+     "status": "unverified"
+    }
+   ],
+   "title": "A place for everything",
+   "token": "gap",
+   "word": "gap"
   }
  ],
- "self": "2e561831b7167aea0180592a205f8b7a400db13aa7f88a38e24cd7de0bed7b2f",
+ "self": "948fe448e22cbb9abbdcdf2936c0086d4a5ae0b768be7511f4f7465cf144245a",
  "story": {
-  "as_of": "78a2f55e3e604edd",
+  "as_of": "482db1e2df5f7c0c",
   "blocks": [
    {
     "runs": [
@@ -3048,6 +3841,23 @@
    {
     "runs": [
      {
+      "t": "The model also holds what the kitchen keeps: "
+     },
+     {
+      "match": true,
+      "num": "293",
+      "t": "293",
+      "unit": ""
+     },
+     {
+      "t": " things, read from photographs of the old cabinets with each door open. A rule gives each thing a place by kind, near where it is first used, with the cleaning chemicals apart from the food. The exploded view in the configurator opens each cabinet and shows them. The list is an estimate and the owner must correct it."
+     }
+    ],
+    "type": "p"
+   },
+   {
+    "runs": [
+     {
       "t": "The job is checked against the budget with sales tax and a contingency. To stay inside it, the owner assembles the cabinet boxes and the floor is a plank from a local store. The prices are web prices and store tags. None is a quote."
      }
     ],
@@ -3062,43 +3872,43 @@
     "type": "p"
    }
   ],
-  "current_as_of": "1fb33d00624874f7",
+  "current_as_of": "482db1e2df5f7c0c",
   "file": "content/story.md",
-  "notice": "This text was written before the latest results. The data below shows the results now.",
+  "notice": "",
   "problems": [],
   "register": [],
-  "stamp": "stale",
+  "stamp": "current",
   "subject": "story",
   "unmatched": []
  },
  "verdict": {
   "headline": "v0.1 is NOT ready.",
-  "limits": "Checked does not mean true. Its evaluators have shown that they can fail. They have not shown that they are correct or sufficient. Nothing outside the 27 claims on this page is evaluated.",
+  "limits": "Checked does not mean true. Its evaluators have shown that they can fail. They have not shown that they are correct or sufficient. Nothing outside the 35 claims on this page is evaluated.",
   "notice": "",
   "notice_public": "",
   "ready": false,
-  "sentence": "v0.1 is NOT ready. 11 of 27 required claims are unresolved: 7 gaps (A1, A2, A3, A4, +3 more); 4 pending build (P1, P2, P3, P4). 16 of 27 claims are checked on the current design. Pending build: 4 claims need a test on a built part (P1, P2, P3, P4). No claim is checked on any built part.",
+  "sentence": "v0.1 is NOT ready. 13 of 35 required claims are unresolved: 8 gaps (A1, A2, A3, A4, +4 more); 5 pending build (P1, P2, P3, P4, +1 more). 22 of 35 claims are checked on the current design. Pending build: 5 claims need a test on a built part (P1, P2, P3, P4, +1 more). No claim is checked on any built part.",
   "stale": false,
   "tally": [
    {
     "errored": 0,
     "key": "checked",
-    "label": "16 checked",
-    "n": 16,
+    "label": "22 checked",
+    "n": 22,
     "status": "pass"
    },
    {
     "errored": 0,
     "key": "gap",
-    "label": "7 gaps",
-    "n": 7,
+    "label": "8 gaps",
+    "n": 8,
     "status": "unclaimed"
    },
    {
     "errored": 0,
     "key": "pending_build",
-    "label": "4 pending build",
-    "n": 4,
+    "label": "5 pending build",
+    "n": 5,
     "status": "unverified"
    }
   ],

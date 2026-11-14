@@ -4,6 +4,9 @@ Everything else is generated from this file: the cabinet runs, the flow distance
 the bill of materials the budget gates read, the 3D twin the site draws, and every
 option the configurator on the marketing page offers (rule 1).
 
+What the family owns is listed in model/inventory.py (read from photographs of the
+open cabinets); `stow()` here finds every thing a place in whatever layout is chosen.
+
 Frame: inches, US dollars. Origin at the kitchen's inside north-west corner, at the
 floor. +x runs east along wall 2 (the sink wall, 138 in). +y runs south along wall 1
 (the long wall, 193 in). +z is up. "Hall end" is the south end of wall 1, beside the
@@ -20,7 +23,16 @@ Standard library only. `python3 model/kitchen.py` prints the derived values.
 from __future__ import annotations
 
 import math
+import os as _os
+import sys as _sys
 from dataclasses import asdict, dataclass
+
+# The things that live in the kitchen are listed in model/inventory.py, beside this
+# file. However this file was loaded, its own folder is where that sibling is.
+_HERE = _os.path.dirname(_os.path.abspath(globals().get("__file__", "model/kitchen.py")))
+if _HERE not in _sys.path:
+    _sys.path.insert(0, _HERE)
+import inventory  # noqa: E402
 
 # ----------------------------------------------------------------------------
 # The catalog: every thing that can be chosen, with its price and where the price
@@ -115,6 +127,12 @@ class Config:
     """'counter' (as today), 'pantry' (a shelf at 30 in in the alcove) or
     'island' (a drawer microwave in the island)."""
 
+    stow_pins: str = ""
+    """Things the owner wants in one particular place whatever the rules in `stow()`
+    say, as 'thing=place; thing=place' with ids from model/inventory.py and from
+    `bays()`. Empty: every thing goes where the rules put it. A pinned thing still
+    has to fit, and the claims about where things are still judge it."""
+
     # --- selections (keys into CATALOG) ---
     cab_line: str = ""
     lower_color: str = ""
@@ -186,7 +204,8 @@ for _name, _aid in (("alcove_w", "A1"), ("alcove_d", "A1"),
                     ("kid_small_h", "A6"), ("kid_big_h", "A6"),
                     ("cab_line", "A2"), ("counter", "A2"), ("floor", "A2"), ("sink", "A2"),
                     ("faucet", "A2"), ("backsplash", "A2"), ("cab_install", "A2"), ("floor_removal", "A2"),
-                    ("handles", "A4"), ("lower_color", "A4"), ("upper_color", "A4")):
+                    ("handles", "A4"), ("lower_color", "A4"), ("upper_color", "A4"),
+                    ("stow_pins", "A7"), ("pantry", "A7")):
     _row = next((r for r in PARAMS if r["name"] == _name), None)
     if _row is None:
         _row = {"name": _name}
@@ -1134,6 +1153,459 @@ def money(c: Config, lines: list[dict]) -> dict:
             "permits_usd": PERMITS_USD, "total_usd": total, "headroom_usd": c.budget_usd - total}
 
 
+# ----------------------------------------------------------------------------
+# A place for everything. The cabinets are divided into bays (a drawer, a shelf
+# behind a door, a pantry shelf, a spot on a counter) and every thing listed in
+# model/inventory.py is given a bay by rule, in whatever layout is chosen.
+#
+# The rules, in the order they bind:
+#   1. A cleaning chemical goes under a sink (or, the soap pump, on the counter at
+#      it) and nowhere else; no food goes under a sink; no cabinet holds both.
+#      The owner's rule (requirement R11).
+#   2. What the children fetch for themselves sits no higher than the smaller
+#      child's shoulder. Alcohol and medicine sit above the taller child's reach.
+#   3. A heavy thing is not kept above counter height.
+#   4. One kind of thing stays in one cabinet, so there is one place to remember
+#      (requirement R10). A kind is split only when no cabinet takes all of it.
+#   5. Nothing used every day, and no food, goes in the cabinet over the range.
+#      Only cleaning things go under a sink.
+#   6. Among the places left, a kind goes nearest to where it is first used, the
+#      more so the more often it is used; things used every day stay between knee
+#      and eye, heavy things low, things used a few times a year out of that band,
+#      and a thing goes in a compartment about as tall as it is.
+# Rule 6 is a score (`score` in `stow`); the others are refusals. The kinds are
+# placed in this order: what stands on a counter, the chemicals, then daily before
+# weekly before yearly; in each, the children's and the adults-only kinds first,
+# then the kinds too tall for an ordinary shelf, then the bulkiest.
+# ----------------------------------------------------------------------------
+STOW_GAP = 0.3           # in, left between things standing side by side
+DRAWER_IN_D = 20.5       # in, the inside of a drawer front to back, in a 24 in base (a 21 in drawer box)
+OVERHEAD = 1.25          # a child's standing overhead reach over their stature. ASSUMED round figure (A6 owns the statures)
+FREQ_W = {3: 1.0, 2: 0.4, 1: 0.1}     # what a foot from the place of use costs: daily, weekly, a few times a year
+# face -> (the direction to your right as you face the cabinet, the direction out of it toward you)
+_FRAME = {"E": ((0.0, -1.0), (1.0, 0.0)), "W": ((0.0, 1.0), (-1.0, 0.0)),
+          "S": ((1.0, 0.0), (0.0, 1.0)), "N": ((-1.0, 0.0), (0.0, -1.0))}
+# what a person calls each place
+PLACE = {
+    "corner": "Corner carousel", "w1_b24": "Base between the corner and the range", "w1_b3d30": "Drawers beside the range, prep side",
+    "w1_b33": "Base beside the refrigerator", "w1_b3d36": "Drawers at the hall end", "w1_u_corner": "Corner wall cabinet",
+    "w1_u30": "Wall cabinet beside the hood, corner side", "w1_u_hood": "Cabinet over the hood",
+    "w1_u3040": "Wall cabinet beside the hood, prep side", "w1_u3340": "Wall cabinet over the prep counter",
+    "w1_u_fridge": "Cabinet over the refrigerator", "w1_u3640": "Wall cabinet at the hall end",
+    "w2_b24": "Base left of the sink", "w2_sink": "Under the sink", "w2_b3d18": "Drawers right of the dishwasher",
+    "w2_u27": "Wall cabinet left of the window", "w2_u33": "Wall cabinet over the dishwasher",
+    "pantry": "Pantry (the old refrigerator alcove)", "ctr_range_n": "Counter beside the range, corner side",
+    "ctr_range_s": "Counter beside the range, prep side", "ctr_fridge": "End of the long counter",
+    "ctr_sink_l": "Counter left of the sink", "ctr_sink_r": "Counter right of the sink",
+}
+
+
+def place_words(unit: str) -> str:
+    if unit in PLACE:
+        return PLACE[unit]
+    if unit.startswith("isl_b"):
+        return "Island, " + ("north" if unit.endswith("0") else "south" if unit.endswith("1") else "middle") + " base"
+    return unit
+
+
+def _inner(b, u0, u1, d0, d1):
+    """Part of a box's inside as x, y, dx, dy: u runs along its face, d back from the face."""
+    f = b["face"]
+    if f == "E":
+        return b["x"] + b["dx"] - d1, b["y"] + u0, d1 - d0, u1 - u0
+    if f == "W":
+        return b["x"] + d0, b["y"] + u0, d1 - d0, u1 - u0
+    if f == "S":
+        return b["x"] + u0, b["y"] + b["dy"] - d1, u1 - u0, d1 - d0
+    return b["x"] + u0, b["y"] + d0, u1 - u0, d1 - d0
+
+
+def _face_pt(b, u):
+    f = b["face"]
+    if f == "E":
+        return [b["x"] + b["dx"], b["y"] + u]
+    if f == "W":
+        return [b["x"], b["y"] + u]
+    if f == "S":
+        return [b["x"] + u, b["y"] + b["dy"]]
+    return [b["x"] + u, b["y"]]
+
+
+def bays(c: Config, boxes: list[dict]) -> list[dict]:
+    """Every compartment a thing can be kept in: its inside as a box, which way it
+    is reached from (`face`), its kind, the cabinet it is part of (`host`), the
+    place a person would name (`unit`), and the point a person stands at (`pt`).
+
+    Insides are the usual ones for frameless cabinets: 3/4 in sides, a drawer 20 in
+    front to back, a shelf every 10 in or so in a wall cabinet, one shelf behind the
+    doors of a base. A shelf can be left out to stand a tall thing (`above`)."""
+    out: list[dict] = []
+    by = {b["id"]: b for b in boxes}
+
+    def add(host, name, kind, face, x, y, z, dx, dy, dz, words, unit=None, front=-1, pt=None, fill=1.0, blind=False):
+        out.append({"id": f"{host}:{name}", "host": host, "unit": unit or host, "kind": kind, "face": face,
+                    "x": x, "y": y, "z": z, "dx": dx, "dy": dy, "dz": dz, "front": front, "fill": fill,
+                    "blind": blind, "pt": pt, "words": words, "above": None})
+        return out[-1]
+
+    def cab(b, name, kind, u0, u1, d0, d1, z, dz, words, **kw):
+        x, y, dx, dy = _inner(b, u0, u1, d0, d1)
+        return add(b["id"], name, kind, b["face"], x, y, z, dx, dy, dz, words, pt=_face_pt(b, (u0 + u1) / 2), **kw)
+
+    def stacked(rows):
+        for lo, hi in zip(rows, rows[1:]):
+            lo["above"] = hi["id"]
+
+    def deep(b):
+        return b["dx"] if b["face"] in ("E", "W") else b["dy"]
+
+    for b in boxes:
+        f = b["fronts"]
+        w = _face_w(b) if b["face"] else 0.0
+        if b["kind"] == "base" and f in ("drawer3", "door2+drawer", "door2+false", "microwave", "corner"):
+            z0, z1 = b["z"] + TOE, b["z"] + b["dz"]
+            if f == "corner":
+                if b["id"].endswith("_return"):
+                    continue
+                lo = z0 + 0.75
+                t = (z1 - 0.5 - lo - 0.75) / 2
+                stacked([cab(b, "lower", "susan", w - 21, w - 1, 0.5, 20.5, lo, t, "lower tray", unit="corner"),
+                         cab(b, "upper", "susan", w - 21, w - 1, 0.5, 20.5, lo + t + 0.75, t, "upper tray", unit="corner")])
+                out[-1]["tallable"] = out[-2]["tallable"] = True
+                continue
+            drawers = [(i, r) for i, r in enumerate(front_rects(b)) if r[4] == "drawer"]
+            for n, (i, (_u0, _u1, rz0, rz1, _k)) in enumerate(drawers):
+                h = rz1 - rz0
+                word = ("bottom drawer", "middle drawer", "top drawer")[n] if len(drawers) == 3 else "drawer"
+                cab(b, f"d{n}", "drawer", 1.5, w - 1.5, 0.75, 0.75 + DRAWER_IN_D, rz0 + 1.0, h - (2.5 if h >= 8 else 1.75), word, front=i)
+            if f == "door2+drawer":
+                lo = z0 + 0.75
+                t = (z1 - 5.0 - 0.5 - lo - 0.75) / 2
+                stacked([cab(b, "lower", "floor", 0.75, w - 0.75, 0.5, 23.0, lo, t, "behind the doors, on the bottom"),
+                         cab(b, "upper", "shelf", 0.75, w - 0.75, 0.5, 23.0, lo + t + 0.75, t, "behind the doors, on the shelf")])
+                out[-1]["tallable"] = out[-2]["tallable"] = True      # leave the shelf out and a 23 in thing stands here
+            if f == "door2+false":
+                # the bowl, the trap and a disposal take the top and some of the floor: 70% of it is counted
+                cab(b, "under", "undersink", 1.5, w - 1.5, 1.0, 21.0, z0 + 0.75, 14.0, "on the cabinet floor", fill=0.7)
+        elif b["kind"] == "upper" and f in ("door2", "door1", "corner"):
+            n = 1 if deep(b) > 20 else max(1, round(b["dz"] / 10.0))
+            t = b["dz"] / n
+            rows = []
+            for i in range(n):
+                word = "shelf" if n == 1 else ("bottom shelf", "second shelf", "third shelf", "top shelf")[i if i < n - 1 else 3]
+                rows.append(cab(b, f"s{i}", "shelf", 0.75, w - 0.75, 1.0, deep(b) - 0.75, b["z"] + i * t + 0.75, t - 1.0, word, blind=(f == "corner")))
+                rows[-1]["hot"] = b["id"] == "w1_u_hood"       # over the range: steam, grease and a reach over a burner
+                rows[-1]["deep"] = deep(b) > 20                 # over the refrigerator: 2 ft deep and high
+            stacked(rows)
+        elif b["kind"] == "tall":
+            rows = [cab(b, f"s{i}", "pantry", 0.75, w - 0.75, 1.0, deep(b) - 0.75, b["z"] + 5.25 + i * 13.7, 12.9,
+                        f"shelf {i + 1} from the floor", unit="pantry") for i in range(4)]
+            rows += [cab(b, f"s{4 + j}", "pantry", 0.75, w - 0.75, 1.0, deep(b) - 0.75, b["z"] + 60.4 + j * 9.8, 9.0,
+                         f"shelf {5 + j} from the floor", unit="pantry") for j in range(2)]
+            stacked(rows)
+        elif b["kind"] == "shelf":
+            door = [c.wall2_len + 5.0, NICHE_Y0 + c.alcove_w / 2]      # where a person stands to reach in
+            side = {"W": "back", "S": "north side", "N": "south side"}[b["face"]]
+            add(b["id"], "on", "pantry", b["face"], b["x"] + 0.25, b["y"] + 0.25, b["z"] + b["dz"], b["dx"] - 0.5, b["dy"] - 0.5,
+                12.5 if b["z"] < 70 else 16.0, f"{side}, the {b['z']:g} in shelf", unit="pantry", pt=door)
+            if b["z"] == 16 and b["face"] == "W":
+                # the floor under the shelves: the back 18 in of the recess, which leaves the front to stand in
+                add(b["id"], "floor", "pantry", "W", b["x"] + b["dx"] - 18.0, b["y"] + 0.25, 0.0, 18.0, b["dy"] - 0.5,
+                    15.0, "on the floor, at the back", unit="pantry", pt=door)
+
+    # spots on the counters, against the wall: beside the range on each side, the end
+    # of the long counter, and each side of the sink. The middle of the long counter
+    # and the island top are left clear to work on.
+    top, clear = c.base_h + c.counter_t, c.upper_gap - 1.0
+    range_y, range_end = CORNER + 24, CORNER + 24 + RANGE_W
+    south = by.get("top_w1_south")
+    if south:
+        end = south["y"] + south["dy"]
+        add("top_w1_north", "range_n", "counter", "E", 1.0, range_y - 22.0, top, 24.0, 21.0, clear, "against the wall",
+            unit="ctr_range_n", pt=[c.counter_d, range_y - 4.0])
+        add("top_w1_south", "range_s", "counter", "E", 1.0, range_end + 1.0, top, 24.0, 19.0, clear, "against the wall",
+            unit="ctr_range_s", pt=[c.counter_d, range_end + 4.0])
+        add("top_w1_south", "fridge", "counter", "E", 1.0, end - 21.0, top, 24.0, 20.0, clear, "against the wall",
+            unit="ctr_fridge", pt=[c.counter_d, end - 11.0])
+    sink = by.get("sink")
+    if sink:
+        x0, x1 = c.counter_d + 1.5, sink["x"] + sink["dx"] + 2.5
+        add("top_w2", "sink_l", "counter", "S", x0, 1.0, top, sink["x"] - 2.0 - x0, 24.0, clear, "against the wall",
+            unit="ctr_sink_l", pt=[sink["x"] - 6.0, c.counter_d])
+        add("top_w2", "sink_r", "counter", "S", x1, 1.0, top, c.wall2_len - 1.0 - x1, 24.0, clear, "against the wall",
+            unit="ctr_sink_r", pt=[x1 + 4.0, c.counter_d])
+
+    # a microwave on a pantry shelf or in a pantry cabinet takes its own width out of the bay it stands in
+    mw = by.get("microwave")
+    if mw:
+        keep = []
+        for b in out:
+            hit = b["kind"] != "counter" and all(min(b[k] + b["d" + k], mw[k] + mw["d" + k]) - max(b[k], mw[k]) > TOL for k in "xyz")
+            if not hit:
+                keep.append(b)
+                continue
+            ax = "x" if _FRAME[b["face"]][0][0] else "y"
+            lo, hi, m0, m1 = b[ax], b[ax] + b["d" + ax], mw[ax] - 0.5, mw[ax] + mw["d" + ax] + 0.5
+            left, right = max(0.0, m0 - lo), max(0.0, hi - m1)
+            if max(left, right) < 6.0:
+                continue                      # the microwave fills it
+            if left >= right:
+                b["d" + ax] = left
+            else:
+                b[ax], b["d" + ax] = m1, right
+            keep.append(b)
+        ids = {b["id"] for b in keep}
+        for b in keep:
+            if b["above"] not in ids:
+                b["above"] = None
+        out = keep
+    return out
+
+
+def _bay_xy(b, a, back):
+    """The point `a` from a bay's left edge as you face it and `back` out from its back wall."""
+    (rx, ry), (ox, oy) = _FRAME[b["face"]]
+    x0 = b["x"] if rx + ox > 0 else b["x"] + b["dx"]
+    y0 = b["y"] if ry + oy > 0 else b["y"] + b["dy"]
+    return x0 + a * rx + back * ox, y0 + a * ry + back * oy
+
+
+def _sky_fit(sky, w, d, depth):
+    """Where a w x d footprint stands on a skyline with the least reach forward: (a, back), or None."""
+    best = None
+    for a0, _a1, _t in sky:
+        if a0 + w > sky[-1][1] + 1e-6:
+            continue
+        back = max(t for s0, s1, t in sky if s0 < a0 + w - 1e-6 and s1 > a0 + 1e-6)
+        if back + d > depth + 1e-6:
+            continue
+        if best is None or back < best[1] - 1e-6:
+            best = (a0, back)
+    return best
+
+
+def _sky_put(sky, a, w, back):
+    new = []
+    for s0, s1, t in sky:
+        if s1 <= a + 1e-9 or s0 >= a + w - 1e-9:
+            new.append([s0, s1, t])
+            continue
+        if s0 < a:
+            new.append([s0, a, t])
+        if s1 > a + w:
+            new.append([a + w, s1, t])
+    new.append([a, a + w, back])
+    new.sort()
+    return new
+
+
+def stow(c: Config, boxes: list[dict], f: dict | None = None) -> dict:
+    """Give every thing in the inventory a bay, by the rules above. Deterministic."""
+    G, things = inventory.GROUPS, inventory.THINGS
+    B = bays(c, boxes)
+    bay = {b["id"]: b for b in B}
+    units: dict[str, list[str]] = {}
+    for b in B:
+        units.setdefault(b["unit"], []).append(b["id"])
+    f = f or flow(c)
+    pts = {"range": f["pt_range"], "sink": f["pt_sink"], "fridge": f["pt_fridge"],
+           "prep": f["pt_prep"] or [c.counter_d, CORNER + 24 + RANGE_W + 20.0],
+           "dishwasher": [CORNER + 2 + 24 + 33 + DW_W / 2, c.counter_d]}
+    kid_max, adult_min, heavy_max = c.kid_small_h * SHOULDER, c.kid_big_h * OVERHEAD, c.base_h + c.counter_t + 1.0
+
+    # per bay: its width and depth as a thing meets them, and the skyline of what stands in it, from the back
+    st = {}
+    for b in B:
+        along_x = bool(_FRAME[b["face"]][0][0])
+        wide, deep = (b["dx"], b["dy"]) if along_x else (b["dy"], b["dx"])
+        st[b["id"]] = {"depth": deep * b["fill"] + STOW_GAP, "dz": b["dz"], "sky": [[0.0, wide + STOW_GAP, 0.0]],
+                       "n": 0, "dead": False, "kinds": set()}
+    holds: dict[str, set] = {}        # unit -> {"food", "chemical"}
+    placed: list[dict] = []
+    unplaced: list[dict] = []
+
+    def score(gid, b):
+        g, kind, z, s = G[gid], b["kind"], b["z"], st[b["id"]]
+        if bool(g.get("counter")) != (kind == "counter"):
+            return None
+        if (g.get("chemical") and kind not in ("undersink", "counter")) or (kind == "undersink" and "undersink" not in g["wants"]):
+            return None
+        if (g.get("kid") and z > kid_max) or (g.get("adult") and z < adult_min) or (g.get("heavy") and z > heavy_max):
+            return None
+        if b.get("hot") and (g["freq"] == 3 or g.get("food")):
+            return None
+        cost = FREQ_W[g["freq"]] * _dist(b["pt"], pts[g["near"]]) / 12.0 if g["near"] else 0.0
+        cost += g["wants"].index(kind) * 0.75 if kind in g["wants"] else 4.0
+        if g.get("heavy"):
+            cost += 0.03 * z
+        elif g["freq"] == 3:
+            cost += 0.06 * max(0.0, 15.0 - z) + 0.12 * max(0.0, z - 62.0)
+        elif g["freq"] == 2:
+            cost += 0.5 if z < 10.0 or z > 66.0 else 0.0
+        elif 20.0 <= z <= 62.0:
+            cost += 1.5
+        if b.get("deep"):
+            cost += {3: 1.5, 2: 0.5, 1: -0.5}[g["freq"]]
+        if kind == "susan" or b["blind"]:
+            cost += 0.8 * g["freq"]
+        others = len(s["kinds"] - {gid})
+        cost += (2.5 if kind == "counter" else 0.4) * others        # one kind to a shelf, where there is a shelf to spare
+        if b.get("tallable") and tallest[gid] <= 11.5:
+            cost += 0.6                                             # leave the few tall places for tall things
+        # a compartment about as tall as the tallest thing of the kind; a shelf above can be left out for it
+        up = b["above"]
+        tall = bay[up]["z"] + bay[up]["dz"] - z if up and not st[up]["dead"] and st[up]["n"] == 0 else 0.0
+        if tallest[gid] <= s["dz"] + 1e-6:
+            cost += 0.06 * (s["dz"] - tallest[gid])
+        elif tallest[gid] > tall + 1e-6:
+            cost += 2.0
+        return cost
+
+    def trial(unit, order, todo):
+        """Stand `todo` in the bays `order` of one unit, on a copy of its state. -> (got, left, copy)"""
+        s2 = {bid: dict(st[bid], sky=[seg[:] for seg in st[bid]["sky"]], kinds=set(st[bid]["kinds"])) for bid in units[unit]}
+        got, left = [], list(todo)
+        for bid in order:
+            b, s, rest = bay[bid], s2[bid], []
+            if s["dead"]:
+                continue
+            if b["kind"] == "drawer":         # seen from above: the long things first, in lanes; the short ones in front of them
+                left = sorted(left, key=lambda t: (-max(t["d"], t["w"]), -min(t["d"], t["w"]), t["id"]))
+            for t in left:
+                if t["h"] > s["dz"] + 1e-6:
+                    up = b["above"]
+                    tall = bay[up]["z"] + bay[up]["dz"] - b["z"] if up else 0.0
+                    if up and not s2[up]["dead"] and s2[up]["n"] == 0 and t["h"] <= tall + 1e-6:
+                        s["dz"], s2[up]["dead"], s["merged"] = tall, True, up      # the shelf above is left out
+                    else:
+                        rest.append(t)
+                        continue
+                for rot, (w, d) in enumerate(((t["w"], t["d"]), (t["d"], t["w"]))):
+                    hit = _sky_fit(s["sky"], w + STOW_GAP, d + STOW_GAP, s["depth"])
+                    if hit:
+                        s["sky"] = _sky_put(s["sky"], hit[0], w + STOW_GAP, hit[1] + d + STOW_GAP)
+                        s["n"] += 1
+                        x, y = _bay_xy(b, hit[0] + w / 2, hit[1] + d / 2)
+                        along_x = bool(_FRAME[b["face"]][0][0])
+                        got.append({"t": t["id"], "g": t["group"], "bay": bid, "unit": unit, "x": round(x, 2), "y": round(y, 2),
+                                    "z": round(b["z"], 2), "rot": rot, "face": b["face"], "h": t["h"],
+                                    "wx": w if along_x else d, "wy": d if along_x else w})
+                        break
+                else:
+                    rest.append(t)
+            left = rest
+            if not left:
+                break
+        return got, left, s2
+
+    def commit(g, gid, got, s2):
+        for bid, s in s2.items():
+            st[bid] = s
+        for p in got:
+            st[p["bay"]]["kinds"].add(gid)
+            holds.setdefault(p["unit"], set()).update(k for k in ("food", "chemical") if g.get(k))
+        placed.extend(got)
+
+    by_group: dict[str, list[dict]] = {}
+    by_id = {t["id"]: t for t in things}
+    pins = dict(p.split("=") for p in c.stow_pins.replace(" ", "").split(";") if p)
+    for tid, bid in pins.items():
+        if tid not in by_id or bid not in bay:
+            raise ValueError(f"stow_pins: {tid}={bid}: no such thing or place")
+    for t in things:
+        if t["id"] not in pins:
+            by_group.setdefault(t["group"], []).append(t)
+    tallest = {gid: max(t["h"] for t in ts) for gid, ts in by_group.items()}
+    for t in things:
+        tallest.setdefault(t["group"], t["h"])
+
+    def rank(gid):
+        g = G[gid]
+        return (0 if g.get("counter") else 1 if g.get("chemical") else 2, -g["freq"], 0 if g.get("kid") or g.get("adult") else 1,
+                0 if tallest[gid] > 12.5 else 1, -sum(t["w"] * t["d"] for t in by_group[gid]), gid)
+
+    for gid in sorted(by_group, key=rank):
+        g = G[gid]
+        todo = sorted(by_group[gid], key=lambda t: (-t["h"], -t["d"], -t["w"], t["id"]))
+        tried: set[str] = set()
+        while todo:
+            options = []
+            for unit in units:
+                if unit in tried:
+                    continue
+                if (g.get("chemical") and "food" in holds.get(unit, ())) or (g.get("food") and "chemical" in holds.get(unit, ())):
+                    continue
+                scored = sorted((sc, bid) for bid in units[unit] for sc in [score(gid, bay[bid])] if sc is not None)
+                if not scored:
+                    continue
+                cost_of = {bid: sc for sc, bid in scored}
+                got, left, s2 = trial(unit, [bid for _sc, bid in scored], todo)
+                if got:
+                    cost = sum(cost_of[p["bay"]] for p in got) / len(got)
+                    options.append((bool(left), cost + 3.0 * len(left) / len(todo), unit, got, left, s2))
+            if not options:
+                break
+            _part, _cost, unit, got, left, s2 = min(options, key=lambda o: (o[0], o[1], o[2]))
+            commit(g, gid, got, s2)
+            tried.add(unit)
+            todo = left
+        unplaced.extend(todo)
+
+    # pinned things last, where the owner put them, in whatever room is left there
+    for tid, bid in pins.items():
+        t = by_id[tid]
+        got, _left, s2 = trial(bay[bid]["unit"], [bid], [t])
+        if got:
+            commit(G[t["group"]], t["group"], got, s2)
+        else:
+            unplaced.append(t)
+
+    # ---- what the claims read
+    where: dict[str, list[str]] = {}
+    for p in placed:
+        if p["unit"] not in where.setdefault(p["g"], []):
+            where[p["g"]].append(p["unit"])
+    split = sorted(gid for gid, us in where.items() if len(us) > 1)
+    mixed = sorted(u for u, ks in holds.items() if {"food", "chemical"} <= ks)
+    far, far_what = 0.0, ""
+    kid_over, adult_under = -kid_max, 99.0
+    for p in placed:
+        g, b = G[p["g"]], bay[p["bay"]]
+        if g["freq"] == 3 and g["near"]:
+            d = _dist(b["pt"], pts[g["near"]]) / 12.0
+            if d > far:
+                far, far_what = d, f"{g['label']}, in {place_words(p['unit']).lower()}, from the {g['near']}"
+        if g.get("kid"):
+            kid_over = max(kid_over, b["z"] - kid_max)
+        if g.get("adult"):
+            adult_under = min(adult_under, b["z"] - adult_min)
+    merged = {s["merged"] for s in st.values() if s.get("merged")}
+    return {
+        "bays": [dict(b, dz=st[b["id"]]["dz"], used=st[b["id"]]["n"]) for b in B if b["id"] not in merged],
+        "placed": placed,
+        "unplaced": [t["id"] for t in unplaced],
+        "where": where,
+        "unplaced_labels": sorted({t["label"] for t in unplaced}),
+        "split": [G[g]["label"] for g in split], "mixed": [place_words(u) for u in mixed],
+        "far_ft": far, "far_what": far_what, "kid_over_in": kid_over, "adult_margin_in": adult_under,
+        "kid_max_in": kid_max, "adult_min_in": adult_min,
+    }
+
+
+def stow_table(st: dict) -> list[dict]:
+    """The plan as a person reads it: each place, each compartment in it, and what is in it."""
+    by_id = {t["id"]: t for t in inventory.THINGS}
+    bay = {b["id"]: b for b in st["bays"]}
+    rows: dict = {}
+    for p in st["placed"]:
+        b = bay[p["bay"]]
+        r = rows.setdefault((p["unit"], p["bay"]), {"place": place_words(p["unit"]), "unit": p["unit"], "bay": p["bay"],
+                                                     "where": b["words"], "z": b["z"], "things": {}})
+        label = by_id[p["t"]]["label"]
+        r["things"][label] = r["things"].get(label, 0) + 1
+    return sorted(rows.values(), key=lambda r: (r["place"], -r["z"], r["bay"]))
+
+
 def build(config: Config | None = None) -> dict:
     """Resolve every derived quantity. Pure, deterministic, no I/O."""
     c = config or CONFIG
@@ -1155,6 +1627,7 @@ def build(config: Config | None = None) -> dict:
     blocked = blocked_doors(opens, boxes, shell)
     ways = walkways(c, boxes, shell)
     f = flow(c)
+    st = stow(c, boxes, f)
     q = quantities(c, boxes)
     lines = bom_lines(c, q)
     m = money(c, lines)
@@ -1215,6 +1688,15 @@ def build(config: Config | None = None) -> dict:
         "faucet_style": CATALOG["faucet"][c.faucet]["style"],
         "faucet_under_window_head_in": win["z"] + win["dz"] - (c.base_h + c.counter_t + CATALOG["faucet"][c.faucet]["h_in"]),
         "floor_cover": q["floor_order_sqft"] / c.floor_area_sqft,
+        # where everything goes (stow): the plan, and what each claim about it reads
+        "stow": {"bays": st["bays"], "placed": st["placed"], "unplaced": st["unplaced"], "where": st["where"]},
+        "stow_things": len(inventory.THINGS),
+        "stow_unplaced_count": len(st["unplaced"]), "stow_unplaced": st["unplaced_labels"],
+        "stow_mixed_count": len(st["mixed"]), "stow_mixed": st["mixed"],
+        "stow_split_count": len(st["split"]), "stow_split": st["split"],
+        "stow_far_ft": st["far_ft"], "stow_far_what": st["far_what"],
+        "stow_kid_over_in": st["kid_over_in"], "stow_adult_margin_in": st["adult_margin_in"],
+        "stow_kid_max_in": st["kid_max_in"], "stow_adult_min_in": st["adult_min_in"],
         "bom": {
             "schema": "nopekit.bom/1", "currency": "USD", "build_quantity": 1,
             "budget_total": c.budget_usd,

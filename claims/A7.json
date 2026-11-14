@@ -1,0 +1,12 @@
+{
+  "statement": "The kitchen holds what thirteen photographs of 13 November 2026 show and the seven things the owner named, and each is about the usual size for its kind",
+  "kind": "assumption",
+  "rationale": "counted from photographs taken with nothing moved: things behind other things, in the dishwasher and in the closed drawers are not in the list; no size was measured; some labels could not be read",
+  "mechanism": {
+    "how": "Read the list of things on the marketing page against the cabinets and correct it; measure the stock pot, the stand mixer, the food processor, the blender, the Instant Pot and the longest baking sheet"
+  },
+  "requirements": [
+    "R10"
+  ],
+  "owner": "Eric"
+}

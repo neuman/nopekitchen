@@ -1,0 +1,169 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.near_use",
+  "rho": "f8c2d92f616e36b052d95843c94324e7b18b0f6a4b1cae07e81d5290dba17451",
+  "static": "f886fea7e39812c0f64b4857265bd303e73c2a25bc2d78ddc8d5e2cd0b09b6c0",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "2b10e9986c92c2c49cf4973cc8d5e8d87c590305a7c553879922466fada8d40a",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:plates_by_the_refrigerator",
+      "expect": "fail",
+      "note": "the dinner plates pinned to the wall cabinet beside the refrigerator, 12 ft from the dishwasher",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_far_ft"
+        ],
+        "e0ddbcc8bf5037d1168ad3d8d8bc45bdcfdcc6661b891b2184ecb37bbc4cf286",
+        12.121205018937312
+      ],
+      [
+        [
+          "stow_far_what"
+        ],
+        "6a1e1e98a3fabfd834b5764906a58a74074bde4d3624124e1beea3cf47e73789"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C21": "67b4d96b944b2713d75d0ab4ced653afcb45b26026ff3a7a59b48a8347b98c46",
+      "acceptance:C21": "994138d3b5478b200de8327b070887b558f9b98285573bce7ea3ebc83c5cd46f"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "stow_far_ft"
+          ],
+          "9a1611a1864d27c7480508791cb0443264a4edaefb6ee911ab8a40939d359ebe",
+          4.605627596273449
+        ],
+        [
+          [
+            "stow_far_what"
+          ],
+          "46a90a72d1e89f4326280123b87b881af2e79643222a4f3b1d7d37faa891d158",
+          "Compost bin, in counter beside the range, prep side, from the prep"
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C21": "67b4d96b944b2713d75d0ab4ced653afcb45b26026ff3a7a59b48a8347b98c46",
+        "acceptance:C21": "994138d3b5478b200de8327b070887b558f9b98285573bce7ea3ebc83c5cd46f"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 4.6,
+    "limit": 5.0,
+    "units": "ft",
+    "detail": "farthest: Compost bin, in counter beside the range, prep side, from the prep: 4.6 ft (limit <= 5 ft)",
+    "goalpost": [
+      {
+        "key": "C21",
+        "measured": 4.6,
+        "units": "ft",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 0.5,
+            "outcome": "fail",
+            "measured": 4.6,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 2.5,
+            "outcome": "fail",
+            "measured": 4.6,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 10.0,
+            "outcome": "pass",
+            "measured": 4.6,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 50.0,
+            "outcome": "pass",
+            "measured": 4.6,
+            "units": "ft"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 20,
+    "boundary": "",
+    "results": [
+      {
+        "key": [
+          "stow_far_ft"
+        ],
+        "before": 4.605627596273449,
+        "after": 5.76,
+        "outcome": "fail",
+        "measured": 5.8,
+        "limit": 5.0
+      }
+    ],
+    "inconclusive": [],
+    "not_mutated": [
+      {
+        "key": [
+          "stow_far_what"
+        ],
+        "why": "word"
+      }
+    ]
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:plates_by_the_refrigerator (the dinner plates pinned to the wall cabinet beside the refrigerator, 12 ft from the dishwasher): farthest: Everyday plates and bowls, in wall cabinet over the prep counter, from the dishwasher: 12.1 ft (limit <= 5 ft)",
+  "measured": 12.1,
+  "limit": 5.0,
+  "units": "ft",
+  "digest": "e1c2eb07dd91b5d11265e74f0af6a180cbe7775397fb4643b95f9aeb3f41ea1f"
+}

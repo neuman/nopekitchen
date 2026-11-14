@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152142.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: the range top with three cast-iron pans, the compost bin beside it, the knife strip",
+  "sha256": "727ed81f5aeff6a5b17f72e78d36b7f8d7f4e0cbf6f2306835512e45e9ab2c1d",
+  "added": "2026-11-14T00:09:26Z",
+  "extractions": [
+    {
+      "what": "Range top: a 12 in and a 10 in cast-iron skillet and a crepe pan; a steel compost bin on the counter beside the range; the magnetic knife strip",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152029.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: sink wall base cabinets open: food containers, Dutch oven and casseroles; cleaning things under the sink; dishwasher",
+  "sha256": "12b9f1fa04dea7995c52fa72672d75b9d565397929e99f90c2f8805df022781a",
+  "added": "2026-11-14T00:09:26Z",
+  "extractions": [
+    {
+      "what": "Sink-wall bases: nested deli containers and lids, round containers with red lids, divided lunch containers; below them a wok with a glass lid, a white casserole and a blue Dutch oven. Under the sink: three spray cleaners, Goo Gone, a dish soap refill, a tub of dishwasher tablets, paper towels, a cloth bag of bags; the disposal and a water filter. Bosch dishwasher",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

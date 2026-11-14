@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.island_knee",
+  "rho": "f452ef22e19bba4c698278e27c3cdeebc3e7b7509a0d060bab2acc6cdfeb3976",
+  "static": "59d79ba6371f1edec6f03d518ee9f94f30edd5920bf73f9886d983ae64128da8",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "f34dc4ddfc019a5aef762818661157f8f260097c5f87815bf100a54930b1020e",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:shallow_island",
+      "expect": "fail",
+      "note": "the island top at 36 in, as the contractor's plan suggests",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "island_knee_in"
+        ],
+        "3e95130d6b30a8e8dde07c16066004bb88e7cb30ba08262a39fad98c24bbeb5b",
+        11.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C9": "d50a64d921c7feb2a4ae2ca0327e4b0ea391bf36202a824698c6256ae83d0f1e",
+      "acceptance:C9": "c9e9cbd9022bbff2f57d5aebe895bc1e538e719cdee938cae5426a6163903bee"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "island_knee_in"
+          ],
+          "b34f99646d287db0e67fa4f3d5b7715260045d9c6226d860a653be73642ea84f",
+          15.0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C9": "d50a64d921c7feb2a4ae2ca0327e4b0ea391bf36202a824698c6256ae83d0f1e",
+        "acceptance:C9": "c9e9cbd9022bbff2f57d5aebe895bc1e538e719cdee938cae5426a6163903bee"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 15.0,
+    "limit": 15.0,
+    "units": "in",
+    "detail": "overhang past the island bases: 15 in (limit >= 15 in)",
+    "goalpost": [
+      {
+        "key": "C9",
+        "measured": 15.0,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 1.5,
+            "outcome": "pass",
+            "measured": 15.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 7.5,
+            "outcome": "pass",
+            "measured": 15.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 30.0,
+            "outcome": "fail",
+            "measured": 15.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 150.0,
+            "outcome": "fail",
+            "measured": 15.0,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:shallow_island (the island top at 36 in, as the contractor's plan suggests): overhang past the island bases: 11 in (limit >= 15 in)",
+  "measured": 11.0,
+  "limit": 15.0,
+  "units": "in",
+  "digest": "a9a029d986a186e6694d28a964844b9ff0103f15cb547b2a3cf53bed13b4b704"
+}

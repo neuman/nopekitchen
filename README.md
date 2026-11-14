@@ -32,8 +32,22 @@ has lines; every claim joined to the choices it is about) and fails if anything 
 is joined to nothing. The map stays a drawing on a phone (`site/engineering/index.html`).
 
 The configurator also has a magnetic knife strip option (`CATALOG["knife_strip"]`), an
-"Everyday clutter" layer drawn from the reference photographs, and cameras "At the sink"
+"Everyday clutter" layer drawn from the reference photographs (papers, plants, toys: the things
+the kitchen keeps are placed by the model instead), and cameras "At the sink"
 and "At the prep counter" (`marketing/#cam=sink`, `#cam=prep`).
+
+What the kitchen holds is in `model/inventory.py`: 293 things read on 2026-11-13 from thirteen
+photographs of the existing cabinets with every door open (`inputs/20261113-*.json`; the
+photographs themselves are kept out of this public repository), each with a typical size and the
+parts that draw it. `stow()` in `model/kitchen.py` gives each thing a drawer,
+shelf or counter spot in whatever layout is chosen, by rule: chemicals only under the sink, the
+children's things low, alcohol and medicine high, one kind in one cabinet, each kind near where
+it is first used. Claims C18 to C23 check the plan; A7 says the list is an estimate. The
+configurator draws the things in the cabinets, lists them under *Where everything goes*, and its
+*Exploded view* slider opens every door and drawer and brings the contents out. The *Cabinet
+labels* overlay (off until asked for) tags each drawer, and each cabinet behind its doors, with the
+kinds kept there: each kind's `short` name in the inventory. To move a thing,
+edit its row in the inventory, or pin it: `stow_pins="thing=place"` in `CONFIG`.
 
 To record a combination from the configurator as the design: press *Copy my configuration*,
 put those fields in `CONFIG` at the bottom of `model/kitchen.py` (and in

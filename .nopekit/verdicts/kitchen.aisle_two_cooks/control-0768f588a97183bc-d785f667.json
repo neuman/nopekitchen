@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.aisle_two_cooks",
+  "rho": "0768f588a97183bcd232c9a4d6040c600ebf5eb69d97bb35284df19e688f60be",
+  "static": "0cf04d538c36ba3543dc8709c360629b2034afaff49edcdf041869446d080a83",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "84f52912d8c3cf630f88fd44c3a9af5816dd471177b95c464010ff742f60c176",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:one_cook_aisle",
+      "expect": "fail",
+      "note": "the island at 42 in: right for one cook, short for two",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "work_aisle_in"
+        ],
+        "7d0c5abdb137f2559a8590c1e263f2cd5740bb5751e26f4c9e7257da2464c629",
+        42.0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C6": "144c7ecbe6b3875acf4861516e371cedc1fb6fef5de649a05069135fa51a3a7d",
+      "acceptance:C6": "001f0eb7b1ab634c8776c1d10acbde239d58a29328a6704b86c67db7c21d1082"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "work_aisle_in"
+          ],
+          "d02e56545c221cdd393ec7a5919e6e642e78482fd9c903367396e2e8e1d9271b",
+          48.0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C6": "144c7ecbe6b3875acf4861516e371cedc1fb6fef5de649a05069135fa51a3a7d",
+        "acceptance:C6": "001f0eb7b1ab634c8776c1d10acbde239d58a29328a6704b86c67db7c21d1082"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 48.0,
+    "limit": 48.0,
+    "units": "in",
+    "detail": "long run to island: 48 in (limit >= 48 in)",
+    "goalpost": [
+      {
+        "key": "C6",
+        "measured": 48.0,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 4.800000000000001,
+            "outcome": "pass",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 24.0,
+            "outcome": "pass",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 96.0,
+            "outcome": "fail",
+            "measured": 48.0,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 480.0,
+            "outcome": "fail",
+            "measured": 48.0,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:one_cook_aisle (the island at 42 in: right for one cook, short for two): long run to island: 42 in (limit >= 48 in)",
+  "measured": 42.0,
+  "limit": 48.0,
+  "units": "in",
+  "digest": "085a08120645a4f71209c0f650441da9130c458dbb09a489de99e16dba6ae229"
+}

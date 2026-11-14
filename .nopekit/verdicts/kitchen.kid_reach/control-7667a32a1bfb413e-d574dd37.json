@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.kid_reach",
+  "rho": "7667a32a1bfb413eab3473a947bccd774513ad17921c1f39932e9ac22ce94093",
+  "static": "3fc8431cb3576da7b1fdc9d2d7f795ed038115cebddf2586bb0e3339b402ebb2",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "5e8a2c694cc21a08b44f3511e6d89b808731e78c182ef3e12a93c3105568669c",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:cups_on_the_top_shelf",
+      "expect": "fail",
+      "note": "one of the children's cups pinned to the top shelf over the dishwasher",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_kid_max_in"
+        ],
+        "79f81904284648ba1b427e828852e5fc5652e8f5819aebc4ecb777adf4009f0d",
+        34.4
+      ],
+      [
+        [
+          "stow_kid_over_in"
+        ],
+        "c00a23e3cbf36824f497e2cfd83ca2621e1b68f7fd4e34e9b4be166fe1de0ac5",
+        40.35
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C22": "0dfe084fa36013d5cf6847eb32745181e543e1b83de1b55f2a2b39439194ef52",
+      "acceptance:C22": "5fefb70d6178a708408c1c5bb944c0bbce0da12db60d32af310085c74d9f3f7b"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "stow_kid_max_in"
+          ],
+          "79f81904284648ba1b427e828852e5fc5652e8f5819aebc4ecb777adf4009f0d",
+          34.4
+        ],
+        [
+          [
+            "stow_kid_over_in"
+          ],
+          "18cd72996cb532a0b7609f788ad22b98acb801d249a10b95beaba5988692335c",
+          -3.3999999999999986
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C22": "0dfe084fa36013d5cf6847eb32745181e543e1b83de1b55f2a2b39439194ef52",
+        "acceptance:C22": "5fefb70d6178a708408c1c5bb944c0bbce0da12db60d32af310085c74d9f3f7b"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": -3.4,
+    "limit": 0.0,
+    "units": "in",
+    "detail": "child's shoulder at 34.4 in; highest shelf of theirs above it by: -3.4 in (limit <= 0 in)",
+    "goalpost": [
+      {
+        "key": "C22",
+        "measured": -3.4,
+        "units": "in",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": -0.9,
+            "outcome": "pass",
+            "measured": -3.4,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": -0.5,
+            "outcome": "pass",
+            "measured": -3.4,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": -3.4,
+            "units": "in"
+          },
+          {
+            "end": "limit",
+            "limit": 9.0,
+            "outcome": "pass",
+            "measured": -3.4,
+            "units": "in"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 36,
+    "boundary": "",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": [
+      {
+        "key": [
+          "stow_kid_max_in"
+        ],
+        "why": "never-lands"
+      },
+      {
+        "key": [
+          "stow_kid_over_in"
+        ],
+        "why": "never-lands"
+      }
+    ]
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:cups_on_the_top_shelf (one of the children's cups pinned to the top shelf over the dishwasher): child's shoulder at 34.4 in; highest shelf of theirs above it by: 40.4 in (limit <= 0 in)",
+  "measured": 40.4,
+  "limit": 0.0,
+  "units": "in",
+  "digest": "03c6828d72acd4987dbc68bd938e15dbf070ba045cece56612be4be38312a170"
+}

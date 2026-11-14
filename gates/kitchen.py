@@ -179,3 +179,76 @@ def walkways(ctx: GateContext) -> Verdict:
     w = ctx.params["walkways"]
     return _judge(ctx, "kitchen.walkways", "C17", "walkway_min_in", "in", 1,
                   "west %g, north %g, south %g, east %g; narrowest" % (w["west"], w["north"], w["south"], w["east"]))
+
+
+# ---- a place for everything (model/inventory.py, stow) -------------------------
+def _list(words, n=4):
+    words = list(words)
+    return "; ".join(words[:n]) + (f"; and {len(words) - n} more" if len(words) > n else "")
+
+
+@gate(id="kitchen.stowed", basis="model-only", title="Every thing has a place and fits in it",
+      claims=["stowed"], tier=Tier.INSTANT, settles="things with no place",
+      negative_control=_nc("no_island_fridge_in_alcove", "no island and the refrigerator left in its alcove: no pantry and "
+                           "three drawers fewer, and things are left over"))
+def stowed(ctx: GateContext) -> Verdict:
+    """Each thing in the inventory, stood in a compartment by the placing rules;
+    the ones no compartment takes are counted. Sizes are typical ones (claim A7)."""
+    p = ctx.params
+    left = list(p["stow_unplaced"])
+    return _judge(ctx, "kitchen.stowed", "C18", "stow_unplaced_count", "things", 0,
+                  ("no place for: " + _list(left)) if left else f"all {p['stow_things']} things have a place; left over")
+
+
+@gate(id="kitchen.chemicals_apart", basis="model-only", title="Cleaning chemicals apart from food",
+      claims=["chemicals-apart"], tier=Tier.INSTANT, settles="cabinets holding both food and chemicals",
+      negative_control=_nc("soap_in_the_pantry", "the dish soap refill pinned to the pantry shelf the snacks are on"))
+def chemicals_apart(ctx: GateContext) -> Verdict:
+    """Counts the cabinets, pantries and counter spots that hold a cleaning
+    chemical and something eaten or drunk."""
+    both = list(ctx.params["stow_mixed"])
+    return _judge(ctx, "kitchen.chemicals_apart", "C19", "stow_mixed_count", "cabinets", 0,
+                  ("food and chemicals together in: " + _list(both)) if both else "no cabinet holds food and a chemical; holding both")
+
+
+@gate(id="kitchen.kinds_together", basis="model-only", title="Each kind of thing in one place",
+      claims=["kinds-together"], tier=Tier.INSTANT, settles="kinds split between places",
+      negative_control=_nc("one_spice_in_the_pantry", "one spice jar pinned to a pantry shelf, away from the rest"))
+def kinds_together(ctx: GateContext) -> Verdict:
+    """Counts the kinds (plates and bowls, pots, spices, snacks, ...) whose things
+    are in more than one cabinet."""
+    split = list(ctx.params["stow_split"])
+    return _judge(ctx, "kitchen.kinds_together", "C20", "stow_split_count", "kinds", 0,
+                  ("split between places: " + _list(split)) if split else "every kind is in one place; split")
+
+
+@gate(id="kitchen.near_use", basis="model-only", title="Daily things near where they are used",
+      claims=["near-use"], tier=Tier.INSTANT, settles="farthest daily thing from its place of use",
+      negative_control=_nc("plates_by_the_refrigerator", "the dinner plates pinned to the wall cabinet beside the refrigerator, "
+                           "12 ft from the dishwasher"))
+def near_use(ctx: GateContext) -> Verdict:
+    """The longest straight line from a daily kind's cabinet to the range, sink,
+    dishwasher, refrigerator or prep sink it serves."""
+    return _judge(ctx, "kitchen.near_use", "C21", "stow_far_ft", "ft", 1, f"farthest: {ctx.params['stow_far_what']}")
+
+
+@gate(id="kitchen.kid_reach", basis="sourced", title="The children's things within the smaller child's reach",
+      claims=["kid-reach"], tier=Tier.INSTANT, settles="highest children's shelf over the small child's shoulder",
+      negative_control=_nc("cups_on_the_top_shelf", "one of the children's cups pinned to the top shelf over the dishwasher"))
+def kid_reach(ctx: GateContext) -> Verdict:
+    """NKBA puts what a person uses at or below their shoulder; shoulder height is
+    0.80 of stature, as for the microwave (C10). The user here is the smaller child."""
+    p = ctx.params
+    return _judge(ctx, "kitchen.kid_reach", "C22", "stow_kid_over_in", "in", 1,
+                  f"child's shoulder at {p['stow_kid_max_in']:.1f} in; highest shelf of theirs above it by")
+
+
+@gate(id="kitchen.adult_only", basis="model-only", title="Alcohol and medicine above the taller child's reach",
+      claims=["adult-only"], tier=Tier.INSTANT, settles="lowest adults-only shelf over the taller child's reach",
+      negative_control=_nc("liquor_in_a_low_drawer", "one bottle of liquor pinned to the bottom drawer beside the dishwasher"))
+def adult_only(ctx: GateContext) -> Verdict:
+    """The lowest shelf holding liquor, wine, vitamins or medicine, against 1.25
+    times the taller child's stature."""
+    p = ctx.params
+    return _judge(ctx, "kitchen.adult_only", "C23", "stow_adult_margin_in", "in", 1,
+                  f"taller child reaches {p['stow_adult_min_in']:.1f} in; lowest adults-only shelf above that by")

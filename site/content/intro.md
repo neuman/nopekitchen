@@ -1,5 +1,5 @@
 ---
-as_of: 06e5545f52d7adcc
+as_of: 37c5333c0d088b75
 ---
 
 Each claim on this page is one thing that must be true for the kitchen to work for this family. The map shows which choices each claim reads.

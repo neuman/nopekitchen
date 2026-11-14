@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.doors_open",
+  "rho": "8bbf0ed543ecd2c104338489fd7849b0ab202a2928f5034b25e919db184145b2",
+  "static": "7b555e841a1c59e3b22b334b913178bc3e2a214f97ba50437e6f7477ee1b70e5",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "71a4a4a0192f29ce696f7460bbe30eb9ac8c341510491fefaf5aab8fc793843a",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:island_at_18_in",
+      "expect": "fail",
+      "note": "the island 18 in from the range: the oven door and the drawers hit it",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "blocked_door_count"
+        ],
+        "0c8af53f03a602f4527855fceeacacb71355f284d121d5615dc7df5f933a1b13",
+        4
+      ],
+      [
+        [
+          "blocked_doors"
+        ],
+        "94ee95bb667a1fd95c54195de5a45864f2a32ded712591df94eba111048fd9ab"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C16": "9a756f8890daf0c368fa9cc984ae45e528eec979f9957ddd7f6424e1bb594005",
+      "acceptance:C16": "d9c21ecd4f4a421a08138e2a2930c786cbf5612ba566f08f7f856e5c13ef44ff"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "blocked_door_count"
+          ],
+          "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+          0
+        ],
+        [
+          [
+            "blocked_doors"
+          ],
+          "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+        ],
+        [
+          [
+            "opens"
+          ],
+          "2ab9c996d5dc9c513449d490572c4dd441f082f78c9e522f76dcab89eedcf8da"
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C16": "9a756f8890daf0c368fa9cc984ae45e528eec979f9957ddd7f6424e1bb594005",
+        "acceptance:C16": "d9c21ecd4f4a421a08138e2a2930c786cbf5612ba566f08f7f856e5c13ef44ff"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "doors",
+    "detail": "41 doors and drawers swept; blocked: 0 doors (limit <= 0 doors)",
+    "goalpost": [
+      {
+        "key": "C16",
+        "measured": 0.0,
+        "units": "doors",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": -0.9,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "doors"
+          },
+          {
+            "end": "limit",
+            "limit": -0.5,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "doors"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "doors"
+          },
+          {
+            "end": "limit",
+            "limit": 9.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "doors"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:island_at_18_in (the island 18 in from the range: the oven door and the drawers hit it): blocked: range:oven by isl_b0; isl_b0:drawer0 by range; isl_b0:drawer1 by range; isl_b0:drawer2 by range: 4 doors (limit <= 0 doors)",
+  "measured": 4.0,
+  "limit": 0.0,
+  "units": "doors",
+  "digest": "f77aeec58b5c7fc4cbc0884572b161d2cb71dde0fb92f867bf951b3b565613f1"
+}

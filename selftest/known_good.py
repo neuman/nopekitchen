@@ -3,7 +3,7 @@
 Every Config field is stated, so an edit to the model's defaults does not move
 it. It is the design recorded on 2026-11-12: refrigerator at the hall end, a
 64 x 40 in island 48 in off both runs with a prep sink, microwave on the pantry
-shelf, gloss lacquer fronts. All fifteen kitchen gates pass on it.
+shelf, gloss lacquer fronts. All twenty-one kitchen gates pass on it.
 
 CLAIMS holds the acceptance conditions it was calibrated against; a control
 reads these, never the live claims/.
@@ -27,7 +27,7 @@ CONFIG: dict = {
     "counter_d": 25.5, "upper_d": 13.0, "fridge_d": 34.0,
     "fridge_at": "hall", "island_len": 64.0, "island_top_d": 40.0,
     "island_aisle": 48.0, "island_north_aisle": 48.0, "prep_sink": True,
-    "pantry": "open", "microwave_at": "pantry",
+    "pantry": "open", "microwave_at": "pantry", "stow_pins": "",
     "cab_line": "sektion_27e_gloss", "lower_color": "gentian", "upper_color": "oyster",
     "counter": "ikea_kasker", "sink": "ruvati_32", "faucet": "majsjon", "knife_strip": "backsplash",
     "backsplash": "tile", "floor": "lifeproof_sterling", "handles": "integrated",
@@ -59,6 +59,12 @@ CLAIMS: list = [
     _acc("C15", "No two things occupy the same space", "interfering pairs", "<=", 0.0, "pairs", "collisions"),
     _acc("C16", "Every door and drawer opens", "doors that cannot open", "<=", 0.0, "doors", "doors-open"),
     _acc("C17", "36 in of passage round the island", "narrowest passage", ">=", 36.0, "in", "walkways"),
+    _acc("C18", "Every thing has a place and fits in it", "things with no place", "<=", 0.0, "things", "stowed"),
+    _acc("C19", "No cabinet holds both a cleaning chemical and food", "cabinets holding both food and chemicals", "<=", 0.0, "cabinets", "chemicals-apart"),
+    _acc("C20", "Each kind of thing is kept in one place", "kinds split between places", "<=", 0.0, "kinds", "kinds-together"),
+    _acc("C21", "Daily things within 5 ft of where they are used", "farthest daily thing from its place of use", "<=", 5.0, "ft", "near-use"),
+    _acc("C22", "The children's things within the 5-year-old's reach", "highest children's shelf over the small child's shoulder", "<=", 0.0, "in", "kid-reach"),
+    _acc("C23", "Alcohol and medicine above the 8-year-old's reach", "lowest adults-only shelf over the taller child's reach", ">=", 0.0, "in", "adult-only"),
 ]
 
 

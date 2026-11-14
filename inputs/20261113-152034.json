@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152034.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: drawer left of the sink: foil, cling film, jar lids and two cutting boards",
+  "sha256": "2d1099d8173cb5381cb8b9fa194baa6df353371e25a80046f70e14822820e5cb",
+  "added": "2026-11-14T00:09:26Z",
+  "extractions": [
+    {
+      "what": "Drawer left of the sink: heavy-duty foil, foil, cling film, jar lids and rings, a composite cutting board on a wooden one",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

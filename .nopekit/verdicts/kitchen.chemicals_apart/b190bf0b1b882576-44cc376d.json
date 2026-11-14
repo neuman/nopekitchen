@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "gate": "kitchen.chemicals_apart",
+  "rho": "b190bf0b1b882576a6caff84dcb63ff8edb2f452574250af6dc9dfa7b730a1fb",
+  "code": {
+    "digest": "eaf0b04c6d8b72f2ba9f60b7047f5c96cba655b3105500cfd4195272ed32ccc9",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_mixed"
+        ],
+        "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+      ],
+      [
+        [
+          "stow_mixed_count"
+        ],
+        "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+        0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C19": "30fb665129f6922dd476e5397c4f35e6b66108ddd1a5e499cd5516265c71b34b",
+      "acceptance:C19": "a7f551990b89c870be561b379eb04db30cbb0543c39c28c6ac3d16f7774b0419"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "cabinets",
+    "comparator": "<=",
+    "settles": "cabinets holding both food and chemicals",
+    "detail": "no cabinet holds food and a chemical; holding both: 0 cabinets (limit <= 0 cabinets)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "chemicals-apart"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "95929053bc55120d3d771fe68d1c7dc65e162e7244049f3b68d21d0c60d80d3d"
+}

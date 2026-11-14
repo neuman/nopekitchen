@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "gate": "kitchen.kinds_together",
+  "rho": "988606475f9107596b1dfe57efe789e4a415e4b07ace6f9295fd930de63abefa",
+  "code": {
+    "digest": "1523226783128506900923eef654b7d3d3e17221b0318c957db21c76e00ee56d",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_split"
+        ],
+        "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+      ],
+      [
+        [
+          "stow_split_count"
+        ],
+        "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+        0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C20": "cee76639371d584d69dc6209dae9b51a9767583613934e63853b351cd6fecd2a",
+      "acceptance:C20": "35d2df706855e20715c10afb74d9e27ee2503d523d43d6a0296490eacfb31b01"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "kinds",
+    "comparator": "<=",
+    "settles": "kinds split between places",
+    "detail": "every kind is in one place; split: 0 kinds (limit <= 0 kinds)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "kinds-together"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "2bc8a163d6f716a2a5de01bdb78bc306e1d5aacc1587c02a7ea21cdd9d1dd779"
+}

@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152021.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: base right of the range, doors open: baking sheets, racks and baking dishes; the food-container roll-out at the edge",
+  "sha256": "531f4ed85d24c33d5bc32308da499b6b2b4daa7ff59bd0647e51a9c74fc96219",
+  "added": "2026-11-14T00:09:25Z",
+  "extractions": [
+    {
+      "what": "Base right of the range: three half sheet pans, quarter sheets, two cooling racks and a pizza pan on a roll-out; below, a white casserole, a black countertop appliance not identified, two glass 9 x 13 dishes, loaf pans and dark tins. At the edge: the roll-out of food containers",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

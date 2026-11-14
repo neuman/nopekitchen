@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152025.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: top drawer right of the range: the everything drawer of cooking tools",
+  "sha256": "2965d796d6fd776980868fd591030c833b4f66008db849c250d58b1b51cc9dd0",
+  "added": "2026-11-14T00:09:26Z",
+  "extractions": [
+    {
+      "what": "Top drawer right of the range, the everything drawer: rolling pin, whisk, potato masher, steel turner, fish spatula, tongs, silicone spatula, basting brush, bench scraper, pizza cutter, meat mallet, meat claws, wooden salad hands, lemon squeezer, can opener, ice cream scoop, measuring cups and spoons, folding funnels, peeler, corkscrew, tea infuser, skewers, icing nozzles, a rice paddle",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

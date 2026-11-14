@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "gate": "kitchen.near_use",
+  "rho": "b9bc5e76ff5e4c03460e126304bff0d0b41676f37ea37a89844a69351b3de874",
+  "code": {
+    "digest": "2b10e9986c92c2c49cf4973cc8d5e8d87c590305a7c553879922466fada8d40a",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_far_ft"
+        ],
+        "9a1611a1864d27c7480508791cb0443264a4edaefb6ee911ab8a40939d359ebe",
+        4.605627596273449
+      ],
+      [
+        [
+          "stow_far_what"
+        ],
+        "46a90a72d1e89f4326280123b87b881af2e79643222a4f3b1d7d37faa891d158",
+        "Compost bin, in counter beside the range, prep side, from the prep"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C21": "67b4d96b944b2713d75d0ab4ced653afcb45b26026ff3a7a59b48a8347b98c46",
+      "acceptance:C21": "994138d3b5478b200de8327b070887b558f9b98285573bce7ea3ebc83c5cd46f"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 4.6,
+    "limit": 5.0,
+    "units": "ft",
+    "comparator": "<=",
+    "settles": "farthest daily thing from its place of use",
+    "detail": "farthest: Compost bin, in counter beside the range, prep side, from the prep: 4.6 ft (limit <= 5 ft)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "near-use"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "8a92bc4c66a638da3786b533f12090b1534f7c6217f6f0f182ffbe55edee8089"
+}

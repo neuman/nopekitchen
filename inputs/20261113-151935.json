@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_151935.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: the long wall with every wall cabinet open, counter and range below",
+  "sha256": "45aab17bf8c803415fb17cd51e4e6576e9c73208711a716e89fdb601c7b28971",
+  "added": "2026-11-14T00:09:14Z",
+  "extractions": [
+    {
+      "what": "Long-wall wall cabinets, left to right: water bottles, tumblers, a grater, a bin of chargers and cables, a round white tub; sunscreen, vitamins and medicine boxes; about ten liquor bottles, two of wine, bar books, napkins; 12 dinner plates, salad plates, pasta bowls, cereal bowls, serving bowls, a terracotta bowl; a large Tetley box, four squeeze bottles, a dark bottle, oven mitts, salt; over the hood a stack of foil pans, a spray bottle, a white jug, an aerosol can, thermoses. On the counter: toaster oven, compost bin beside the range, three cast-iron pans, a sheet pan, knife strip, utensil crock, microwave",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

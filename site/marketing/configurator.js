@@ -41,7 +41,7 @@ const BASIS = { seen: "seen online", tag: "store tag", estimate: "estimate" };
 
 let T = null;          // twin.json
 let S = null;          // the selection
-let view = { people: "none", flow: false, doors: false, furniture: true, clutter: true, cam: "overview", begripa: "yellow" };
+let view = { people: "none", flow: false, doors: false, furniture: true, clutter: true, cam: "overview", begripa: "yellow", explode: 0, labels: false };
 
 // ---------------------------------------------------------------- state
 function recorded() {
@@ -122,6 +122,13 @@ function checks(s) {
   lay("Several cooks, a holiday", "C17", (v) => v + " in narrowest (min 36)");
   const wear = T.catalog.floor[s.floor].wear;
   row("Floors", "C14", wear >= C.C14.limit, wear + " mil (min " + C.C14.limit + ")");
+  const N = T.stows[L.stow].notes, some = (a, n = 2) => a.slice(0, n).join("; ") + (a.length > n ? "; and " + (a.length - n) + " more" : "");
+  lay("A place for everything", "C18", (v) => (v ? v + " with no place: " + some(N.unplaced) : "all " + T.things.length + " things have a place"));
+  lay("A place for everything", "C19", (v) => (v ? "together in: " + some(N.mixed) : "no cabinet holds both"));
+  lay("A place for everything", "C20", (v) => (v ? v + " split: " + some(N.split) : "every kind in one place"));
+  lay("A place for everything", "C21", (v) => v.toFixed(1) + " ft at most (max 5): " + N.far.split(",")[0].toLowerCase());
+  lay("A place for everything", "C22", (v) => (v <= 0 ? Math.abs(v).toFixed(1) + " in under the shoulder" : v.toFixed(1) + " in above the shoulder"));
+  lay("A place for everything", "C23", (v) => (v >= 0 ? v.toFixed(1) + " in above their reach" : Math.abs(v).toFixed(1) + " in inside their reach"));
   const notes = [];
   if (line.integrated === "ask") notes.push("The integrated handle on this line is seen in one image only. Ask the maker before ordering (claim A4).");
   if (line.integrated === false) notes.push("This line has no integrated handle.");
@@ -137,7 +144,7 @@ function checks(s) {
 // ---------------------------------------------------------------- 3D
 // Inches. Model frame (x east, y south, z up) maps to three.js (x, z, y).
 const G = { scene: null, cam: null, ctl: null, renderer: null, composer: null, gtao: null, root: null, over: null, shell: null,
-  walls: [], dirty: true, host: null, pmrem: null, roomEnv: null, env: null, cube: null, cubeRT: null, tex: {} };
+  walls: [], fronts: [], items: [], dirty: true, host: null, pmrem: null, roomEnv: null, env: null, cube: null, cubeRT: null, tex: {} };
 const M = (x, y, z) => new THREE.Vector3(x, z, y);
 const std = (hex, o = {}) => new THREE.MeshStandardMaterial({ color: new THREE.Color(hex), roughness: 0.8, metalness: 0, ...o });
 function rng(seed) { let s = seed; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
@@ -417,40 +424,48 @@ function onFace(b, u, z, d) {
 const faceW = (b) => (b.face === "E" || b.face === "W" ? b.dy : b.dx);
 const alongAxis = (b) => (b.face === "E" || b.face === "W" ? "y" : "x");
 
-function drawCabinet(parent, b, mats, s, line) {
-  const body = b.role === "upper" ? mats.upper : mats.lower, lowerish = b.role !== "upper";
-  const sinkBase = b.fronts === "door2+false";
+function drawCabinet(parent, b, mats, s, line, bays) {
+  const body = b.role === "upper" ? mats.upper : mats.lower, inside = b.role === "upper" ? mats.carcassUp : mats.carcass;
+  const sinkBase = b.fronts === "door2+false", ew = b.face === "E" || b.face === "W", t = 0.75;
+  // the carcass, hollow: a bottom, a back, two sides and, on a wall or tall cabinet, a top. The counter covers a base
+  const z0 = b.kind === "base" ? b.z + 4.5 : b.z, z1 = b.z + b.dz - (sinkBase ? 10.5 : 0), H = z1 - z0;
+  box(parent, b.x, b.y, z0, b.dx, b.dy, t, inside);
+  if (b.kind !== "base") box(parent, b.x, b.y, z1 - t, b.dx, b.dy, t, inside);
+  if (ew) { box(parent, b.face === "E" ? b.x : b.x + b.dx - t, b.y, z0, t, b.dy, H, inside); box(parent, b.x, b.y, z0, b.dx, t, H, inside); box(parent, b.x, b.y + b.dy - t, z0, b.dx, t, H, inside); }
+  else { box(parent, b.x, b.face === "S" ? b.y : b.y + b.dy - t, z0, b.dx, t, H, inside); box(parent, b.x, b.y, z0, t, b.dy, H, inside); box(parent, b.x + b.dx - t, b.y, z0, t, b.dy, H, inside); }
   if (b.kind === "base") {
-    box(parent, b.x, b.y, b.z + 4.5, b.dx, b.dy, b.dz - 4.5 - (sinkBase ? 10.5 : 0), mats.carcass);
     const k = 3;
     const kx = b.face === "E" ? [b.x, b.dx - k] : b.face === "W" ? [b.x + k, b.dx - k] : [b.x, b.dx];
     const ky = b.face === "S" ? [b.y, b.dy - k] : b.face === "N" ? [b.y + k, b.dy - k] : [b.y, b.dy];
     box(parent, kx[0], ky[0], b.z, kx[1], ky[1], 4.5, mats.toe);
-  } else box(parent, b.x, b.y, b.z, b.dx, b.dy, b.dz, b.kind === "tall" ? mats.carcass : mats.carcassUp);
-  if (b.fronts === "corner") {   // the rest of a corner unit's face is the next run
-    const [u0, u1, z0, z1] = b.rects[0]; panel(parent, b, u0, u1, z0, z1, 0.8, body); return;
   }
-  for (const [u0, u1, z0, z1, kind] of b.rects || []) {
-    if (kind === "mw") { panel(parent, b, u0, u1, z0, z1, 0.8, mats.blackGlass); panel(parent, b, u0 + 2, u1 - 2, z1 - 2.2, z1 - 1.4, 1.5, mats.steelDark, { off: 0.8, gap: 0, r: 0.3 }); continue; }
+  // a shelf under every compartment the model gives it, but the lowest and the drawers
+  const mine = (bays || []).filter((y) => y.host === b.id).sort((p, q) => p.z - q.z);
+  mine.forEach((y, i) => { if (i && y.kind !== "drawer" && y.kind !== "undersink") box(parent, y.x - 0.4, y.y - 0.4, y.z - 0.75, y.dx + 0.8, y.dy + 0.8, 0.75, mats.shelf, { cast: false }); });
+  const n = { E: [1, 0], W: [-1, 0], S: [0, 1], N: [0, -1] }[b.face], w = faceW(b);
+  if (b.fronts === "corner" && w > 13) panel(parent, b, 0, w - 12, z0, z1, 0.6, body, { gap: 0, r: 0.05 });    // the blind end of a corner cabinet: closed
+  (b.rects || []).forEach(([u0, u1, z0, z1, kind], i) => {
+    const fg = new THREE.Group();
+    if (kind === "mw") { panel(fg, b, u0, u1, z0, z1, 0.8, mats.blackGlass); panel(fg, b, u0 + 2, u1 - 2, z1 - 2.2, z1 - 1.4, 1.5, mats.steelDark, { off: 0.8, gap: 0, r: 0.3 }); parent.add(fg); return; }
     const lowerish = b.role !== "upper" && !(b.kind === "tall" && z0 > 50);   // the upper door of a tall cabinet is handled at its bottom edge
-    const jpull = s.handles === "integrated" && line.door !== "shaker", lip = jpull ? 1.25 : 0;
+    const jpull = s.handles === "integrated" && line.door !== "shaker" && kind !== "corner", lip = jpull ? 1.25 : 0;
     const [pz0, pz1] = lowerish ? [z0, z1 - lip] : [z0 + lip, z1];
-    if (line.door === "shaker") {
-      const f = 2.25; panel(parent, b, u0, u1, z0, z1, 0.4, body, { r: 0.05 });
-      panel(parent, b, u0, u0 + f, z0, z1, 0.8, body, { r: 0.06 }); panel(parent, b, u1 - f, u1, z0, z1, 0.8, body, { r: 0.06 });
-      panel(parent, b, u0 + f - 0.2, u1 - f + 0.2, z0, z0 + f, 0.8, body, { r: 0.06 }); panel(parent, b, u0 + f - 0.2, u1 - f + 0.2, z1 - f, z1, 0.8, body, { r: 0.06 });
+    if (line.door === "shaker" && kind !== "corner") {
+      const f = 2.25; panel(fg, b, u0, u1, z0, z1, 0.4, body, { r: 0.05 });
+      panel(fg, b, u0, u0 + f, z0, z1, 0.8, body, { r: 0.06 }); panel(fg, b, u1 - f, u1, z0, z1, 0.8, body, { r: 0.06 });
+      panel(fg, b, u0 + f - 0.2, u1 - f + 0.2, z0, z0 + f, 0.8, body, { r: 0.06 }); panel(fg, b, u0 + f - 0.2, u1 - f + 0.2, z1 - f, z1, 0.8, body, { r: 0.06 });
     } else {
-      panel(parent, b, u0, u1, pz0, pz1, 0.8, body);
-      if (jpull) panel(parent, b, u0, u1, lowerish ? z1 - lip : z0, lowerish ? z1 : z0 + lip, 0.2, lowerish ? mats.recess : mats.recessUp, { r: 0 });
+      panel(fg, b, u0, u1, pz0, pz1, 0.8, body);
+      if (jpull) panel(fg, b, u0, u1, lowerish ? z1 - lip : z0, lowerish ? z1 : z0 + lip, 0.2, lowerish ? mats.recess : mats.recessUp, { r: 0 });
     }
-    if (kind === "false") continue;
     const mid = (u0 + u1) / 2, ax = alongAxis(b);
-    if (s.handles === "begripa") {
+    if (kind === "false" || kind === "corner") { /* no pull: a false front, or the corner's folding leaf */ }
+    else if (s.handles === "begripa") {
       const h = new THREE.Mesh(new THREE.CylinderGeometry(2.56, 2.56, 0.45, 32, 1, false, 0, Math.PI), mats.begripa());
       h.position.copy(M(...onFace(b, mid, lowerish ? z1 - 0.5 : z0 + 0.5, 1.05)));
       // the half disc lies flat on the front, straight edge along the door's edge, round side toward the door's middle
       if (ax === "y") { h.rotation.z = Math.PI / 2; h.rotation.x = lowerish ? Math.PI : 0; } else h.rotation.set(0, -Math.PI / 2, lowerish ? -Math.PI / 2 : Math.PI / 2);
-      h.castShadow = true; parent.add(h);
+      h.castShadow = true; fg.add(h);
     } else if (s.handles === "cup_black") {
       // a 3.5 in crescent, 1 in tall, standing 0.8 in off the front: flat edge toward the door's edge
       const h = new THREE.Mesh(new THREE.CylinderGeometry(1.75, 1.75, 0.8, 32, 1, false, 0, Math.PI), mats.pullBlack);
@@ -459,20 +474,149 @@ function drawCabinet(parent, b, mats, s, line) {
       h.position.copy(M(...onFace(b, mid, drawer ? (z0 + z1) / 2 + 0.5 : (lowerish ? z1 - 2 : z0 + 2), 1.2)));
       const up = drawer || lowerish;
       if (ax === "y") { h.rotation.z = Math.PI / 2; h.rotation.x = up ? Math.PI : 0; } else h.rotation.set(0, -Math.PI / 2, up ? -Math.PI / 2 : Math.PI / 2);
-      h.castShadow = true; parent.add(h);
+      h.castShadow = true; fg.add(h);
     } else if (s.handles === "bar_black") {
       // 160 mm centres, about 6.9 in over all, square section; shortened on a front too narrow for it
       const horiz = kind === "drawer", len = horiz ? Math.min(6.9, (u1 - u0) - 3) : Math.min(6.9, (z1 - z0) - 3);
-      const hu = horiz ? mid : (u0 < 0.5 && u1 < faceW(b) - 0.5 ? u1 - 2 : u0 + 2), hz = horiz ? (z0 + z1) / 2 : (lowerish ? z1 - 2.5 - len / 2 : z0 + 2.5 + len / 2);
-      const box = (u, z, d, lu, lz, ld) => { const m = new THREE.Mesh(ax === "y" ? new THREE.BoxGeometry(ld, lz, lu) : new THREE.BoxGeometry(lu, lz, ld), mats.pullBlack); m.position.copy(M(...onFace(b, u, z, d))); m.castShadow = true; parent.add(m); };
-      box(hu, hz, 1.75, horiz ? len : 0.5, horiz ? 0.5 : len, 0.4);
-      for (const e of [-1, 1]) box(horiz ? hu + e * (len / 2 - 0.25) : hu, horiz ? hz : hz + e * (len / 2 - 0.25), 1.2, 0.5, 0.5, 0.8);
+      const hu = horiz ? mid : (u0 < 0.5 && u1 < w - 0.5 ? u1 - 2 : u0 + 2), hz = horiz ? (z0 + z1) / 2 : (lowerish ? z1 - 2.5 - len / 2 : z0 + 2.5 + len / 2);
+      const bar = (u, z, d, lu, lz, ld) => { const m = new THREE.Mesh(ax === "y" ? new THREE.BoxGeometry(ld, lz, lu) : new THREE.BoxGeometry(lu, lz, ld), mats.pullBlack); m.position.copy(M(...onFace(b, u, z, d))); m.castShadow = true; fg.add(m); };
+      bar(hu, hz, 1.75, horiz ? len : 0.5, horiz ? 0.5 : len, 0.4);
+      for (const e of [-1, 1]) bar(horiz ? hu + e * (len / 2 - 0.25) : hu, horiz ? hz : hz + e * (len / 2 - 0.25), 1.2, 0.5, 0.5, 0.8);
     } else if (s.handles === "bar") {
       const horiz = kind === "drawer", len = horiz ? Math.min(7, (u1 - u0) * 0.45) : 6;
-      const hu = horiz ? mid : (u0 < 0.5 && u1 < faceW(b) - 0.5 ? u1 - 2 : u0 + 2), hz = horiz ? (z0 + z1) / 2 : (lowerish ? z1 - 6 : z0 + 6);
-      cyl(parent, ...onFace(b, hu, hz, 1.9), 0.28, len, horiz ? ax : "z", mats.steel);
-      for (const e of [-1, 1]) cyl(parent, ...onFace(b, horiz ? hu + e * (len / 2 - 0.6) : hu, horiz ? hz : hz + e * (len / 2 - 0.6), 1.3), 0.2, 1.2, ax === "y" ? "x" : "y", mats.steel);
+      const hu = horiz ? mid : (u0 < 0.5 && u1 < w - 0.5 ? u1 - 2 : u0 + 2), hz = horiz ? (z0 + z1) / 2 : (lowerish ? z1 - 6 : z0 + 6);
+      cyl(fg, ...onFace(b, hu, hz, 1.9), 0.28, len, horiz ? ax : "z", mats.steel);
+      for (const e of [-1, 1]) cyl(fg, ...onFace(b, horiz ? hu + e * (len / 2 - 0.6) : hu, horiz ? hz : hz + e * (len / 2 - 0.6), 1.3), 0.2, 1.2, ax === "y" ? "x" : "y", mats.steel);
     }
+    // how it opens, for the exploded view: a door turns on its outer edge, a drawer slides with its box
+    if (kind === "door" || kind === "corner") {
+      const hinge = kind === "corner" || (u1 > w - 0.01 && u0 > 0.01) ? u1 : u0, d = hinge === u0 ? 1 : -1, dir = ew ? [0, d] : [d, 0];
+      const [hx, hy] = onFace(b, hinge, 0, 0.4), pivot = new THREE.Group();
+      pivot.position.copy(M(hx, hy, 0)); fg.position.copy(M(-hx, -hy, 0)); pivot.add(fg); parent.add(pivot);
+      G.fronts.push({ kind: "door", pivot, sign: Math.sign(dir[1] * n[0] - dir[0] * n[1]) });
+    } else if (kind === "drawer") {
+      const y = mine.find((q) => q.front === i);
+      if (y) {
+        const hs = Math.min(y.dz * 0.75, 6), m = mats.drawer, o = { cast: false };
+        box(fg, y.x - 0.5, y.y - 0.5, y.z - 0.5, y.dx + 1, y.dy + 1, 0.5, m, o);
+        box(fg, y.x - 0.5, y.y - 0.5, y.z, 0.5, y.dy + 1, hs, m, o); box(fg, y.x + y.dx, y.y - 0.5, y.z, 0.5, y.dy + 1, hs, m, o);
+        box(fg, y.x, y.y - 0.5, y.z, y.dx, 0.5, hs, m, o); box(fg, y.x, y.y + y.dy, y.z, y.dx, 0.5, hs, m, o);
+      }
+      parent.add(fg); G.fronts.push({ kind: "drawer", group: fg, e: y ? y.e : [n[0] * 20, n[1] * 20, 0, 0, 0, 0, 1] });
+    } else parent.add(fg);
+  });
+}
+
+// ---- the things in the cabinets (twin.json: things, bays, puts, stows; from model/inventory.py and stow())
+// A thing is drawn from its parts, in its own frame: x across as you face it, y from its front to its back, z up.
+function drawThings(root, ST, s) {
+  const geo = {}, mat = {}, G0 = (k, make) => (geo[k] ||= make());
+  const M0 = (hex, cls) => (mat[hex + cls] ||= cls === "glass" ? new THREE.MeshPhysicalMaterial({ color: new THREE.Color(hex), transparent: true, opacity: 0.4, roughness: 0.05, depthWrite: false, envMapIntensity: 1.2 })
+    : std(hex, { metal: { metalness: 0.9, roughness: 0.35 }, iron: { metalness: 0.35, roughness: 0.8 }, wood: { roughness: 0.7 }, paper: { roughness: 0.9 }, soft: { roughness: 1 } }[cls] || { roughness: 0.5 }));
+  const turn = { S: 0, E: Math.PI / 2, N: Math.PI, W: -Math.PI / 2 };
+  for (const pi of ST.items) {
+    const [ti, bi, x, y, z, rot] = T.puts[pi], th = T.things[ti], bay = T.bays[bi], g = new THREE.Group();
+    g.position.copy(M(x, y, z)); g.rotation.y = turn[bay.face] + (rot ? Math.PI / 2 : 0);
+    for (const [k, a, b, c, ...r] of th.parts) {
+      let m;
+      if (k === "b") { const [dx, dy, dz, col, cls] = r; m = new THREE.Mesh(G0("b" + [dx, dy, dz], () => new THREE.BoxGeometry(dx, dz, dy)), M0(col, cls)); m.position.set(a + dx / 2, c + dz / 2, -(b + dy / 2)); }
+      else if (k === "c") { const [rad, h, col, cls, r2] = r; m = new THREE.Mesh(G0("c" + [rad, h, r2], () => new THREE.CylinderGeometry(r2 ?? rad, rad, h, 20)), M0(col, cls)); m.position.set(a, c + h / 2, -b); }
+      else if (k === "h") { const [rad, len, axis, col, cls] = r; m = new THREE.Mesh(G0("h" + [rad, len], () => new THREE.CylinderGeometry(rad, rad, len, 12)), M0(col, cls)); if (axis === "x") m.rotation.z = Math.PI / 2; else m.rotation.x = Math.PI / 2; m.position.set(a, c, -b); }
+      else { const [rad, col, cls] = r; m = new THREE.Mesh(G0("s" + rad, () => new THREE.SphereGeometry(rad, 12, 10)), M0(col, cls)); m.position.set(a, c, -b); }
+      m.castShadow = r.at(-1) !== "glass" && r.at(-2) !== "glass"; m.receiveShadow = true; g.add(m);
+    }
+    g.userData.tip = th.label + " · " + bay.place + ", " + bay.words;
+    root.add(g);
+    // shut away behind a door or in a drawer: not drawn until the cabinets start to open
+    G.items.push({ g, home: [x, y, z], e: bay.e, shut: bay.kind !== "counter" && !(bay.kind === "pantry" && s.pantry === "open" && bay.host.startsWith("pantry_shelf")) });
+  }
+}
+// The exploded view, t from 0 to 1. Doors swing open first. Then each compartment's contents slide out of the
+// cabinet and rise to where they can be seen, a base cabinet from the bottom drawer up (views/twin.py explode()).
+const ease = (x) => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
+function phases(e, t) {
+  const n = e[6] || 1, len = 0.76 / n, t0 = 0.2 + len * e[5];
+  return [ease((t - t0) / (0.4 * len)), ease((t - t0 - 0.4 * len) / (0.6 * len))];
+}
+function applyExplode(t) {
+  const open = ease((t - 0.01) / 0.2);
+  for (const f of G.fronts) {
+    if (f.kind === "door") f.pivot.rotation.y = f.sign * open * 1.8;
+    else { const [p1] = phases(f.e, t); f.group.position.copy(M(f.e[0] * p1, f.e[1] * p1, 0)); }
+  }
+  for (const it of G.items) {
+    const [p1, p2] = phases(it.e, t), e = it.e;
+    it.g.position.copy(M(it.home[0] + e[0] * p1 + e[2] * p2, it.home[1] + e[1] * p1 + e[3] * p2, it.home[2] + e[4] * p2));
+    it.g.visible = !it.shut || t > 0.005;
+  }
+  G.t = t; G.dirty = true;
+}
+
+// ---- the cabinet labels (an overlay): what is kept in each drawer and behind each door, as a tag on its front.
+// A drawer has one tag. Behind doors and in the pantry there is one for each set of kinds, over the shelves that hold it;
+// a cabinet or drawer the plan leaves bare says so. The names are each kind's `short` in model/inventory.py.
+function buildLabels(ST, L) {
+  const host = G.labelHost; if (!host) return;
+  host.replaceChildren(); G.labels = []; host.hidden = !view.labels;
+  if (!view.labels) return;
+  const vol = new Map();
+  for (const pi of ST.items) { const [ti, bi] = T.puts[pi], th = T.things[ti]; if (!vol.has(bi)) vol.set(bi, {}); const m = vol.get(bi); m[th.group] = (m[th.group] || 0) + th.w * th.d * th.h; }
+  const N = { E: [1, 0], W: [-1, 0], S: [0, 1], N: [0, -1] }, tags = new Map(), full = new Set();
+  for (const bi of ST.bays) {
+    const bay = T.bays[bi]; if (bay.kind === "counter") continue;
+    const kinds = Object.entries(vol.get(bi) || {}).sort((a, b) => b[1] - a[1]).map(([g]) => T.kinds[g].short);     // the bulkiest kind first
+    const text = kinds.slice(0, 3).join(" · ") + (kinds.length > 3 ? " +" + (kinds.length - 3) : ""), drawer = bay.kind === "drawer";
+    if (text && !drawer) full.add(bay.unit);
+    const key = drawer ? bay.id : bay.unit + "|" + text, n = N[bay.face];
+    if (!tags.has(key)) tags.set(key, { text, unit: bay.unit, drawer, pts: [] });
+    // the tag hangs 3 in proud of the compartment's open side, and goes where its contents go in the exploded view
+    tags.get(key).pts.push({ a: [bay.x + bay.dx / 2 + n[0] * (bay.dx / 2 + 3), bay.y + bay.dy / 2 + n[1] * (bay.dy / 2 + 3), bay.z + bay.dz / 2], e: bay.e });
+  }
+  for (const tag of tags.values()) {
+    if (!tag.text && (tag.unit === "pantry" || (!tag.drawer && full.has(tag.unit)))) continue;      // a bare shelf beside full ones needs no tag
+    const node = el("div", { class: "cfg-label" + (tag.text ? "" : " is-empty"), text: tag.text || "Empty" });
+    host.append(node); G.labels.push({ node, pts: tag.pts, w: node.offsetWidth, h: node.offsetHeight });
+  }
+  // what can stand between the eye and a tag, as boxes: the cabinets, the appliances, the counters, and the walls,
+  // posts and brick inside the room (an outside wall counts only while it is not faded away: see placeLabels)
+  G.occ = L.boxes.map((i) => T.boxes[i]).filter((b) => ["base", "upper", "tall", "appliance", "counter", "panel", "filler"].includes(b.kind))
+    .concat(T.room.filter((b) => b.kind === "post" || b.kind === "brick" || (b.kind === "wall" && b.inner))).map((b) => [b.x, b.y, b.z, b.x + b.dx, b.y + b.dy, b.z + b.dz]);
+}
+function behind(eye, q, boxes) {      // does the sight line from the eye to q pass through one of the boxes?
+  const d = [q[0] - eye[0], q[1] - eye[1], q[2] - eye[2]];
+  for (const b of boxes) {
+    let t0 = 0, t1 = 1;
+    for (let i = 0; i < 3 && t0 <= t1; i++) {
+      const lo = b[i] + 0.4, hi = b[i + 3] - 0.4;
+      if (Math.abs(d[i]) < 1e-9) { if (eye[i] < lo || eye[i] > hi) t0 = 2; continue; }
+      const u = (lo - eye[i]) / d[i], v = (hi - eye[i]) / d[i];
+      t0 = Math.max(t0, Math.min(u, v)); t1 = Math.min(t1, Math.max(u, v));
+    }
+    if (t0 <= t1) return true;
+  }
+  return false;
+}
+const _lv = new THREE.Vector3();
+function placeLabels() {      // every frame: each tag to where its compartment is on screen; hidden when out of sight or under a nearer tag
+  if (!G.labels || !G.labels.length || !view.labels) return;
+  const W = G.host.clientWidth, H = G.host.clientHeight, c = G.cam.position, eye = [c.x, c.z, c.y], t = G.t || 0, rows = [], shown = [];
+  const occ = G.occ.concat(G.walls.filter((w) => w.box && !w.hidden).map((w) => w.box));
+  G.cam.updateMatrixWorld();
+  for (const lb of G.labels) {
+    let x = 0, y = 0, z = 0;
+    for (const { a, e } of lb.pts) { const [p1, p2] = phases(e, t); x += a[0] + e[0] * p1 + e[2] * p2; y += a[1] + e[1] * p1 + e[3] * p2; z += a[2] + e[4] * p2; }
+    const n = lb.pts.length; x /= n; y /= n; z /= n;
+    _lv.copy(M(x, y, z)).project(G.cam);
+    if (!lb.w) { lb.w = lb.node.offsetWidth; lb.h = lb.node.offsetHeight; }
+    rows.push({ lb, sx: (_lv.x + 1) / 2 * W, sy: (1 - _lv.y) / 2 * H, dist: Math.hypot(x - eye[0], y - eye[1], z - eye[2]),
+      ok: _lv.z < 1 && Math.abs(_lv.x) < 1 && Math.abs(_lv.y) < 1 && !behind(eye, [x, y, z], occ) });
+  }
+  for (const r of rows.sort((p, q) => p.dist - q.dist)) {
+    // a tag near the edge of the view is pushed back inside it rather than cut off
+    const w = r.lb.w, h = r.lb.h, x = Math.max(4, Math.min(W - w - 4, r.sx - w / 2)), y = Math.max(4, Math.min(H - h - 4, r.sy - h / 2)), box = [x - 3, y - 1, x + w + 3, y + h + 1];
+    const ok = r.ok && !shown.some((o) => o[0] < box[2] && o[2] > box[0] && o[1] < box[3] && o[3] > box[1]);
+    if (ok) { shown.push(box); r.lb.node.style.transform = "translate(" + Math.round(x) + "px," + Math.round(y) + "px)"; }
+    r.lb.node.style.visibility = ok ? "visible" : "hidden";
   }
 }
 
@@ -607,15 +751,11 @@ function drawClutter(root, s, byId, mats) {
   const leaves = (x, y, z, n, h, spread, hex = "#3f7d48") => { for (let i = 0; i < n; i++) { const a = i * 2.4, m = cyl(root, x + Math.cos(a) * spread * 0.4, y + Math.sin(a) * spread * 0.4, z + h / 2, 0.15, h * (0.7 + 0.3 * ((i * 7) % 5) / 5), "z", c(hex), { r2: 1.3, cast: false }); m.rotation.z += Math.cos(a) * 0.22; m.rotation.x += Math.sin(a) * 0.22; } };
   const bush = (x, y, z, r, hex = "#3f8a4f") => { for (const [dx, dy, dz, k] of [[0, 0, 0, 1], [r * 0.6, 0.2 * r, 0.3 * r, 0.7], [-r * 0.5, 0.4 * r, 0.2 * r, 0.75], [0.1 * r, -r * 0.6, 0.4 * r, 0.65]]) { const m = new THREE.Mesh(new THREE.SphereGeometry(r * k, 10, 8), c(hex)); m.position.copy(M(x + dx, y + dy, z + r + dz)); m.castShadow = true; root.add(m); } };
   // ---- the long wall's counter, north of the range: the stand mixer and a mug
-  if (s.microwave_at !== "counter") { box(root, 5, 30, Z, 9, 13, 3, c("#eeeeea"), { r: 0.8 }); box(root, 6, 39, Z + 3, 6, 4, 11, c("#eeeeea"), { r: 1 }); box(root, 6, 30, Z + 11, 6, 13, 4.5, c("#eeeeea"), { r: 1.6 }); cyl(root, 10, 34, Z + 6, 3.6, 5.5, "z", mats.steel, { r2: 2.6 }); }
-  cyl(root, 14, 52, Z + 2.2, 1.7, 4.4, "z", c("#2f4a46"));
-  // ---- south of the range: papers, a child's craft, the toaster oven
-  box(root, 6, 116, Z, 9, 11, 1.6, c("#f1efe6")); box(root, 7, 117, Z + 1.6, 8, 9, 1.2, c("#d9c7a0")); box(root, 13, 100, Z, 10, 12, 0.15, c("#f08fc0"), { cast: false });
-  if (s.fridge_at === "hall") { box(root, 4, 131, Z, 14, 17, 9.5, mats.steelDark, { r: 0.5 }); box(root, 18, 133, Z + 2, 0.15, 11, 6, mats.blackGlass, { cast: false }); }
-  // ---- the sink wall: coffee maker, soap, the dish rack over the dishwasher, the blue shopping bag
-  box(root, 42, 4, Z, 8, 9, 13, c("#1d1d1f", { roughness: 0.4 }), { r: 0.6 }); cyl(root, 46, 15, Z + 3, 2.2, 6, "z", c("#3b2a20", { roughness: 0.2 }));
-  cyl(root, 58, 4.5, Z + 3.4, 1.2, 6.8, "z", c("#3a2a1c")); cyl(root, 98.5, 4.5, Z + 3, 1.2, 6, "z", c("#e9e4d2"));
-  box(root, 99, 8, Z, 17, 13, 0.6, c("#dcdcd8")); for (let i = 0; i < 5; i++) cyl(root, 102 + i * 2.6, 14.5, Z + 4.6, 4, 0.35, "x", c("#f4f2ec"), { cast: false });
+  cyl(root, 14, 50, Z + 2.2, 1.7, 4.4, "z", c("#2f4a46"));
+  // ---- south of the range: papers and a child's craft. (The toaster oven, the espresso machine, the soap and
+  // everything else the kitchen keeps are no longer clutter: the model places them, see drawThings.)
+  box(root, 6, 116, Z, 9, 11, 1.6, c("#f1efe6")); box(root, 7, 117, Z + 1.6, 8, 9, 1.2, c("#d9c7a0")); box(root, 13, 112, Z, 10, 12, 0.15, c("#f08fc0"), { cast: false });
+  // ---- the sink wall: a shopping bag left on the counter
   box(root, 121, 6, Z, 13, 7, 14, c("#2a63b8", { roughness: 0.9 }), { r: 0.8 });
   const win = byId.window; if (win) { cyl(root, win.x + win.dx * 0.3, 3.5, 75, 0.06, 14, "z", c("#444"), { cast: false }); pot(win.x + win.dx * 0.3, 3.5, 62, 3, 5, "#b9643c"); bush(win.x + win.dx * 0.3, 3.5, 64, 4.2); }
   for (const [x, y, z] of [[6, 12, 84], [6, 40, 84], [40, 6, 84], [122, 6, 84]]) { pot(x, y, z, 1.8, 3, "#f3f1ea"); bush(x, y, z + 2, 2.2, "#5a9a52"); }
@@ -693,6 +833,24 @@ function initScene(host) {
   } catch (e) { G.composer = null; }
   new ResizeObserver(resize).observe(host);
   resize(); setCamera(view.cam in CAMS ? view.cam : "overview");
+  const tip = el("div", { class: "cfg-tip", hidden: true }), ray = new THREE.Raycaster(), at = new THREE.Vector2();
+  G.labelHost = el("div", { class: "cfg-labels", hidden: true });
+  host.append(G.labelHost, tip);
+  let pending = null;
+  r.domElement.addEventListener("pointermove", (ev) => {
+    if (ev.buttons) { tip.hidden = true; return; }
+    pending = ev;
+    requestAnimationFrame(() => {
+      if (!pending) return; const e = pending; pending = null;
+      const box = r.domElement.getBoundingClientRect();
+      at.set(((e.clientX - box.left) / box.width) * 2 - 1, -((e.clientY - box.top) / box.height) * 2 + 1);
+      ray.setFromCamera(at, G.cam);
+      const hit = ray.intersectObjects(G.items.filter((it) => it.g.visible).map((it) => it.g), true)[0];
+      let o = hit && hit.object; while (o && !o.userData.tip) o = o.parent;
+      tip.hidden = !o; if (o) { tip.textContent = o.userData.tip; tip.style.left = e.clientX - box.left + 14 + "px"; tip.style.top = e.clientY - box.top + 14 + "px"; }
+    });
+  });
+  r.domElement.addEventListener("pointerleave", () => { tip.hidden = true; });
   let visible = true;
   new IntersectionObserver((e) => (visible = e[0].isIntersecting)).observe(host);
   (function loop() {
@@ -702,7 +860,7 @@ function initScene(host) {
   })();
 }
 function frame() {
-  fadeWalls();
+  fadeWalls(); placeLabels();
   if (G.composer) { try { G.composer.render(); return; } catch (e) { G.composer = null; } }
   G.renderer.render(G.scene, G.cam);
 }
@@ -772,6 +930,7 @@ function rebuild() {
     lower: lacquer(lowerHex, line.sheen), upper: lacquer(upperHex, line.sheen),
     carcass: std(shade(lowerHex, 0.92), { roughness: 0.5 }), carcassUp: std(shade(upperHex, 0.97), { roughness: 0.5 }),
     toe: std("#1c1c1c", { roughness: 0.7 }), recess: std(shade(lowerHex, 0.3), { roughness: 0.9 }), recessUp: std(shade(upperHex, 0.5), { roughness: 0.9 }),
+    shelf: std("#eeece6", { roughness: 0.6 }), drawer: std("#e4e2dc", { roughness: 0.55 }),
     pipe: std("#1d1d1f", { metalness: 0.6, roughness: 0.4 }),     hose: std("#2a2b2e", { roughness: 0.55, metalness: 0.15 }),     pullBlack: std("#1b1b1d", { roughness: 0.6 }),     steel: steelMat(false), steelDark: steelMat(true), fridgeSide: std("#5e6165", { metalness: 0.6, roughness: 0.5 }),
     blackGlass: new THREE.MeshPhysicalMaterial({ color: 0x0b0c0e, roughness: 0.06, clearcoat: 1, clearcoatRoughness: 0.02 }),
     counter: stoneMat(counter, s.counter), begripa: () => begripaMats[view.begripa === "mixed" ? BEGRIPA_MIX[begripaN++ % BEGRIPA_MIX.length] : view.begripa],
@@ -790,7 +949,7 @@ function rebuild() {
       const m = box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, mats.wall());
       const c = M(b.x + b.dx / 2, b.y + b.dy / 2, 48), out = c.clone().sub(center);
       if (b.dx < b.dy) out.set(Math.sign(out.x) || 1, 0, 0); else out.set(0, 0, Math.sign(out.z) || 1);
-      if (!b.inner) G.walls.push({ mesh: m, center: c, out });   // a wall inside the room is never faded away
+      if (!b.inner) G.walls.push({ mesh: m, center: c, out, box: [b.x, b.y, b.z, b.x + b.dx, b.y + b.dy, b.z + b.dz] });   // a wall inside the room is never faded away
       continue;
     }
     if (b.kind === "glass") {
@@ -855,9 +1014,11 @@ function rebuild() {
   }
   // ---- the kitchen
   const byId = {}; for (const i of L.boxes) byId[T.boxes[i].id] = T.boxes[i];
+  const ST = T.stows[L.stow], bays = ST.bays.map((i) => T.bays[i]);
+  G.fronts = []; G.items = [];
   for (const i of L.boxes) {
     const b = T.boxes[i];
-    if (b.kind === "base" || b.kind === "upper" || b.kind === "tall") drawCabinet(root, b, mats, s, line);
+    if (b.kind === "base" || b.kind === "upper" || b.kind === "tall") drawCabinet(root, b, mats, s, line, bays);
     else if (b.kind === "panel" || b.kind === "filler") box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, b.role === "upper" ? mats.upper : mats.lower, { r: 0.08 });
     else if (b.kind === "appliance") drawAppliance(root, b, mats);
     else if (b.kind === "counter") {
@@ -868,7 +1029,12 @@ function rebuild() {
       box(root, b.x - 2.5, 0, b.z, 2.5, 1.2, b.dz, mats.trim); box(root, b.x + b.dx, 0, b.z, 2.5, 1.2, b.dz, mats.trim); box(root, b.x + b.dx / 2 - 0.75, 0, b.z, 1.5, 1.0, b.dz, mats.trim);
       const pane = new THREE.Mesh(new THREE.PlaneGeometry(b.dx, b.dz), new THREE.MeshBasicMaterial({ map: skyTex(), toneMapped: false })); pane.position.copy(M(b.x + b.dx / 2, 0.25, b.z + b.dz / 2)); root.add(pane);
     } else if (b.kind === "shelf") box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, woodMat("#d8c7a6"), { r: 0.1 });
-    else if (b.kind === "door") { box(root, b.x, b.y, b.z, b.dx, b.dy, b.dz, mats.trim, { r: 0.1 }); if (b.face === "W") cyl(root, b.x - 1.2, b.y + 3, 36, 0.5, 4, "y", mats.steel); else cyl(root, b.x + 3, b.y + b.dy + 1.2, 36, 0.5, 4, "x", mats.steel); }
+    else if (b.kind === "door") {       // the pantry door, hinged at its north edge: it opens west, into the kitchen
+      const fg = new THREE.Group(), pivot = new THREE.Group(), hx = b.x + b.dx / 2, hy = b.y;
+      pivot.position.copy(M(hx, hy, 0)); fg.position.copy(M(-hx, -hy, 0)); pivot.add(fg); root.add(pivot);
+      box(fg, b.x, b.y, b.z, b.dx, b.dy, b.dz, mats.trim, { r: 0.1 }); cyl(fg, b.x - 1.2, b.y + b.dy - 3, 36, 0.5, 4, "y", mats.steel);
+      G.fronts.push({ kind: "door", pivot, sign: -1 });
+    }
     else if (b.kind === "stool") {
       const cx = b.x + 7.5, cy = b.y + 7.5, m = steelMat(true);
       box(root, cx - 6.5, cy - 6.5, 24.2, 13, 13, 0.9, m, { r: 0.4 });
@@ -892,6 +1058,7 @@ function rebuild() {
       else { box(root, ks.x + u - w / 2, ks.y - 0.08, bz, w, 0.08, blade, mats.steel, { cast: false }); box(root, ks.x + u - 0.45, ks.y - 0.6, ks.z + ks.dz, 0.9, 0.7, top - ks.z - ks.dz, handle, { r: 0.2 }); }
     });
   }
+  drawThings(root, ST, s); buildLabels(ST, L);
   if (view.clutter) drawClutter(root, s, byId, mats);
   // backsplash and the light strips under the uppers
   const w1End = s.fridge_at === "hall" ? 153 : 189;
@@ -953,8 +1120,8 @@ function rebuild() {
       const p = s.microwave_at === "pantry" && hall; person(over, p ? 128 : east, p ? 52 : (isl ? isl[3] - 20 : 130), k.kid_small, "#c7559a", "5 yr");
     }
   }
-  captureEnv();
-  G.dirty = true;
+  applyExplode(0); captureEnv();      // the room is reflected with its cabinets shut
+  applyExplode(view.explode);
 }
 
 // ---------------------------------------------------------------- controls
@@ -1071,14 +1238,39 @@ function renderSummary() {
   $("#cfg").dataset.total = b.total.toFixed(2);
 }
 
+// Where everything goes, as a list: each place, each drawer or shelf in it, and the things there.
+function renderStow() {
+  const host = $("#cfg-stow-body"); if (!host) return;
+  const ST = T.stows[layoutOf(S).stow], places = new Map();
+  for (const pi of ST.items) {
+    const [ti, bi] = T.puts[pi], bay = T.bays[bi], th = T.things[ti];
+    if (!places.has(bay.place)) places.set(bay.place, new Map());
+    const rows = places.get(bay.place); if (!rows.has(bi)) rows.set(bi, { bay, things: new Map() });
+    const things = rows.get(bi).things, t = things.get(th.label) || { n: 0, th }; t.n++; things.set(th.label, t);
+  }
+  const thing = ([label, { n, th }]) => el("span", { class: "cfg-thing" + (th.unsure ? " is-unsure" : ""), title: th.note || null, text: label + (n > 1 ? " ×" + n : "") + (th.unsure ? "*" : "") });
+  const blocks = [...places.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([place, rows]) => el("div", { class: "cfg-place" }, el("h4", { text: place }),
+    el("ul", {}, [...rows.values()].sort((a, b) => b.bay.z - a.bay.z).map(({ bay, things }) => el("li", {}, el("span", { class: "cfg-where", text: bay.words }), el("span", { class: "cfg-things" }, [...things.entries()].map(thing)))))));
+  const left = ST.unplaced.map((i) => T.things[i].label);
+  host.replaceChildren(...[
+    left.length ? el("p", { class: "cfg-stow-left", text: "No place in this layout for: " + [...new Set(left)].join("; ") + "." }) : null,
+    el("div", { class: "cfg-places" }, blocks),
+    el("p", { class: "cfg-hint", text: "* A thing that could not be identified for certain, or that the photographs do not show: point at it for the note. Counts are what could be counted in thirteen photographs; sizes are typical ones, not measured (claim A7)." })].filter(Boolean));
+  $("#cfg-stow-head").textContent = T.things.length + " things in " + places.size + " places" + (left.length ? " · " + left.length + " with no place" : "");
+}
+
 function renderView() {
   const seg = (name, opts, cur, on) => el("div", { class: "cfg-seg", role: "group", "aria-label": name }, opts.map(([v, l]) => el("button", { type: "button", class: cur === v ? "is-on" : "", "aria-pressed": String(cur === v), onclick: () => on(v), text: l })));
   $("#cfg-viewbar").replaceChildren(
     seg("Camera", Object.entries(CAMS).map(([k, c]) => [k, c.label]), view.cam, (v) => { setCamera(v); renderView(); }),
     seg("People", [["none", "Empty"], ["weeknight", "Weeknight"], ["holiday", "Holiday"]], view.people, (v) => { view.people = v; save(); render(); }),
-    seg("Overlays", [["flow", (view.flow ? "✓ " : "") + "Cook's triangle"], ["doors", (view.doors ? "✓ " : "") + "Doors open"], ["furniture", (view.furniture ? "✓ " : "") + "Furniture"], ["clutter", (view.clutter ? "✓ " : "") + "Everyday clutter"]], null, (v) => { view[v] = !view[v]; save(); render(); }));
+    seg("Overlays", [["flow", (view.flow ? "✓ " : "") + "Cook's triangle"], ["doors", (view.doors ? "✓ " : "") + "Doors open"], ["furniture", (view.furniture ? "✓ " : "") + "Furniture"], ["clutter", (view.clutter ? "✓ " : "") + "Everyday clutter"], ["labels", (view.labels ? "✓ " : "") + "Cabinet labels"]], null, (v) => { view[v] = !view[v]; save(); render(); }),
+    el("label", { class: "cfg-explode" }, el("span", { text: "Exploded view" }),
+      el("input", { type: "range", id: "cfg-explode", min: "0", max: "100", step: "1", value: String(Math.round(view.explode * 100)), "aria-label": "Exploded view: open the cabinets and bring out what is in them",
+        oninput: (e) => { view.explode = e.target.value / 100; applyExplode(view.explode); } }),
+      el("span", { class: "cfg-explode-hint", text: "opens every cabinet; point at a thing to name it" })));
 }
-function render() { renderControls(); renderSummary(); renderView(); rebuild(); }
+function render() { renderControls(); renderSummary(); renderStow(); renderView(); rebuild(); }
 
 function summaryText() {
   const b = bill(S), cat = T.catalog, c = checks(S);
@@ -1102,7 +1294,7 @@ async function main() {
   }
   S = recorded();
   try { const saved = JSON.parse(localStorage.getItem(STORE) || "null"); if (saved && saved.S && T.layouts[keyOf(saved.S)] && T.catalog.cab_line[saved.S.cab_line]) { S = { ...S, ...saved.S }; view = { ...view, ...saved.view }; } } catch (e) { /* ignore */ }
-  S = normalise(S);
+  S = normalise(S); view.explode = 0;
   const camHash = (location.hash.match(/cam=([a-z]+)/) || [])[1];      // marketing/#cam=sink opens on that camera
   if (camHash && CAMS[camHash]) view.cam = camHash;
   try { initScene($("#cfg-stage")); } catch (e) { $("#cfg-stage").textContent = "This browser could not start WebGL, so the room is not drawn. The options, the bill and the answers below still work."; G.scene = null; }
@@ -1118,6 +1310,6 @@ async function main() {
   }
   $("#cfg-copy").addEventListener("click", async (e) => { try { await navigator.clipboard.writeText(summaryText()); e.target.textContent = "Copied"; } catch (err) { prompt("Copy your configuration:", summaryText()); } setTimeout(() => (e.target.textContent = "Copy my configuration"), 1600); });
   render();
-  window.__cfg = { get total() { return bill(S).total; }, recordedTotal: T.recorded_total, set, get S() { return S; }, setCamera, lookFrom: (pos, look, fov = 50) => { G.cam.position.copy(M(...pos)); G.ctl.target.copy(M(...look)); G.cam.fov = fov; G.cam.updateProjectionMatrix(); G.ctl.update(); G.dirty = true; }, checks: () => checks(S) };
+  window.__cfg = { get total() { return bill(S).total; }, recordedTotal: T.recorded_total, set, get S() { return S; }, setCamera, lookFrom: (pos, look, fov = 50) => { G.cam.position.copy(M(...pos)); G.ctl.target.copy(M(...look)); G.cam.fov = fov; G.cam.updateProjectionMatrix(); G.ctl.update(); G.dirty = true; }, checks: () => checks(S), labels: (on) => { view.labels = !!on; save(); render(); }, explode: (t) => { view.explode = t; applyExplode(t); const el2 = $("#cfg-explode"); if (el2) el2.value = String(Math.round(t * 100)); } };
 }
 main();

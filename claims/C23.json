@@ -1,0 +1,24 @@
+{
+  "statement": "Alcohol and medicine are kept above the 8-year-old's reach",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "lowest adults-only shelf over the taller child's reach",
+    "comparator": ">=",
+    "limit": 0.0,
+    "units": "in"
+  },
+  "rationale": "a standing child reaches about 1.25 times their height: 63 in for the 8-year-old today. It gets harder each year they grow, and a stool defeats it: a shelf is not a lock",
+  "tags": [
+    "adult-only"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "The floor of each compartment that holds liquor, wine, vitamins or medicine, against 1.25 times the taller child's assumed stature",
+    "evaluators": [
+      "kitchen.adult_only"
+    ]
+  },
+  "requirements": [
+    "R4"
+  ]
+}

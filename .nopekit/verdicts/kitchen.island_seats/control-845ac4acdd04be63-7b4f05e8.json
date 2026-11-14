@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.island_seats",
+  "rho": "845ac4acdd04be6386555d5e8d1db110811347a753418b4a17f2863674630ab8",
+  "static": "158c4fa2189fc435dc938bd2635ce3ba9ea67f9de1b337c78a7ece4f317533bb",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "b5b5ea3378cd427b2373c48b4ba0ac643d7695c10ee371fc5dad7086935c3cc5",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:short_island",
+      "expect": "fail",
+      "note": "the island cut to 40 in: one 24 in seat",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "island_seats"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C8": "4ed5c7d69a8a897a3a5f3b114b42d9b75a82e249698fa572e89d947700ff84ad",
+      "acceptance:C8": "d6f8dbf4fe696a663e5880c9b8c998cf76e7f30d45b4a94e6f5e2279f9d03aeb"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "island_seats"
+          ],
+          "772c51c318a4bea2d58dec86dbdafe096cb75369a5638c345acaa0fe5ce8aa82",
+          2
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C8": "4ed5c7d69a8a897a3a5f3b114b42d9b75a82e249698fa572e89d947700ff84ad",
+        "acceptance:C8": "d6f8dbf4fe696a663e5880c9b8c998cf76e7f30d45b4a94e6f5e2279f9d03aeb"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 2.0,
+    "limit": 2.0,
+    "units": "seats",
+    "detail": "24 in seats along the island: 2 seats (limit >= 2 seats)",
+    "goalpost": [
+      {
+        "key": "C8",
+        "measured": 2.0,
+        "units": "seats",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 0.2,
+            "outcome": "pass",
+            "measured": 2.0,
+            "units": "seats"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": 2.0,
+            "units": "seats"
+          },
+          {
+            "end": "limit",
+            "limit": 4.0,
+            "outcome": "fail",
+            "measured": 2.0,
+            "units": "seats"
+          },
+          {
+            "end": "limit",
+            "limit": 20.0,
+            "outcome": "fail",
+            "measured": 2.0,
+            "units": "seats"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:short_island (the island cut to 40 in: one 24 in seat): 24 in seats along the island: 1 seats (limit >= 2 seats)",
+  "measured": 1.0,
+  "limit": 2.0,
+  "units": "seats",
+  "digest": "02469e4398f9b9dee665b2836e104266ab2c6acf00751578c56f80f4669bfcd7"
+}

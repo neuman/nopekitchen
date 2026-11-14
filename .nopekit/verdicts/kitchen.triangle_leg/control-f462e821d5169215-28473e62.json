@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.triangle_leg",
+  "rho": "f462e821d51692158f48cb9c3d923bd8057f7136a68f6ff8a7f8bd04ae582ebd",
+  "static": "3431a4da75943866ae7c2425226082e9285993d049c9cae2e6fbcea69046cd43",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "e08d100cb6f095ee1105b3a1dce12fd5dca9cf08521381e6ebd38831de50ec0e",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:no_prep_sink",
+      "expect": "fail",
+      "note": "the island sink removed: the cook walks from the refrigerator at the hall end to the only sink, 12.8 ft",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "leg_fridge_wet_ft"
+        ],
+        "e9752ae7a23a0b25b37e6ca328af2664cc9442b83dace75bc3038845088ccc57",
+        12.77905526524642
+      ],
+      [
+        [
+          "leg_range_fridge_ft"
+        ],
+        "c8d567356e7b20ec69859e31aab01c29ef150901aa88cfaa65e4cb8afd894fc2",
+        8.13506321255233
+      ],
+      [
+        [
+          "leg_wet_range_ft"
+        ],
+        "88084101c90c618d0e87b15ad79181e0eaf9a7e501fedad7f9b55a090cb2a6a0",
+        6.043390558655335
+      ],
+      [
+        [
+          "triangle_longest_ft"
+        ],
+        "e9752ae7a23a0b25b37e6ca328af2664cc9442b83dace75bc3038845088ccc57",
+        12.77905526524642
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C3": "08ca6a4ea44b84cf914c288ce6b5028b87522322d08889062cbee49af7b5ebad",
+      "acceptance:C3": "5c83aca455340c095431d8634b14ffbe643222f1cf42347cadc47a675ab3c2cf"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "leg_fridge_wet_ft"
+          ],
+          "25835dc5d4a25e81752bb0c39aded4ee08fb091e00fc51c5765c021b8bddf03b",
+          5.4505749569298745
+        ],
+        [
+          [
+            "leg_range_fridge_ft"
+          ],
+          "c8d567356e7b20ec69859e31aab01c29ef150901aa88cfaa65e4cb8afd894fc2",
+          8.13506321255233
+        ],
+        [
+          [
+            "leg_wet_range_ft"
+          ],
+          "c32dd34b3843480bea5fc5de26f88e3552b5186d809f9a13bd29a6f02725d9e5",
+          5.541823306056911
+        ],
+        [
+          [
+            "triangle_longest_ft"
+          ],
+          "c8d567356e7b20ec69859e31aab01c29ef150901aa88cfaa65e4cb8afd894fc2",
+          8.13506321255233
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C3": "08ca6a4ea44b84cf914c288ce6b5028b87522322d08889062cbee49af7b5ebad",
+        "acceptance:C3": "5c83aca455340c095431d8634b14ffbe643222f1cf42347cadc47a675ab3c2cf"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 8.14,
+    "limit": 9.0,
+    "units": "ft",
+    "detail": "sink-range 5.5, range-fridge 8.1, fridge-sink 5.5; longest: 8.14 ft (limit <= 9 ft)",
+    "goalpost": [
+      {
+        "key": "C3",
+        "measured": 8.14,
+        "units": "ft",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 0.9,
+            "outcome": "fail",
+            "measured": 8.14,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 4.5,
+            "outcome": "fail",
+            "measured": 8.14,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 18.0,
+            "outcome": "pass",
+            "measured": 8.14,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 90.0,
+            "outcome": "pass",
+            "measured": 8.14,
+            "units": "ft"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 74,
+    "boundary": "",
+    "results": [
+      {
+        "key": [
+          "triangle_longest_ft"
+        ],
+        "before": 8.13506321255233,
+        "after": 10.4,
+        "outcome": "fail",
+        "measured": 10.4,
+        "limit": 9.0
+      }
+    ],
+    "inconclusive": [],
+    "not_mutated": [
+      {
+        "key": [
+          "leg_fridge_wet_ft"
+        ],
+        "why": "never-lands"
+      },
+      {
+        "key": [
+          "leg_range_fridge_ft"
+        ],
+        "why": "never-lands"
+      },
+      {
+        "key": [
+          "leg_wet_range_ft"
+        ],
+        "why": "never-lands"
+      }
+    ]
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:no_prep_sink (the island sink removed: the cook walks from the refrigerator at the hall end to the only sink, 12.8 ft): sink-range 6.0, range-fridge 8.1, fridge-sink 12.8; longest: 12.78 ft (limit <= 9 ft)",
+  "measured": 12.78,
+  "limit": 9.0,
+  "units": "ft",
+  "digest": "cdd51aa130f118142ad4d59839230bce3c2eda2b60a9571e119f0c35cec247a8"
+}

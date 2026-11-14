@@ -1,0 +1,25 @@
+{
+  "statement": "Things used every day are kept within 5 ft of where they are first used",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "farthest daily thing from its place of use",
+    "comparator": "<=",
+    "limit": 5.0,
+    "units": "ft"
+  },
+  "rationale": "5 ft is two steps. The cook's triangle allows 9 ft for a walk made a few times a meal; a pan, a plate or a knife is fetched far more often. No guideline gives this number: it is this project's own",
+  "tags": [
+    "near-use"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "For each kind used every day, the straight line from where a person stands at its cabinet to the centre front of the range, sink, dishwasher, refrigerator or prep sink it serves; the longest is reported",
+    "evaluators": [
+      "kitchen.near_use"
+    ]
+  },
+  "requirements": [
+    "R10",
+    "R2"
+  ]
+}

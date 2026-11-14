@@ -4,6 +4,8 @@
     "C10": "flips",
     "C16": "holds",
     "C2": "holds",
+    "C22": "holds",
+    "C23": "holds",
     "C3": "holds",
     "C4": "holds"
   },
@@ -365,6 +367,65 @@
     },
     {
       "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "place",
+      "cause": "owner-unattributed",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "A7",
+      "key": "gap",
+      "kind": "assumption",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "Read the list of things on the marketing page against the cabinets and correct it; measure the stock pot, the stand mixer, the food processor, the blender, the Instant Pot and the longest baking sheet"
+      },
+      "not_compared": [],
+      "note": "Read the list of things on the marketing page against the cabinets and correct it; measure the stock pot, the stand mixer, the food processor, the blender, the Instant Pot and the longest baking sheet",
+      "owner": "Eric",
+      "physical_result": null,
+      "rationale": "counted from photographs taken with nothing moved: things behind other things, in the dishwasher and in the closed drawers are not in the list; no size was measured; some labels could not be read",
+      "reason": "owner Eric is named in claims/A7.json and has not recorded it — Eric records it in their own shell: nopekit claim physical A7 assume",
+      "requirements": [
+        "R10"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "The kitchen holds what thirteen photographs of 13 November 2026 show and the seven things the owner named, and each is about the usual size for its kind",
+      "status": "unclaimed",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "assumption",
+      "unproven": [],
+      "verdicts": [],
+      "word": "gap"
+    },
+    {
+      "acceptance": {
         "comparator": ">=",
         "limit": 36.0,
         "limit_hi": null,
@@ -663,6 +724,66 @@
       "source": "",
       "standing": "",
       "statement": "The refrigerator fits the hall end and both its doors open fully beside the return wall",
+      "status": "unverified",
+      "superseded": [],
+      "tags": [],
+      "terminal": "",
+      "terminal_word": "measurement",
+      "unproven": [],
+      "verdicts": [],
+      "word": "pending build"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": null,
+        "limit_hi": null,
+        "quantity": "",
+        "units": ""
+      },
+      "acceptance_render": "",
+      "article": "",
+      "authority": "",
+      "board": "place",
+      "cause": "no-article",
+      "compared": [],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [],
+      "grounded_by": [],
+      "id": "P5",
+      "key": "pending_build",
+      "kind": "physical",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "",
+      "mechanism": {
+        "by": "",
+        "evaluators": [],
+        "how": "When the cabinets are in: load each one from the plan, close every door and drawer, then ask each of the four to fetch five named things without help"
+      },
+      "not_compared": [],
+      "note": "When the cabinets are in: load each one from the plan, close every door and drawer, then ask each of the four to fetch five named things without help",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a plan made from typical sizes is a drawing; a drawer that takes the pans on paper may not close on their handles, and a plan nobody follows is not a plan",
+      "reason": "needs an article",
+      "requirements": [
+        "R10",
+        "R11"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "With the real things in the real cabinets, everything goes where the plan puts it and the family finds it there",
       "status": "unverified",
       "superseded": [],
       "tags": [],
@@ -1784,9 +1905,476 @@
         "kitchen.doors_open"
       ],
       "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "things with no place",
+        "units": "things"
+      },
+      "acceptance_render": "things with no place <= 0.0 things",
+      "article": "",
+      "authority": "",
+      "board": "place",
+      "cause": "checked",
+      "compared": [
+        "kitchen.stowed"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.stowed"
+      ],
+      "grounded_by": [],
+      "id": "C18",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 things",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.stowed"
+        ],
+        "how": "Each thing in model/inventory.py is stood in a compartment by the placing rules; its footprint and height are checked against the inside of the drawer or shelf; the things left over are counted"
+      },
+      "not_compared": [],
+      "note": "Each thing in model/inventory.py is stood in a compartment by the placing rules; its footprint and height are checked against the inside of the drawer or shelf; the things left over are counted",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a new kitchen that cannot take what the old one held sends the overflow to the counters on the first day",
+      "reason": "—",
+      "requirements": [
+        "R10"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Every thing kept in the kitchen today has a place in the new one, and fits in it",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "stowed"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.stowed"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "cabinets holding both food and chemicals",
+        "units": "cabinets"
+      },
+      "acceptance_render": "cabinets holding both food and chemicals <= 0.0 cabinets",
+      "article": "",
+      "authority": "",
+      "board": "place",
+      "cause": "checked",
+      "compared": [
+        "kitchen.chemicals_apart"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.chemicals_apart"
+      ],
+      "grounded_by": [],
+      "id": "C19",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 cabinets",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.chemicals_apart"
+        ],
+        "how": "Every cabinet, pantry and counter spot in the plan is read for what it holds; the ones holding a cleaning chemical and something eaten or drunk are counted"
+      },
+      "not_compared": [],
+      "note": "Every cabinet, pantry and counter spot in the plan is read for what it holds; the ones holding a cleaning chemical and something eaten or drunk are counted",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "the owner's rule. A leaking spray bottle above the flour, or a child who finds the dishwasher tablets beside the snacks, is the harm",
+      "reason": "—",
+      "requirements": [
+        "R11"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "No cabinet holds both a cleaning chemical and food",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "chemicals-apart"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.chemicals_apart"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "kinds split between places",
+        "units": "kinds"
+      },
+      "acceptance_render": "kinds split between places <= 0.0 kinds",
+      "article": "",
+      "authority": "",
+      "board": "place",
+      "cause": "checked",
+      "compared": [
+        "kitchen.kinds_together"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.kinds_together"
+      ],
+      "grounded_by": [],
+      "id": "C20",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 kinds",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.kinds_together"
+        ],
+        "how": "The kinds in model/inventory.py (plates and bowls, pots, spices, snacks and so on) are each read for the places their things were put; the kinds in more than one place are counted"
+      },
+      "not_compared": [],
+      "note": "The kinds in model/inventory.py (plates and bowls, pots, spices, snacks and so on) are each read for the places their things were put; the kinds in more than one place are counted",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "one place to remember per kind: all the pots in one cabinet, all the snacks in the pantry. A kind split between two cabinets is the one nobody can find",
+      "reason": "—",
+      "requirements": [
+        "R10"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Each kind of thing is kept in one place",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "kinds-together"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.kinds_together"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 5.0,
+        "limit_hi": null,
+        "quantity": "farthest daily thing from its place of use",
+        "units": "ft"
+      },
+      "acceptance_render": "farthest daily thing from its place of use <= 5.0 ft",
+      "article": "",
+      "authority": "",
+      "board": "place",
+      "cause": "checked",
+      "compared": [
+        "kitchen.near_use"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.near_use"
+      ],
+      "grounded_by": [],
+      "id": "C21",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "5 ft",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.near_use"
+        ],
+        "how": "For each kind used every day, the straight line from where a person stands at its cabinet to the centre front of the range, sink, dishwasher, refrigerator or prep sink it serves; the longest is reported"
+      },
+      "not_compared": [],
+      "note": "For each kind used every day, the straight line from where a person stands at its cabinet to the centre front of the range, sink, dishwasher, refrigerator or prep sink it serves; the longest is reported",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "5 ft is two steps. The cook's triangle allows 9 ft for a walk made a few times a meal; a pan, a plate or a knife is fetched far more often. No guideline gives this number: it is this project's own",
+      "reason": "—",
+      "requirements": [
+        "R10",
+        "R2"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Things used every day are kept within 5 ft of where they are first used",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "near-use"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.near_use"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": "<=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "highest children's shelf over the small child's shoulder",
+        "units": "in"
+      },
+      "acceptance_render": "highest children's shelf over the small child's shoulder <= 0.0 in",
+      "article": "",
+      "authority": "",
+      "board": "place",
+      "cause": "checked",
+      "compared": [
+        "kitchen.kid_reach"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.kid_reach"
+      ],
+      "grounded_by": [],
+      "id": "C22",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.kid_reach"
+        ],
+        "how": "The floor of each compartment that holds the children's dishes, bottles or snacks, against 0.80 of the smaller child's assumed stature"
+      },
+      "not_compared": [],
+      "note": "The floor of each compartment that holds the children's dishes, bottles or snacks, against 0.80 of the smaller child's assumed stature",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "their plates, cups, water bottles and snacks: a child who can reach them sets a place and gets a snack alone. The same rule as the microwave (C10); it gets easier each year they grow",
+      "reason": "—",
+      "requirements": [
+        "R4",
+        "R10"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "What the children fetch for themselves is no higher than the 5-year-old's shoulder",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "kid-reach"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.kid_reach"
+      ],
+      "word": "checked"
+    },
+    {
+      "acceptance": {
+        "comparator": ">=",
+        "limit": 0.0,
+        "limit_hi": null,
+        "quantity": "lowest adults-only shelf over the taller child's reach",
+        "units": "in"
+      },
+      "acceptance_render": "lowest adults-only shelf over the taller child's reach >= 0.0 in",
+      "article": "",
+      "authority": "",
+      "board": "place",
+      "cause": "checked",
+      "compared": [
+        "kitchen.adult_only"
+      ],
+      "contradicts": [],
+      "critical": true,
+      "disagree": false,
+      "errored": false,
+      "evidence": [],
+      "expected_latency": {},
+      "fallback": "",
+      "gates": [
+        "kitchen.adult_only"
+      ],
+      "grounded_by": [],
+      "id": "C23",
+      "key": "checked",
+      "kind": "measurable",
+      "latency": {
+        "article": "",
+        "seconds": null,
+        "source": "none"
+      },
+      "limit_text": "0 in",
+      "mechanism": {
+        "by": "closed_form",
+        "evaluators": [
+          "kitchen.adult_only"
+        ],
+        "how": "The floor of each compartment that holds liquor, wine, vitamins or medicine, against 1.25 times the taller child's assumed stature"
+      },
+      "not_compared": [],
+      "note": "The floor of each compartment that holds liquor, wine, vitamins or medicine, against 1.25 times the taller child's assumed stature",
+      "owner": "",
+      "physical_result": null,
+      "rationale": "a standing child reaches about 1.25 times their height: 63 in for the 8-year-old today. It gets harder each year they grow, and a stool defeats it: a shelf is not a lock",
+      "reason": "—",
+      "requirements": [
+        "R4"
+      ],
+      "resolves": [],
+      "source": "",
+      "standing": "",
+      "statement": "Alcohol and medicine are kept above the 8-year-old's reach",
+      "status": "pass",
+      "superseded": [],
+      "tags": [
+        "adult-only"
+      ],
+      "terminal": "closed_form",
+      "terminal_word": "automated",
+      "unproven": [],
+      "verdicts": [
+        "kitchen.adult_only"
+      ],
+      "word": "checked"
     }
   ],
   "decisions": [
+    {
+      "body": "",
+      "claims_changed": [
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C23"
+      ],
+      "evidence": [],
+      "id": "everything-is-kept-by-kind-nearest-to-where-it-i",
+      "params_changed": [
+        "stow_pins"
+      ],
+      "rejected": [
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "if the refrigerator stays in the alcove"
+          },
+          "type": "infeasible",
+          "value": "every thing where it is today",
+          "why": "the three base cabinets left of the range are where the refrigerator now stands, and the snack and dry-goods wall cabinets on the sink wall are gone; the pantry and the island did not exist"
+        },
+        {
+          "evidence": "",
+          "returns_if": {
+            "text": "if nobody finds it there (P5)"
+          },
+          "type": "dominated",
+          "value": "silverware in the top drawer beside the range, as today",
+          "why": "9.5 ft from the dishwasher it comes out of; the drawer right of the dishwasher is 1.8 ft from it and on the way to the table"
+        },
+        {
+          "evidence": "",
+          "type": "dominated",
+          "value": "spices in the cabinet over the hood, nearest the range",
+          "why": "steam, grease and a reach over a burner; the wall cabinet beside the hood is one step away"
+        },
+        {
+          "evidence": "",
+          "type": "dominated",
+          "value": "pots and pans in the island, to leave the drawers by the range for tools",
+          "why": "the drawers beside the range are 2.5 ft from it and the island 4.4 ft; pots and pans are the heaviest things fetched every day"
+        }
+      ],
+      "summary": "The 293 things read from photographs of the open cabinets each get a place by rule (stow in model/kitchen.py): cleaning chemicals only under the sink, the children's things at or below the 5-year-old's shoulder, alcohol and medicine above the 8-year-old's reach, heavy things below counter height, one kind in one cabinet, and each kind as near as it fits to the range, sink, dishwasher, refrigerator or prep sink it serves. Pots go left of the range, pans and the everything drawer right of it, mixing bowls and wraps in the island, dishes over the dishwasher, glasses left of the window, food in the pantry with the snacks on its two low shelves.",
+      "title": "Everything is kept by kind, nearest to where it is first used",
+      "when": "2026-11-14T00:41:18Z"
+    },
     {
       "body": "",
       "claims_changed": [
@@ -2047,6 +2635,331 @@
   ],
   "gaps": [],
   "inputs": [
+    {
+      "added": "2026-11-14T00:09:14Z",
+      "basis": "",
+      "bytes": 1832436,
+      "description": "Existing kitchen, 13 Nov 2026: the long wall with every wall cabinet open, counter and range below",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Long-wall wall cabinets, left to right: water bottles, tumblers, a grater, a bin of chargers and cables, a round white tub; sunscreen, vitamins and medicine boxes; about ten liquor bottles, two of wine, bar books, napkins; 12 dinner plates, salad plates, pasta bowls, cereal bowls, serving bowls, a terracotta bowl; a large Tetley box, four squeeze bottles, a dark bottle, oven mitts, salt; over the hood a stack of foil pans, a spray bottle, a white jug, an aerosol can, thermoses. On the counter: toaster oven, compost bin beside the range, three cast-iron pans, a sheet pan, knife strip, utensil crock, microwave"
+        }
+      ],
+      "id": "20261113-151935",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_151935.jpg",
+      "proposer": "",
+      "sha256": "45aab17bf8c803415fb17cd51e4e6576e9c73208711a716e89fdb601c7b28971",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:24Z",
+      "basis": "",
+      "bytes": 1952825,
+      "description": "Existing kitchen, 13 Nov 2026: the corner and the sink wall with the wall cabinets open; microwave, espresso machine and the sink with dishes",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Corner and sink wall: about 12 large and 14 small spice jars, tins, bags, Worcestershire; mason jars, 8 mugs, about 10 pint glasses; the snack cabinet (see 151942). Counter: microwave, DeLonghi espresso machine, bananas, agave syrup, paper towels, soap pump; in the sink a saucepan, bowls and plates; a lunch bag, a bag of rice or oats, shopping bags, a Halloween candy bucket"
+        }
+      ],
+      "id": "20261113-151940",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_151940.jpg",
+      "proposer": "",
+      "sha256": "d8736fb46acc4e69e2178c969953e814d8455dc9ef8f18de0d952e4317eb8247",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:25Z",
+      "basis": "",
+      "bytes": 1876960,
+      "description": "Existing kitchen, 13 Nov 2026: the snack cabinet right of the window, open, beside the refrigerator",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Snack cabinet right of the window: Kirkland nuts, trail mix, marshmallows, freezer bags of dried fruit; crackers, a clear bag of grain, bread, two boxes of 12 fruit cups, Jif peanut butter, a blue and white box, popcorn kernels; tortilla chips, Doritos, Cheetos, a dozen small chip bags, a yellow box, a box of bars"
+        }
+      ],
+      "id": "20261113-151942",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_151942.jpg",
+      "proposer": "",
+      "sha256": "b85c1f4b47efa42c30c841e3ffa9c8611a53bb885bd621e9edeeb1b39f4808f8",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:25Z",
+      "basis": "",
+      "bytes": 1860366,
+      "description": "Existing kitchen, 13 Nov 2026: base cabinets left of the range, doors open: small appliances, pots on a roll-out, the Instant Pot and the stock pot",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Base cabinets left of the range: a KitchenAid stand mixer, a food processor bowl on its base, a blender pitcher behind; a roll-out of saucepans, frying pans and lids; below it the Instant Pot and a large steel stock pot"
+        }
+      ],
+      "id": "20261113-152008",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152008.jpg",
+      "proposer": "",
+      "sha256": "4b0381b549b88f006059baa6cbdfaa1b374485376ee9f9f19bec5f9064a364a0",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:25Z",
+      "basis": "",
+      "bytes": 1698531,
+      "description": "Existing kitchen, 13 Nov 2026: middle drawer left of the range: nested mixing bowls and strainers",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Middle drawer left of the range: glass mixing bowls nested in a green bowl over red and teal ones, steel mixing bowls, mesh strainers and a colander"
+        }
+      ],
+      "id": "20261113-152012",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152012.jpg",
+      "proposer": "",
+      "sha256": "a3bffca2c1a9c56b60c0ea5a87c8fefddf92dabc31dd92239b23c8e936250c4d",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:25Z",
+      "basis": "",
+      "bytes": 1928835,
+      "description": "Existing kitchen, 13 Nov 2026: top drawer left of the range: silverware in a bamboo organiser",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Top drawer left of the range: a bamboo organiser of forks, salad forks, tablespoons, teaspoons, table knives and steak knives; chopsticks; ten ceramic soup spoons; reusable straws with brushes and children's cutlery"
+        }
+      ],
+      "id": "20261113-152017",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152017.jpg",
+      "proposer": "",
+      "sha256": "e78f6b0bbe8da83abd462f0c9c5aa3686ee8c02c3be1df9ac0a759a947c22b5f",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:25Z",
+      "basis": "",
+      "bytes": 1936378,
+      "description": "Existing kitchen, 13 Nov 2026: base right of the range, doors open: baking sheets, racks and baking dishes; the food-container roll-out at the edge",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Base right of the range: three half sheet pans, quarter sheets, two cooling racks and a pizza pan on a roll-out; below, a white casserole, a black countertop appliance not identified, two glass 9 x 13 dishes, loaf pans and dark tins. At the edge: the roll-out of food containers"
+        }
+      ],
+      "id": "20261113-152021",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152021.jpg",
+      "proposer": "",
+      "sha256": "531f4ed85d24c33d5bc32308da499b6b2b4daa7ff59bd0647e51a9c74fc96219",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:26Z",
+      "basis": "",
+      "bytes": 1871291,
+      "description": "Existing kitchen, 13 Nov 2026: top drawer right of the range: the everything drawer of cooking tools",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Top drawer right of the range, the everything drawer: rolling pin, whisk, potato masher, steel turner, fish spatula, tongs, silicone spatula, basting brush, bench scraper, pizza cutter, meat mallet, meat claws, wooden salad hands, lemon squeezer, can opener, ice cream scoop, measuring cups and spoons, folding funnels, peeler, corkscrew, tea infuser, skewers, icing nozzles, a rice paddle"
+        }
+      ],
+      "id": "20261113-152025",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152025.jpg",
+      "proposer": "",
+      "sha256": "2965d796d6fd776980868fd591030c833b4f66008db849c250d58b1b51cc9dd0",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:26Z",
+      "basis": "",
+      "bytes": 1823231,
+      "description": "Existing kitchen, 13 Nov 2026: sink wall base cabinets open: food containers, Dutch oven and casseroles; cleaning things under the sink; dishwasher",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Sink-wall bases: nested deli containers and lids, round containers with red lids, divided lunch containers; below them a wok with a glass lid, a white casserole and a blue Dutch oven. Under the sink: three spray cleaners, Goo Gone, a dish soap refill, a tub of dishwasher tablets, paper towels, a cloth bag of bags; the disposal and a water filter. Bosch dishwasher"
+        }
+      ],
+      "id": "20261113-152029",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152029.jpg",
+      "proposer": "",
+      "sha256": "12b9f1fa04dea7995c52fa72672d75b9d565397929e99f90c2f8805df022781a",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:26Z",
+      "basis": "",
+      "bytes": 1906354,
+      "description": "Existing kitchen, 13 Nov 2026: drawer left of the sink: foil, cling film, jar lids and two cutting boards",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Drawer left of the sink: heavy-duty foil, foil, cling film, jar lids and rings, a composite cutting board on a wooden one"
+        }
+      ],
+      "id": "20261113-152034",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152034.jpg",
+      "proposer": "",
+      "sha256": "2d1099d8173cb5381cb8b9fa194baa6df353371e25a80046f70e14822820e5cb",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:26Z",
+      "basis": "",
+      "bytes": 2496206,
+      "description": "Existing kitchen, 13 Nov 2026: the corner lazy Susan: baking ingredients and oils",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Corner lazy Susan: flour (two bags and a clear tub), sugar, brown sugar, baking soda, a white canister, corn starch, a black bag, yeast, vanilla, two jars of sprinkles, food colouring, cupcake liners, a tub with a black lid, two bottles at the back, an oats canister, avocado oil, Gatorade powder, a gallon of vegetable oil, parchment paper"
+        }
+      ],
+      "id": "20261113-152049",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152049.jpg",
+      "proposer": "",
+      "sha256": "1792c38ceca9469c90658acbfc3c80b3d5294c1a798d4426898c690db5a2d290",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:26Z",
+      "basis": "",
+      "bytes": 1934860,
+      "description": "Existing kitchen, 13 Nov 2026: the corner wall cabinets open: spices, dry goods, jars and glasses; microwave and knife strip below",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Corner wall cabinets: spices behind glass (black pepper, paprika, chili powder, Slap Ya Mama, mustard, ginger, cinnamon, Worcestershire); two bags of coffee beans, a plastic pitcher, dried beans, barley, pasta, cartons, cans, mayonnaise, a jar of white beans; mason jars, a large jar of bouillon, mugs, glasses and a snifter"
+        }
+      ],
+      "id": "20261113-152110",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152110.jpg",
+      "proposer": "",
+      "sha256": "d2ffb9c87d6bb99550ac020f806ad1c2fe672db8212a5ce0c5b068be3e35305e",
+      "url": ""
+    },
+    {
+      "added": "2026-11-14T00:09:26Z",
+      "basis": "",
+      "bytes": 2286091,
+      "description": "Existing kitchen, 13 Nov 2026: the range top with three cast-iron pans, the compost bin beside it, the knife strip",
+      "extracted": true,
+      "extractions": [
+        {
+          "confidence": "inferred",
+          "grounds": [
+            "A7"
+          ],
+          "note": "",
+          "what": "Range top: a 12 in and a 10 in cast-iron skillet and a crepe pan; a steel compost bin on the counter beside the range; the magnetic knife strip"
+        }
+      ],
+      "id": "20261113-152142",
+      "kind": "reference",
+      "licence": "",
+      "note": "",
+      "path": "inputs/references/20261113_152142.jpg",
+      "proposer": "",
+      "sha256": "727ed81f5aeff6a5b17f72e78d36b7f8d7f4e0cbf6f2306835512e45e9ab2c1d",
+      "url": ""
+    },
     {
       "added": "2026-11-12T18:57:48Z",
       "basis": "",
@@ -2517,8 +3430,8 @@
     "packs": [
       "sourcing"
     ],
-    "records_digest": "176dfd6b5903c02f1bb663c0b3912b5998750b0c818c5ae2c969beed0c7c7d7e",
-    "resolution_digest": "05fa8507b85e2d524e9792a803f70752f6db26435392183de42c89a2fb89c89f",
+    "records_digest": "fdcdb1a40e4e33a5014d7de887ef7e7d034d4a448ae3135a175e588fd652a299",
+    "resolution_digest": "d4ad45bd0448aa1776049fb7665c099233996616ea8787d7834041674990e91a",
     "revision": "v0.1",
     "spine_version": "0.1.0",
     "stale": false,
@@ -3019,7 +3932,9 @@
       "derived": false,
       "derived_from": [],
       "gates": [],
-      "grounded_by": [],
+      "grounded_by": [
+        "A7"
+      ],
       "home": "model/kitchen.py Config.pantry",
       "model_error": "",
       "name": "pantry",
@@ -3028,7 +3943,9 @@
       "record": "",
       "rejected": [],
       "source": "",
-      "sourced_from": [],
+      "sourced_from": [
+        "claim:A7"
+      ],
       "tags": [],
       "units": "",
       "value": "open"
@@ -3052,6 +3969,30 @@
       "tags": [],
       "units": "",
       "value": "pantry"
+    },
+    {
+      "changed_in": "everything-is-kept-by-kind-nearest-to-where-it-i",
+      "defended": true,
+      "derived": false,
+      "derived_from": [],
+      "gates": [],
+      "grounded_by": [
+        "A7"
+      ],
+      "home": "model/kitchen.py Config.stow_pins",
+      "model_error": "",
+      "name": "stow_pins",
+      "rationale": "Things the owner wants in one particular place whatever the rules in `stow()` say, as 'thing=place; thing=place' with ids from model/inventory.py and from `bays()`. Empty: every thing goes where the rules put it. A pinned thing still has to fit, and the claims about where things are still judge it.",
+      "read_by": [],
+      "record": "",
+      "rejected": [],
+      "source": "",
+      "sourced_from": [
+        "claim:A7"
+      ],
+      "tags": [],
+      "units": "",
+      "value": ""
     },
     {
       "changed_in": "ikea-boxes-with-27estore-gloss-lacquer-fronts",
@@ -3502,15 +4443,16 @@
       "A4",
       "A5",
       "A6",
+      "A7",
       "C17"
     ],
     "by_key": {
       "assumed": 0,
-      "checked": 16,
+      "checked": 22,
       "failing": 0,
-      "gap": 7,
+      "gap": 8,
       "open": 0,
-      "pending_build": 4,
+      "pending_build": 5,
       "skipped": 0,
       "stale": 0
     },
@@ -3518,46 +4460,46 @@
       "asserted": 0,
       "blocked": 0,
       "fail": 0,
-      "pass": 16,
+      "pass": 22,
       "pending": 0,
       "refuted": 0,
       "stale": 0,
-      "unclaimed": 7,
-      "unverified": 4,
+      "unclaimed": 8,
+      "unverified": 5,
       "verified": 0
     },
     "errored": 0,
     "kinds": {
-      "assumption": 6,
-      "measurable": 17,
-      "physical": 4
+      "assumption": 7,
+      "measurable": 23,
+      "physical": 5
     },
     "milestones": {},
-    "n_claims": 27,
-    "n_critical": 27,
+    "n_claims": 35,
+    "n_critical": 35,
     "n_gaps": 0,
-    "n_gates": 22,
+    "n_gates": 28,
     "ready": false,
     "tally": [
       {
         "errored": 0,
         "key": "checked",
-        "label": "16 checked",
-        "n": 16,
+        "label": "22 checked",
+        "n": 22,
         "status": "pass"
       },
       {
         "errored": 0,
         "key": "gap",
-        "label": "7 gaps",
-        "n": 7,
+        "label": "8 gaps",
+        "n": 8,
         "status": "unclaimed"
       },
       {
         "errored": 0,
         "key": "pending_build",
-        "label": "4 pending build",
-        "n": 4,
+        "label": "5 pending build",
+        "n": 5,
         "status": "unverified"
       }
     ],
@@ -3568,16 +4510,98 @@
       "A4",
       "A5",
       "A6",
+      "A7",
       "C17",
       "P1",
       "P2",
       "P3",
-      "P4"
+      "P4",
+      "P5"
     ],
-    "verdict": "v0.1 is NOT ready: 11 of 27 required claims are unresolved — 7 gaps (A1, A2, A3, A4, +3 more); 4 pending build (P1, P2, P3, P4). 16 of 27 claims are checked against the current inputs. Pending build: 4 claims need an article (P1, P2, P3, P4). No claim is checked on any article."
+    "verdict": "v0.1 is NOT ready: 13 of 35 required claims are unresolved — 8 gaps (A1, A2, A3, A4, +4 more); 5 pending build (P1, P2, P3, P4, +1 more). 22 of 35 claims are checked against the current inputs. Pending build: 5 claims need an article (P1, P2, P3, P4, +1 more). No claim is checked on any article."
   },
   "rebuild": [],
   "rejections": [
+    {
+      "by": null,
+      "decision": "everything-is-kept-by-kind-nearest-to-where-it-i",
+      "index": 0,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "if the refrigerator stays in the alcove"
+      },
+      "type": "infeasible",
+      "value": "every thing where it is today"
+    },
+    {
+      "by": null,
+      "decision": "everything-is-kept-by-kind-nearest-to-where-it-i",
+      "index": 1,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "not-machine-checkable",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": {
+        "text": "if nobody finds it there (P5)"
+      },
+      "type": "dominated",
+      "value": "silverware in the top drawer beside the range, as today"
+    },
+    {
+      "by": null,
+      "decision": "everything-is-kept-by-kind-nearest-to-where-it-i",
+      "index": 2,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "none",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": null,
+      "type": "dominated",
+      "value": "spices in the cabinet over the hood, nearest the range"
+    },
+    {
+      "by": null,
+      "decision": "everything-is-kept-by-kind-nearest-to-where-it-i",
+      "index": 3,
+      "input": null,
+      "preference": null,
+      "returns": {
+        "claim": "",
+        "detail": "",
+        "gate": "",
+        "observed": null,
+        "state": "none",
+        "status": "",
+        "why": ""
+      },
+      "returns_if": null,
+      "type": "dominated",
+      "value": "pots and pans in the island, to leave the drawers by the range for tools"
+    },
     {
       "by": null,
       "decision": "where-the-budget-was-found",
@@ -3986,7 +5010,8 @@
         "C5",
         "C7",
         "C16",
-        "C17"
+        "C17",
+        "C21"
       ],
       "disagree": [],
       "errored": false,
@@ -4026,6 +5051,8 @@
         "C8",
         "C9",
         "C10",
+        "C22",
+        "C23",
         "P2"
       ],
       "disagree": [],
@@ -4131,10 +5158,48 @@
         "C2",
         "C11"
       ]
+    },
+    {
+      "claims": [
+        "A7",
+        "C18",
+        "C20",
+        "C21",
+        "C22",
+        "P5"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R10",
+      "key": "gap",
+      "source": "owner, 13 November 2026",
+      "statement": "A place for everything we keep in the kitchen, with things of one kind or one use together, so it is easy to remember where they are",
+      "status": "unclaimed",
+      "word": "gap",
+      "worst": [
+        "A7"
+      ]
+    },
+    {
+      "claims": [
+        "C19",
+        "P5"
+      ],
+      "disagree": [],
+      "errored": false,
+      "id": "R11",
+      "key": "pending_build",
+      "source": "owner, 13 November 2026",
+      "statement": "Cleaning chemicals are kept apart from food",
+      "status": "unverified",
+      "word": "pending build",
+      "worst": [
+        "P5"
+      ]
     }
   ],
   "trace": {
-    "key": "adc169ec828a",
+    "key": "487f66cc265c",
     "round": 2,
     "state": "traced"
   },
@@ -4446,7 +5511,7 @@
       "comparator": "",
       "cpu_s": 0.0,
       "detail": "",
-      "duration_s": 0.000801,
+      "duration_s": 0.001678,
       "error": "",
       "evidence": [],
       "evidence_assets": [],
@@ -4698,10 +5763,10 @@
       "margin_why": "",
       "measured": 8.14,
       "ok": true,
-      "order": 19,
+      "order": 25,
       "pack": "",
       "passed": true,
-      "rho": "27c54a6f2d55cbb01f8c5af550a745824003ffc794aa0830aba52be3532b30ac",
+      "rho": "eabb16f9f13faf91756f03a03ec47ab950c8079e88a215edce5d6aed0a4fcb7a",
       "settles": "longest triangle leg",
       "skip_reason": "",
       "skipped": false,
@@ -4736,10 +5801,10 @@
       "margin_why": "",
       "measured": 19.13,
       "ok": true,
-      "order": 20,
+      "order": 26,
       "pack": "",
       "passed": true,
-      "rho": "c3604d554ed8a38b60205e8fbecd87c6066cfcc7c7e433571d043dc0181d3c22",
+      "rho": "60e4c4864982e5e1dc657ea3c9e913c639ee15674c7f07f4e15a1b6efa077c30",
       "settles": "triangle perimeter",
       "skip_reason": "",
       "skipped": false,
@@ -4774,10 +5839,10 @@
       "margin_why": "",
       "measured": 48.0,
       "ok": true,
-      "order": 8,
+      "order": 9,
       "pack": "",
       "passed": true,
-      "rho": "0bcba119b2105b2bb893ea9d2dc083960db69b4ff0a83f327acd4f7afce17d19",
+      "rho": "95403a73003b0c30cdeca8129bb801d8919819f3c48552e57639530e879a2759",
       "settles": "work aisle width",
       "skip_reason": "",
       "skipped": false,
@@ -4812,10 +5877,10 @@
       "margin_why": "",
       "measured": 48.0,
       "ok": true,
-      "order": 9,
+      "order": 10,
       "pack": "",
       "passed": true,
-      "rho": "7d34e8bfcf909cef736ff39c769e290ba9e0ed4f188fc2bd86c45c44e0bdd4ed",
+      "rho": "a92a683757c18bd77492ab196f0f7d056ba0d1659e5e3b450180f81905825903",
       "settles": "work aisle width",
       "skip_reason": "",
       "skipped": false,
@@ -4850,10 +5915,10 @@
       "margin_why": "",
       "measured": 22.5,
       "ok": true,
-      "order": 11,
+      "order": 13,
       "pack": "",
       "passed": true,
-      "rho": "c581b23596bdfbe55b8a960c2f23cb8f41436a2a5eb745c175062cd79463cac9",
+      "rho": "a600a07bb428dec15ffb0ae3da1eb921bc8053128d889142fe2682eae24094e7",
       "settles": "dishwasher standing room",
       "skip_reason": "",
       "skipped": false,
@@ -4888,10 +5953,10 @@
       "margin_why": "",
       "measured": 2.0,
       "ok": true,
-      "order": 16,
+      "order": 18,
       "pack": "",
       "passed": true,
-      "rho": "3cb692d3645b35d594efecec189ae96ae5d6313184480c07fee4e0357bdc9173",
+      "rho": "a4f76ff70e489d84f4c3dc82579114337decddb78ee841155824ef9e62d19a6e",
       "settles": "island seats",
       "skip_reason": "",
       "skipped": false,
@@ -4926,10 +5991,10 @@
       "margin_why": "",
       "measured": 15.0,
       "ok": true,
-      "order": 15,
+      "order": 17,
       "pack": "",
       "passed": true,
-      "rho": "e1a62efbd952b55fb0bb795128780cfc955bb40f81844e3ec2286f0075b650b1",
+      "rho": "e4c8d84500b6be273e80c37484570e532e76afd38649515d3f3924c3c471f80a",
       "settles": "island knee room",
       "skip_reason": "",
       "skipped": false,
@@ -4964,10 +6029,10 @@
       "margin_why": "zero-limit",
       "measured": -0.4,
       "ok": true,
-      "order": 17,
+      "order": 21,
       "pack": "",
       "passed": true,
-      "rho": "6940125b21009833a61d44b8780d95b0eaf4273c5c07e981342af0a890a973f0",
+      "rho": "09d12f4f76b3b9b99c0e793cb4e7a2a739489658906d6860eb7d3f300b2e1bd2",
       "settles": "microwave height over the small child's reach",
       "skip_reason": "",
       "skipped": false,
@@ -5002,10 +6067,10 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 13,
+      "order": 15,
       "pack": "",
       "passed": true,
-      "rho": "b2cb003e3a0e68c34397798ff41cd4d690c46e3839190befd67e38970b20259f",
+      "rho": "f3bc59ea141dceff5d4400202cbed9b47e707c7f8b19daff8493d2d2cf8e340a",
       "settles": "finish requirements not offered",
       "skip_reason": "",
       "skipped": false,
@@ -5040,10 +6105,10 @@
       "margin_why": "",
       "measured": 0.0,
       "ok": true,
-      "order": 18,
+      "order": 23,
       "pack": "",
       "passed": true,
-      "rho": "de63c98a5f6128a84e5dea6c6a77b6a52db8a6e346f85be49f8e1002d663f76c",
+      "rho": "f11dd423af164268aa67d96866f4564abdf4f3c55d273eebb5107a320bde64cb",
       "settles": "run fill error",
       "skip_reason": "",
       "skipped": false,
@@ -5078,10 +6143,10 @@
       "margin_why": "",
       "measured": 2.0,
       "ok": true,
-      "order": 21,
+      "order": 27,
       "pack": "",
       "passed": true,
-      "rho": "fb3b66faa24f5c0a771ac4c8996e9ac72927c3d3312956bedaf5dd8529a38fa9",
+      "rho": "ef891dba1c555605e5e14a1730af444a51822990ce4ada0a518f3c28980e5df9",
       "settles": "window to upper gap",
       "skip_reason": "",
       "skipped": false,
@@ -5116,10 +6181,10 @@
       "margin_why": "",
       "measured": 22.0,
       "ok": true,
-      "order": 14,
+      "order": 16,
       "pack": "",
       "passed": true,
-      "rho": "4ea1b64d60ac4ab1d229b33db80923381358cde917c1c6faab9f3862ac9c3eda",
+      "rho": "6721a7fbaa49a908fa08b93bef93d4f1c88c17d34895bc90e3647b7c3c8c7ef3",
       "settles": "floor wear layer",
       "skip_reason": "",
       "skipped": false,
@@ -5154,10 +6219,10 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 10,
+      "order": 12,
       "pack": "",
       "passed": true,
-      "rho": "c6a85fe62d9dc5547f2f1f3e0bd0135990ccfd53c17e529f54ea49bd0370ea25",
+      "rho": "c84e13e6676660463d7234cd864e786387637781059fa53f1d529b39aba3bbd6",
       "settles": "interfering pairs",
       "skip_reason": "",
       "skipped": false,
@@ -5192,10 +6257,10 @@
       "margin_why": "zero-limit",
       "measured": 0.0,
       "ok": true,
-      "order": 12,
+      "order": 14,
       "pack": "",
       "passed": true,
-      "rho": "d5a4b0f070111edece508e074790cb13518b2abd1374343177e46740743270f1",
+      "rho": "589f2e6255a9174e8a41bcd40ad6edff98adf43f40fb59277612445799c8a5b9",
       "settles": "doors that cannot open",
       "skip_reason": "",
       "skipped": false,
@@ -5248,6 +6313,234 @@
       "unanchored": true,
       "units": "",
       "unqualified": "known-good:fail",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "stowed"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "all 293 things have a place; left over: 0 things (limit <= 0 things)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.stowed",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 0.0,
+      "ok": true,
+      "order": 24,
+      "pack": "",
+      "passed": true,
+      "rho": "e9cde7724ebc32b2032ed89475a20b6b59249bdcfff7e2ed88bddfeaa68cd307",
+      "settles": "things with no place",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "things",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "chemicals-apart"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "no cabinet holds food and a chemical; holding both: 0 cabinets (limit <= 0 cabinets)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.chemicals_apart",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 0.0,
+      "ok": true,
+      "order": 11,
+      "pack": "",
+      "passed": true,
+      "rho": "b190bf0b1b882576a6caff84dcb63ff8edb2f452574250af6dc9dfa7b730a1fb",
+      "settles": "cabinets holding both food and chemicals",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "cabinets",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "kinds-together"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "every kind is in one place; split: 0 kinds (limit <= 0 kinds)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.kinds_together",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 0.0,
+      "ok": true,
+      "order": 20,
+      "pack": "",
+      "passed": true,
+      "rho": "988606475f9107596b1dfe57efe789e4a415e4b07ace6f9295fd930de63abefa",
+      "settles": "kinds split between places",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "kinds",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "near-use"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "farthest: Compost bin, in counter beside the range, prep side, from the prep: 4.6 ft (limit <= 5 ft)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.near_use",
+      "limit": 5.0,
+      "locators": [],
+      "margin": 0.08,
+      "margin_why": "",
+      "measured": 4.6,
+      "ok": true,
+      "order": 22,
+      "pack": "",
+      "passed": true,
+      "rho": "b9bc5e76ff5e4c03460e126304bff0d0b41676f37ea37a89844a69351b3de874",
+      "settles": "farthest daily thing from its place of use",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "ft",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "sourced",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "kid-reach"
+      ],
+      "comparator": "<=",
+      "cpu_s": 0.0,
+      "detail": "child's shoulder at 34.4 in; highest shelf of theirs above it by: -3.4 in (limit <= 0 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.kid_reach",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": -3.4,
+      "ok": true,
+      "order": 19,
+      "pack": "",
+      "passed": true,
+      "rho": "85a26f94b58c29888dffc708a8b1ea42e0bb5ecd53dd2830b65e8169a2b820b3",
+      "settles": "highest children's shelf over the small child's shoulder",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
+      "unseen": false,
+      "views": []
+    },
+    {
+      "basis": "model-only",
+      "blocked_by": [],
+      "blocked_kind": "",
+      "cached": true,
+      "claims": [
+        "adult-only"
+      ],
+      "comparator": ">=",
+      "cpu_s": 0.0,
+      "detail": "taller child reaches 63.1 in; lowest adults-only shelf above that by: 1.6 in (limit >= 0 in)",
+      "duration_s": 0.0,
+      "error": "",
+      "evidence": [],
+      "evidence_assets": [],
+      "fresh": true,
+      "gate": "kitchen.adult_only",
+      "limit": 0.0,
+      "locators": [],
+      "margin": null,
+      "margin_why": "zero-limit",
+      "measured": 1.6,
+      "ok": true,
+      "order": 8,
+      "pack": "",
+      "passed": true,
+      "rho": "4c3e3953ff7dd0f127126002410e51fc163015a41ef2be1b3be0ad783ffd60b9",
+      "settles": "lowest adults-only shelf over the taller child's reach",
+      "skip_reason": "",
+      "skipped": false,
+      "stale_reason": "",
+      "status": "pass",
+      "tier": 0,
+      "units": "in",
+      "unqualified": "",
       "unseen": false,
       "views": []
     }

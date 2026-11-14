@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.stowed",
+  "rho": "980837d46c629e68e851feb5b3bc7d1288cac8f295ced94cb28bb5f12bd9c28e",
+  "static": "e114f6fbfdf3c3c4d4819eb2dc5fb9e8c43121ef9c8e1027df71143efd95a977",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "af5926e2b7ef6e1e6c80ada83e93c4986eb8ba25124d68db168f865496ffb7ab",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:no_island_fridge_in_alcove",
+      "expect": "fail",
+      "note": "no island and the refrigerator left in its alcove: no pantry and three drawers fewer, and things are left over",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_unplaced"
+        ],
+        "fc1184e872f6b6839d605ee92d8c287fad88e5ef31fa12ef6d1b141297574255"
+      ],
+      [
+        [
+          "stow_unplaced_count"
+        ],
+        "6d859823a4d9fc48735f44bc3eea2f85ba67820a2d859aef33d2c88d08131957",
+        3
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C18": "dde0fd80a9ceda4bb5d3a91b300eae88a8b520ce6db5bf885b330ca2406a22a3",
+      "acceptance:C18": "fae1238203113e3ec07c3927219e516945c207e72498737c5016319f3915a369"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "stow_things"
+          ],
+          "b1dade1f4ab2b000e08d12bb6aa256f49c2205e6cfe8707e218d4d0ebcd64b24",
+          293
+        ],
+        [
+          [
+            "stow_unplaced"
+          ],
+          "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+        ],
+        [
+          [
+            "stow_unplaced_count"
+          ],
+          "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+          0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C18": "dde0fd80a9ceda4bb5d3a91b300eae88a8b520ce6db5bf885b330ca2406a22a3",
+        "acceptance:C18": "fae1238203113e3ec07c3927219e516945c207e72498737c5016319f3915a369"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "things",
+    "detail": "all 293 things have a place; left over: 0 things (limit <= 0 things)",
+    "goalpost": [
+      {
+        "key": "C18",
+        "measured": 0.0,
+        "units": "things",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": -0.9,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "things"
+          },
+          {
+            "end": "limit",
+            "limit": -0.5,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "things"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "things"
+          },
+          {
+            "end": "limit",
+            "limit": 9.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "things"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:no_island_fridge_in_alcove (no island and the refrigerator left in its alcove: no pantry and three drawers fewer, and things are left over): no place for: Instant Pot; Pizza pan; Vegetable oil, a gallon: 3 things (limit <= 0 things)",
+  "measured": 3.0,
+  "limit": 0.0,
+  "units": "things",
+  "digest": "28144c14374713d70f8e9df03e71ca68afac25a7078834e742c05170f0a7877e"
+}

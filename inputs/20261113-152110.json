@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152110.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: the corner wall cabinets open: spices, dry goods, jars and glasses; microwave and knife strip below",
+  "sha256": "d2ffb9c87d6bb99550ac020f806ad1c2fe672db8212a5ce0c5b068be3e35305e",
+  "added": "2026-11-14T00:09:26Z",
+  "extractions": [
+    {
+      "what": "Corner wall cabinets: spices behind glass (black pepper, paprika, chili powder, Slap Ya Mama, mustard, ginger, cinnamon, Worcestershire); two bags of coffee beans, a plastic pitcher, dried beans, barley, pasta, cartons, cans, mayonnaise, a jar of white beans; mason jars, a large jar of bouillon, mugs, glasses and a snifter",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

@@ -70,11 +70,19 @@
     "value:sourcing.bom",
     "value:sourcing.single_source_limit"
    ],
+   "evaluator:kitchen.adult_only": [
+    "value:stow_adult_margin_in",
+    "value:stow_adult_min_in"
+   ],
    "evaluator:kitchen.aisle_one_cook": [
     "value:work_aisle_in"
    ],
    "evaluator:kitchen.aisle_two_cooks": [
     "value:work_aisle_in"
+   ],
+   "evaluator:kitchen.chemicals_apart": [
+    "value:stow_mixed",
+    "value:stow_mixed_count"
    ],
    "evaluator:kitchen.collisions": [
     "value:collision_count",
@@ -101,15 +109,32 @@
    "evaluator:kitchen.island_seats": [
     "value:island_seats"
    ],
+   "evaluator:kitchen.kid_reach": [
+    "value:stow_kid_max_in",
+    "value:stow_kid_over_in"
+   ],
+   "evaluator:kitchen.kinds_together": [
+    "value:stow_split",
+    "value:stow_split_count"
+   ],
    "evaluator:kitchen.microwave_reach": [
     "value:kid_small_shoulder_in",
     "value:microwave_bottom_in",
     "value:microwave_over_reach_in"
    ],
+   "evaluator:kitchen.near_use": [
+    "value:stow_far_ft",
+    "value:stow_far_what"
+   ],
    "evaluator:kitchen.run_fill": [
     "value:run_fill_error_in",
     "value:wall1_fill_error_in",
     "value:wall2_fill_error_in"
+   ],
+   "evaluator:kitchen.stowed": [
+    "value:stow_things",
+    "value:stow_unplaced",
+    "value:stow_unplaced_count"
    ],
    "evaluator:kitchen.triangle_leg": [
     "value:leg_fridge_wet_ft",
@@ -145,6 +170,12 @@
    "claim:C2": [
     "claim:A3"
    ],
+   "claim:C22": [
+    "claim:A6"
+   ],
+   "claim:C23": [
+    "claim:A6"
+   ],
    "claim:C3": [
     "claim:A3"
    ],
@@ -171,6 +202,9 @@
    ],
    "claim:A6": [
     "requirement:R4"
+   ],
+   "claim:A7": [
+    "requirement:R10"
    ],
    "claim:C1": [
     "requirement:R1",
@@ -203,9 +237,29 @@
     "requirement:R2",
     "requirement:R3"
    ],
+   "claim:C18": [
+    "requirement:R10"
+   ],
+   "claim:C19": [
+    "requirement:R11"
+   ],
    "claim:C2": [
     "requirement:R1",
     "requirement:R9"
+   ],
+   "claim:C20": [
+    "requirement:R10"
+   ],
+   "claim:C21": [
+    "requirement:R2",
+    "requirement:R10"
+   ],
+   "claim:C22": [
+    "requirement:R4",
+    "requirement:R10"
+   ],
+   "claim:C23": [
+    "requirement:R4"
    ],
    "claim:C3": [
     "requirement:R2"
@@ -240,6 +294,10 @@
    ],
    "claim:P4": [
     "requirement:R6"
+   ],
+   "claim:P5": [
+    "requirement:R10",
+    "requirement:R11"
    ]
   },
   "settles": {
@@ -249,11 +307,17 @@
    "evaluator:bom.cost": [
     "claim:C1"
    ],
+   "evaluator:kitchen.adult_only": [
+    "claim:C23"
+   ],
    "evaluator:kitchen.aisle_one_cook": [
     "claim:C5"
    ],
    "evaluator:kitchen.aisle_two_cooks": [
     "claim:C6"
+   ],
+   "evaluator:kitchen.chemicals_apart": [
+    "claim:C19"
    ],
    "evaluator:kitchen.collisions": [
     "claim:C15"
@@ -276,11 +340,23 @@
    "evaluator:kitchen.island_seats": [
     "claim:C8"
    ],
+   "evaluator:kitchen.kid_reach": [
+    "claim:C22"
+   ],
+   "evaluator:kitchen.kinds_together": [
+    "claim:C20"
+   ],
    "evaluator:kitchen.microwave_reach": [
     "claim:C10"
    ],
+   "evaluator:kitchen.near_use": [
+    "claim:C21"
+   ],
    "evaluator:kitchen.run_fill": [
     "claim:C12"
+   ],
+   "evaluator:kitchen.stowed": [
+    "claim:C18"
    ],
    "evaluator:kitchen.triangle_leg": [
     "claim:C3"
@@ -326,6 +402,10 @@
    "claim:A6": [
     "value:kid_big_h",
     "value:kid_small_h"
+   ],
+   "claim:A7": [
+    "value:pantry",
+    "value:stow_pins"
    ],
    "input:contractor-plan-room1": [
     "value:island_len",
@@ -468,6 +548,18 @@
    "registered": true,
    "tier": 0
   },
+  "kitchen.adult_only": {
+   "basis": "model-only",
+   "claims": [
+    "C23"
+   ],
+   "current": true,
+   "outcome": "pass",
+   "outcome_word": "pass",
+   "pack": "",
+   "registered": true,
+   "tier": 0
+  },
   "kitchen.aisle_one_cook": {
    "basis": "sourced",
    "claims": [
@@ -484,6 +576,18 @@
    "basis": "sourced",
    "claims": [
     "C6"
+   ],
+   "current": true,
+   "outcome": "pass",
+   "outcome_word": "pass",
+   "pack": "",
+   "registered": true,
+   "tier": 0
+  },
+  "kitchen.chemicals_apart": {
+   "basis": "model-only",
+   "claims": [
+    "C19"
    ],
    "current": true,
    "outcome": "pass",
@@ -576,6 +680,30 @@
    "registered": true,
    "tier": 0
   },
+  "kitchen.kid_reach": {
+   "basis": "sourced",
+   "claims": [
+    "C22"
+   ],
+   "current": true,
+   "outcome": "pass",
+   "outcome_word": "pass",
+   "pack": "",
+   "registered": true,
+   "tier": 0
+  },
+  "kitchen.kinds_together": {
+   "basis": "model-only",
+   "claims": [
+    "C20"
+   ],
+   "current": true,
+   "outcome": "pass",
+   "outcome_word": "pass",
+   "pack": "",
+   "registered": true,
+   "tier": 0
+  },
   "kitchen.microwave_reach": {
    "basis": "sourced",
    "claims": [
@@ -588,10 +716,34 @@
    "registered": true,
    "tier": 0
   },
+  "kitchen.near_use": {
+   "basis": "model-only",
+   "claims": [
+    "C21"
+   ],
+   "current": true,
+   "outcome": "pass",
+   "outcome_word": "pass",
+   "pack": "",
+   "registered": true,
+   "tier": 0
+  },
   "kitchen.run_fill": {
    "basis": "model-only",
    "claims": [
     "C12"
+   ],
+   "current": true,
+   "outcome": "pass",
+   "outcome_word": "pass",
+   "pack": "",
+   "registered": true,
+   "tier": 0
+  },
+  "kitchen.stowed": {
+   "basis": "model-only",
+   "claims": [
+    "C18"
    ],
    "current": true,
    "outcome": "pass",
@@ -838,15 +990,15 @@
  ],
  "legend": [
   {
-   "n": 7,
+   "n": 8,
    "token": "gap"
   },
   {
-   "n": 4,
+   "n": 5,
    "token": "pending_build"
   },
   {
-   "n": 16,
+   "n": 22,
    "token": "checked"
   }
  ],
@@ -1261,22 +1413,13 @@
    ],
    "sets": [],
    "stop_kind": {
-    "station:s_island": "read",
-    "station:s_triangle": "upstream"
+    "station:s_island": "read"
    },
    "stops": [
-    "station:s_triangle",
     "station:s_island",
     "claim:C17"
    ],
-   "taps": [
-    {
-     "choices": [
-      "base_h"
-     ],
-     "zone": "zone:z_std"
-    }
-   ],
+   "taps": [],
    "token": "gap",
    "unseen": false,
    "values": [
@@ -1286,9 +1429,6 @@
    "via": {
     "station:s_island": [
      "walkway_min_in"
-    ],
-    "station:s_triangle": [
-     "leg_wet_range_ft"
     ]
    }
   },
@@ -1770,8 +1910,8 @@
     "station:s_triangle": "upstream"
    },
    "stops": [
-    "station:s_triangle",
     "station:s_island",
+    "station:s_triangle",
     "claim:C16"
    ],
    "taps": [
@@ -1784,7 +1924,6 @@
     },
     {
      "choices": [
-      "base_h",
       "upper_d"
      ],
      "zone": "zone:z_std"
@@ -1957,12 +2096,329 @@
     "floor_wear_mil"
    ],
    "via": {}
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim": "C18",
+   "errored": false,
+   "fed_by": [
+    "zone:z_layout"
+   ],
+   "marks": [],
+   "order": 27,
+   "reads_all": null,
+   "serves": [
+    "R10"
+   ],
+   "sets": [],
+   "stop_kind": {},
+   "stops": [
+    "claim:C18"
+   ],
+   "taps": [
+    {
+     "choices": [
+      "fridge_at",
+      "island_len",
+      "pantry",
+      "stow_pins"
+     ],
+     "zone": "zone:z_layout"
+    }
+   ],
+   "token": "checked",
+   "unseen": true,
+   "values": [
+    "stow_things",
+    "stow_unplaced",
+    "stow_unplaced_count"
+   ],
+   "via": {}
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim": "C19",
+   "errored": false,
+   "fed_by": [
+    "zone:z_layout"
+   ],
+   "marks": [],
+   "order": 28,
+   "reads_all": null,
+   "serves": [
+    "R11"
+   ],
+   "sets": [],
+   "stop_kind": {},
+   "stops": [
+    "claim:C19"
+   ],
+   "taps": [
+    {
+     "choices": [
+      "stow_pins"
+     ],
+     "zone": "zone:z_layout"
+    }
+   ],
+   "token": "checked",
+   "unseen": true,
+   "values": [
+    "stow_mixed",
+    "stow_mixed_count"
+   ],
+   "via": {}
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim": "C20",
+   "errored": false,
+   "fed_by": [
+    "zone:z_std",
+    "zone:z_layout"
+   ],
+   "marks": [],
+   "order": 29,
+   "reads_all": null,
+   "serves": [
+    "R10"
+   ],
+   "sets": [],
+   "stop_kind": {},
+   "stops": [
+    "claim:C20"
+   ],
+   "taps": [
+    {
+     "choices": [
+      "base_h"
+     ],
+     "zone": "zone:z_std"
+    },
+    {
+     "choices": [
+      "fridge_at"
+     ],
+     "zone": "zone:z_layout"
+    }
+   ],
+   "token": "checked",
+   "unseen": false,
+   "values": [
+    "stow_split",
+    "stow_split_count"
+   ],
+   "via": {}
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim": "C21",
+   "errored": false,
+   "fed_by": [
+    "zone:z_layout",
+    "zone:z_room",
+    "zone:z_std"
+   ],
+   "marks": [],
+   "order": 30,
+   "reads_all": null,
+   "serves": [
+    "R10",
+    "R2"
+   ],
+   "sets": [],
+   "stop_kind": {
+    "station:s_triangle": "upstream"
+   },
+   "stops": [
+    "station:s_triangle",
+    "claim:C21"
+   ],
+   "taps": [
+    {
+     "choices": [
+      "base_h"
+     ],
+     "zone": "zone:z_std"
+    }
+   ],
+   "token": "checked",
+   "unseen": false,
+   "values": [
+    "stow_far_ft",
+    "stow_far_what"
+   ],
+   "via": {
+    "station:s_triangle": [
+     "leg_wet_range_ft"
+    ]
+   }
+  },
+  {
+   "amber": {
+    "enters": null,
+    "state": "holds",
+    "word": "This pass stays a pass if an assumption is wrong by 10%."
+   },
+   "board": "place",
+   "claim": "C22",
+   "errored": false,
+   "fed_by": [
+    "zone:z_people",
+    "zone:z_layout"
+   ],
+   "marks": [],
+   "order": 31,
+   "reads_all": null,
+   "serves": [
+    "R4",
+    "R10"
+   ],
+   "sets": [],
+   "stop_kind": {},
+   "stops": [
+    "claim:C22"
+   ],
+   "taps": [
+    {
+     "choices": [
+      "kid_small_h"
+     ],
+     "zone": "zone:z_people"
+    },
+    {
+     "choices": [
+      "fridge_at",
+      "pantry"
+     ],
+     "zone": "zone:z_layout"
+    }
+   ],
+   "token": "checked",
+   "unseen": false,
+   "values": [
+    "stow_kid_max_in",
+    "stow_kid_over_in"
+   ],
+   "via": {}
+  },
+  {
+   "amber": {
+    "enters": null,
+    "state": "holds",
+    "word": "This pass stays a pass if an assumption is wrong by 10%."
+   },
+   "board": "place",
+   "claim": "C23",
+   "errored": false,
+   "fed_by": [
+    "zone:z_people"
+   ],
+   "marks": [],
+   "order": 32,
+   "reads_all": null,
+   "serves": [
+    "R4"
+   ],
+   "sets": [],
+   "stop_kind": {},
+   "stops": [
+    "claim:C23"
+   ],
+   "taps": [
+    {
+     "choices": [
+      "kid_big_h"
+     ],
+     "zone": "zone:z_people"
+    }
+   ],
+   "token": "checked",
+   "unseen": false,
+   "values": [
+    "stow_adult_margin_in",
+    "stow_adult_min_in"
+   ],
+   "via": {}
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim": "A7",
+   "errored": false,
+   "fed_by": [
+    "zone:z_layout"
+   ],
+   "marks": [],
+   "order": 33,
+   "reads_all": null,
+   "serves": [
+    "R10"
+   ],
+   "sets": [],
+   "stop_kind": {},
+   "stops": [
+    "claim:A7"
+   ],
+   "taps": [
+    {
+     "choices": [
+      "stow_pins",
+      "pantry"
+     ],
+     "zone": "zone:z_layout"
+    }
+   ],
+   "token": "gap",
+   "unseen": false,
+   "values": [],
+   "via": {}
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim": "P5",
+   "errored": false,
+   "fed_by": [
+    "zone:z_layout"
+   ],
+   "marks": [],
+   "order": 34,
+   "reads_all": null,
+   "serves": [
+    "R10",
+    "R11"
+   ],
+   "sets": [],
+   "stop_kind": {},
+   "stops": [
+    "claim:P5"
+   ],
+   "taps": [
+    {
+     "choices": [
+      "pantry",
+      "island_len",
+      "fridge_at",
+      "stow_pins"
+     ],
+     "zone": "zone:z_layout"
+    }
+   ],
+   "token": "pending_build",
+   "unseen": false,
+   "values": [],
+   "via": {}
   }
  ],
  "meta": {
   "name": "Edmonds kitchen",
-  "records_digest": "176dfd6b5903c02f1bb663c0b3912b5998750b0c818c5ae2c969beed0c7c7d7e",
-  "resolution_digest": "05fa8507b85e2d524e9792a803f70752f6db26435392183de42c89a2fb89c89f"
+  "records_digest": "fdcdb1a40e4e33a5014d7de887ef7e7d034d4a448ae3135a175e588fd652a299",
+  "resolution_digest": "d4ad45bd0448aa1776049fb7665c099233996616ea8787d7834041674990e91a"
  },
  "nodes": [
   {
@@ -2086,7 +2542,8 @@
   },
   {
    "assumptions": [
-    "A5"
+    "A5",
+    "A7"
    ],
    "claims": [
     "C3",
@@ -2098,17 +2555,25 @@
     "C8",
     "C9",
     "C16",
+    "C21",
     "C1",
     "C2",
+    "C22",
+    "C20",
     "C10",
     "A5",
+    "A7",
     "P2",
     "P3",
-    "P4"
+    "P4",
+    "P5",
+    "C18",
+    "C19"
    ],
-   "count": 8,
+   "count": 9,
    "estimate": [
-    "A5"
+    "A5",
+    "A7"
    ],
    "feeds": [
     "station:s_island",
@@ -2118,8 +2583,8 @@
    ],
    "generated": false,
    "ground": {
-    "assumption": 1,
-    "chosen": 6,
+    "assumption": 3,
+    "chosen": 5,
     "input": 1
    },
    "id": "zone:z_layout",
@@ -2136,7 +2601,8 @@
     "island_north_aisle",
     "prep_sink",
     "pantry",
-    "microwave_at"
+    "microwave_at",
+    "stow_pins"
    ],
    "moved": [
     "island_len",
@@ -2151,11 +2617,11 @@
    "order": 2,
    "rank": 1,
    "sources": {
-    "assumption": 1,
+    "assumption": 3,
     "chosen": 3,
     "datasheet": 0,
     "estimate": 1,
-    "unrecorded": 3
+    "unrecorded": 2
    },
    "taps": [],
    "title": "Layout",
@@ -2216,6 +2682,8 @@
    ],
    "claims": [
     "C10",
+    "C22",
+    "C23",
     "A6",
     "P2"
    ],
@@ -2245,7 +2713,7 @@
     "kid_big_h"
    ],
    "order": 4,
-   "rank": 3,
+   "rank": 4,
    "sources": {
     "assumption": 2,
     "chosen": 0,
@@ -2254,7 +2722,9 @@
     "unrecorded": 0
    },
    "taps": [
-    "C10"
+    "C10",
+    "C22",
+    "C23"
    ],
    "title": "The children",
    "unmeasured": []
@@ -2279,6 +2749,7 @@
     "C13",
     "C15",
     "C16",
+    "C21",
     "A1",
     "A3",
     "P3",
@@ -2327,7 +2798,7 @@
     "fridge_d"
    ],
    "order": 5,
-   "rank": 4,
+   "rank": 2,
    "sources": {
     "assumption": 5,
     "chosen": 0,
@@ -2355,7 +2826,9 @@
     "C17",
     "C8",
     "C9",
-    "C16"
+    "C16",
+    "C20",
+    "C21"
    ],
    "count": 6,
    "estimate": [],
@@ -2392,7 +2865,7 @@
     "upper_d"
    ],
    "order": 6,
-   "rank": 2,
+   "rank": 3,
    "sources": {
     "assumption": 0,
     "chosen": 0,
@@ -2401,8 +2874,9 @@
     "unrecorded": 4
    },
    "taps": [
-    "C17",
-    "C16"
+    "C16",
+    "C20",
+    "C21"
    ],
    "title": "Cabinet standards",
    "unmeasured": []
@@ -2479,7 +2953,7 @@
     "C9",
     "C16"
    ],
-   "column": 1,
+   "column": 0,
    "depth": 0,
    "fed_by": [
     "zone:z_layout",
@@ -2502,7 +2976,7 @@
     "walkway_min_in"
    ],
    "order": 0,
-   "rank": 1,
+   "rank": 0,
    "stop_kinds": {
     "C16": "upstream",
     "C17": "read",
@@ -2557,10 +3031,10 @@
    "claims": [
     "C3",
     "C4",
-    "C17",
-    "C16"
+    "C16",
+    "C21"
    ],
-   "column": 0,
+   "column": 1,
    "depth": 0,
    "fed_by": [
     "zone:z_layout",
@@ -2583,10 +3057,10 @@
     "leg_fridge_wet_ft"
    ],
    "order": 2,
-   "rank": 0,
+   "rank": 1,
    "stop_kinds": {
     "C16": "upstream",
-    "C17": "upstream",
+    "C21": "upstream",
     "C3": "read",
     "C4": "read"
    },
@@ -2900,6 +3374,53 @@
    "title": "New upstairs floors",
    "token": "checked",
    "word": "checked"
+  },
+  {
+   "claims": [
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "A7",
+    "P5"
+   ],
+   "errored": false,
+   "generated": false,
+   "id": "board:place",
+   "key": "place",
+   "kind": "board",
+   "lane": "boards",
+   "line": "Everything the kitchen holds today has a place in the new one, by kind, near where it is used.",
+   "marks": [],
+   "order": 7,
+   "tally": [
+    {
+     "errored": 0,
+     "key": "checked",
+     "label": "6 checked",
+     "n": 6,
+     "status": "pass"
+    },
+    {
+     "errored": 0,
+     "key": "gap",
+     "label": "1 gap",
+     "n": 1,
+     "status": "unclaimed"
+    },
+    {
+     "errored": 0,
+     "key": "pending_build",
+     "label": "1 pending build",
+     "n": 1,
+     "status": "unverified"
+    }
+   ],
+   "title": "A place for everything",
+   "token": "gap",
+   "word": "gap"
   },
   {
    "amber": {
@@ -3439,16 +3960,176 @@
    "token": "checked",
    "value_text": "22 mil against a limit of 20 mil, 10% inside the limit",
    "word": "checked"
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "id": "claim:C18",
+   "key": "C18",
+   "kind": "claim",
+   "lane": "boards",
+   "marks": [],
+   "order": 27,
+   "row": 0,
+   "severity": 8,
+   "title": "Every thing kept in the kitchen today has a place in the new one, and fits in it",
+   "token": "checked",
+   "value_text": "0 things against a limit of 0 things",
+   "word": "checked"
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "id": "claim:C19",
+   "key": "C19",
+   "kind": "claim",
+   "lane": "boards",
+   "marks": [],
+   "order": 28,
+   "row": 1,
+   "severity": 8,
+   "title": "No cabinet holds both a cleaning chemical and food",
+   "token": "checked",
+   "value_text": "0 cabinets against a limit of 0 cabinets",
+   "word": "checked"
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "id": "claim:C20",
+   "key": "C20",
+   "kind": "claim",
+   "lane": "boards",
+   "marks": [],
+   "order": 29,
+   "row": 2,
+   "severity": 8,
+   "title": "Each kind of thing is kept in one place",
+   "token": "checked",
+   "value_text": "0 kinds against a limit of 0 kinds",
+   "word": "checked"
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "id": "claim:C21",
+   "key": "C21",
+   "kind": "claim",
+   "lane": "boards",
+   "marks": [],
+   "order": 30,
+   "row": 3,
+   "severity": 8,
+   "title": "Things used every day are kept within 5 ft of where they are first used",
+   "token": "checked",
+   "value_text": "4.6 ft against a limit of 5 ft, 8% inside the limit",
+   "word": "checked"
+  },
+  {
+   "amber": {
+    "enters": null,
+    "state": "holds",
+    "word": "This pass stays a pass if an assumption is wrong by 10%."
+   },
+   "board": "place",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "id": "claim:C22",
+   "key": "C22",
+   "kind": "claim",
+   "lane": "boards",
+   "marks": [],
+   "order": 31,
+   "row": 4,
+   "severity": 8,
+   "title": "What the children fetch for themselves is no higher than the 5-year-old's shoulder",
+   "token": "checked",
+   "value_text": "-3.4 in against a limit of 0 in",
+   "word": "checked"
+  },
+  {
+   "amber": {
+    "enters": null,
+    "state": "holds",
+    "word": "This pass stays a pass if an assumption is wrong by 10%."
+   },
+   "board": "place",
+   "claim_kind": "measurable",
+   "critical": true,
+   "errored": false,
+   "id": "claim:C23",
+   "key": "C23",
+   "kind": "claim",
+   "lane": "boards",
+   "marks": [],
+   "order": 32,
+   "row": 5,
+   "severity": 8,
+   "title": "Alcohol and medicine are kept above the 8-year-old's reach",
+   "token": "checked",
+   "value_text": "1.6 in against a limit of 0 in",
+   "word": "checked"
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim_kind": "assumption",
+   "critical": true,
+   "errored": false,
+   "id": "claim:A7",
+   "key": "A7",
+   "kind": "claim",
+   "lane": "boards",
+   "marks": [],
+   "order": 33,
+   "row": 6,
+   "severity": 3,
+   "title": "The kitchen holds what thirteen photographs of 13 November 2026 show and the seven things the owner named, and each is about the usual size for its kind",
+   "token": "gap",
+   "value_text": "",
+   "word": "gap"
+  },
+  {
+   "amber": null,
+   "board": "place",
+   "claim_kind": "physical",
+   "critical": true,
+   "errored": false,
+   "id": "claim:P5",
+   "key": "P5",
+   "kind": "claim",
+   "lane": "boards",
+   "marks": [],
+   "order": 34,
+   "row": 7,
+   "severity": 6,
+   "title": "With the real things in the real cabinets, everything goes where the plan puts it and the family finds it there",
+   "token": "pending_build",
+   "value_text": "",
+   "word": "pending build"
   }
  ],
  "schema": 2,
- "self": "e74cd227be40bee21b33ff90359df80e704abd103b7f25919001218c83d79d9d",
+ "self": "63ba1b100447b7e15251cddd5e6779a16a440ddc54a220b22ef3918df7c67866",
  "trace": {
   "amber": "current",
-  "key": "adc169ec828a",
+  "key": "487f66cc265c",
   "notice": "At round 2, the model was built again with each choice changed by 10%. A thin line joins a group of choices to each implication that moved.",
   "round": 2,
-  "singles": 10,
+  "singles": 17,
   "skipped": {
    "backsplash": "word",
    "cab_install": "word",
@@ -3466,11 +4147,12 @@
    "pantry": "word",
    "prep_sink": "yes-no",
    "sink": "word",
+   "stow_pins": "word",
    "upper_color": "word"
   },
   "state": "traced",
-  "text": "The 17 choices made from a catalog or as a yes or no (backsplash, cab_install, cab_line, counter, faucet, floor, floor_removal, fridge_at, handles, knife_strip, lower_color, managed_by, microwave_at, pantry, prep_sink, sink, upper_color) cannot be changed by 10%. Each was swapped through every option the model offers and the model was built again; a line joins it to what changed. The lines to the claims that no check settles (A1, A2, A3, A4, A5, A6, P1, P2, P3, P4) are declared in the model, not measured. The test did not see 14 implications change: faucet_h_in, faucet_style, finish_unmet, finish_unmet_count, floor_cover, floor_wear_mil, fronts, handle_integrated, island_cut_in, island_seats, knife_strip_to_range_in, markup_usd, microwave_bottom_in, permits_usd. This does not show that no choice changes them.",
-  "ties": 8,
+  "text": "The 17 choices made from a catalog or as a yes or no (backsplash, cab_install, cab_line, counter, faucet, floor, floor_removal, fridge_at, handles, knife_strip, lower_color, managed_by, microwave_at, pantry, prep_sink, sink, upper_color) cannot be changed by 10%. Each was swapped through every option the model offers and the model was built again; a line joins it to what changed. The lines to the claims that no check settles (A1, A2, A3, A4, A5, A6, A7, P1, P2, P3, P4, P5) are declared in the model, not measured. So are the lines to C18 and C19, which a check settles: no single change from the recorded design moves their value. The test did not see 19 implications change: faucet_h_in, faucet_style, finish_unmet, finish_unmet_count, floor_cover, floor_wear_mil, fronts, handle_integrated, island_cut_in, island_seats, knife_strip_to_range_in, markup_usd, microwave_bottom_in, permits_usd, stow_mixed, stow_mixed_count, stow_things, stow_unplaced, stow_unplaced_count. This does not show that no choice changes them.",
+  "ties": 10,
   "unmoved": [
    "faucet_h_in",
    "faucet_style",
@@ -3485,7 +4167,12 @@
    "knife_strip_to_range_in",
    "markup_usd",
    "microwave_bottom_in",
-   "permits_usd"
+   "permits_usd",
+   "stow_mixed",
+   "stow_mixed_count",
+   "stow_things",
+   "stow_unplaced",
+   "stow_unplaced_count"
   ]
  },
  "unread": [
@@ -3505,6 +4192,7 @@
   "pantry",
   "prep_sink",
   "sink",
+  "stow_pins",
   "upper_color"
  ],
  "values": {
@@ -4029,10 +4717,10 @@
    "zone": null
   },
   "pantry": {
-   "ground": "chosen",
+   "ground": "assumption",
    "read": false,
    "role": "choice",
-   "source": "unrecorded",
+   "source": "assumption",
    "station": null,
    "units": "",
    "value_text": "open",
@@ -4106,6 +4794,146 @@
    "station": null,
    "units": "",
    "value_text": "",
+   "zone": null
+  },
+  "stow_adult_margin_in": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "1.625",
+   "zone": null
+  },
+  "stow_adult_min_in": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "63.12",
+   "zone": null
+  },
+  "stow_far_ft": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "4.606",
+   "zone": null
+  },
+  "stow_far_what": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "Compost bin, in counter beside the range, prep side, from the prep",
+   "zone": null
+  },
+  "stow_kid_max_in": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "34.4",
+   "zone": null
+  },
+  "stow_kid_over_in": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "in",
+   "value_text": "-3.4 in",
+   "zone": null
+  },
+  "stow_mixed": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "",
+   "zone": null
+  },
+  "stow_mixed_count": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "cabinets",
+   "value_text": "0 cabinets",
+   "zone": null
+  },
+  "stow_pins": {
+   "ground": "assumption",
+   "read": false,
+   "role": "choice",
+   "source": "assumption",
+   "station": null,
+   "units": "",
+   "value_text": "",
+   "zone": "zone:z_layout"
+  },
+  "stow_split": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "",
+   "zone": null
+  },
+  "stow_split_count": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "kinds",
+   "value_text": "0 kinds",
+   "zone": null
+  },
+  "stow_things": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "293",
+   "zone": null
+  },
+  "stow_unplaced": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "",
+   "value_text": "",
+   "zone": null
+  },
+  "stow_unplaced_count": {
+   "ground": "chosen",
+   "read": true,
+   "role": "derived",
+   "source": "unrecorded",
+   "station": null,
+   "units": "things",
+   "value_text": "0 things",
    "zone": null
   },
   "subtotal_usd": {

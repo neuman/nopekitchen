@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.chemicals_apart",
+  "rho": "c5fc3c266daeb366ab3a9914c0ba755403e72c3ae160dde8456932e74cb8f297",
+  "static": "a251973c9c7f6826015fee78af4dc994fc84d68cc7f9ac560ea5927d5f363406",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "eaf0b04c6d8b72f2ba9f60b7047f5c96cba655b3105500cfd4195272ed32ccc9",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:soap_in_the_pantry",
+      "expect": "fail",
+      "note": "the dish soap refill pinned to the pantry shelf the snacks are on",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_mixed"
+        ],
+        "631f145ab703057be4f7f82bf1277011f0e89d5c919730965b557dac19a0e288"
+      ],
+      [
+        [
+          "stow_mixed_count"
+        ],
+        "4bcd3657d0c29f255a305bffd762d00dbc16c2b6e76f8a3a3a4e9b476a1cdfac",
+        1
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C19": "30fb665129f6922dd476e5397c4f35e6b66108ddd1a5e499cd5516265c71b34b",
+      "acceptance:C19": "a7f551990b89c870be561b379eb04db30cbb0543c39c28c6ac3d16f7774b0419"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "stow_mixed"
+          ],
+          "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+        ],
+        [
+          [
+            "stow_mixed_count"
+          ],
+          "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+          0
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C19": "30fb665129f6922dd476e5397c4f35e6b66108ddd1a5e499cd5516265c71b34b",
+        "acceptance:C19": "a7f551990b89c870be561b379eb04db30cbb0543c39c28c6ac3d16f7774b0419"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "cabinets",
+    "detail": "no cabinet holds food and a chemical; holding both: 0 cabinets (limit <= 0 cabinets)",
+    "goalpost": [
+      {
+        "key": "C19",
+        "measured": 0.0,
+        "units": "cabinets",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": -0.9,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "cabinets"
+          },
+          {
+            "end": "limit",
+            "limit": -0.5,
+            "outcome": "fail",
+            "measured": 0.0,
+            "units": "cabinets"
+          },
+          {
+            "end": "limit",
+            "limit": 1.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "cabinets"
+          },
+          {
+            "end": "limit",
+            "limit": 9.0,
+            "outcome": "pass",
+            "measured": 0.0,
+            "units": "cabinets"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 0,
+    "boundary": "at-limit",
+    "results": [],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:soap_in_the_pantry (the dish soap refill pinned to the pantry shelf the snacks are on): food and chemicals together in: Pantry (the old refrigerator alcove): 1 cabinets (limit <= 0 cabinets)",
+  "measured": 1.0,
+  "limit": 0.0,
+  "units": "cabinets",
+  "digest": "fac76228d2ab5f6752bc346304b3e62494907d287e16365d6015e4042d777e89"
+}

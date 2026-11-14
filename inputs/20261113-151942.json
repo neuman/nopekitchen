@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_151942.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: the snack cabinet right of the window, open, beside the refrigerator",
+  "sha256": "b85c1f4b47efa42c30c841e3ffa9c8611a53bb885bd621e9edeeb1b39f4808f8",
+  "added": "2026-11-14T00:09:25Z",
+  "extractions": [
+    {
+      "what": "Snack cabinet right of the window: Kirkland nuts, trail mix, marshmallows, freezer bags of dried fruit; crackers, a clear bag of grain, bread, two boxes of 12 fruit cups, Jif peanut butter, a blue and white box, popcorn kernels; tortilla chips, Doritos, Cheetos, a dozen small chip bags, a yellow box, a box of bars",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

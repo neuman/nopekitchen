@@ -1,0 +1,16 @@
+{
+  "path": "inputs/references/20261113_152008.jpg",
+  "kind": "reference",
+  "description": "Existing kitchen, 13 Nov 2026: base cabinets left of the range, doors open: small appliances, pots on a roll-out, the Instant Pot and the stock pot",
+  "sha256": "4b0381b549b88f006059baa6cbdfaa1b374485376ee9f9f19bec5f9064a364a0",
+  "added": "2026-11-14T00:09:25Z",
+  "extractions": [
+    {
+      "what": "Base cabinets left of the range: a KitchenAid stand mixer, a food processor bowl on its base, a blender pitcher behind; a roll-out of saucepans, frying pans and lids; below it the Instant Pot and a large steel stock pot",
+      "grounds": [
+        "A7"
+      ],
+      "confidence": "inferred"
+    }
+  ]
+}

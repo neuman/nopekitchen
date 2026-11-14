@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "gate": "kitchen.collisions",
+  "rho": "c84e13e6676660463d7234cd864e786387637781059fa53f1d529b39aba3bbd6",
+  "code": {
+    "digest": "34baa55791876e07c608c93cf2ae641d3a6bb6c0efcc62f666429cc265fe3d6e",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "collision_count"
+        ],
+        "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+        0
+      ],
+      [
+        [
+          "collision_pairs"
+        ],
+        "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C15": "61392caaa6b5e32eba4588600e2331e2baf9774e2025f63b656c238cae32cb32",
+      "acceptance:C15": "51de0c19c1164f023e0f0e5a9e526e92f177d5cbaea86a62d9956c922b8ed888"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "pairs",
+    "comparator": "<=",
+    "settles": "interfering pairs",
+    "detail": "no box overlaps another; interfering: 0 pairs (limit <= 0 pairs)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "collisions"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "86a90d4f1c0431a456a92c5baf0fa0548e347588b4f9c8bc45d9ad4e884b02a4"
+}

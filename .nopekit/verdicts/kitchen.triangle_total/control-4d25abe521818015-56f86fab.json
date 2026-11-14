@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.triangle_total",
+  "rho": "4d25abe52181801595f8d008bf51a07ceca081bd554b340772d09f6e203ce252",
+  "static": "3fcf37825524c5ff7e6afbcb51f61dda538ec68fd452095a79720b2f4ac04d88",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "b35a5475b571154d3c901b789c69315c4e9366fa221213e8d95b18dbc912fff2",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:no_prep_sink",
+      "expect": "fail",
+      "note": "the island sink removed: the three legs sum to 27 ft",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "triangle_total_ft"
+        ],
+        "125332223042cc5c1bebb0c3c2341f3ad548610b45427ab582a16f1ef04f9cb9",
+        26.957509036454084
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C4": "ac7d79ecf0b8d1403fd121d7ad1ca90f39e7c9652729768e32e3396f9f96dff8",
+      "acceptance:C4": "fbe6a3b44eb76dd7f6d7e2bade4cdd6bc7bef32872afd91e413d7c72677eab0e"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "triangle_total_ft"
+          ],
+          "a21db2045584c11afff5a9e8f5f175af1fa4f5da82d23f69a526466361fa3cc6",
+          19.127461475539118
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C4": "ac7d79ecf0b8d1403fd121d7ad1ca90f39e7c9652729768e32e3396f9f96dff8",
+        "acceptance:C4": "fbe6a3b44eb76dd7f6d7e2bade4cdd6bc7bef32872afd91e413d7c72677eab0e"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 19.13,
+    "limit": 26.0,
+    "units": "ft",
+    "detail": "the three legs sum to: 19.13 ft (limit <= 26 ft)",
+    "goalpost": [
+      {
+        "key": "C4",
+        "measured": 19.13,
+        "units": "ft",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 2.6,
+            "outcome": "fail",
+            "measured": 19.13,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 13.0,
+            "outcome": "fail",
+            "measured": 19.13,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 52.0,
+            "outcome": "pass",
+            "measured": 19.13,
+            "units": "ft"
+          },
+          {
+            "end": "limit",
+            "limit": 260.0,
+            "outcome": "pass",
+            "measured": 19.13,
+            "units": "ft"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 22,
+    "boundary": "",
+    "results": [
+      {
+        "key": [
+          "triangle_total_ft"
+        ],
+        "before": 19.127461475539118,
+        "after": 29.9,
+        "outcome": "fail",
+        "measured": 29.9,
+        "limit": 26.0
+      }
+    ],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:no_prep_sink (the island sink removed: the three legs sum to 27 ft): the three legs sum to: 26.96 ft (limit <= 26 ft)",
+  "measured": 26.96,
+  "limit": 26.0,
+  "units": "ft",
+  "digest": "1b8bb194484fb50463dac742660fdf4f1aa99276cb434342629ec03060db59b9"
+}

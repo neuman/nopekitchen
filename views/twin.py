@@ -156,6 +156,8 @@ LAYOUT_CLAIMS = {
     "C6": "work_aisle_in", "C7": "dishwasher_standing_in", "C8": "island_seats",
     "C9": "island_knee_in", "C10": "microwave_over_reach_in", "C12": "run_fill_error_in",
     "C13": "window_gap_in", "C15": "collision_count", "C16": "blocked_door_count", "C17": "walkway_min_in",
+    "C18": "stow_unplaced_count", "C19": "stow_mixed_count", "C20": "stow_split_count", "C21": "stow_far_ft",
+    "C22": "stow_kid_over_in", "C23": "stow_adult_margin_in",
 }
 QTY = {"cab_line": "cab_run_lf", "cab_install": "cab_run_lf", "handles": "fronts",
        "counter": "counter_sqft", "backsplash": "backsplash_sqft"}
@@ -185,6 +187,84 @@ def variants(k):
                                   island_aisle=aisle, prep_sink=prep, microwave_at=mw)
 
 
+# --------------------------------------------------------------------------- #
+# the exploded view: how the contents of each compartment leave it
+# --------------------------------------------------------------------------- #
+TOWER_Z0, TOWER_STEP = 39.0, 13.0     # in: the lowest layer of a base cabinet's contents, shown just above counter height; layer to layer
+
+
+def explode(k, boxes: list[dict], bays: list[dict]) -> dict:
+    """{bay id: [sx, sy, lx, ly, rise, wave, waves]}, for the configurator's slider.
+
+    What stands in a bay first slides out of the cabinet by (sx, sy), then rises by
+    `rise` while it drifts sideways by (lx, ly). A drawing aid: nothing checks it.
+
+    A wall cabinet's shelves slide straight out and spread a little apart. A base
+    cabinet empties from the bottom up, one drawer or shelf at a time (`wave` of
+    `waves`), and its contents hang in layers above counter height in front of it:
+    the bottom drawer's on top, so nothing passes through anything. The pantry's
+    shelves come out of the recess as they stand. Where two cabinets' contents would
+    hang in the same place (at the inside corner, beside the pantry), one is moved
+    along its run.
+    """
+    by = {b["id"]: b for b in boxes}
+    hosts: dict[str, list[dict]] = {}
+    for b in bays:
+        hosts.setdefault(b["host"], []).append(b)
+    out = {}
+    taken = [(b["x"], b["y"], b["x"] + b["dx"], b["y"] + b["dy"]) for b in boxes if b["kind"] == "counter"]
+    pantry = [b for b in bays if b["unit"] == "pantry"]
+    if pantry:
+        for b in pantry:
+            out[b["id"]] = [-34.0, 0.0, 0.0, 0.0, 0.0, 0, 1]
+        taken.append((min(b["x"] for b in pantry) - 34.0, min(b["y"] for b in pantry),
+                      max(b["x"] + b["dx"] for b in pantry) - 34.0, max(b["y"] + b["dy"] for b in pantry)))
+    towers = []
+    for host, bs in hosts.items():
+        if bs[0]["unit"] == "pantry":
+            continue
+        if bs[0]["kind"] == "counter":
+            for b in bs:
+                out[b["id"]] = [0.0, 0.0, 0.0, 0.0, 0.0, 0, 1]
+            continue
+        box, bs = by[host], sorted(bs, key=lambda b: b["z"])
+        (rx, ry), (ox, oy) = k._FRAME[bs[0]["face"]]
+        front = box["x"] + box["dx"] if ox > 0 else box["x"] if ox < 0 else box["y"] + box["dy"] if oy > 0 else box["y"]
+
+        def clear(b, gap):      # how far a bay slides for its back edge to stand `gap` in front of the cabinet's face
+            back = b["x"] if ox > 0 else b["x"] + b["dx"] if ox < 0 else b["y"] if oy > 0 else b["y"] + b["dy"]
+            return abs(front - back) + gap
+
+        if box["kind"] != "base":
+            for i, b in enumerate(bs):
+                d = clear(b, 1.75)
+                out[b["id"]] = [ox * d, oy * d, 0.0, 0.0, round(i * 3.2, 2), 0, 1]
+            continue
+        rect = [1e9, 1e9, -1e9, -1e9]
+        for j, b in enumerate(bs):
+            d = clear(b, 1.75)
+            out[b["id"]] = [ox * d, oy * d, 0.0, 0.0, round(TOWER_Z0 + TOWER_STEP * (len(bs) - 1 - j) - b["z"], 2), j, len(bs)]
+            rect = [min(rect[0], b["x"] + ox * d), min(rect[1], b["y"] + oy * d),
+                    max(rect[2], b["x"] + b["dx"] + ox * d), max(rect[3], b["y"] + b["dy"] + oy * d)]
+        towers.append((rect[0] + rect[1], host, bs, rect, (abs(rx), abs(ry))))
+
+    def over(r):
+        a = (r[0] + 0.75, r[1] + 0.75, r[2] - 0.75, r[3] - 0.75)
+        return sum(max(0.0, min(a[2], t[2]) - max(a[0], t[0])) * max(0.0, min(a[3], t[3]) - max(a[1], t[1])) for t in taken)
+
+    def inside(r, wall):     # a wall run's contents stay in front of their own wall; the island's hang where they are
+        return not wall or (r[0] >= 0.0 and r[1] >= 0.0 and r[2] <= k.CONFIG.wall2_len and r[3] <= k.CONFIG.wall1_len)
+
+    for _d, host, bs, rect, (ax, ay) in sorted(towers, key=lambda t: (t[0], t[1])):     # from the inside corner outward
+        moved = lambda sh: [rect[0] + ax * sh, rect[1] + ay * sh, rect[2] + ax * sh, rect[3] + ay * sh]      # noqa: E731
+        best = min((sh for sh in range(-40, 41) if inside(moved(sh), host.startswith("w"))),
+                   key=lambda sh: (round(over(moved(sh)), 1), abs(sh), -sh), default=0)
+        for b in bs:
+            out[b["id"]][2:4] = [float(ax * best), float(ay * best)]
+        taken.append((rect[0] + ax * best, rect[1] + ay * best, rect[2] + ax * best, rect[3] + ay * best))
+    return out
+
+
 def configurator(ctx, k) -> dict:
     acceptances = {}
     for claim in ctx.ledger.claims:
@@ -200,6 +280,32 @@ def configurator(ctx, k) -> dict:
             index[key] = len(table)
             table.append(box)
         return index[key]
+
+    # where everything goes: the things once, then for each layout its compartments and what stands in each
+    inv = k.inventory
+    thing_no = {t["id"]: i for i, t in enumerate(inv.THINGS)}
+    bay_table, put_table, stow_table, tables = [], [], [], ({}, {}, {})
+
+    def intern(rows, seen, row):
+        key = json.dumps(row, sort_keys=True)
+        if key not in seen:
+            seen[key] = len(rows)
+            rows.append(row)
+        return seen[key]
+
+    def stow_of(d):
+        st = d["stow"]
+        how = explode(k, d["boxes"], st["bays"])
+        no = {}
+        for b in st["bays"]:
+            row = {n: (round(b[n], 2) if isinstance(b[n], float) else b[n]) for n in ("id", "host", "unit", "kind", "face", "x", "y", "z", "dx", "dy", "dz", "front", "words")}
+            row["place"] = k.place_words(b["unit"])
+            row["e"] = how[b["id"]]
+            no[b["id"]] = intern(bay_table, tables[0], row)
+        puts = [intern(put_table, tables[1], [thing_no[p["t"]], no[p["bay"]], p["x"], p["y"], p["z"], p["rot"]]) for p in st["placed"]]
+        return intern(stow_table, tables[2], {
+            "bays": sorted(no.values()), "items": puts, "unplaced": [thing_no[t] for t in st["unplaced"]],
+            "notes": {"unplaced": d["stow_unplaced"], "mixed": d["stow_mixed"], "split": d["stow_split"], "far": d["stow_far_what"]}})
 
     for c in variants(k):
         d = k.build(c)
@@ -224,6 +330,7 @@ def configurator(ctx, k) -> dict:
             "east_in": round(d["east_of_island_in"], 1),
             "opens": [ref(o) for o in d["opens"]],
             "blocked": d["blocked_doors"], "hits": d["collision_pairs"], "ways": d["walkways"],
+            "stow": stow_of(d),
         }
     rec = k.build(k.CONFIG)
     cfg = dataclasses.asdict(k.CONFIG)
@@ -236,6 +343,10 @@ def configurator(ctx, k) -> dict:
         "knife_strips": {key: (lambda b: b and {n: b[n] for n in ("x", "y", "z", "dx", "dy", "dz", "face")})(
             k.knife_strip(dataclasses.replace(k.CONFIG, knife_strip=key, fridge_at="hall"))) for key in k.CATALOG["knife_strip"]},
         "sconces": [list(q) for q in k.SCONCES], "boxes": table, "layouts": layouts,
+        "things": [{n: t[n] for n in ("id", "label", "group", "w", "d", "h", "parts", "seen", "note", "unsure")} for t in inv.THINGS],
+        "kinds": {gid: {"label": g["label"], "short": g["short"], "cat": g["cat"]} for gid, g in inv.GROUPS.items()}, "cats": inv.CATEGORIES,
+        "bays": bay_table, "puts": put_table, "stows": stow_table,
+        "reach": {"kid_max": round(rec["stow_kid_max_in"], 1), "adult_min": round(rec["stow_adult_min_in"], 1)},
         "catalog": k.CATALOG, "colors": k.COLORS, "claims": acceptances,
         "money": {"budget": k.CONFIG.budget_usd, "tax": k.CONFIG.sales_tax, "contingency": k.CONFIG.contingency,
                   "permits": k.PERMITS_USD, "floor_area": k.CONFIG.floor_area_sqft,

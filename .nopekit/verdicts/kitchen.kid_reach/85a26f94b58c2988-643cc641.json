@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "gate": "kitchen.kid_reach",
+  "rho": "85a26f94b58c29888dffc708a8b1ea42e0bb5ecd53dd2830b65e8169a2b820b3",
+  "code": {
+    "digest": "5e8a2c694cc21a08b44f3511e6d89b808731e78c182ef3e12a93c3105568669c",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_kid_max_in"
+        ],
+        "79f81904284648ba1b427e828852e5fc5652e8f5819aebc4ecb777adf4009f0d",
+        34.4
+      ],
+      [
+        [
+          "stow_kid_over_in"
+        ],
+        "18cd72996cb532a0b7609f788ad22b98acb801d249a10b95beaba5988692335c",
+        -3.3999999999999986
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C22": "0dfe084fa36013d5cf6847eb32745181e543e1b83de1b55f2a2b39439194ef52",
+      "acceptance:C22": "5fefb70d6178a708408c1c5bb944c0bbce0da12db60d32af310085c74d9f3f7b"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": -3.4,
+    "limit": 0.0,
+    "units": "in",
+    "comparator": "<=",
+    "settles": "highest children's shelf over the small child's shoulder",
+    "detail": "child's shoulder at 34.4 in; highest shelf of theirs above it by: -3.4 in (limit <= 0 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "kid-reach"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "5543aafd095b4611b886c4cb12ddc3bfbc729d001ad39498684e9ecbcdf3f226"
+}

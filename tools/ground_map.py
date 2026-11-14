@@ -39,6 +39,15 @@ LINKS = {
     "P2": ["microwave_at", "pantry", "island_len", "kid_small_h", "kid_big_h"],   # what the children reach, and where
     "P3": ["island_top_d", "island_aisle", "kitchen_w"],              # the island's seat edge against the table
     "P4": ["fridge_at", "fridge_d", "wall1_len"],                     # the refrigerator at the hall end
+    "P5": ["pantry", "island_len", "fridge_at", "stow_pins"],         # the real things in the real cabinets
+}
+
+#: a claim a check does settle, whose value no single change from the recorded design moves, so the
+#: swaps above draw it no line: the choices it depends on. Declared by hand from the placing rules
+#: (stow in model/kitchen.py); each one's control in selftest/bad_configs.py shows the dependence.
+DEPENDS = {
+    "C18": ["fridge_at", "island_len", "pantry", "stow_pins"],        # what there is to put things in
+    "C19": ["stow_pins"],                                             # the rules keep them apart; only a pin can mix them
 }
 
 
@@ -171,6 +180,14 @@ def main() -> int:
                 tap(zone, cid, choice)
                 declared.append(cid)
 
+    depends = []
+    for cid, choices in DEPENDS.items():
+        for choice in choices:
+            zone = zone_of.get(choice)
+            if zone is not None and cid in lines:
+                tap(zone, cid, choice)
+                depends.append(cid)
+
     # 3. three columns: choices, implications, claims
     cards = [n["id"] for n in m["nodes"] if n["kind"] == "requirement"]
     m["nodes"] = [n for n in m["nodes"] if n["kind"] != "requirement"]
@@ -194,7 +211,10 @@ def main() -> int:
         f"The {len(swapped)} choices made from a catalog or as a yes or no ({', '.join(swapped)}) cannot be changed by 10%. "
         "Each was swapped through every option the model offers and the model was built again; a line joins it to what changed. "
         f"The lines to the claims that no check settles ({', '.join(sorted(set(declared), key=lambda c: (c[0], int(c[1:]))))}) "
-        "are declared in the model, not measured. " + text.replace("shared values", "implications")).strip()
+        "are declared in the model, not measured. "
+        + (f"So are the lines to {' and '.join(sorted(set(depends)))}, which a check settles: no single change from the recorded design moves their value. "
+           if depends else "")
+        + text.replace("shared values", "implications")).strip()
     t["notice"] = t.get("notice", "").replace("shared value", "implication")
     for key, val in list((page.get("words", {}).get("trace") or {}).items()):
         if isinstance(val, str):

@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "gate": "kitchen.adult_only",
+  "rho": "4c3e3953ff7dd0f127126002410e51fc163015a41ef2be1b3be0ad783ffd60b9",
+  "code": {
+    "digest": "f2d5458c87e553ab6ecfff68e742b331cd1be20c5fae26639a10e872a4312433",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_adult_margin_in"
+        ],
+        "bccd2d7678cef742b560ba9ba4104e7d98c5f95992fc29d57097797152395a41",
+        1.625
+      ],
+      [
+        [
+          "stow_adult_min_in"
+        ],
+        "1d7b03c767236d9dfaf2926ea05f8600d419552283c452fb87efbb62b5c4723a",
+        63.125
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C23": "d016e6a562f40f2f8700d0fbc65a729b415c9ce87770b038c5e6e6cc68c15d1d",
+      "acceptance:C23": "d9ac2387e6492d152152b48fc2cbaebcda9190bc8ccd3aaab9f4059f18c11eb0"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 1.6,
+    "limit": 0.0,
+    "units": "in",
+    "comparator": ">=",
+    "settles": "lowest adults-only shelf over the taller child's reach",
+    "detail": "taller child reaches 63.1 in; lowest adults-only shelf above that by: 1.6 in (limit >= 0 in)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "adult-only"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "e9c336b2f38a104f858806651cd91a2ac98bb307aac3d65001a1a24d995a2901"
+}

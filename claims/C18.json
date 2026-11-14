@@ -1,0 +1,24 @@
+{
+  "statement": "Every thing kept in the kitchen today has a place in the new one, and fits in it",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "things with no place",
+    "comparator": "<=",
+    "limit": 0.0,
+    "units": "things"
+  },
+  "rationale": "a new kitchen that cannot take what the old one held sends the overflow to the counters on the first day",
+  "tags": [
+    "stowed"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "Each thing in model/inventory.py is stood in a compartment by the placing rules; its footprint and height are checked against the inside of the drawer or shelf; the things left over are counted",
+    "evaluators": [
+      "kitchen.stowed"
+    ]
+  },
+  "requirements": [
+    "R10"
+  ]
+}

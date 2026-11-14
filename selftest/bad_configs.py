@@ -91,3 +91,35 @@ def island_at_18_in(ctx):
 def island_30_from_sink_run(ctx):
     """walkways: 30 in between the sink run and the island."""
     return _with(ctx, island_north_aisle=30.0)
+
+
+def no_island_fridge_in_alcove(ctx):
+    """stowed: no island, and the refrigerator left in its alcove, so no pantry
+    either. The Instant Pot and the pizza pan are left with no place."""
+    return _with(ctx, fridge_at="alcove", island_len=0.0, prep_sink=False, pantry="open", microwave_at="counter")
+
+
+def soap_in_the_pantry(ctx):
+    """chemicals_apart: the dish soap refill on the pantry's 30 in shelf, with the snacks."""
+    return _with(ctx, stow_pins="dish_soap=pantry_shelf_back1:on")
+
+
+def one_spice_in_the_pantry(ctx):
+    """kinds_together: one spice jar on a pantry shelf; the rest stay by the range."""
+    return _with(ctx, stow_pins="spice_small3=pantry_shelf_back2:on")
+
+
+def plates_by_the_refrigerator(ctx):
+    """near_use: the dinner plates in the wall cabinet beside the refrigerator,
+    12 ft from the dishwasher they come out of."""
+    return _with(ctx, stow_pins="plates_dinner=w1_u3340:s1")
+
+
+def cups_on_the_top_shelf(ctx):
+    """kid_reach: one of the children's cups on the top shelf over the dishwasher, 75 in up."""
+    return _with(ctx, stow_pins="kid_cup1=w2_u33:s2")
+
+
+def liquor_in_a_low_drawer(ctx):
+    """adult_only: one bottle of liquor in the bottom drawer beside the dishwasher."""
+    return _with(ctx, stow_pins="liquor1=w2_b3d18:d0")

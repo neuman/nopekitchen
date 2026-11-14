@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "gate": "kitchen.stowed",
+  "rho": "e9cde7724ebc32b2032ed89475a20b6b59249bdcfff7e2ed88bddfeaa68cd307",
+  "code": {
+    "digest": "af5926e2b7ef6e1e6c80ada83e93c4986eb8ba25124d68db168f865496ffb7ab",
+    "files": [
+      "gates/kitchen.py"
+    ],
+    "fallback": ""
+  },
+  "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+  "reads": {
+    "params": [
+      [
+        [
+          "stow_things"
+        ],
+        "b1dade1f4ab2b000e08d12bb6aa256f49c2205e6cfe8707e218d4d0ebcd64b24",
+        293
+      ],
+      [
+        [
+          "stow_unplaced"
+        ],
+        "7acc585478bbe701b58a6ba5d89ed5e4055fce21d238f1bb4e7b6d3733fd1778"
+      ],
+      [
+        [
+          "stow_unplaced_count"
+        ],
+        "cb33559e51d9336cdbf86ce55c499c1b74750d592d1cb8b6ac3317b6b814a8e4",
+        0
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C18": "dde0fd80a9ceda4bb5d3a91b300eae88a8b520ce6db5bf885b330ca2406a22a3",
+      "acceptance:C18": "fae1238203113e3ec07c3927219e516945c207e72498737c5016319f3915a369"
+    },
+    "model": null,
+    "opaque": []
+  },
+  "instruments": {},
+  "verdict": {
+    "passed": true,
+    "measured": 0.0,
+    "limit": 0.0,
+    "units": "things",
+    "comparator": "<=",
+    "settles": "things with no place",
+    "detail": "all 293 things have a place; left over: 0 things (limit <= 0 things)",
+    "evidence": [],
+    "locators": [],
+    "claims": [
+      "stowed"
+    ],
+    "tier": 0,
+    "pack": ""
+  },
+  "digest": "4eccb74bcea665f9a425db6680184f222b254da3a701b4d7d24decf3ddffcf28"
+}

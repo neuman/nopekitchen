@@ -1,0 +1,25 @@
+{
+  "statement": "What the children fetch for themselves is no higher than the 5-year-old's shoulder",
+  "kind": "measurable",
+  "acceptance": {
+    "quantity": "highest children's shelf over the small child's shoulder",
+    "comparator": "<=",
+    "limit": 0.0,
+    "units": "in"
+  },
+  "rationale": "their plates, cups, water bottles and snacks: a child who can reach them sets a place and gets a snack alone. The same rule as the microwave (C10); it gets easier each year they grow",
+  "tags": [
+    "kid-reach"
+  ],
+  "mechanism": {
+    "by": "closed_form",
+    "how": "The floor of each compartment that holds the children's dishes, bottles or snacks, against 0.80 of the smaller child's assumed stature",
+    "evaluators": [
+      "kitchen.kid_reach"
+    ]
+  },
+  "requirements": [
+    "R4",
+    "R10"
+  ]
+}

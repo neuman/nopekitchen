@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "kind": "control",
+  "gate": "kitchen.floor_wear",
+  "rho": "a36b087c0264d656d45be064f9c41f2fc4175886a301746da0ac48567ca0d4e6",
+  "static": "dd865e7ffeb084a961ba6e0300f887f12efaca64d5662eb98dc5192266686335",
+  "static_parts": {
+    "spine": "b9c5046a0430346c084cc073ce23a13dab1788c34c118bdc75b3a3aabc9cee29",
+    "code": {
+      "digest": "1bc7dc2c0aebf6720f3b3e800bd97da672494da57e6b21ae148446a303404027",
+      "files": [
+        "gates/kitchen.py"
+      ]
+    },
+    "selftest": {
+      "digest": "7512833b39c76227b01b7ea48a57fd3b92cbb0076f37b4986ad311fcf5574a96",
+      "files": {
+        "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+        "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+      }
+    },
+    "nc": {
+      "fixture": "selftest/bad_configs.py:thin_wear_layer",
+      "expect": "fail",
+      "note": "a 12 mil builder-grade plank",
+      "good": "",
+      "mutation": true
+    }
+  },
+  "host": "known-good",
+  "fixture": {
+    "digest": "5cc69c0cf5c21f8b76ba2dbe3fdf70e61e5b576f95d97e074ab6aa1123ab8ecc",
+    "files": {
+      "model/inventory.py": "4ab2c222bc3230d767bf854c505ba5062b199cfc1ccc83ccc75b5bcfcc163c65",
+      "model/kitchen.py": "bcfc4cfdcce43c3d1678f547241901a990e2e73afd6782f3477c00053652eda1",
+      "selftest/bad_configs.py": "64252ac1b87bdac0f9e23a4944e241b8e94e9e79954a165733809d5d5152f5d0",
+      "selftest/known_good.py": "2b2b4eb906255a698c54e2dfeeae07285b0a54721ea3849d80dbd9a46ad46037"
+    }
+  },
+  "reads": {
+    "params": [
+      [
+        [
+          "floor_wear_mil"
+        ],
+        "6c94e9ac58912c80e87504c8c48069b79153bc91b2b850af26229e516d9f996c",
+        12
+      ]
+    ],
+    "files": {},
+    "dirs": {},
+    "ledger": {
+      "acceptance-shape:C14": "a5e49976ef2da5d87a789b0b2c8be0d8ea9aee1b78ce9fc6c6a49538df185042",
+      "acceptance:C14": "a1ba292772ce6fc8417c2c3b688f8ed01c9aa745e2abc718dbf802b215a3a4e7"
+    },
+    "host": [],
+    "opaque": []
+  },
+  "bad": "fail",
+  "bad_extra": [],
+  "good": {
+    "outcome": "pass",
+    "reads": {
+      "params": [
+        [
+          [
+            "floor_wear_mil"
+          ],
+          "7bf4b34af2d4dc12ba874040cf9f3be4ab0b3ac63d997285de71f95d4a1501d7",
+          22
+        ]
+      ],
+      "files": {},
+      "dirs": {},
+      "ledger": {
+        "acceptance-shape:C14": "a5e49976ef2da5d87a789b0b2c8be0d8ea9aee1b78ce9fc6c6a49538df185042",
+        "acceptance:C14": "a1ba292772ce6fc8417c2c3b688f8ed01c9aa745e2abc718dbf802b215a3a4e7"
+      },
+      "host": [],
+      "opaque": []
+    },
+    "extra": [],
+    "measured": 22.0,
+    "limit": 20.0,
+    "units": "mil",
+    "detail": "stated wear layer: 22 mil (limit >= 20 mil)",
+    "goalpost": [
+      {
+        "key": "C14",
+        "measured": 22.0,
+        "units": "mil",
+        "runs": [
+          {
+            "end": "limit",
+            "limit": 2.0,
+            "outcome": "pass",
+            "measured": 22.0,
+            "units": "mil"
+          },
+          {
+            "end": "limit",
+            "limit": 10.0,
+            "outcome": "pass",
+            "measured": 22.0,
+            "units": "mil"
+          },
+          {
+            "end": "limit",
+            "limit": 40.0,
+            "outcome": "fail",
+            "measured": 22.0,
+            "units": "mil"
+          },
+          {
+            "end": "limit",
+            "limit": 200.0,
+            "outcome": "fail",
+            "measured": 22.0,
+            "units": "mil"
+          }
+        ]
+      }
+    ]
+  },
+  "mutation": {
+    "runs": 6,
+    "boundary": "",
+    "results": [
+      {
+        "key": [
+          "floor_wear_mil"
+        ],
+        "before": 22,
+        "after": 17,
+        "outcome": "fail",
+        "measured": 17.0,
+        "limit": 20.0
+      }
+    ],
+    "inconclusive": [],
+    "not_mutated": []
+  },
+  "admitted": "paired",
+  "detail": "correctly failed on selftest/bad_configs.py:thin_wear_layer (a 12 mil builder-grade plank): stated wear layer: 12 mil (limit >= 20 mil)",
+  "measured": 12.0,
+  "limit": 20.0,
+  "units": "mil",
+  "digest": "e4dad58250f9d86905125206d64e1f227700f45362a5d2d1897155a1d4338f54"
+}
